@@ -11,6 +11,8 @@ using System.IO;
 using SoImporter.MiscClass;
 using SoImporter.Model;
 using Newtonsoft.Json;
+using DotNetDBF;
+using DotNetDBF.Enumerable;
 
 namespace SoImporter
 {
@@ -88,6 +90,54 @@ namespace SoImporter
         {
             base.OnLoad(e);
             this.gridView1.VisibleColumns[0].Width = 25;
+        }
+
+        private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(this.config.ExpressDataPath + @"\oeso.dbf", FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    using (DBFReader dr = new DBFReader(fs))
+                    {
+                        dr.CharEncoding = Encoding.GetEncoding("windows-874");
+                        //Console.WriteLine(" >>> fields[0].name = " + dr.Fields[0].Name);
+                        IEnumerable<Oeso> oeso = dr.AllRecords<Oeso>();
+                        foreach (Oeso item in oeso)
+                        {
+                            Console.WriteLine(" >> " + item.sonum + " " + item.sodat + " " + item.cuscod);
+                        }
+
+                        Console.WriteLine(" >> last oeso is : " + oeso.OrderByDescending(o => o.sonum).First().sonum );
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnTestWrite_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(this.config.ExpressDataPath + @"\oeso.dbf", FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
+                {
+                    using (DBFWriter dw = new DBFWriter(fs))
+                    {
+                        //var sorectyp = new DBFField("sorectyp", NativeDbType.Char, 1);
+                        //var sonum = new DBFField("sonum", NativeDbType.Char, 12);
+                        //dw.Fields = new[] { sorectyp, sonum };
+
+                        dw.WriteRecord("2", "SO99999");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

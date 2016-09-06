@@ -56,6 +56,7 @@
             this.colVatAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTaxAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNetAmt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnTestWrite = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -70,9 +71,10 @@
             this.btnRecSO,
             this.btnDataPath,
             this.barStaticItem1,
-            this.lblDataPath});
+            this.lblDataPath,
+            this.btnTestWrite});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 6;
+            this.ribbonControl1.MaxItemId = 7;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -96,6 +98,7 @@
             this.btnRecSO.Id = 2;
             this.btnRecSO.Name = "btnRecSO";
             this.btnRecSO.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnRecSO.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRecSO_ItemClick);
             // 
             // btnDataPath
             // 
@@ -138,6 +141,7 @@
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btnImport);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecSO);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnTestWrite);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการ";
             // 
@@ -204,7 +208,7 @@
             this.colSoNum.Name = "colSoNum";
             this.colSoNum.OptionsColumn.FixedWidth = true;
             this.colSoNum.Visible = true;
-            this.colSoNum.VisibleIndex = 0;
+            this.colSoNum.VisibleIndex = 1;
             // 
             // colSoDat
             // 
@@ -215,7 +219,7 @@
             this.colSoDat.Name = "colSoDat";
             this.colSoDat.OptionsColumn.FixedWidth = true;
             this.colSoDat.Visible = true;
-            this.colSoDat.VisibleIndex = 1;
+            this.colSoDat.VisibleIndex = 2;
             this.colSoDat.Width = 70;
             // 
             // colPoNum
@@ -227,7 +231,7 @@
             this.colPoNum.Name = "colPoNum";
             this.colPoNum.OptionsColumn.FixedWidth = true;
             this.colPoNum.Visible = true;
-            this.colPoNum.VisibleIndex = 2;
+            this.colPoNum.VisibleIndex = 3;
             // 
             // colDealerCode
             // 
@@ -238,7 +242,7 @@
             this.colDealerCode.Name = "colDealerCode";
             this.colDealerCode.OptionsColumn.FixedWidth = true;
             this.colDealerCode.Visible = true;
-            this.colDealerCode.VisibleIndex = 3;
+            this.colDealerCode.VisibleIndex = 4;
             // 
             // colCustName
             // 
@@ -247,7 +251,7 @@
             this.colCustName.MinWidth = 120;
             this.colCustName.Name = "colCustName";
             this.colCustName.Visible = true;
-            this.colCustName.VisibleIndex = 4;
+            this.colCustName.VisibleIndex = 5;
             this.colCustName.Width = 120;
             // 
             // colCustAddr01
@@ -257,7 +261,7 @@
             this.colCustAddr01.MinWidth = 150;
             this.colCustAddr01.Name = "colCustAddr01";
             this.colCustAddr01.Visible = true;
-            this.colCustAddr01.VisibleIndex = 5;
+            this.colCustAddr01.VisibleIndex = 6;
             this.colCustAddr01.Width = 150;
             // 
             // colCustTaxId
@@ -269,7 +273,7 @@
             this.colCustTaxId.Name = "colCustTaxId";
             this.colCustTaxId.OptionsColumn.FixedWidth = true;
             this.colCustTaxId.Visible = true;
-            this.colCustTaxId.VisibleIndex = 6;
+            this.colCustTaxId.VisibleIndex = 7;
             this.colCustTaxId.Width = 100;
             // 
             // colCustTelNum
@@ -279,7 +283,7 @@
             this.colCustTelNum.MinWidth = 100;
             this.colCustTelNum.Name = "colCustTelNum";
             this.colCustTelNum.Visible = true;
-            this.colCustTelNum.VisibleIndex = 7;
+            this.colCustTelNum.VisibleIndex = 8;
             this.colCustTelNum.Width = 100;
             // 
             // colStkCod
@@ -290,7 +294,7 @@
             this.colStkCod.MinWidth = 120;
             this.colStkCod.Name = "colStkCod";
             this.colStkCod.Visible = true;
-            this.colStkCod.VisibleIndex = 8;
+            this.colStkCod.VisibleIndex = 9;
             this.colStkCod.Width = 120;
             // 
             // colOrdQty
@@ -304,7 +308,7 @@
             this.colOrdQty.Name = "colOrdQty";
             this.colOrdQty.OptionsColumn.FixedWidth = true;
             this.colOrdQty.Visible = true;
-            this.colOrdQty.VisibleIndex = 9;
+            this.colOrdQty.VisibleIndex = 10;
             this.colOrdQty.Width = 40;
             // 
             // colTrnVal
@@ -318,7 +322,7 @@
             this.colTrnVal.Name = "colTrnVal";
             this.colTrnVal.OptionsColumn.FixedWidth = true;
             this.colTrnVal.Visible = true;
-            this.colTrnVal.VisibleIndex = 10;
+            this.colTrnVal.VisibleIndex = 11;
             this.colTrnVal.Width = 70;
             // 
             // colVatAmt
@@ -332,7 +336,7 @@
             this.colVatAmt.Name = "colVatAmt";
             this.colVatAmt.OptionsColumn.FixedWidth = true;
             this.colVatAmt.Visible = true;
-            this.colVatAmt.VisibleIndex = 11;
+            this.colVatAmt.VisibleIndex = 12;
             this.colVatAmt.Width = 60;
             // 
             // colTaxAmt
@@ -346,7 +350,7 @@
             this.colTaxAmt.Name = "colTaxAmt";
             this.colTaxAmt.OptionsColumn.FixedWidth = true;
             this.colTaxAmt.Visible = true;
-            this.colTaxAmt.VisibleIndex = 12;
+            this.colTaxAmt.VisibleIndex = 13;
             this.colTaxAmt.Width = 55;
             // 
             // colNetAmt
@@ -360,8 +364,16 @@
             this.colNetAmt.Name = "colNetAmt";
             this.colNetAmt.OptionsColumn.FixedWidth = true;
             this.colNetAmt.Visible = true;
-            this.colNetAmt.VisibleIndex = 13;
+            this.colNetAmt.VisibleIndex = 14;
             this.colNetAmt.Width = 80;
+            // 
+            // btnTestWrite
+            // 
+            this.btnTestWrite.Caption = "Test write dbf";
+            this.btnTestWrite.Id = 6;
+            this.btnTestWrite.Name = "btnTestWrite";
+            this.btnTestWrite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnTestWrite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTestWrite_ItemClick);
             // 
             // MainForm
             // 
@@ -417,6 +429,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colVatAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colTaxAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colNetAmt;
+        private DevExpress.XtraBars.BarButtonItem btnTestWrite;
     }
 }
 
