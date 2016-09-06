@@ -32,10 +32,10 @@
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnImport = new DevExpress.XtraBars.BarButtonItem();
             this.btnRecSO = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDataPath = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnDataPath = new DevExpress.XtraBars.BarButtonItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
@@ -69,11 +69,20 @@
             // 
             // btnRecSO
             // 
-            this.btnRecSO.Caption = "บันทึกลงใบสั่งขาย (โปรแกรม Express)";
+            this.btnRecSO.Caption = "บันทึกรายการที่เลือก เป็นใบสั่งขาย";
             this.btnRecSO.Glyph = global::SoImporter.Properties.Resources.SAVE_SO;
             this.btnRecSO.Id = 2;
             this.btnRecSO.Name = "btnRecSO";
             this.btnRecSO.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // btnDataPath
+            // 
+            this.btnDataPath.Caption = "กำหนดที่เก็บข้อมูล โปรแกรม Express";
+            this.btnDataPath.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDataPath.Glyph")));
+            this.btnDataPath.Id = 3;
+            this.btnDataPath.Name = "btnDataPath";
+            this.btnDataPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnDataPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDataPath_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -95,15 +104,6 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecSO);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการ";
-            // 
-            // btnDataPath
-            // 
-            this.btnDataPath.Caption = "กำหนดที่เก็บข้อมูล โปรแกรม Express";
-            this.btnDataPath.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDataPath.Glyph")));
-            this.btnDataPath.Id = 3;
-            this.btnDataPath.Name = "btnDataPath";
-            this.btnDataPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnDataPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDataPath_ItemClick);
             // 
             // gridControl1
             // 

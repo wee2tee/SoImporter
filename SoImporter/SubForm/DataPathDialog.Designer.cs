@@ -38,7 +38,7 @@
             // 
             // textEdit1
             // 
-            this.textEdit1.EditValue = "c:\\xxxxxxxx";
+            this.textEdit1.EditValue = "";
             this.textEdit1.Location = new System.Drawing.Point(199, 18);
             this.textEdit1.Name = "textEdit1";
             this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -68,9 +68,11 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(228, 57);
+            this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnOK.Appearance.Options.UseFont = true;
+            this.btnOK.Location = new System.Drawing.Point(199, 54);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(51, 27);
+            this.btnOK.Size = new System.Drawing.Size(80, 30);
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "ตกลง";
             // 
@@ -78,9 +80,11 @@
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancel.Location = new System.Drawing.Point(285, 57);
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(285, 54);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(51, 27);
+            this.btnCancel.Size = new System.Drawing.Size(80, 30);
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "ยกเลิก";
             // 
