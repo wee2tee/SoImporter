@@ -35,6 +35,7 @@
             this.btnDataPath = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.lblDataPath = new DevExpress.XtraBars.BarStaticItem();
+            this.btnTestWrite = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -56,7 +57,6 @@
             this.colVatAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTaxAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNetAmt = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnTestWrite = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -74,7 +74,7 @@
             this.lblDataPath,
             this.btnTestWrite});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 7;
+            this.ribbonControl1.MaxItemId = 8;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -85,6 +85,7 @@
             // btnImport
             // 
             this.btnImport.Caption = "นำเข้าข้อมูลจาก Text File";
+            this.btnImport.Enabled = false;
             this.btnImport.Glyph = ((System.Drawing.Image)(resources.GetObject("btnImport.Glyph")));
             this.btnImport.Id = 1;
             this.btnImport.Name = "btnImport";
@@ -94,6 +95,7 @@
             // btnRecSO
             // 
             this.btnRecSO.Caption = "บันทึกรายการที่เลือก เป็นใบสั่งขาย";
+            this.btnRecSO.Enabled = false;
             this.btnRecSO.Glyph = global::SoImporter.Properties.Resources.SAVE_SO;
             this.btnRecSO.Id = 2;
             this.btnRecSO.Name = "btnRecSO";
@@ -122,6 +124,14 @@
             this.lblDataPath.Id = 5;
             this.lblDataPath.Name = "lblDataPath";
             this.lblDataPath.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // btnTestWrite
+            // 
+            this.btnTestWrite.Caption = "Test write dbf with DotNetDBF";
+            this.btnTestWrite.Id = 6;
+            this.btnTestWrite.Name = "btnTestWrite";
+            this.btnTestWrite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnTestWrite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTestWrite_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -192,6 +202,7 @@
             this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridView1.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
             this.gridView1.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridView1.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridView1_SelectionChanged);
             // 
             // colId
             // 
@@ -366,14 +377,6 @@
             this.colNetAmt.Visible = true;
             this.colNetAmt.VisibleIndex = 14;
             this.colNetAmt.Width = 80;
-            // 
-            // btnTestWrite
-            // 
-            this.btnTestWrite.Caption = "Test write dbf";
-            this.btnTestWrite.Id = 6;
-            this.btnTestWrite.Name = "btnTestWrite";
-            this.btnTestWrite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnTestWrite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTestWrite_ItemClick);
             // 
             // MainForm
             // 
