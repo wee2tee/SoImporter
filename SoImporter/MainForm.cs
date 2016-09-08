@@ -14,6 +14,7 @@ using Newtonsoft.Json;
 using System.Data.OleDb;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
+using System.Globalization;
 
 namespace SoImporter
 {
@@ -95,154 +96,122 @@ namespace SoImporter
             this.gridView1.VisibleColumns[0].Width = 25;
         }
 
+        private OleDbConnection createConnection()
+        {
+            return new OleDbConnection(@"Provider=VFPOLEDB.1;Data Source=" + this.config.ExpressDataPath + @"\");
+        }
+
         private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            try
+            {
+                List<Oeso> oeso = this.OesoToList();
 
-            //try
-            //{
-            //    using (FileStream fs = new FileStream(this.config.ExpressDataPath + @"\oeso.dbf", FileMode.Open, FileAccess.Read, FileShare.Read))
-            //    {
-            //        using (DBFReader dr = new DBFReader(fs))
-            //        {
-            //            dr.CharEncoding = Encoding.GetEncoding("windows-874");
-            //            //Console.WriteLine(" >>> fields[0].name = " + dr.Fields[0].Name);
-            //            IEnumerable<Oeso> oeso = dr.AllRecords<Oeso>();
-            //            foreach (Oeso item in oeso)
-            //            {
-            //                //Console.WriteLine(" >> " + item.sonum + " " + item.sodat + " " + item.cuscod);
-            //            }
+                if (oeso == null)
+                {
+                    return;
+                }
 
-            //            //Console.WriteLine(" >> last oeso is : " + oeso.OrderByDescending(o => o.sonum).First().sonum);
-            //            gridControl2.DataSource = oeso.ToList();
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                string last_sonum = oeso.OrderByDescending(o => o.sonum).First().sonum;
+                string next_sonum = last_sonum.Substring(0, 2) + (Convert.ToInt32(last_sonum.Substring(2, last_sonum.Trim().Length - 2)) + 1).ToString().FillZeroLeft(7);
 
-            Console.WriteLine(" ... >> lastest so is : " + this.OesoToList().OrderByDescending(o => o.sonum).First().sonum);
+                if (File.Exists(this.config.ExpressDataPath + @"\OESO.DBF"))
+                    File.Copy(this.config.ExpressDataPath + @"\OESO.DBF", this.config.ExpressDataPath + @"\OESO.DBF.BAK", true);
+
+                if (File.Exists(this.config.ExpressDataPath + @"\OESOIT.DBF"))
+                    File.Copy(this.config.ExpressDataPath + @"\OESOIT.DBF", this.config.ExpressDataPath + @"\OESOIT.DBF.BAK", true);
+
+                using (OleDbConnection conn = this.createConnection())
+                {
+                    using (OleDbCommand cmd = new OleDbCommand())
+                    {
+                        string empty_date = "CTOD('  /  /  ')";
+
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "Insert Into Oeso ([sorectyp],[sonum],[sodat],[flgvat],[depcod],[slmcod],[cuscod],[shipto],[youref],[rff],[areacod],[paytrm],[dlvdat],[dlvtim],[dlvdat_it],[nxtseq],[amount],[disc],[discamt],[total],[amtrat0],[vatrat],[vatamt],[netamt],[netval],[cmpldat],[docstat],[dlvby],[userid],[chgdat],[userprn],[prndat],[prncnt],[prntim],[authid],[approve],[billto],[orgnum]) Values ";
+                        cmd.CommandText += "('0', "; // sorectyp
+                        cmd.CommandText += "'" + next_sonum + "',"; // sonum
+                        cmd.CommandText += "CTOD('" + DateTime.Now.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "'),"; // sodat
+                        cmd.CommandText += "'2',"; // flgvat
+                        cmd.CommandText += "'',"; // depcod
+                        cmd.CommandText += "'',"; // slmcod
+                        cmd.CommandText += "'',"; // cuscod
+                        cmd.CommandText += "'',"; //shipto
+                        cmd.CommandText += "'',"; // youref
+                        cmd.CommandText += "'',"; // rff
+                        cmd.CommandText += "'',"; // areacod
+                        cmd.CommandText += "0,"; // paytrm
+                        cmd.CommandText += empty_date + ","; // dlvdat
+                        cmd.CommandText += "'',"; // dlvtim
+                        cmd.CommandText += "'',"; // dlvdat_it
+                        cmd.CommandText += "'',"; // nxtseq
+                        cmd.CommandText += "14500,"; // amount
+                        cmd.CommandText += "'',"; // disc
+                        cmd.CommandText += "0,"; // discamt
+                        cmd.CommandText += "14500,"; // total
+                        cmd.CommandText += "0,"; // amtrat0
+                        cmd.CommandText += "7,"; // vatrat
+                        cmd.CommandText += "1015,"; // vatamt
+                        cmd.CommandText += "15515,"; // netamt
+                        cmd.CommandText += "15515,"; // netval
+                        cmd.CommandText += empty_date + ","; // cmpldat
+                        cmd.CommandText += "'N',"; // docstat
+                        cmd.CommandText += "'EM',"; // dlvby
+                        cmd.CommandText += "'BIT5',"; // userid
+                        cmd.CommandText += empty_date + ","; // chgdat
+                        cmd.CommandText += "'',"; // userprn
+                        cmd.CommandText += empty_date + ","; // prndat
+                        cmd.CommandText += "0,"; // prncnt
+                        cmd.CommandText += "'',"; // prntim
+                        cmd.CommandText += "'',"; // authid
+                        cmd.CommandText += empty_date + ","; // approve
+                        cmd.CommandText += "'',"; // billto
+                        cmd.CommandText += "0)"; // orgnum
+
+                        cmd.Connection = conn;
+                        conn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            Console.WriteLine(" .. >> insert oeso successfully");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-
-        //public DataTable GetYourData()
-        //{
-        //    DataTable YourResultSet = new DataTable();
-
-        //    OleDbConnection yourConnectionHandler = new OleDbConnection(
-        //        @"Provider=VFPOLEDB.1;Data Source=" + this.config.ExpressDataPath + @"\");
-
-        //    // if including the full dbc (database container) reference, just tack that on
-        //    //      OleDbConnection yourConnectionHandler = new OleDbConnection(
-        //    //          "Provider=VFPOLEDB.1;Data Source=C:\\SomePath\\NameOfYour.dbc;" );
-
-
-        //    // Open the connection, and if open successfully, you can try to query it
-        //    yourConnectionHandler.Open();
-
-        //    if (yourConnectionHandler.State == ConnectionState.Open)
-        //    {
-        //        string mySQL = "select * from OESO";  // dbf table name
-
-        //        OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
-        //        OleDbDataAdapter DA = new OleDbDataAdapter(MyQuery);
-
-        //        DA.Fill(YourResultSet);
-
-        //        yourConnectionHandler.Close();
-        //    }
-
-        //    return YourResultSet;
-        //}
-
+        
         public List<Oeso> OesoToList()
         {
-            DataTable YourResultSet = new DataTable();
-
-            OleDbConnection yourConnectionHandler = new OleDbConnection(
-                @"Provider=VFPOLEDB.1;Data Source=" + this.config.ExpressDataPath + @"\");
-
-
-            // Open the connection, and if open successfully, you can try to query it
-            yourConnectionHandler.Open();
-
-            if (yourConnectionHandler.State == ConnectionState.Open)
+            if (!File.Exists(this.config.ExpressDataPath + @"\OESO.DBF") || !File.Exists(this.config.ExpressDataPath + @"\OESOIT.DBF"))
             {
-                string mySQL = "select * from OESO";  // dbf table name
-
-                OleDbCommand MyQuery = new OleDbCommand(mySQL, yourConnectionHandler);
-                OleDbDataAdapter DA = new OleDbDataAdapter(MyQuery);
-
-                DA.Fill(YourResultSet);
-
-                yourConnectionHandler.Close();
+                MessageBox.Show("กรุณาระบุที่เก็บข้อมูลโปรแกรม Express ให้ถูกต้อง");
+                return null;
             }
 
-            return YourResultSet.ToList<Oeso>();
-        }
+            DataTable dt = new DataTable();
 
-        private void btnTestWrite_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //try
-            //{
-            //    File.Copy(this.config.ExpressDataPath + @"\OESO.DBF", this.config.ExpressDataPath + @"\OESO.DBF.BAK", true);
-            //    using (Stream fs = File.Open(this.config.ExpressDataPath + @"\oeso.dbf", FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
-            //    //using (FileStream fs = new FileStream(this.config.ExpressDataPath + @"\oesox.dbf", FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite))
-            //    {
-            //        using (DBFWriter dw = new DBFWriter(fs))
-            //        {
-            //            //var sorectyp = new DBFField("sorectyp", NativeDbType.Char, 1);
-            //            //var sonum = new DBFField("sonum", NativeDbType.Char, 12);
-            //            //dw.Fields = new[] { sorectyp, sonum };
+            using (OleDbConnection conn = this.createConnection())
+            {
+                // Open the connection, and if open successfully, you can try to query it
+                conn.Open();
 
-            //            dw.WriteRecord(
-            //                "2",
-            //                "SO99999",
-            //                DateTime.Now,
-            //                "2",
-            //                "dep01",
-            //                "สามารถ",
-            //                "สบายใจ",
-            //                "ship01",
-            //                "youref01",
-            //                "QT99999",
-            //                "ar01",
-            //                45,
-            //                null,
-            //                "0935",
-            //                "Y",
-            //                "1",
-            //                12500.75d,
-            //                "10%",
-            //                1250.08d,
-            //                11250.67d,
-            //                0d,
-            //                7,
-            //                787.55d,
-            //                12038.22d,
-            //                12038.22d,
-            //                null,
-            //                "N",
-            //                "EM",
-            //                "BIT9",
-            //                null,
-            //                "",
-            //                null,
-            //                0,
-            //                "",
-            //                "",
-            //                null,
-            //                "",
-            //                0
-            //            );
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                if (conn.State == ConnectionState.Open)
+                {
+                    string sql = "select * from OESO";  // dbf table name
 
+                    OleDbCommand query = new OleDbCommand(sql, conn);
+                    OleDbDataAdapter DA = new OleDbDataAdapter(query);
+
+                    DA.Fill(dt);
+
+                    conn.Close();
+                }
+            }
+
+            return dt.ToList<Oeso>();
         }
 
         private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)

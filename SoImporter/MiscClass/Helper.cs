@@ -43,6 +43,18 @@ namespace SoImporter.MiscClass
             }
         }
 
+        public static string FillZeroLeft(this string target_string, int result_digit)
+        {
+            string result = target_string;
+
+            for (int i = 1; i < result_digit - target_string.Trim().Length; i++)
+            {
+                result = "0" + result;
+            }
+
+            return result;
+        }
+
         //public static List<T> ToList<T>(this DataTable dataTable) where T : new()
         //{
         //    var dataList = new List<T>();

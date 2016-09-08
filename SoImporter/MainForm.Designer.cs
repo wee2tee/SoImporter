@@ -35,7 +35,6 @@
             this.btnDataPath = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.lblDataPath = new DevExpress.XtraBars.BarStaticItem();
-            this.btnTestWrite = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -71,8 +70,7 @@
             this.btnRecSO,
             this.btnDataPath,
             this.barStaticItem1,
-            this.lblDataPath,
-            this.btnTestWrite});
+            this.lblDataPath});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 8;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -125,14 +123,6 @@
             this.lblDataPath.Name = "lblDataPath";
             this.lblDataPath.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
-            // btnTestWrite
-            // 
-            this.btnTestWrite.Caption = "Test write dbf with DotNetDBF";
-            this.btnTestWrite.Id = 6;
-            this.btnTestWrite.Name = "btnTestWrite";
-            this.btnTestWrite.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnTestWrite.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTestWrite_ItemClick);
-            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -151,7 +141,6 @@
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.btnImport);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecSO);
-            this.ribbonPageGroup2.ItemLinks.Add(this.btnTestWrite);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการ";
             // 
@@ -432,7 +421,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colVatAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colTaxAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colNetAmt;
-        private DevExpress.XtraBars.BarButtonItem btnTestWrite;
     }
 }
 
