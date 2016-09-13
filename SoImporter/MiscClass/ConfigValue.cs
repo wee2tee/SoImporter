@@ -10,7 +10,9 @@ namespace SoImporter.MiscClass
     public class ConfigValue
     {
         public string ExpressDataPath { get; set; }
-        public int Lines { get; set; }
+        public string ApiUrl { get; set; }
+        public string ApiKey { get; set; }
+        //public int Lines { get; set; }
 
         public static ConfigValue Load()
         {
@@ -21,7 +23,8 @@ namespace SoImporter.MiscClass
                 return new ConfigValue()
                 {
                     ExpressDataPath = string.Empty,
-                    Lines = 0
+                    ApiUrl = string.Empty,
+                    ApiKey = string.Empty
                 };
             }
             else
@@ -42,9 +45,15 @@ namespace SoImporter.MiscClass
                                     continue;
                                 }
 
-                                if (line.Contains("LINES:"))
+                                if (line.Contains("API_URL:"))
                                 {
-                                    cfg.Lines = Convert.ToInt32(line.Replace("LINES:", "").Replace("|", "").Trim());
+                                    cfg.ApiUrl = line.Replace("API_URL:", "").Replace("|", "").Trim();
+                                    continue;
+                                }
+
+                                if (line.Contains("API_KEY:"))
+                                {
+                                    cfg.ApiKey = line.Replace("API_KEY:", "").Replace("|", "").Trim();
                                     continue;
                                 }
                             }
@@ -61,7 +70,8 @@ namespace SoImporter.MiscClass
                     return new ConfigValue()
                     {
                         ExpressDataPath = string.Empty,
-                        Lines = 0
+                        ApiUrl = string.Empty,
+                        ApiKey = string.Empty
                     };
                 }
             }
@@ -80,7 +90,8 @@ namespace SoImporter.MiscClass
                     using (StreamWriter sw = new StreamWriter(cfg_file, false, Encoding.GetEncoding("utf-8")))
                     {
                         sw.WriteLine("EXPRESS_DATA_PATH: | " + this.ExpressDataPath);
-                        sw.WriteLine("LINES: | " + this.Lines);
+                        sw.WriteLine("API_URL: | " + this.ApiUrl);
+                        sw.WriteLine("API_KEY: | " + this.ApiKey);
                         sw.Close();
                     }
                 }

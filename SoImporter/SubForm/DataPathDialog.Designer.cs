@@ -109,6 +109,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DataPathDialog";
             this.Load += new System.EventHandler(this.DataPathDialog_Load);
+            this.Shown += new System.EventHandler(this.DataPathDialog_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.txtPath.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

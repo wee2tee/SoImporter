@@ -35,9 +35,14 @@
             this.btnDataPath = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.lblDataPath = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnUsers = new DevExpress.XtraBars.BarButtonItem();
+            this.btnApiUrl = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -57,6 +62,7 @@
             this.colTaxAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNetAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
@@ -70,12 +76,17 @@
             this.btnRecSO,
             this.btnDataPath,
             this.barStaticItem1,
-            this.lblDataPath});
+            this.lblDataPath,
+            this.barButtonItem1,
+            this.btnUsers,
+            this.btnApiUrl});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 8;
+            this.ribbonControl1.MaxItemId = 12;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
+            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
             this.ribbonControl1.Size = new System.Drawing.Size(1210, 143);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
@@ -123,17 +134,47 @@
             this.lblDataPath.Name = "lblDataPath";
             this.lblDataPath.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Test add user";
+            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
+            this.barButtonItem1.Id = 8;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // btnUsers
+            // 
+            this.btnUsers.Caption = "กำหนดรหัสผู้ใช้";
+            this.btnUsers.Glyph = ((System.Drawing.Image)(resources.GetObject("btnUsers.Glyph")));
+            this.btnUsers.Id = 10;
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnUsers.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUsers_ItemClick);
+            // 
+            // btnApiUrl
+            // 
+            this.btnApiUrl.Caption = "ตั้งค่า Web API";
+            this.btnApiUrl.Glyph = ((System.Drawing.Image)(resources.GetObject("btnApiUrl.Glyph")));
+            this.btnApiUrl.Id = 11;
+            this.btnApiUrl.Name = "btnApiUrl";
+            this.btnApiUrl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnApiUrl.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnApiUrl_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "จัดการข้อมูล";
             // 
             // ribbonPageGroup1
             // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnApiUrl);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnDataPath);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnUsers);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "ตั้งค่าเริ่มต้น";
             // 
@@ -143,6 +184,17 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecSO);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการ";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "กำหนดรหัสผู้ใช้";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
             // ribbonStatusBar1
             // 
@@ -385,6 +437,7 @@
             this.Text = "SO Importer";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -421,6 +474,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn colVatAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colTaxAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colNetAmt;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraBars.BarButtonItem btnUsers;
+        private DevExpress.XtraBars.BarButtonItem btnApiUrl;
     }
 }
 

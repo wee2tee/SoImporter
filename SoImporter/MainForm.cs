@@ -22,7 +22,7 @@ namespace SoImporter
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
 
-        private ConfigValue config;
+        public ConfigValue config;
         private List<Order> orders;
         private BindingSource bs;
 
@@ -218,6 +218,57 @@ namespace SoImporter
         {
             //Console.WriteLine(" .. >> checked : " + ((GridView)sender).SelectedRowsCount);
             this.btnRecSO.Enabled = (((GridView)sender).SelectedRowsCount > 0 && File.Exists(this.config.ExpressDataPath + @"\oeso.dbf")) ? true : false;
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            string url = this.config.ApiUrl + "users/";
+
+            string json_data = JsonConvert.SerializeObject(
+                new ApiAccessibilities { API_KEY = this.config.ApiKey,
+                    internalUsers = new InternalUsers {
+                        UserName = "WeeTee",
+                        Email = "weetee@gmail.com",
+                        PasswordHash = "123456abcdef",
+                        FullName = "วีรวัฒน์ ตรุเจตนารมย์",
+                        Department = "Admin",
+                        Status = "N",
+                        CreDate = DateTime.Now
+                    }
+                });
+            //Console.WriteLine(" .. >> json_data : " + json_data);
+
+            APIResult result = APIClient.POST(url, json_data);
+            InternalUsers user;
+            if (result.Success)
+            {
+                user = JsonConvert.DeserializeObject<InternalUsers>(result.ReturnValue);
+                Console.WriteLine("... >> " + user.FullName);
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage);
+            }
+
+
+        }
+
+        private void btnApiUrl_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ApiUrlDialog api = new ApiUrlDialog(this);
+            if(api.ShowDialog() == DialogResult.OK)
+            {
+                this.config.ApiUrl = api.api_url;
+                this.config.ApiKey = api.api_key;
+                this.config.Save();
+            }
+        }
+
+        private void btnUsers_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            UsersDialog users = new UsersDialog(this);
+            users.ShowDialog();
         }
     }
 }

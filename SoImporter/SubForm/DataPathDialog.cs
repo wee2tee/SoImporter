@@ -32,6 +32,11 @@ namespace SoImporter.SubForm
             this.txtPath.Text = this.selected_path;
         }
 
+        private void DataPathDialog_Shown(object sender, EventArgs e)
+        {
+            this.txtPath.SelectionStart = this.txtPath.Text.Length;
+        }
+
         private void txtPath_TextChanged(object sender, EventArgs e)
         {
             this.selected_path = ((TextEdit)sender).Text;

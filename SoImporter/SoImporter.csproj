@@ -66,17 +66,44 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MiscClass\APIClient.cs" />
     <Compile Include="MiscClass\ConfigValue.cs" />
     <Compile Include="MiscClass\Helper.cs" />
+    <Compile Include="Model\ApiAccessibilities.cs" />
+    <Compile Include="Model\InternalUsers.cs" />
     <Compile Include="Model\Oeso.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubForm\AddUserDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\AddUserDialog.Designer.cs">
+      <DependentUpon>AddUserDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\ApiUrlDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\ApiUrlDialog.Designer.cs">
+      <DependentUpon>ApiUrlDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\DataPathDialog.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SubForm\DataPathDialog.Designer.cs">
       <DependentUpon>DataPathDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\UsersDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\UsersDialog.Designer.cs">
+      <DependentUpon>UsersDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\WaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\WaitForm.Designer.cs">
+      <DependentUpon>WaitForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -92,8 +119,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SubForm\AddUserDialog.resx">
+      <DependentUpon>AddUserDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\ApiUrlDialog.resx">
+      <DependentUpon>ApiUrlDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForm\DataPathDialog.resx">
       <DependentUpon>DataPathDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\UsersDialog.resx">
+      <DependentUpon>UsersDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\WaitForm.resx">
+      <DependentUpon>WaitForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
