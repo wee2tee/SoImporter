@@ -7,6 +7,7 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using Newtonsoft.Json;
 using SoImporter.MiscClass;
 using SoImporter.Model;
@@ -70,13 +71,54 @@ namespace SoImporter.SubForm
             return users;
         }
 
+        private void gridView1_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            GridView gridview = sender as GridView;
+            if(gridview.GetRow(e.FocusedRowHandle) != null)
+            {
+                this.btnEdit.Enabled = true;
+                this.btnDelete.Enabled = true;
+            }
+            else
+            {
+                this.btnEdit.Enabled = false;
+                this.btnDelete.Enabled = false;
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddUserDialog add = new AddUserDialog(this.main_form);
-            if(add.ShowDialog() == DialogResult.OK)
+            AddEditUserDialog add = new AddEditUserDialog(this.main_form);
+            if (add.ShowDialog() == DialogResult.OK)
             {
                 this.RefreshGridUsers();
             }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            int row_id = (int)this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, colId);
+
+            try
+            {
+                APIResult result = APIClient.GET(this.main_form.config.ApiUrl + "users/", this.main_form.config.ApiKey, "&id=" + row_id);
+
+                if (result.Success && result.ReturnValue != null)
+                {
+                    InternalUsers user = JsonConvert.DeserializeObject<InternalUsers>(result.ReturnValue);
+                    AddEditUserDialog edit = new AddEditUserDialog(this.main_form, user);
+                    edit.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

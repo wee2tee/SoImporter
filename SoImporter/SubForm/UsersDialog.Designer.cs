@@ -87,6 +87,7 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridView1_FocusedRowChanged);
             // 
             // colId
             // 
@@ -107,8 +108,6 @@
             this.colEmail.Caption = "อีเมล์";
             this.colEmail.FieldName = "Email";
             this.colEmail.Name = "colEmail";
-            this.colEmail.Visible = true;
-            this.colEmail.VisibleIndex = 1;
             // 
             // colPasswordHash
             // 
@@ -122,7 +121,7 @@
             this.colFullName.FieldName = "FullName";
             this.colFullName.Name = "colFullName";
             this.colFullName.Visible = true;
-            this.colFullName.VisibleIndex = 2;
+            this.colFullName.VisibleIndex = 1;
             // 
             // colDepartment
             // 
@@ -130,7 +129,7 @@
             this.colDepartment.FieldName = "Department";
             this.colDepartment.Name = "colDepartment";
             this.colDepartment.Visible = true;
-            this.colDepartment.VisibleIndex = 3;
+            this.colDepartment.VisibleIndex = 2;
             // 
             // colStatus
             // 
@@ -138,7 +137,7 @@
             this.colStatus.FieldName = "Status";
             this.colStatus.Name = "colStatus";
             this.colStatus.Visible = true;
-            this.colStatus.VisibleIndex = 4;
+            this.colStatus.VisibleIndex = 3;
             // 
             // colCreDate
             // 
@@ -148,7 +147,7 @@
             this.colCreDate.FieldName = "CreDate";
             this.colCreDate.Name = "colCreDate";
             this.colCreDate.Visible = true;
-            this.colCreDate.VisibleIndex = 5;
+            this.colCreDate.VisibleIndex = 4;
             // 
             // btnAdd
             // 
@@ -177,6 +176,7 @@
             this.btnEdit.Size = new System.Drawing.Size(69, 28);
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "แก้ไข";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -191,6 +191,7 @@
             this.btnDelete.Size = new System.Drawing.Size(69, 28);
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "ลบ";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // panelControl1
             // 

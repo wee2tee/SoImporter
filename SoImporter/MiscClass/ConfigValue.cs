@@ -12,7 +12,8 @@ namespace SoImporter.MiscClass
         public string ExpressDataPath { get; set; }
         public string ApiUrl { get; set; }
         public string ApiKey { get; set; }
-        //public int Lines { get; set; }
+        public string SaltKey { get; set; }
+        private const string salt_key = "esg022173533";
 
         public static ConfigValue Load()
         {
@@ -24,7 +25,8 @@ namespace SoImporter.MiscClass
                 {
                     ExpressDataPath = string.Empty,
                     ApiUrl = string.Empty,
-                    ApiKey = string.Empty
+                    ApiKey = string.Empty,
+                    SaltKey = salt_key 
                 };
             }
             else
@@ -62,6 +64,7 @@ namespace SoImporter.MiscClass
                         fs.Close();
                     }
 
+                    cfg.SaltKey = salt_key;
                     return cfg;
                 }
                 catch (IOException ex)
@@ -71,7 +74,8 @@ namespace SoImporter.MiscClass
                     {
                         ExpressDataPath = string.Empty,
                         ApiUrl = string.Empty,
-                        ApiKey = string.Empty
+                        ApiKey = string.Empty,
+                        SaltKey = salt_key
                     };
                 }
             }

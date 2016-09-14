@@ -1,6 +1,6 @@
 ﻿namespace SoImporter.SubForm
 {
-    partial class AddUserDialog
+    partial class AddEditUserDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -37,10 +37,12 @@
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.cbDepartment = new System.Windows.Forms.ComboBox();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
+            this.cbDepartment = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbStatus = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbDepartment.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbStatus.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -59,7 +61,7 @@
             this.txtUserName.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtUserName.Properties.Appearance.Options.UseFont = true;
             this.txtUserName.Size = new System.Drawing.Size(169, 22);
-            this.txtUserName.TabIndex = 1;
+            this.txtUserName.TabIndex = 0;
             this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
             // 
             // labelControl2
@@ -106,7 +108,7 @@
             this.btnOK.Location = new System.Drawing.Point(107, 168);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(94, 28);
-            this.btnOK.TabIndex = 3;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "ตกลง <F9>";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -118,7 +120,7 @@
             this.btnCancel.Location = new System.Drawing.Point(207, 168);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(94, 28);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "ยกเลิก <Esc>";
             // 
             // labelControl5
@@ -132,20 +134,26 @@
             // 
             // cbDepartment
             // 
-            this.cbDepartment.FormattingEnabled = true;
             this.cbDepartment.Location = new System.Drawing.Point(113, 85);
             this.cbDepartment.Name = "cbDepartment";
-            this.cbDepartment.Size = new System.Drawing.Size(169, 24);
-            this.cbDepartment.TabIndex = 4;
+            this.cbDepartment.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbDepartment.Properties.Appearance.Options.UseFont = true;
+            this.cbDepartment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbDepartment.Size = new System.Drawing.Size(169, 22);
+            this.cbDepartment.TabIndex = 2;
             this.cbDepartment.SelectedIndexChanged += new System.EventHandler(this.cbDepartment_SelectedIndexChanged);
             // 
             // cbStatus
             // 
-            this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Location = new System.Drawing.Point(113, 118);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(68, 24);
-            this.cbStatus.TabIndex = 4;
+            this.cbStatus.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbStatus.Properties.Appearance.Options.UseFont = true;
+            this.cbStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbStatus.Size = new System.Drawing.Size(68, 22);
+            this.cbStatus.TabIndex = 3;
             this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
             // 
             // AddUserDialog
@@ -177,6 +185,8 @@
             this.Load += new System.EventHandler(this.AddUserDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtUserName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtFullName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbDepartment.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbStatus.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,7 +203,7 @@
         private DevExpress.XtraEditors.SimpleButton btnOK;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.LabelControl labelControl5;
-        private System.Windows.Forms.ComboBox cbDepartment;
-        private System.Windows.Forms.ComboBox cbStatus;
+        private DevExpress.XtraEditors.ComboBoxEdit cbDepartment;
+        private DevExpress.XtraEditors.ComboBoxEdit cbStatus;
     }
 }

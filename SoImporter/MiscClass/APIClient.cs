@@ -5,12 +5,15 @@ using System.Text;
 using System.Net;
 using System.IO;
 using System.Windows.Forms;
+using SoImporter.Model;
+using Newtonsoft.Json;
 
 namespace SoImporter.MiscClass
 {
     public class APIClient
     {
-        public static APIResult POST(string url, string json_data)
+        //public static APIResult POST(string url, string json_data)
+        public static APIResult POST(string url, ApiAccessibilities api_accessibilities)
         {
             APIResult result = new APIResult();
 
@@ -21,7 +24,7 @@ namespace SoImporter.MiscClass
                 http.ContentType = "application/json";
                 http.Method = "POST";
 
-                string parsedContent = json_data;
+                string parsedContent = JsonConvert.SerializeObject(api_accessibilities);
                 Encoding encoding = Encoding.GetEncoding("utf-8");
                 Byte[] bytes = encoding.GetBytes(parsedContent);
 
@@ -30,22 +33,24 @@ namespace SoImporter.MiscClass
                 newStream.Close();
 
                 var response = http.GetResponse();
-
                 var stream = response.GetResponseStream();
                 var sr = new StreamReader(stream);
                 var content = sr.ReadToEnd();
-                Console.WriteLine(" ... >> " + content);
                 http = null;
 
                 result.Success = true;
                 result.ReturnValue = content;
                 result.ErrorMessage = null;
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
                 result.Success = false;
                 result.ReturnValue = null;
                 result.ErrorMessage = ex.Message;
+                //foreach (var item in ex.Data)
+                //{
+                //    result.ErrorMessage += item.ToString();
+                //}
             }
 
             return result;
@@ -79,8 +84,11 @@ namespace SoImporter.MiscClass
 
             return result;
         }
+
+
     }
 
+    
 
     public class APIResult
     {

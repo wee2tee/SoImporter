@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SoImporter.SubForm;
 using System.IO;
+using System.Net;
 using SoImporter.MiscClass;
 using SoImporter.Model;
 using Newtonsoft.Json;
@@ -25,6 +26,7 @@ namespace SoImporter
         public ConfigValue config;
         private List<Order> orders;
         private BindingSource bs;
+        public InternalUsers logedin_user;
 
         public MainForm()
         {
@@ -220,40 +222,6 @@ namespace SoImporter
             this.btnRecSO.Enabled = (((GridView)sender).SelectedRowsCount > 0 && File.Exists(this.config.ExpressDataPath + @"\oeso.dbf")) ? true : false;
         }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-            string url = this.config.ApiUrl + "users/";
-
-            string json_data = JsonConvert.SerializeObject(
-                new ApiAccessibilities { API_KEY = this.config.ApiKey,
-                    internalUsers = new InternalUsers {
-                        UserName = "WeeTee",
-                        Email = "weetee@gmail.com",
-                        PasswordHash = "123456abcdef",
-                        FullName = "วีรวัฒน์ ตรุเจตนารมย์",
-                        Department = "Admin",
-                        Status = "N",
-                        CreDate = DateTime.Now
-                    }
-                });
-            //Console.WriteLine(" .. >> json_data : " + json_data);
-
-            APIResult result = APIClient.POST(url, json_data);
-            InternalUsers user;
-            if (result.Success)
-            {
-                user = JsonConvert.DeserializeObject<InternalUsers>(result.ReturnValue);
-                Console.WriteLine("... >> " + user.FullName);
-            }
-            else
-            {
-                MessageBox.Show(result.ErrorMessage);
-            }
-
-
-        }
-
         private void btnApiUrl_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ApiUrlDialog api = new ApiUrlDialog(this);
@@ -269,6 +237,27 @@ namespace SoImporter
         {
             UsersDialog users = new UsersDialog(this);
             users.ShowDialog();
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            if(this.logedin_user == null)
+            {
+                LoginDialog login = new LoginDialog(this);
+                if(login.ShowDialog() == DialogResult.OK)
+                {
+                    this.logedin_user = login.user;
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
         }
     }
 }

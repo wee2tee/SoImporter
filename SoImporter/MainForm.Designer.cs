@@ -38,10 +38,11 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnUsers = new DevExpress.XtraBars.BarButtonItem();
             this.btnApiUrl = new DevExpress.XtraBars.BarButtonItem();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -62,6 +63,8 @@
             this.colTaxAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNetAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -81,12 +84,14 @@
             this.btnUsers,
             this.btnApiUrl});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 12;
+            this.ribbonControl1.MaxItemId = 15;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEdit1});
+            this.repositoryItemTextEdit1,
+            this.repositoryItemTextEdit2,
+            this.repositoryItemTextEdit3});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
             this.ribbonControl1.Size = new System.Drawing.Size(1210, 143);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
@@ -141,7 +146,6 @@
             this.barButtonItem1.Id = 8;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // btnUsers
             // 
@@ -161,12 +165,21 @@
             this.btnApiUrl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnApiUrl.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnApiUrl_ItemClick);
             // 
+            // repositoryItemTextEdit2
+            // 
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
+            // 
+            // repositoryItemTextEdit3
+            // 
+            this.repositoryItemTextEdit3.AutoHeight = false;
+            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup2});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "จัดการข้อมูล";
             // 
@@ -184,12 +197,6 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecSO);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการ";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "กำหนดรหัสผู้ใช้";
             // 
             // repositoryItemTextEdit1
             // 
@@ -436,7 +443,10 @@
             this.StatusBar = this.ribbonStatusBar1;
             this.Text = "SO Importer";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -475,10 +485,11 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTaxAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colNetAmt;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem btnUsers;
         private DevExpress.XtraBars.BarButtonItem btnApiUrl;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
     }
 }
 
