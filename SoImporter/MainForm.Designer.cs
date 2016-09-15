@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnImport = new DevExpress.XtraBars.BarButtonItem();
             this.btnRecSO = new DevExpress.XtraBars.BarButtonItem();
@@ -38,19 +39,19 @@
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnUsers = new DevExpress.XtraBars.BarButtonItem();
             this.btnApiUrl = new DevExpress.XtraBars.BarButtonItem();
-            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.btnRetrieveData = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoDat = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPoNum = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDlvBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDealerCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCustName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCustAddr01 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,13 +63,25 @@
             this.colVatAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTaxAmt = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colNetAmt = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
+            this.colDlvDat1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDlvDat2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colRemark = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStkDes = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 425);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1210, 31);
             // 
             // ribbonControl1
             // 
@@ -82,9 +95,10 @@
             this.lblDataPath,
             this.barButtonItem1,
             this.btnUsers,
-            this.btnApiUrl});
+            this.btnApiUrl,
+            this.btnRetrieveData});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 15;
+            this.ribbonControl1.MaxItemId = 16;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -165,15 +179,14 @@
             this.btnApiUrl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnApiUrl.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnApiUrl_ItemClick);
             // 
-            // repositoryItemTextEdit2
+            // btnRetrieveData
             // 
-            this.repositoryItemTextEdit2.AutoHeight = false;
-            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
-            // 
-            // repositoryItemTextEdit3
-            // 
-            this.repositoryItemTextEdit3.AutoHeight = false;
-            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
+            this.btnRetrieveData.Caption = "ดึงข้อมูล จากเซิร์ฟเวอร์";
+            this.btnRetrieveData.Glyph = ((System.Drawing.Image)(resources.GetObject("btnRetrieveData.Glyph")));
+            this.btnRetrieveData.Id = 15;
+            this.btnRetrieveData.Name = "btnRetrieveData";
+            this.btnRetrieveData.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnRetrieveData.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRetrieveData_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -193,6 +206,7 @@
             // 
             // ribbonPageGroup2
             // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnRetrieveData);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnImport);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecSO);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
@@ -203,14 +217,15 @@
             this.repositoryItemTextEdit1.AutoHeight = false;
             this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
             // 
-            // ribbonStatusBar1
+            // repositoryItemTextEdit2
             // 
-            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem1);
-            this.ribbonStatusBar1.ItemLinks.Add(this.lblDataPath);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 425);
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1210, 31);
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
+            // 
+            // repositoryItemTextEdit3
+            // 
+            this.repositoryItemTextEdit3.AutoHeight = false;
+            this.repositoryItemTextEdit3.Name = "repositoryItemTextEdit3";
             // 
             // gridControl1
             // 
@@ -230,13 +245,17 @@
             this.colId,
             this.colSoNum,
             this.colSoDat,
-            this.colPoNum,
+            this.colDlvBy,
+            this.colDlvDat1,
+            this.colDlvDat2,
+            this.colRemark,
+            this.colStkCod,
+            this.colStkDes,
             this.colDealerCode,
             this.colCustName,
             this.colCustAddr01,
             this.colCustTaxId,
             this.colCustTelNum,
-            this.colStkCod,
             this.colOrdQty,
             this.colTrnVal,
             this.colVatAmt,
@@ -260,8 +279,8 @@
             // 
             // colSoNum
             // 
-            this.colSoNum.Caption = "ใบสั่งขาย #";
-            this.colSoNum.FieldName = "SoNum";
+            this.colSoNum.Caption = "ใบสั่งซื้อ #";
+            this.colSoNum.FieldName = "PoNum";
             this.colSoNum.MaxWidth = 75;
             this.colSoNum.MinWidth = 75;
             this.colSoNum.Name = "colSoNum";
@@ -271,26 +290,23 @@
             // 
             // colSoDat
             // 
-            this.colSoDat.Caption = "วันที่ใบสั่งขาย";
-            this.colSoDat.FieldName = "SoDat";
+            this.colSoDat.Caption = "วันที่ใบสั่งซื้อ";
+            this.colSoDat.FieldName = "PoDat";
             this.colSoDat.MaxWidth = 70;
             this.colSoDat.MinWidth = 70;
             this.colSoDat.Name = "colSoDat";
             this.colSoDat.OptionsColumn.FixedWidth = true;
             this.colSoDat.Visible = true;
-            this.colSoDat.VisibleIndex = 2;
+            this.colSoDat.VisibleIndex = 3;
             this.colSoDat.Width = 70;
             // 
-            // colPoNum
+            // colDlvBy
             // 
-            this.colPoNum.Caption = "ใบสั่งซื้อ #";
-            this.colPoNum.FieldName = "PoNum";
-            this.colPoNum.MaxWidth = 75;
-            this.colPoNum.MinWidth = 75;
-            this.colPoNum.Name = "colPoNum";
-            this.colPoNum.OptionsColumn.FixedWidth = true;
-            this.colPoNum.Visible = true;
-            this.colPoNum.VisibleIndex = 3;
+            this.colDlvBy.Caption = "ขนส่งโดย";
+            this.colDlvBy.FieldName = "DlvBy";
+            this.colDlvBy.Name = "colDlvBy";
+            this.colDlvBy.Visible = true;
+            this.colDlvBy.VisibleIndex = 2;
             // 
             // colDealerCode
             // 
@@ -301,7 +317,7 @@
             this.colDealerCode.Name = "colDealerCode";
             this.colDealerCode.OptionsColumn.FixedWidth = true;
             this.colDealerCode.Visible = true;
-            this.colDealerCode.VisibleIndex = 4;
+            this.colDealerCode.VisibleIndex = 7;
             // 
             // colCustName
             // 
@@ -310,7 +326,7 @@
             this.colCustName.MinWidth = 120;
             this.colCustName.Name = "colCustName";
             this.colCustName.Visible = true;
-            this.colCustName.VisibleIndex = 5;
+            this.colCustName.VisibleIndex = 9;
             this.colCustName.Width = 120;
             // 
             // colCustAddr01
@@ -320,7 +336,7 @@
             this.colCustAddr01.MinWidth = 150;
             this.colCustAddr01.Name = "colCustAddr01";
             this.colCustAddr01.Visible = true;
-            this.colCustAddr01.VisibleIndex = 6;
+            this.colCustAddr01.VisibleIndex = 10;
             this.colCustAddr01.Width = 150;
             // 
             // colCustTaxId
@@ -332,7 +348,7 @@
             this.colCustTaxId.Name = "colCustTaxId";
             this.colCustTaxId.OptionsColumn.FixedWidth = true;
             this.colCustTaxId.Visible = true;
-            this.colCustTaxId.VisibleIndex = 7;
+            this.colCustTaxId.VisibleIndex = 11;
             this.colCustTaxId.Width = 100;
             // 
             // colCustTelNum
@@ -342,7 +358,7 @@
             this.colCustTelNum.MinWidth = 100;
             this.colCustTelNum.Name = "colCustTelNum";
             this.colCustTelNum.Visible = true;
-            this.colCustTelNum.VisibleIndex = 8;
+            this.colCustTelNum.VisibleIndex = 12;
             this.colCustTelNum.Width = 100;
             // 
             // colStkCod
@@ -353,7 +369,7 @@
             this.colStkCod.MinWidth = 120;
             this.colStkCod.Name = "colStkCod";
             this.colStkCod.Visible = true;
-            this.colStkCod.VisibleIndex = 9;
+            this.colStkCod.VisibleIndex = 13;
             this.colStkCod.Width = 120;
             // 
             // colOrdQty
@@ -367,7 +383,7 @@
             this.colOrdQty.Name = "colOrdQty";
             this.colOrdQty.OptionsColumn.FixedWidth = true;
             this.colOrdQty.Visible = true;
-            this.colOrdQty.VisibleIndex = 10;
+            this.colOrdQty.VisibleIndex = 14;
             this.colOrdQty.Width = 40;
             // 
             // colTrnVal
@@ -381,7 +397,7 @@
             this.colTrnVal.Name = "colTrnVal";
             this.colTrnVal.OptionsColumn.FixedWidth = true;
             this.colTrnVal.Visible = true;
-            this.colTrnVal.VisibleIndex = 11;
+            this.colTrnVal.VisibleIndex = 15;
             this.colTrnVal.Width = 70;
             // 
             // colVatAmt
@@ -395,7 +411,7 @@
             this.colVatAmt.Name = "colVatAmt";
             this.colVatAmt.OptionsColumn.FixedWidth = true;
             this.colVatAmt.Visible = true;
-            this.colVatAmt.VisibleIndex = 12;
+            this.colVatAmt.VisibleIndex = 16;
             this.colVatAmt.Width = 60;
             // 
             // colTaxAmt
@@ -409,7 +425,7 @@
             this.colTaxAmt.Name = "colTaxAmt";
             this.colTaxAmt.OptionsColumn.FixedWidth = true;
             this.colTaxAmt.Visible = true;
-            this.colTaxAmt.VisibleIndex = 13;
+            this.colTaxAmt.VisibleIndex = 17;
             this.colTaxAmt.Width = 55;
             // 
             // colNetAmt
@@ -423,8 +439,44 @@
             this.colNetAmt.Name = "colNetAmt";
             this.colNetAmt.OptionsColumn.FixedWidth = true;
             this.colNetAmt.Visible = true;
-            this.colNetAmt.VisibleIndex = 14;
+            this.colNetAmt.VisibleIndex = 18;
             this.colNetAmt.Width = 80;
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
+            // colDlvDat1
+            // 
+            this.colDlvDat1.Caption = "วันที่รับของ 1";
+            this.colDlvDat1.FieldName = "DlvDat1";
+            this.colDlvDat1.Name = "colDlvDat1";
+            this.colDlvDat1.Visible = true;
+            this.colDlvDat1.VisibleIndex = 4;
+            // 
+            // colDlvDat2
+            // 
+            this.colDlvDat2.Caption = "วันที่รับของ 2";
+            this.colDlvDat2.FieldName = "DlvDat2";
+            this.colDlvDat2.Name = "colDlvDat2";
+            this.colDlvDat2.Visible = true;
+            this.colDlvDat2.VisibleIndex = 5;
+            // 
+            // colRemark
+            // 
+            this.colRemark.Caption = "หมายเหตุ";
+            this.colRemark.FieldName = "Remark";
+            this.colRemark.Name = "colRemark";
+            this.colRemark.Visible = true;
+            this.colRemark.VisibleIndex = 6;
+            // 
+            // colStkDes
+            // 
+            this.colStkDes.Caption = "รายละเอียดสินค้า";
+            this.colStkDes.FieldName = "StkDes";
+            this.colStkDes.Name = "colStkDes";
+            this.colStkDes.Visible = true;
+            this.colStkDes.VisibleIndex = 8;
             // 
             // MainForm
             // 
@@ -445,9 +497,9 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             this.ResumeLayout(false);
@@ -456,23 +508,12 @@
         }
 
         #endregion
-
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.BarButtonItem btnImport;
-        private DevExpress.XtraBars.BarButtonItem btnRecSO;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.BarButtonItem btnDataPath;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
-        private DevExpress.XtraBars.BarStaticItem lblDataPath;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colSoNum;
         private DevExpress.XtraGrid.Columns.GridColumn colSoDat;
-        private DevExpress.XtraGrid.Columns.GridColumn colPoNum;
         private DevExpress.XtraGrid.Columns.GridColumn colDealerCode;
         private DevExpress.XtraGrid.Columns.GridColumn colCustName;
         private DevExpress.XtraGrid.Columns.GridColumn colCustAddr01;
@@ -484,12 +525,28 @@
         private DevExpress.XtraGrid.Columns.GridColumn colVatAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colTaxAmt;
         private DevExpress.XtraGrid.Columns.GridColumn colNetAmt;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.BarButtonItem btnImport;
+        private DevExpress.XtraBars.BarButtonItem btnRecSO;
+        private DevExpress.XtraBars.BarButtonItem btnDataPath;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarStaticItem lblDataPath;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem btnUsers;
         private DevExpress.XtraBars.BarButtonItem btnApiUrl;
+        private DevExpress.XtraBars.BarButtonItem btnRetrieveData;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit3;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraGrid.Columns.GridColumn colDlvBy;
+        private DevExpress.XtraGrid.Columns.GridColumn colDlvDat1;
+        private DevExpress.XtraGrid.Columns.GridColumn colDlvDat2;
+        private DevExpress.XtraGrid.Columns.GridColumn colRemark;
+        private DevExpress.XtraGrid.Columns.GridColumn colStkDes;
     }
 }
 

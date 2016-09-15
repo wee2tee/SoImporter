@@ -24,7 +24,7 @@ namespace SoImporter
     {
 
         public ConfigValue config;
-        private List<Order> orders;
+        private List<PopritVM> poprit;
         private BindingSource bs;
         public InternalUsers logedin_user;
 
@@ -39,7 +39,7 @@ namespace SoImporter
             this.btnImport.Enabled = Directory.Exists(this.config.ExpressDataPath) ? true : false;
             this.lblDataPath.Caption = (this.config.ExpressDataPath.Trim().Length == 0 ? "[...]" : "[ " + this.config.ExpressDataPath + " ]");
             this.bs = new BindingSource();
-            this.bs.DataSource = this.orders;
+            this.bs.DataSource = this.poprit;
             this.gridControl1.DataSource = this.bs;
             //this.configInfo();
         }
@@ -67,29 +67,29 @@ namespace SoImporter
 
         private void btnImport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog()
-            {
-                Filter = "Text file|*.txt",
-                CheckPathExists = true,
-                CheckFileExists = true,
-                RestoreDirectory = true,
-                Multiselect = false,
-                Title = "",
-                SupportMultiDottedExtensions = true,
-                InitialDirectory = AppDomain.CurrentDomain.BaseDirectory
-            };
-            if(dlg.ShowDialog() == DialogResult.OK)
-            {
-                using (StreamReader sr = new StreamReader(dlg.FileName, Encoding.GetEncoding("windows-874")))
-                {
-                    string json = sr.ReadToEnd();
-                    sr.Close();
-                    this.orders = JsonConvert.DeserializeObject<List<Order>>(json);
+            //OpenFileDialog dlg = new OpenFileDialog()
+            //{
+            //    Filter = "Text file|*.txt",
+            //    CheckPathExists = true,
+            //    CheckFileExists = true,
+            //    RestoreDirectory = true,
+            //    Multiselect = false,
+            //    Title = "",
+            //    SupportMultiDottedExtensions = true,
+            //    InitialDirectory = AppDomain.CurrentDomain.BaseDirectory
+            //};
+            //if(dlg.ShowDialog() == DialogResult.OK)
+            //{
+            //    using (StreamReader sr = new StreamReader(dlg.FileName, Encoding.GetEncoding("windows-874")))
+            //    {
+            //        string json = sr.ReadToEnd();
+            //        sr.Close();
+            //        this.orders = JsonConvert.DeserializeObject<List<Order>>(json);
 
-                    this.bs.ResetBindings(true);
-                    this.bs.DataSource = this.orders;
-                }
-            }
+            //        this.bs.ResetBindings(true);
+            //        this.bs.DataSource = this.orders;
+            //    }
+            //}
         }
 
         protected override void OnLoad(EventArgs e)
@@ -252,12 +252,32 @@ namespace SoImporter
                 if(login.ShowDialog() == DialogResult.OK)
                 {
                     this.logedin_user = login.user;
+                    
                 }
                 else
                 {
                     this.Close();
                 }
             }
+        }
+
+        private void btnRetrieveData_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.splashScreenManager1.ShowWaitForm();
+            APIResult result = APIClient.GET(this.config.ApiUrl + "poprit/GetOrder", this.config.ApiKey);
+
+            if (result.Success && result.ReturnValue != null)
+            {
+                this.poprit = JsonConvert.DeserializeObject<List<PopritVM>>(result.ReturnValue);
+                this.bs.DataSource = this.poprit;
+                this.bs.ResetBindings(true);
+                this.gridControl1.DataSource = this.bs;
+            }
+            else
+            {
+                MessageBox.Show(result.ErrorMessage);
+            }
+            this.splashScreenManager1.CloseWaitForm();
         }
     }
 }

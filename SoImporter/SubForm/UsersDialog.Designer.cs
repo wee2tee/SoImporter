@@ -44,6 +44,8 @@
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.btnChangePwd = new DevExpress.XtraEditors.SimpleButton();
+            this.btnResetPwd = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -204,12 +206,38 @@
             this.panelControl1.Size = new System.Drawing.Size(775, 301);
             this.panelControl1.TabIndex = 2;
             // 
+            // btnChangePwd
+            // 
+            this.btnChangePwd.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnChangePwd.Appearance.Options.UseFont = true;
+            this.btnChangePwd.Image = global::SoImporter.Properties.Resources.Key;
+            this.btnChangePwd.Location = new System.Drawing.Point(14, 13);
+            this.btnChangePwd.Name = "btnChangePwd";
+            this.btnChangePwd.Size = new System.Drawing.Size(115, 28);
+            this.btnChangePwd.TabIndex = 3;
+            this.btnChangePwd.Text = "เปลี่ยนรหัสผ่าน";
+            this.btnChangePwd.Click += new System.EventHandler(this.btnChangePwd_Click);
+            // 
+            // btnResetPwd
+            // 
+            this.btnResetPwd.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnResetPwd.Appearance.Options.UseFont = true;
+            this.btnResetPwd.Image = ((System.Drawing.Image)(resources.GetObject("btnResetPwd.Image")));
+            this.btnResetPwd.Location = new System.Drawing.Point(135, 13);
+            this.btnResetPwd.Name = "btnResetPwd";
+            this.btnResetPwd.Size = new System.Drawing.Size(115, 28);
+            this.btnResetPwd.TabIndex = 3;
+            this.btnResetPwd.Text = "รีเซ็ตรหัสผ่าน";
+            this.btnResetPwd.Click += new System.EventHandler(this.btnResetPwd_Click);
+            // 
             // UsersDialog
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 361);
+            this.Controls.Add(this.btnResetPwd);
+            this.Controls.Add(this.btnChangePwd);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
@@ -217,6 +245,7 @@
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimumSize = new System.Drawing.Size(550, 243);
             this.Name = "UsersDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Users";
@@ -247,5 +276,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCreDate;
         private DevExpress.XtraGrid.Columns.GridColumn colUserName;
         private DevExpress.XtraGrid.Columns.GridColumn colStatus;
+        private DevExpress.XtraEditors.SimpleButton btnChangePwd;
+        private DevExpress.XtraEditors.SimpleButton btnResetPwd;
     }
 }

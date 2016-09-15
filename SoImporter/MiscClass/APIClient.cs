@@ -12,7 +12,6 @@ namespace SoImporter.MiscClass
 {
     public class APIClient
     {
-        //public static APIResult POST(string url, string json_data)
         public static APIResult POST(string url, ApiAccessibilities api_accessibilities)
         {
             APIResult result = new APIResult();
@@ -46,11 +45,7 @@ namespace SoImporter.MiscClass
             {
                 result.Success = false;
                 result.ReturnValue = null;
-                result.ErrorMessage = ex.Message;
-                //foreach (var item in ex.Data)
-                //{
-                //    result.ErrorMessage += item.ToString();
-                //}
+                result.FormatError(ex);
             }
 
             return result;
@@ -75,17 +70,94 @@ namespace SoImporter.MiscClass
                 result.ReturnValue = content;
                 result.ErrorMessage = null;
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
                 result.Success = false;
                 result.ReturnValue = null;
-                result.ErrorMessage = ex.Message;
+                result.FormatError(ex);
             }
 
             return result;
         }
 
+        public static APIResult PUT(string url, ApiAccessibilities api_accessibilities)
+        {
+            APIResult result = new APIResult();
 
+            try
+            {
+                HttpWebRequest http = (HttpWebRequest)WebRequest.Create(new Uri(url));
+                http.Accept = "application/json";
+                http.ContentType = "application/json";
+                http.Method = "POST";
+
+                string parsedContent = JsonConvert.SerializeObject(api_accessibilities);
+                Encoding encoding = Encoding.GetEncoding("utf-8");
+                Byte[] bytes = encoding.GetBytes(parsedContent);
+
+                Stream newStream = http.GetRequestStream();
+                newStream.Write(bytes, 0, bytes.Length);
+                newStream.Close();
+
+                var response = http.GetResponse();
+                var stream = response.GetResponseStream();
+                var sr = new StreamReader(stream);
+                var content = sr.ReadToEnd();
+                http = null;
+
+                result.Success = true;
+                result.ReturnValue = content;
+                result.ErrorMessage = null;
+            }
+            catch (WebException ex)
+            {
+                result.Success = false;
+                result.ReturnValue = null;
+                result.FormatError(ex);
+            }
+
+            return result;
+        }
+
+        public static APIResult DELETE(string url, ApiAccessibilities api_accessibilities)
+        {
+            APIResult result = new APIResult();
+
+            try
+            {
+                HttpWebRequest http = (HttpWebRequest)WebRequest.Create(new Uri(url));
+                http.Accept = "application/json";
+                http.ContentType = "application/json";
+                http.Method = "POST";
+
+                string parsedContent = JsonConvert.SerializeObject(api_accessibilities);
+                Encoding encoding = Encoding.GetEncoding("utf-8");
+                Byte[] bytes = encoding.GetBytes(parsedContent);
+
+                Stream newStream = http.GetRequestStream();
+                newStream.Write(bytes, 0, bytes.Length);
+                newStream.Close();
+
+                var response = http.GetResponse();
+                var stream = response.GetResponseStream();
+                var sr = new StreamReader(stream);
+                var content = sr.ReadToEnd();
+                http = null;
+
+                result.Success = true;
+                result.ReturnValue = content;
+                result.ErrorMessage = null;
+                result.ErrorCode = null;
+            }
+            catch (WebException ex)
+            {
+                result.Success = false;
+                result.ReturnValue = null;
+                result.FormatError(ex);
+            }
+
+            return result;
+        }
     }
 
     
@@ -95,5 +167,39 @@ namespace SoImporter.MiscClass
         public bool Success { get; set; }
         public string ReturnValue { get; set; }
         public string ErrorMessage { get; set; }
+
+        public string ErrorCode { get; set; }
+
+        public void FormatError(WebException ex)
+        {
+            if (ex.Status == WebExceptionStatus.ProtocolError)
+            {
+                var response = ex.Response as HttpWebResponse;
+                var st = response.GetResponseStream();
+                var sr = new StreamReader(st);
+                this.ErrorMessage = sr.ReadToEnd();
+
+                if (response != null)
+                {
+                    this.ErrorCode = ((int)response.StatusCode).ToString();
+                    if(this.ErrorCode == "404")
+                    {
+                        this.ErrorMessage = "เกิดข้อผิดพลาด, การร้องขอไม่ถูกต้อง!";
+                    }
+                }
+                else
+                {
+                    // no http status code available
+                    this.ErrorCode = "#Unknow";
+                    this.ErrorMessage = "Unknow error";
+                }
+            }
+            else
+            {
+                // no http status code available
+                this.ErrorCode = "#Unknow";
+                this.ErrorMessage = "Unknow error";
+            }
+        }
     }
 }

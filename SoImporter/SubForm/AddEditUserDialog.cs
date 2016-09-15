@@ -163,17 +163,17 @@ namespace SoImporter.SubForm
                 API_KEY = this.main_form.config.ApiKey,
                 internalUsers = new InternalUsers
                 {
+                    Id = this.user.Id,
                     UserName = this.user.UserName,
                     Email = "",
                     PasswordHash = "",
                     FullName = this.user.FullName,
                     Department = this.user.Department,
                     Status = this.user.Status,
-                    CreDate = DateTime.Now
                 }
             };
 
-            APIResult result = APIClient.POST(url, api_acc);
+            APIResult result = APIClient.PUT(url, api_acc);
             InternalUsers user;
             if (result.Success)
             {

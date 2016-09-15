@@ -44,26 +44,37 @@ namespace SoImporter.SubForm
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            try
-            {
-                APIResult result = APIClient.POST(this.main_form.config.ApiUrl + "users/signin", new ApiAccessibilities { API_KEY = this.main_form.config.ApiKey, internalUsers = new InternalUsers { UserName = (string)this.txtUserName.EditValue, PasswordHash = (string)this.txtPassword.EditValue, CreDate = DateTime.Now, Department = "", Email = "", FullName = "", Id = 0, Status = "" } });
+            this.splashScreenManager1.ShowWaitForm();
+            APIResult result = APIClient.POST(this.main_form.config.ApiUrl + "users/signin", new ApiAccessibilities { API_KEY = this.main_form.config.ApiKey, internalUsers = new InternalUsers { UserName = (string)this.txtUserName.EditValue, PasswordHash = (string)this.txtPassword.EditValue } });
 
-                if (result.Success && result.ReturnValue != null)
+            if (result.Success && result.ReturnValue != null)
+            {
+                this.splashScreenManager1.CloseWaitForm();
+                InternalUsers user = JsonConvert.DeserializeObject<InternalUsers>(result.ReturnValue);
+                if (user != null)
                 {
-                    InternalUsers user = JsonConvert.DeserializeObject<InternalUsers>(result.ReturnValue);
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    if (user.Status == "X")
+                    {
+                        MessageBox.Show("ผู้ใช้รายนี้ถูกห้ามใช้");
+                    }
+                    else
+                    {
+                        this.user = user;
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    //MessageBox.Show(result.ErrorMessage);
                     MessageBox.Show("รหัสผู้ใช้/รหัสผ่าน ไม่ถูกต้อง");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                this.splashScreenManager1.CloseWaitForm();
+                MessageBox.Show(result.ErrorMessage);
             }
+            
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

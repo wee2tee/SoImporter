@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SoImporter.Model
 {
-    public class InternalUsers
+    public class InternalUsersVM
     {
         public int Id { get; set; }
         public string UserName { get; set; }
@@ -16,17 +16,6 @@ namespace SoImporter.Model
         public string Status { get; set; }
         public DateTime CreDate { get; set; }
 
-        public enum STATUS
-        {
-            N,
-            X
-        }
-
-        public enum DEPARTMENT
-        {
-            Marketting,
-            Accounting,
-            Administrative
-        }
+        public string NewPassword { get; set; }
     }
 }

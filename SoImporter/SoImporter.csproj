@@ -72,8 +72,10 @@
     <Compile Include="MiscClass\Helper.cs" />
     <Compile Include="Model\ApiAccessibilities.cs" />
     <Compile Include="Model\InternalUsers.cs" />
+    <Compile Include="Model\InternalUsersVM.cs" />
     <Compile Include="Model\Oeso.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\PopritVM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubForm\AddEditUserDialog.cs">
@@ -87,6 +89,12 @@
     </Compile>
     <Compile Include="SubForm\ApiUrlDialog.Designer.cs">
       <DependentUpon>ApiUrlDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\ChangePasswordDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\ChangePasswordDialog.Designer.cs">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\DataPathDialog.cs">
       <SubType>Form</SubType>
@@ -132,6 +140,9 @@
     <EmbeddedResource Include="SubForm\ApiUrlDialog.resx">
       <DependentUpon>ApiUrlDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\ChangePasswordDialog.resx">
+      <DependentUpon>ChangePasswordDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForm\DataPathDialog.resx">
       <DependentUpon>DataPathDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -164,6 +175,9 @@
       <Project>{1188f184-c68f-427f-be14-edea975533ce}</Project>
       <Name>Crypto</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Key.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
