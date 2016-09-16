@@ -158,6 +158,33 @@ namespace SoImporter.MiscClass
 
             return result;
         }
+
+        public static bool CheckUrlFileExist(string url)
+        {
+            HttpWebResponse response = null;
+            var request = (HttpWebRequest)WebRequest.Create(url);
+            request.Method = "HEAD";
+
+
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (WebException ex)
+            {
+                return false;
+            }
+            finally
+            {
+                // Don't forget to close your response.
+                if (response != null)
+                {
+                    response.Close();
+                }
+            }
+
+            return true;
+        }
     }
 
     

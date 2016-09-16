@@ -26,18 +26,29 @@ namespace SoImporter.Model
         public decimal NetAmt { get; set; }
         public string CreBy { get; set; }
         public DateTime CreDate { get; set; }
-        public string CustPreName { get; set; }
-        public string CustName { get; set; }
-        public string CustAddr01 { get; set; }
-        public string CustAddr02 { get; set; }
-        public string CustAddr03 { get; set; }
-        public string CustZipCod { get; set; }
-        public string CustTelNum { get; set; }
-        public string CustFaxNum { get; set; }
-        public string CustTaxId { get; set; }
+        //public string CustPreName { get; set; }
+        //public string CustName { get; set; }
+        //public string CustAddr01 { get; set; }
+        //public string CustAddr02 { get; set; }
+        //public string CustAddr03 { get; set; }
+        //public string CustZipCod { get; set; }
+        //public string CustTelNum { get; set; }
+        //public string CustFaxNum { get; set; }
+        //public string CustTaxId { get; set; }
         public string Status { get; set; }
         public string SlipFileName { get; set; }
         public string TaxFileName { get; set; }
 
+        public List<CustVM> cust { get; set; }
+
+
+        /** fake field value **/
+        public string _ViewAttachment
+        {
+            get
+            {
+                return "View";
+            }
+        }
     }
 }

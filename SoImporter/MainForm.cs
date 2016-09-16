@@ -95,7 +95,7 @@ namespace SoImporter
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            this.gridView1.VisibleColumns[0].Width = 25;
+            this.gridView1.VisibleColumns[0].Width = 45;
         }
 
         private OleDbConnection createConnection()
@@ -103,11 +103,93 @@ namespace SoImporter
             return new OleDbConnection(@"Provider=VFPOLEDB.1;Data Source=" + this.config.ExpressDataPath + @"\");
         }
 
+        //private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        //{
+        //    try
+        //    {
+        //        List<Oeso> oeso = this.OesoToList();
+
+        //        if (oeso == null)
+        //        {
+        //            return;
+        //        }
+
+        //        string last_sonum = oeso.OrderByDescending(o => o.sonum).First().sonum;
+        //        string next_sonum = last_sonum.Substring(0, 2) + (Convert.ToInt32(last_sonum.Substring(2, last_sonum.Trim().Length - 2)) + 1).ToString().FillZeroLeft(7);
+
+        //        if (File.Exists(this.config.ExpressDataPath + @"\OESO.DBF"))
+        //            File.Copy(this.config.ExpressDataPath + @"\OESO.DBF", this.config.ExpressDataPath + @"\OESO.DBF.BAK", true);
+
+        //        if (File.Exists(this.config.ExpressDataPath + @"\OESOIT.DBF"))
+        //            File.Copy(this.config.ExpressDataPath + @"\OESOIT.DBF", this.config.ExpressDataPath + @"\OESOIT.DBF.BAK", true);
+
+        //        using (OleDbConnection conn = this.createConnection())
+        //        {
+        //            using (OleDbCommand cmd = new OleDbCommand())
+        //            {
+        //                string empty_date = "CTOD('  /  /  ')";
+
+        //                cmd.CommandType = CommandType.Text;
+        //                cmd.CommandText = "Insert Into Oeso ([sorectyp],[sonum],[sodat],[flgvat],[depcod],[slmcod],[cuscod],[shipto],[youref],[rff],[areacod],[paytrm],[dlvdat],[dlvtim],[dlvdat_it],[nxtseq],[amount],[disc],[discamt],[total],[amtrat0],[vatrat],[vatamt],[netamt],[netval],[cmpldat],[docstat],[dlvby],[userid],[chgdat],[userprn],[prndat],[prncnt],[prntim],[authid],[approve],[billto],[orgnum]) Values ";
+        //                cmd.CommandText += "('0', "; // sorectyp
+        //                cmd.CommandText += "'" + next_sonum + "',"; // sonum
+        //                cmd.CommandText += "CTOD('" + DateTime.Now.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "'),"; // sodat
+        //                cmd.CommandText += "'2',"; // flgvat
+        //                cmd.CommandText += "'',"; // depcod
+        //                cmd.CommandText += "'',"; // slmcod
+        //                cmd.CommandText += "'',"; // cuscod
+        //                cmd.CommandText += "'',"; //shipto
+        //                cmd.CommandText += "'',"; // youref
+        //                cmd.CommandText += "'',"; // rff
+        //                cmd.CommandText += "'',"; // areacod
+        //                cmd.CommandText += "0,"; // paytrm
+        //                cmd.CommandText += empty_date + ","; // dlvdat
+        //                cmd.CommandText += "'',"; // dlvtim
+        //                cmd.CommandText += "'',"; // dlvdat_it
+        //                cmd.CommandText += "'',"; // nxtseq
+        //                cmd.CommandText += "14500,"; // amount
+        //                cmd.CommandText += "'',"; // disc
+        //                cmd.CommandText += "0,"; // discamt
+        //                cmd.CommandText += "14500,"; // total
+        //                cmd.CommandText += "0,"; // amtrat0
+        //                cmd.CommandText += "7,"; // vatrat
+        //                cmd.CommandText += "1015,"; // vatamt
+        //                cmd.CommandText += "15515,"; // netamt
+        //                cmd.CommandText += "15515,"; // netval
+        //                cmd.CommandText += empty_date + ","; // cmpldat
+        //                cmd.CommandText += "'N',"; // docstat
+        //                cmd.CommandText += "'EM',"; // dlvby
+        //                cmd.CommandText += "'BIT5',"; // userid
+        //                cmd.CommandText += empty_date + ","; // chgdat
+        //                cmd.CommandText += "'',"; // userprn
+        //                cmd.CommandText += empty_date + ","; // prndat
+        //                cmd.CommandText += "0,"; // prncnt
+        //                cmd.CommandText += "'',"; // prntim
+        //                cmd.CommandText += "'',"; // authid
+        //                cmd.CommandText += empty_date + ","; // approve
+        //                cmd.CommandText += "'',"; // billto
+        //                cmd.CommandText += "0)"; // orgnum
+
+        //                cmd.Connection = conn;
+        //                conn.Open();
+        //                if (cmd.ExecuteNonQuery() > 0)
+        //                {
+        //                    Console.WriteLine(" .. >> insert oeso successfully");
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
+
         private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
-                List<Oeso> oeso = this.OesoToList();
+                List<Oeso> oeso = this.LoadOesoFromDBF();
 
                 if (oeso == null)
                 {
@@ -184,8 +266,8 @@ namespace SoImporter
                 MessageBox.Show(ex.Message);
             }
         }
-        
-        public List<Oeso> OesoToList()
+
+        public List<Oeso> LoadOesoFromDBF()
         {
             if (!File.Exists(this.config.ExpressDataPath + @"\OESO.DBF") || !File.Exists(this.config.ExpressDataPath + @"\OESOIT.DBF"))
             {
@@ -278,6 +360,24 @@ namespace SoImporter
                 MessageBox.Show(result.ErrorMessage);
             }
             this.splashScreenManager1.CloseWaitForm();
+        }
+
+        private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (this.gridView1.GetRow(e.RowHandle) == null)
+                return;
+
+            int id = (int)this.gridView1.GetRowCellValue(e.RowHandle, colId);
+
+            PopritVM poprit = this.poprit.Where(p => p.Id == id).FirstOrDefault();
+            if (poprit == null)
+                return;
+
+            if(e.Column == this.col_ViewAttachment)
+            {
+                ViewAttachFileDialog view = new ViewAttachFileDialog(this, poprit);
+                view.ShowDialog();
+            }
         }
     }
 }
