@@ -19,7 +19,7 @@ namespace SoImporter.Model
         public string rff { get; set; }
         public string areacod { get; set; }
         public int paytrm { get; set; }
-        public DateTime dlvdat { get; set; }
+        public DateTime? dlvdat { get; set; }
         public string dlvtim { get; set; }
         public string dlvdat_it { get; set; }
         public string nxtseq { get; set; }
@@ -32,17 +32,17 @@ namespace SoImporter.Model
         public double vatamt { get; set; }
         public double netamt { get; set; }
         public double netval { get; set; }
-        public DateTime cmpldat { get; set; }
+        public DateTime? cmpldat { get; set; }
         public string docstat { get; set; }
         public string dlvby { get; set; }
         public string userid { get; set; }
-        public DateTime chgdat { get; set; }
+        public DateTime? chgdat { get; set; }
         public string userprn { get; set; }
-        public DateTime prndat { get; set; }
+        public DateTime? prndat { get; set; }
         public int prncnt { get; set; }
         public string prntim { get; set; }
         public string authid { get; set; }
-        public DateTime approve { get; set; }
+        public DateTime? approve { get; set; }
         public string billto { get; set; }
         public int orgnum { get; set; }
 

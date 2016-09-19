@@ -8,28 +8,44 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.IO;
+using SoImporter.Model;
+using SoImporter.MiscClass;
+using DevExpress.XtraEditors.Controls;
 
 namespace SoImporter.SubForm
 {
     public partial class DataPathDialog : DevExpress.XtraEditors.XtraForm
     {
         private MainForm main_form;
+        private List<Isrun> isrun;
+
         public string selected_path = string.Empty;
+        public string selected_doc = string.Empty;
 
         public DataPathDialog()
         {
             InitializeComponent();
         }
 
-        public DataPathDialog(MainForm main_form, string default_path) : this()
+        public DataPathDialog(MainForm main_form, string default_path, string doc_prefix) : this()
         {
             this.main_form = main_form;
             this.selected_path = default_path;
+            this.selected_doc = doc_prefix;
         }
 
         private void DataPathDialog_Load(object sender, EventArgs e)
         {
+            this.isrun = MainForm.LoadIsrunFromDBF(this.main_form.config).Where(i => i.doctyp == "SO").OrderBy(i => i.prefix).ToList();
+            foreach (var item in this.isrun)
+            {
+                this.cbSoNum.Properties.Items.Add(item);
+            }
+
             this.txtPath.Text = this.selected_path;
+
+            var doc = this.isrun.Where(i => i.prefix == this.selected_doc).FirstOrDefault();
+            this.cbSoNum.Text = (doc != null ? "[" + doc.prefix + "] " + doc.posdes : "");
         }
 
         private void DataPathDialog_Shown(object sender, EventArgs e)
@@ -40,6 +56,11 @@ namespace SoImporter.SubForm
         private void txtPath_TextChanged(object sender, EventArgs e)
         {
             this.selected_path = ((TextEdit)sender).Text;
+        }
+
+        private void cbSoNum_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.selected_doc = ((Isrun)((ComboBoxEdit)sender).SelectedItem).prefix;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)

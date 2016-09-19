@@ -10,6 +10,7 @@ namespace SoImporter.MiscClass
     public class ConfigValue
     {
         public string ExpressDataPath { get; set; }
+        public string DocPrefix { get; set; }
         public string ApiUrl { get; set; }
         public string ApiKey { get; set; }
         public string SaltKey { get; set; }
@@ -24,6 +25,7 @@ namespace SoImporter.MiscClass
                 return new ConfigValue()
                 {
                     ExpressDataPath = string.Empty,
+                    DocPrefix = string.Empty,
                     ApiUrl = string.Empty,
                     ApiKey = string.Empty,
                     SaltKey = salt_key 
@@ -44,6 +46,12 @@ namespace SoImporter.MiscClass
                                 if (line.Contains("EXPRESS_DATA_PATH:"))
                                 {
                                     cfg.ExpressDataPath = line.Replace("EXPRESS_DATA_PATH:", "").Replace("|", "").Trim();
+                                    continue;
+                                }
+
+                                if (line.Contains("DOC_PREFIX:"))
+                                {
+                                    cfg.DocPrefix = line.Replace("DOC_PREFIX:", "").Replace("|", "").Trim();
                                     continue;
                                 }
 
@@ -73,6 +81,7 @@ namespace SoImporter.MiscClass
                     return new ConfigValue()
                     {
                         ExpressDataPath = string.Empty,
+                        DocPrefix = string.Empty,
                         ApiUrl = string.Empty,
                         ApiKey = string.Empty,
                         SaltKey = salt_key
@@ -94,6 +103,7 @@ namespace SoImporter.MiscClass
                     using (StreamWriter sw = new StreamWriter(cfg_file, false, Encoding.GetEncoding("utf-8")))
                     {
                         sw.WriteLine("EXPRESS_DATA_PATH: | " + this.ExpressDataPath);
+                        sw.WriteLine("DOC_PREFIX: | " + this.DocPrefix);
                         sw.WriteLine("API_URL: | " + this.ApiUrl);
                         sw.WriteLine("API_KEY: | " + this.ApiKey);
                         sw.Close();

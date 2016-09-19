@@ -513,7 +513,7 @@
             // 
             // btnDataPath
             // 
-            this.btnDataPath.Caption = "กำหนดที่เก็บข้อมูล โปรแกรม Express";
+            this.btnDataPath.Caption = "กำหนดการเชื่อมต่อ โปรแกรม Express";
             this.btnDataPath.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDataPath.Glyph")));
             this.btnDataPath.Id = 3;
             this.btnDataPath.Name = "btnDataPath";

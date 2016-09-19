@@ -48,7 +48,7 @@ namespace SoImporter.MiscClass
         {
             string result = target_string;
 
-            for (int i = 1; i < result_digit - target_string.Trim().Length; i++)
+            for (int i = 1; i <= result_digit - target_string.Trim().Length; i++)
             {
                 result = "0" + result;
             }
