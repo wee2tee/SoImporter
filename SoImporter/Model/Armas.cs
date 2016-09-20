@@ -47,5 +47,52 @@ namespace SoImporter.Model
         public string status { get; set; }
         public DateTime? inactdat { get; set; }
 
+        public Armas()
+        {
+
+        }
+
+        public Armas(bool with_init_value) : this()
+        {
+            this.cuscod = string.Empty;
+            this.custyp = string.Empty;
+            this.prenam = string.Empty;
+            this.cusnam = string.Empty;
+            this.addr01 = string.Empty;
+            this.addr02 = string.Empty;
+            this.addr03 = string.Empty;
+            this.zipcod = string.Empty;
+            this.telnum = string.Empty;
+            this.contact = string.Empty;
+            this.cusnam2 = string.Empty;
+            this.taxid = string.Empty;
+            this.orgnum = 0;
+            this.taxtyp = string.Empty;
+            this.taxrat = 0;
+            this.taxgrp = string.Empty;
+            this.taxcond = string.Empty;
+            this.shipto = string.Empty;
+            this.slmcod = string.Empty;
+            this.areacod = string.Empty;
+            this.paytrm = 0;
+            this.paycond = string.Empty;
+            this.payer = string.Empty;
+            this.tabpr = string.Empty;
+            this.disc = string.Empty;
+            this.balance = 0d;
+            this.chqrcv = 0d;
+            this.crline = 0d;
+            this.lasivc = null;
+            this.accnum = string.Empty;
+            this.remark = string.Empty;
+            this.dlvby = string.Empty;
+            this.tracksal = string.Empty;
+            this.creby = string.Empty;
+            this.credat = null;
+            this.userid = string.Empty;
+            this.chgdat = null;
+            this.status = string.Empty;
+            this.inactdat = null;
+        }
     }
 }

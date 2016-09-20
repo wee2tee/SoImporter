@@ -49,6 +49,7 @@
             this.colSoNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoDat = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreBy = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_DealerType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDlvBy = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDlvDat1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDlvDat2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -65,6 +66,8 @@
             this.colSlipFileName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTaxFileName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.col_ViewAttachment = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDealerType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDealerCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnImport = new DevExpress.XtraBars.BarButtonItem();
             this.btnRecSO = new DevExpress.XtraBars.BarButtonItem();
@@ -84,6 +87,7 @@
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
+            this.colFlgVat = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -233,6 +237,7 @@
             this.colSoNum,
             this.colSoDat,
             this.colCreBy,
+            this.col_DealerType,
             this.colDlvBy,
             this.colDlvDat1,
             this.colDlvDat2,
@@ -248,7 +253,10 @@
             this.colStatus,
             this.colSlipFileName,
             this.colTaxFileName,
-            this.col_ViewAttachment});
+            this.col_ViewAttachment,
+            this.colDealerType,
+            this.colDealerCode,
+            this.colFlgVat});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
@@ -296,7 +304,17 @@
             this.colCreBy.Name = "colCreBy";
             this.colCreBy.Visible = true;
             this.colCreBy.VisibleIndex = 3;
-            this.colCreBy.Width = 99;
+            this.colCreBy.Width = 92;
+            // 
+            // col_DealerType
+            // 
+            this.col_DealerType.Caption = "ประเภทตัวแทนฯ";
+            this.col_DealerType.FieldName = "_DealerType";
+            this.col_DealerType.MaxWidth = 90;
+            this.col_DealerType.Name = "col_DealerType";
+            this.col_DealerType.Visible = true;
+            this.col_DealerType.VisibleIndex = 4;
+            this.col_DealerType.Width = 90;
             // 
             // colDlvBy
             // 
@@ -304,8 +322,8 @@
             this.colDlvBy.FieldName = "DlvBy";
             this.colDlvBy.Name = "colDlvBy";
             this.colDlvBy.Visible = true;
-            this.colDlvBy.VisibleIndex = 4;
-            this.colDlvBy.Width = 82;
+            this.colDlvBy.VisibleIndex = 5;
+            this.colDlvBy.Width = 72;
             // 
             // colDlvDat1
             // 
@@ -313,8 +331,8 @@
             this.colDlvDat1.FieldName = "DlvDat1";
             this.colDlvDat1.Name = "colDlvDat1";
             this.colDlvDat1.Visible = true;
-            this.colDlvDat1.VisibleIndex = 5;
-            this.colDlvDat1.Width = 56;
+            this.colDlvDat1.VisibleIndex = 6;
+            this.colDlvDat1.Width = 49;
             // 
             // colDlvDat2
             // 
@@ -322,8 +340,8 @@
             this.colDlvDat2.FieldName = "DlvDat2";
             this.colDlvDat2.Name = "colDlvDat2";
             this.colDlvDat2.Visible = true;
-            this.colDlvDat2.VisibleIndex = 6;
-            this.colDlvDat2.Width = 56;
+            this.colDlvDat2.VisibleIndex = 7;
+            this.colDlvDat2.Width = 49;
             // 
             // colRemark
             // 
@@ -331,8 +349,8 @@
             this.colRemark.FieldName = "Remark";
             this.colRemark.Name = "colRemark";
             this.colRemark.Visible = true;
-            this.colRemark.VisibleIndex = 7;
-            this.colRemark.Width = 67;
+            this.colRemark.VisibleIndex = 8;
+            this.colRemark.Width = 59;
             // 
             // colStkCod
             // 
@@ -342,7 +360,7 @@
             this.colStkCod.MinWidth = 120;
             this.colStkCod.Name = "colStkCod";
             this.colStkCod.Visible = true;
-            this.colStkCod.VisibleIndex = 8;
+            this.colStkCod.VisibleIndex = 9;
             this.colStkCod.Width = 120;
             // 
             // colStkDes
@@ -351,8 +369,8 @@
             this.colStkDes.FieldName = "StkDes";
             this.colStkDes.Name = "colStkDes";
             this.colStkDes.Visible = true;
-            this.colStkDes.VisibleIndex = 9;
-            this.colStkDes.Width = 97;
+            this.colStkDes.VisibleIndex = 10;
+            this.colStkDes.Width = 76;
             // 
             // colOrdQty
             // 
@@ -365,7 +383,7 @@
             this.colOrdQty.Name = "colOrdQty";
             this.colOrdQty.OptionsColumn.FixedWidth = true;
             this.colOrdQty.Visible = true;
-            this.colOrdQty.VisibleIndex = 10;
+            this.colOrdQty.VisibleIndex = 11;
             this.colOrdQty.Width = 40;
             // 
             // colTrnVal
@@ -379,7 +397,7 @@
             this.colTrnVal.Name = "colTrnVal";
             this.colTrnVal.OptionsColumn.FixedWidth = true;
             this.colTrnVal.Visible = true;
-            this.colTrnVal.VisibleIndex = 11;
+            this.colTrnVal.VisibleIndex = 12;
             this.colTrnVal.Width = 70;
             // 
             // colVatAmt
@@ -393,7 +411,7 @@
             this.colVatAmt.Name = "colVatAmt";
             this.colVatAmt.OptionsColumn.FixedWidth = true;
             this.colVatAmt.Visible = true;
-            this.colVatAmt.VisibleIndex = 12;
+            this.colVatAmt.VisibleIndex = 13;
             this.colVatAmt.Width = 60;
             // 
             // colTaxAmt
@@ -407,7 +425,7 @@
             this.colTaxAmt.Name = "colTaxAmt";
             this.colTaxAmt.OptionsColumn.FixedWidth = true;
             this.colTaxAmt.Visible = true;
-            this.colTaxAmt.VisibleIndex = 13;
+            this.colTaxAmt.VisibleIndex = 14;
             this.colTaxAmt.Width = 55;
             // 
             // colNetAmt
@@ -421,7 +439,7 @@
             this.colNetAmt.Name = "colNetAmt";
             this.colNetAmt.OptionsColumn.FixedWidth = true;
             this.colNetAmt.Visible = true;
-            this.colNetAmt.VisibleIndex = 14;
+            this.colNetAmt.VisibleIndex = 15;
             this.colNetAmt.Width = 80;
             // 
             // colCreDate
@@ -461,8 +479,20 @@
             this.col_ViewAttachment.MinWidth = 60;
             this.col_ViewAttachment.Name = "col_ViewAttachment";
             this.col_ViewAttachment.Visible = true;
-            this.col_ViewAttachment.VisibleIndex = 15;
+            this.col_ViewAttachment.VisibleIndex = 16;
             this.col_ViewAttachment.Width = 60;
+            // 
+            // colDealerType
+            // 
+            this.colDealerType.Caption = "DealerType";
+            this.colDealerType.FieldName = "DealerType";
+            this.colDealerType.Name = "colDealerType";
+            // 
+            // colDealerCode
+            // 
+            this.colDealerCode.Caption = "DealerCode";
+            this.colDealerCode.FieldName = "DealerCode";
+            this.colDealerCode.Name = "colDealerCode";
             // 
             // ribbonControl1
             // 
@@ -626,6 +656,12 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // colFlgVat
+            // 
+            this.colFlgVat.Caption = "FlgVat";
+            this.colFlgVat.FieldName = "FlgVat";
+            this.colFlgVat.Name = "colFlgVat";
+            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -712,6 +748,10 @@
         private DevExpress.XtraGrid.Columns.GridColumn colTaxId;
         private DevExpress.XtraGrid.Columns.GridColumn col_ViewAttachment;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_DealerType;
+        private DevExpress.XtraGrid.Columns.GridColumn colDealerType;
+        private DevExpress.XtraGrid.Columns.GridColumn colDealerCode;
+        private DevExpress.XtraGrid.Columns.GridColumn colFlgVat;
     }
 }
 

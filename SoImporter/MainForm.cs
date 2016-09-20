@@ -75,8 +75,8 @@ namespace SoImporter
 
         private void btnImport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ArMasDialog armas = new ArMasDialog(this);
-            armas.ShowDialog();
+            //ArMasDialog armas = new ArMasDialog(this);
+            //armas.ShowDialog();
             //OpenFileDialog dlg = new OpenFileDialog()
             //{
             //    Filter = "Text file|*.txt",
@@ -197,68 +197,209 @@ namespace SoImporter
 
         private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            List<Oeso> oeso = LoadOesoFromDBF(this.config);
-            List<Isrun> isrun = LoadIsrunFromDBF(this.config);
-
-            if (oeso == null)
-            {
+            //Armas ar = new Armas();
+            Oeso so = new Oeso();
+            List<Oesoit> soit = new List<Oesoit>();
+            if (this.PrepareInsertItem(so, soit) == false)
                 return;
+
+            //List<Oeso> oeso = LoadOesoFromDBF(this.config);
+            //List<Isrun> isrun = LoadIsrunFromDBF(this.config);
+
+            //if (oeso == null)
+            //{
+            //    return;
+            //}
+
+            //string last_sonum = isrun.Where(i => i.doctyp == this.config.DocPrefix).FirstOrDefault().docnum;
+            //string next_sonum = this.config.DocPrefix + (Convert.ToInt32(last_sonum) + 1).ToString().FillZeroLeft(7);
+
+            //if (File.Exists(this.config.ExpressDataPath + @"\OESO.DBF"))
+            //    File.Copy(this.config.ExpressDataPath + @"\OESO.DBF", this.config.ExpressDataPath + @"\OESO.DBF.BAK", true);
+
+            //if (File.Exists(this.config.ExpressDataPath + @"\OESOIT.DBF"))
+            //    File.Copy(this.config.ExpressDataPath + @"\OESOIT.DBF", this.config.ExpressDataPath + @"\OESOIT.DBF.BAK", true);
+
+            //Oeso o = new Oeso
+            //{
+            //    sorectyp = "0",
+            //    sonum = next_sonum,
+            //    sodat = DateTime.Now,
+            //    flgvat = "2",
+            //    depcod = "",
+            //    slmcod = "",
+            //    cuscod = "",
+            //    shipto = "",
+            //    youref = "",
+            //    rff = "",
+            //    areacod = "",
+            //    paytrm = 0,
+            //    dlvdat = null,
+            //    dlvtim = "",
+            //    dlvdat_it = "",
+            //    nxtseq = "",
+            //    amount = 999,
+            //    disc = "",
+            //    discamt = 99,
+            //    total = 999,
+            //    amtrat0 = 99,
+            //    vatrat = 99,
+            //    vatamt = 999,
+            //    netamt = 999,
+            //    netval = 999,
+            //    cmpldat = null,
+            //    docstat = "N",
+            //    dlvby = "",
+            //    userid = this.logedin_user.UserName,
+            //    chgdat = null,
+            //    userprn = "",
+            //    prndat = null,
+            //    prncnt = 0,
+            //    prntim = "",
+            //    authid = "",
+            //    approve = null,
+            //    billto = "",
+            //    orgnum = 0
+            //};
+
+            //if (InsertOeso(this.config, o))
+            //{
+            //    MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + o.sonum + "\" เรียบร้อย");
+            //}
+        }
+
+        private bool PrepareInsertItem(Oeso oeso, List<Oesoit> oesoits)
+        {
+            #region collecting selected row
+            List<PopritVM> poprit = new List<PopritVM>();
+            Armas armas = new Armas();
+            foreach (int row_handle in this.gridView1.GetSelectedRows())
+            {
+                if(this.gridView1.GetRowCellValue(row_handle, colId) != null)
+                {
+                    int id = (int)this.gridView1.GetRowCellValue(row_handle, colId);
+                    poprit.Add(
+                        new PopritVM
+                        {
+                            Id = this.poprit.Where(p => p.Id == id).First().Id,
+                            CreBy = this.poprit.Where(p => p.Id == id).First().CreBy,
+                            DealerCode = this.poprit.Where(p => p.Id == id).First().DealerCode,
+                            DealerType = this.poprit.Where(p => p.Id == id).First().DealerType,
+                            FlgVat = this.poprit.Where(p => p.Id == id).First().FlgVat
+                        }
+                    );
+
+                    armas.prenam = this.poprit.Where(p => p.Id == id).First().cust.First().PreName;
+                    armas.cusnam = this.poprit.Where(p => p.Id == id).First().cust.First().Name;
+                    armas.addr01 = this.poprit.Where(p => p.Id == id).First().cust.First().Addr01;
+                    armas.addr02 = this.poprit.Where(p => p.Id == id).First().cust.First().Addr02;
+                    armas.addr03 = this.poprit.Where(p => p.Id == id).First().cust.First().Addr03;
+                    armas.zipcod = this.poprit.Where(p => p.Id == id).First().cust.First().ZipCod;
+                    armas.telnum = this.poprit.Where(p => p.Id == id).First().cust.First().TelNum;
+                    armas.taxid = this.poprit.Where(p => p.Id == id).First().cust.First().TaxId;
+                }
+            };
+            #endregion collecting selected row
+
+            List<Isrun> isrun = LoadIsrunFromDBF(this.config);
+            if (isrun.Count() == 0)
+            {
+                MessageBox.Show("กรุณาระบุที่เก็บข้อมูล Express ให้ถูกต้อง", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                oeso = null;
+                oesoits = null;
+                return false;
             }
 
-            string last_sonum = isrun.Where(i => i.doctyp == this.config.DocPrefix).FirstOrDefault().docnum;
-            string next_sonum = this.config.DocPrefix + (Convert.ToInt32(last_sonum) + 1).ToString().FillZeroLeft(7);
-
-            if (File.Exists(this.config.ExpressDataPath + @"\OESO.DBF"))
-                File.Copy(this.config.ExpressDataPath + @"\OESO.DBF", this.config.ExpressDataPath + @"\OESO.DBF.BAK", true);
-
-            if (File.Exists(this.config.ExpressDataPath + @"\OESOIT.DBF"))
-                File.Copy(this.config.ExpressDataPath + @"\OESOIT.DBF", this.config.ExpressDataPath + @"\OESOIT.DBF.BAK", true);
-
-            Oeso o = new Oeso
+            #region preparing Sonum
+            string next_sonum = this.config.DocPrefix + isrun.Where(i => i.doctyp == this.config.DocPrefix).FirstOrDefault().docnum.Trim();
+            if (LoadOesoFromDBF(this.config).Where(s => s.sonum.Trim() == next_sonum).Count() > 0)
             {
-                sorectyp = "0",
-                sonum = next_sonum,
-                sodat = DateTime.Now,
-                flgvat = "2",
-                depcod = "",
-                slmcod = "",
-                cuscod = "",
-                shipto = "",
-                youref = "",
-                rff = "",
-                areacod = "",
-                paytrm = 0,
-                dlvdat = null,
-                dlvtim = "",
-                dlvdat_it = "",
-                nxtseq = "",
-                amount = 999,
-                disc = "",
-                discamt = 99,
-                total = 999,
-                amtrat0 = 99,
-                vatrat = 99,
-                vatamt = 999,
-                netamt = 999,
-                netval = 999,
-                cmpldat = null,
-                docstat = "N",
-                dlvby = "",
-                userid = this.logedin_user.UserName,
-                chgdat = null,
-                userprn = "",
-                prndat = null,
-                prncnt = 0,
-                prntim = "",
-                authid = "",
-                approve = null,
-                billto = "",
-                orgnum = 0
-            };
+                do
+                {
+                    MessageBox.Show("ใบสั่งขายเลขที่ \"" + next_sonum + "\" มีอยู่แล้ว", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-            if (InsertOeso(this.config, o))
+                    next_sonum = this.config.DocPrefix + (Convert.ToInt32(next_sonum.Substring(2, next_sonum.Length - 2)) + 1).ToString().FillZeroLeft(7);
+                }
+                while (LoadOesoFromDBF(this.config).Where(s => s.sonum.Trim() == next_sonum).Count() > 0);
+            }
+            #endregion preparing Sonum
+
+            #region preparing oeso
+            oeso.sorectyp = "0";
+            oeso.sonum = next_sonum;
+            oeso.sodat = DateTime.Now;
+            oeso.flgvat = poprit.First().FlgVat;
+            oeso.depcod = "";
+            oeso.slmcod = "";
+            //oeso.cuscod = poprit.First().DealerType == (int)DEALER_TYPE.สำนักงานบัญชีไฮเทค ? "" : poprit.First().DealerCode;
+            oeso.shipto = "";
+            //oeso.youref = "";
+            oeso.rff = "";
+                //areacod = "",
+                //paytrm = 0,
+                //dlvdat = null,
+                //dlvtim = "",
+                //dlvdat_it = "",
+                //nxtseq = "",
+                //amount = 999,
+                //disc = "",
+                //discamt = 99,
+                //total = 999,
+                //amtrat0 = 99,
+                //vatrat = 99,
+                //vatamt = 999,
+                //netamt = 999,
+                //netval = 999,
+                //cmpldat = null,
+                //docstat = "N",
+                //dlvby = "",
+                //userid = this.logedin_user.UserName,
+                //chgdat = null,
+                //userprn = "",
+                //prndat = null,
+                //prncnt = 0,
+                //prntim = "",
+                //authid = "",
+                //approve = null,
+                //billto = "",
+                //orgnum = 0
+            #endregion preparing oeso
+
+            if (poprit.GroupBy(d => d.CreBy).Distinct().Count() > 1)  // เลือกตัวแทนมากกว่า 1 ราย
             {
-                MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + o.sonum + "\" เรียบร้อย");
+                MessageBox.Show("รายการที่เลือกต้องมาจากตัวแทนจำหน่ายรายเดียวกันเท่านั้น", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                oeso = null;
+                oesoits = null;
+                return false;
+            }
+            else if(poprit.GroupBy(d => d.FlgVat).Distinct().Count() > 1) // เลือกรายการที่มี flgvat ต่างกัน
+            {
+                MessageBox.Show("รายการที่เลือกมีประเภทราคาต่างกัน, กรุณาเลือกรายการที่มีประเภทราคาเดียวกัน", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                oeso = null;
+                oesoits = null;
+                return false;
+            }
+            else if(poprit.First().DealerType == (int)DEALER_TYPE.สำนักงานบัญชีไฮเทค && poprit.Count() > 1) // เลือกรายการของ สนง.ไฮเทคมากกว่า 1 รายการ
+            {
+                MessageBox.Show("รายการสั่งซื้อจาก \"สำนักงานบัญชีไฮเทค\" ต้องเลือกครั้งละ 1 รายการเท่านั้น", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                oeso = null;
+                oesoits = null;
+                return false;
+            }
+            else
+            {
+                #region confirm so
+                OesoConfirmDialog conf = new OesoConfirmDialog(this, oeso, armas, poprit.First().DealerType);
+                if (conf.ShowDialog() != DialogResult.OK)
+                {
+                    oeso = null;
+                    oesoits = null;
+                    return false;
+                }
+                Console.WriteLine(".. >> " + oeso.cuscod);
+
+                return true;
+                #endregion confirm so
             }
         }
 
@@ -548,6 +689,13 @@ namespace SoImporter
 
         public static bool InsertArmas(ConfigValue config, Armas armas)
         {
+            List<Armas> a = LoadArmasFromDBF(config);
+            if (a.Where(ar => ar.cuscod.Trim() == armas.cuscod.Trim()).FirstOrDefault() != null)
+            {
+                MessageBox.Show("รหัส \"" + armas.cuscod + "\" นี้มีอยู่แล้ว", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return false;
+            }
+
             try
             {
                 using (OleDbConnection conn = createConnection(config))
@@ -571,7 +719,7 @@ namespace SoImporter
                         cmd.CommandText += "'" + armas.cusnam2 + "', "; // cusnam2
                         cmd.CommandText += "'" + armas.taxid + "', "; // taxid
                         cmd.CommandText += armas.orgnum + ", "; // orgnum
-                        cmd.CommandText += "'" + armas.taxtyp + ", "; // taxtyp
+                        cmd.CommandText += "'" + armas.taxtyp + "', "; // taxtyp
                         cmd.CommandText += armas.taxrat + ", "; // taxrat
                         cmd.CommandText += "'" + armas.taxgrp + "', "; // taxgrp
                         cmd.CommandText += "'" + armas.taxcond + "', "; // taxcond

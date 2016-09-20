@@ -8,6 +8,14 @@ using System.Text;
 
 namespace SoImporter.MiscClass
 {
+    public enum DEALER_TYPE : int
+    {
+        ไม่ระบุ = 0,
+        ตัวแทนจำหน่ายทั่วไป = 1,
+        ตัวแทนจำหน่ายรายใหญ่ = 2,
+        สำนักงานบัญชีไฮเทค = 3
+    }
+
     public static class Helper
     {
         public static List<T> ToList<T>(this DataTable table) where T : class, new()
@@ -54,6 +62,22 @@ namespace SoImporter.MiscClass
             }
 
             return result;
+        }
+
+        public static string GetDealerTypeString(this int? dealer_type_value)
+        {
+            if (dealer_type_value == null)
+                return DEALER_TYPE.ไม่ระบุ.ToString();
+
+            foreach (var item in Enum.GetValues(typeof(DEALER_TYPE)))
+            {
+                if (dealer_type_value == (int)item)
+                {
+                    return item.ToString();
+                }
+            }
+
+            return DEALER_TYPE.ไม่ระบุ.ToString();
         }
 
         //public static string formatErrorData(this WebExceptionStatus exception_status)

@@ -35,74 +35,74 @@
             this.txtCusNam = new DevExpress.XtraEditors.TextEdit();
             this.cbPreNam = new DevExpress.XtraEditors.ComboBoxEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.txtAddr01 = new DevExpress.XtraEditors.TextEdit();
-            this.txtAddr02 = new DevExpress.XtraEditors.TextEdit();
-            this.txtAddr03 = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
-            this.txtZipCod = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
-            this.txtTelNum = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
-            this.txtContact = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
-            this.txtTaxId = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
-            this.txtOrgNum = new DevExpress.XtraEditors.TextEdit();
             this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
             this.cbRemark = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
-            this.cbCusTyp = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
-            this.cbAccNum = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
-            this.cbSlmCod = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
-            this.cbAreaCod = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControl9 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl7 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.txtTaxId = new DevExpress.XtraEditors.TextEdit();
+            this.txtOrgNum = new DevExpress.XtraEditors.TextEdit();
+            this.txtZipCod = new DevExpress.XtraEditors.TextEdit();
+            this.txtAddr03 = new DevExpress.XtraEditors.TextEdit();
+            this.txtContact = new DevExpress.XtraEditors.TextEdit();
+            this.txtTelNum = new DevExpress.XtraEditors.TextEdit();
+            this.txtAddr02 = new DevExpress.XtraEditors.TextEdit();
+            this.txtAddr01 = new DevExpress.XtraEditors.TextEdit();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.labelControl16 = new DevExpress.XtraEditors.LabelControl();
-            this.cbDlvBy = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
-            this.txtPayTrm = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl15 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl14 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl18 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
-            this.txtPayCond = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
-            this.cbTabPr = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
-            this.txtDisc = new DevExpress.XtraEditors.TextEdit();
             this.labelControl22 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl21 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl20 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl19 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl17 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.cbDlvBy = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbAreaCod = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbSlmCod = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbAccNum = new DevExpress.XtraEditors.ComboBoxEdit();
             this.txtCrLine = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.txtDisc = new DevExpress.XtraEditors.TextEdit();
+            this.txtPayCond = new DevExpress.XtraEditors.TextEdit();
+            this.txtPayTrm = new DevExpress.XtraEditors.TextEdit();
+            this.cbTabPr = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cbCusTyp = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.btnOK = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.txtCusCod.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCusNam.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbPreNam.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
-            this.panelControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAddr01.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAddr02.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAddr03.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtZipCod.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTelNum.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContact.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRemark.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTaxId.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtOrgNum.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbRemark.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCusTyp.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbAccNum.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSlmCod.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbAreaCod.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZipCod.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddr03.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContact.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTelNum.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddr02.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddr01.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbDlvBy.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPayTrm.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPayCond.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbTabPr.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDisc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAreaCod.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSlmCod.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAccNum.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCrLine.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDisc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayCond.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayTrm.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbTabPr.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCusTyp.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -120,8 +120,9 @@
             this.txtCusCod.Name = "txtCusCod";
             this.txtCusCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCusCod.Properties.Appearance.Options.UseFont = true;
+            this.txtCusCod.Properties.MaxLength = 10;
             this.txtCusCod.Size = new System.Drawing.Size(105, 22);
-            this.txtCusCod.TabIndex = 2;
+            this.txtCusCod.TabIndex = 0;
             this.txtCusCod.EditValueChanged += new System.EventHandler(this.txtCusCod_EditValueChanged);
             // 
             // labelControl2
@@ -148,6 +149,7 @@
             this.txtCusNam.Name = "txtCusNam";
             this.txtCusNam.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCusNam.Properties.Appearance.Options.UseFont = true;
+            this.txtCusNam.Properties.MaxLength = 60;
             this.txtCusNam.Size = new System.Drawing.Size(426, 22);
             this.txtCusNam.TabIndex = 2;
             this.txtCusNam.EditValueChanged += new System.EventHandler(this.txtCusNam_EditValueChanged);
@@ -160,8 +162,9 @@
             this.cbPreNam.Properties.Appearance.Options.UseFont = true;
             this.cbPreNam.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbPreNam.Size = new System.Drawing.Size(100, 22);
-            this.cbPreNam.TabIndex = 0;
+            this.cbPreNam.Properties.MaxLength = 15;
+            this.cbPreNam.Size = new System.Drawing.Size(129, 22);
+            this.cbPreNam.TabIndex = 1;
             this.cbPreNam.EditValueChanged += new System.EventHandler(this.cbPreNam_EditValueChanged);
             // 
             // panelControl1
@@ -187,6 +190,184 @@
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(722, 201);
             this.panelControl1.TabIndex = 2;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl11.Location = new System.Drawing.Point(454, 165);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(156, 16);
+            this.labelControl11.TabIndex = 1;
+            this.labelControl11.Text = "[ 0=สำนักงานใหญ่, -1=ว่าง ]";
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl10.Location = new System.Drawing.Point(347, 165);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(41, 16);
+            this.labelControl10.TabIndex = 1;
+            this.labelControl10.Text = "สาขา #";
+            // 
+            // cbRemark
+            // 
+            this.cbRemark.Location = new System.Drawing.Point(140, 137);
+            this.cbRemark.Name = "cbRemark";
+            this.cbRemark.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbRemark.Properties.Appearance.Options.UseFont = true;
+            this.cbRemark.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbRemark.Properties.MaxLength = 50;
+            this.cbRemark.Size = new System.Drawing.Size(472, 22);
+            this.cbRemark.TabIndex = 9;
+            this.cbRemark.EditValueChanged += new System.EventHandler(this.cbRemark_EditValueChanged);
+            // 
+            // labelControl9
+            // 
+            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl9.Location = new System.Drawing.Point(12, 165);
+            this.labelControl9.Name = "labelControl9";
+            this.labelControl9.Size = new System.Drawing.Size(119, 16);
+            this.labelControl9.TabIndex = 1;
+            this.labelControl9.Text = "เลขประจำตัวผู้เสียภาษี";
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl8.Location = new System.Drawing.Point(81, 140);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(50, 16);
+            this.labelControl8.TabIndex = 1;
+            this.labelControl8.Text = "หมายเหตุ";
+            // 
+            // labelControl7
+            // 
+            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl7.Location = new System.Drawing.Point(75, 115);
+            this.labelControl7.Name = "labelControl7";
+            this.labelControl7.Size = new System.Drawing.Size(56, 16);
+            this.labelControl7.TabIndex = 1;
+            this.labelControl7.Text = "ชื่อผู้ติดต่อ";
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl6.Location = new System.Drawing.Point(84, 90);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(47, 16);
+            this.labelControl6.TabIndex = 1;
+            this.labelControl6.Text = "โทรศัพท์";
+            // 
+            // labelControl5
+            // 
+            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl5.Location = new System.Drawing.Point(448, 65);
+            this.labelControl5.Name = "labelControl5";
+            this.labelControl5.Size = new System.Drawing.Size(72, 16);
+            this.labelControl5.TabIndex = 1;
+            this.labelControl5.Text = "รหัสไปรษณีย์";
+            // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl4.Location = new System.Drawing.Point(106, 15);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(25, 16);
+            this.labelControl4.TabIndex = 1;
+            this.labelControl4.Text = "ที่อยู่";
+            // 
+            // txtTaxId
+            // 
+            this.txtTaxId.Location = new System.Drawing.Point(140, 162);
+            this.txtTaxId.Name = "txtTaxId";
+            this.txtTaxId.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtTaxId.Properties.Appearance.Options.UseFont = true;
+            this.txtTaxId.Properties.MaxLength = 15;
+            this.txtTaxId.Size = new System.Drawing.Size(150, 22);
+            this.txtTaxId.TabIndex = 10;
+            this.txtTaxId.EditValueChanged += new System.EventHandler(this.txtTaxId_EditValueChanged);
+            // 
+            // txtOrgNum
+            // 
+            this.txtOrgNum.EditValue = "0";
+            this.txtOrgNum.Location = new System.Drawing.Point(394, 162);
+            this.txtOrgNum.Name = "txtOrgNum";
+            this.txtOrgNum.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtOrgNum.Properties.Appearance.Options.UseFont = true;
+            this.txtOrgNum.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtOrgNum.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtOrgNum.Properties.Mask.EditMask = "n0";
+            this.txtOrgNum.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtOrgNum.Properties.MaxLength = 5;
+            this.txtOrgNum.Size = new System.Drawing.Size(54, 22);
+            this.txtOrgNum.TabIndex = 11;
+            this.txtOrgNum.EditValueChanged += new System.EventHandler(this.txtOrgNum_EditValueChanged);
+            // 
+            // txtZipCod
+            // 
+            this.txtZipCod.Location = new System.Drawing.Point(526, 62);
+            this.txtZipCod.Name = "txtZipCod";
+            this.txtZipCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtZipCod.Properties.Appearance.Options.UseFont = true;
+            this.txtZipCod.Properties.MaxLength = 5;
+            this.txtZipCod.Size = new System.Drawing.Size(86, 22);
+            this.txtZipCod.TabIndex = 6;
+            this.txtZipCod.EditValueChanged += new System.EventHandler(this.txtZipCod_EditValueChanged);
+            // 
+            // txtAddr03
+            // 
+            this.txtAddr03.Location = new System.Drawing.Point(140, 62);
+            this.txtAddr03.Name = "txtAddr03";
+            this.txtAddr03.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAddr03.Properties.Appearance.Options.UseFont = true;
+            this.txtAddr03.Properties.MaxLength = 30;
+            this.txtAddr03.Size = new System.Drawing.Size(293, 22);
+            this.txtAddr03.TabIndex = 5;
+            this.txtAddr03.EditValueChanged += new System.EventHandler(this.txtAddr03_EditValueChanged);
+            // 
+            // txtContact
+            // 
+            this.txtContact.Location = new System.Drawing.Point(140, 112);
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtContact.Properties.Appearance.Options.UseFont = true;
+            this.txtContact.Properties.MaxLength = 40;
+            this.txtContact.Size = new System.Drawing.Size(472, 22);
+            this.txtContact.TabIndex = 8;
+            this.txtContact.EditValueChanged += new System.EventHandler(this.txtContact_EditValueChanged);
+            // 
+            // txtTelNum
+            // 
+            this.txtTelNum.Location = new System.Drawing.Point(140, 87);
+            this.txtTelNum.Name = "txtTelNum";
+            this.txtTelNum.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtTelNum.Properties.Appearance.Options.UseFont = true;
+            this.txtTelNum.Properties.MaxLength = 50;
+            this.txtTelNum.Size = new System.Drawing.Size(472, 22);
+            this.txtTelNum.TabIndex = 7;
+            this.txtTelNum.EditValueChanged += new System.EventHandler(this.txtTelNum_EditValueChanged);
+            // 
+            // txtAddr02
+            // 
+            this.txtAddr02.Location = new System.Drawing.Point(140, 37);
+            this.txtAddr02.Name = "txtAddr02";
+            this.txtAddr02.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAddr02.Properties.Appearance.Options.UseFont = true;
+            this.txtAddr02.Properties.MaxLength = 50;
+            this.txtAddr02.Size = new System.Drawing.Size(472, 22);
+            this.txtAddr02.TabIndex = 4;
+            this.txtAddr02.EditValueChanged += new System.EventHandler(this.txtAddr02_EditValueChanged);
+            // 
+            // txtAddr01
+            // 
+            this.txtAddr01.Location = new System.Drawing.Point(140, 12);
+            this.txtAddr01.Name = "txtAddr01";
+            this.txtAddr01.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtAddr01.Properties.Appearance.Options.UseFont = true;
+            this.txtAddr01.Properties.MaxLength = 50;
+            this.txtAddr01.Size = new System.Drawing.Size(472, 22);
+            this.txtAddr01.TabIndex = 3;
+            this.txtAddr01.EditValueChanged += new System.EventHandler(this.txtAddr01_EditValueChanged);
             // 
             // panelControl2
             // 
@@ -216,241 +397,14 @@
             this.panelControl2.Size = new System.Drawing.Size(722, 152);
             this.panelControl2.TabIndex = 2;
             // 
-            // labelControl4
+            // labelControl16
             // 
-            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl4.Location = new System.Drawing.Point(106, 15);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(25, 16);
-            this.labelControl4.TabIndex = 1;
-            this.labelControl4.Text = "ที่อยู่";
-            // 
-            // txtAddr01
-            // 
-            this.txtAddr01.Location = new System.Drawing.Point(140, 12);
-            this.txtAddr01.Name = "txtAddr01";
-            this.txtAddr01.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAddr01.Properties.Appearance.Options.UseFont = true;
-            this.txtAddr01.Size = new System.Drawing.Size(472, 22);
-            this.txtAddr01.TabIndex = 2;
-            this.txtAddr01.EditValueChanged += new System.EventHandler(this.txtAddr01_EditValueChanged);
-            // 
-            // txtAddr02
-            // 
-            this.txtAddr02.Location = new System.Drawing.Point(140, 37);
-            this.txtAddr02.Name = "txtAddr02";
-            this.txtAddr02.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAddr02.Properties.Appearance.Options.UseFont = true;
-            this.txtAddr02.Size = new System.Drawing.Size(472, 22);
-            this.txtAddr02.TabIndex = 2;
-            this.txtAddr02.EditValueChanged += new System.EventHandler(this.txtAddr02_EditValueChanged);
-            // 
-            // txtAddr03
-            // 
-            this.txtAddr03.Location = new System.Drawing.Point(140, 62);
-            this.txtAddr03.Name = "txtAddr03";
-            this.txtAddr03.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtAddr03.Properties.Appearance.Options.UseFont = true;
-            this.txtAddr03.Size = new System.Drawing.Size(293, 22);
-            this.txtAddr03.TabIndex = 2;
-            this.txtAddr03.EditValueChanged += new System.EventHandler(this.txtAddr03_EditValueChanged);
-            // 
-            // labelControl5
-            // 
-            this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl5.Location = new System.Drawing.Point(448, 65);
-            this.labelControl5.Name = "labelControl5";
-            this.labelControl5.Size = new System.Drawing.Size(72, 16);
-            this.labelControl5.TabIndex = 1;
-            this.labelControl5.Text = "รหัสไปรษณีย์";
-            // 
-            // txtZipCod
-            // 
-            this.txtZipCod.Location = new System.Drawing.Point(526, 62);
-            this.txtZipCod.Name = "txtZipCod";
-            this.txtZipCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtZipCod.Properties.Appearance.Options.UseFont = true;
-            this.txtZipCod.Size = new System.Drawing.Size(86, 22);
-            this.txtZipCod.TabIndex = 2;
-            this.txtZipCod.EditValueChanged += new System.EventHandler(this.txtZipCod_EditValueChanged);
-            // 
-            // labelControl6
-            // 
-            this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl6.Location = new System.Drawing.Point(84, 90);
-            this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(47, 16);
-            this.labelControl6.TabIndex = 1;
-            this.labelControl6.Text = "โทรศัพท์";
-            // 
-            // txtTelNum
-            // 
-            this.txtTelNum.Location = new System.Drawing.Point(140, 87);
-            this.txtTelNum.Name = "txtTelNum";
-            this.txtTelNum.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTelNum.Properties.Appearance.Options.UseFont = true;
-            this.txtTelNum.Size = new System.Drawing.Size(472, 22);
-            this.txtTelNum.TabIndex = 2;
-            this.txtTelNum.EditValueChanged += new System.EventHandler(this.txtTelNum_EditValueChanged);
-            // 
-            // labelControl7
-            // 
-            this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl7.Location = new System.Drawing.Point(75, 115);
-            this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(56, 16);
-            this.labelControl7.TabIndex = 1;
-            this.labelControl7.Text = "ชื่อผู้ติดต่อ";
-            // 
-            // txtContact
-            // 
-            this.txtContact.Location = new System.Drawing.Point(140, 112);
-            this.txtContact.Name = "txtContact";
-            this.txtContact.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtContact.Properties.Appearance.Options.UseFont = true;
-            this.txtContact.Size = new System.Drawing.Size(472, 22);
-            this.txtContact.TabIndex = 2;
-            this.txtContact.EditValueChanged += new System.EventHandler(this.txtContact_EditValueChanged);
-            // 
-            // labelControl8
-            // 
-            this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl8.Location = new System.Drawing.Point(81, 140);
-            this.labelControl8.Name = "labelControl8";
-            this.labelControl8.Size = new System.Drawing.Size(50, 16);
-            this.labelControl8.TabIndex = 1;
-            this.labelControl8.Text = "หมายเหตุ";
-            // 
-            // labelControl9
-            // 
-            this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl9.Location = new System.Drawing.Point(12, 165);
-            this.labelControl9.Name = "labelControl9";
-            this.labelControl9.Size = new System.Drawing.Size(119, 16);
-            this.labelControl9.TabIndex = 1;
-            this.labelControl9.Text = "เลขประจำตัวผู้เสียภาษี";
-            // 
-            // txtTaxId
-            // 
-            this.txtTaxId.Location = new System.Drawing.Point(140, 162);
-            this.txtTaxId.Name = "txtTaxId";
-            this.txtTaxId.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtTaxId.Properties.Appearance.Options.UseFont = true;
-            this.txtTaxId.Size = new System.Drawing.Size(150, 22);
-            this.txtTaxId.TabIndex = 2;
-            this.txtTaxId.EditValueChanged += new System.EventHandler(this.txtTaxId_EditValueChanged);
-            // 
-            // labelControl10
-            // 
-            this.labelControl10.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl10.Location = new System.Drawing.Point(347, 165);
-            this.labelControl10.Name = "labelControl10";
-            this.labelControl10.Size = new System.Drawing.Size(41, 16);
-            this.labelControl10.TabIndex = 1;
-            this.labelControl10.Text = "สาขา #";
-            // 
-            // txtOrgNum
-            // 
-            this.txtOrgNum.EditValue = "0";
-            this.txtOrgNum.Location = new System.Drawing.Point(394, 162);
-            this.txtOrgNum.Name = "txtOrgNum";
-            this.txtOrgNum.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtOrgNum.Properties.Appearance.Options.UseFont = true;
-            this.txtOrgNum.Properties.Appearance.Options.UseTextOptions = true;
-            this.txtOrgNum.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.txtOrgNum.Properties.Mask.EditMask = "n0";
-            this.txtOrgNum.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtOrgNum.Properties.MaxLength = 5;
-            this.txtOrgNum.Size = new System.Drawing.Size(54, 22);
-            this.txtOrgNum.TabIndex = 2;
-            this.txtOrgNum.EditValueChanged += new System.EventHandler(this.txtOrgNum_EditValueChanged);
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl11.Location = new System.Drawing.Point(454, 165);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(156, 16);
-            this.labelControl11.TabIndex = 1;
-            this.labelControl11.Text = "[ 0=สำนักงานใหญ่, -1=ว่าง ]";
-            // 
-            // cbRemark
-            // 
-            this.cbRemark.Location = new System.Drawing.Point(140, 137);
-            this.cbRemark.Name = "cbRemark";
-            this.cbRemark.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cbRemark.Properties.Appearance.Options.UseFont = true;
-            this.cbRemark.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbRemark.Size = new System.Drawing.Size(472, 22);
-            this.cbRemark.TabIndex = 0;
-            this.cbRemark.EditValueChanged += new System.EventHandler(this.cbRemark_EditValueChanged);
-            // 
-            // labelControl12
-            // 
-            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl12.Location = new System.Drawing.Point(60, 18);
-            this.labelControl12.Name = "labelControl12";
-            this.labelControl12.Size = new System.Drawing.Size(71, 16);
-            this.labelControl12.TabIndex = 1;
-            this.labelControl12.Text = "ประเภทลูกค้า";
-            // 
-            // cbCusTyp
-            // 
-            this.cbCusTyp.Location = new System.Drawing.Point(140, 15);
-            this.cbCusTyp.Name = "cbCusTyp";
-            this.cbCusTyp.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cbCusTyp.Properties.Appearance.Options.UseFont = true;
-            this.cbCusTyp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbCusTyp.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbCusTyp.Size = new System.Drawing.Size(176, 22);
-            this.cbCusTyp.TabIndex = 0;
-            this.cbCusTyp.SelectedIndexChanged += new System.EventHandler(this.cbCusTyp_SelectedIndexChanged);
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl13.Location = new System.Drawing.Point(60, 43);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(56, 16);
-            this.labelControl13.TabIndex = 1;
-            this.labelControl13.Text = "เลขที่บัญชี";
-            // 
-            // cbAccNum
-            // 
-            this.cbAccNum.Location = new System.Drawing.Point(140, 40);
-            this.cbAccNum.Name = "cbAccNum";
-            this.cbAccNum.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cbAccNum.Properties.Appearance.Options.UseFont = true;
-            this.cbAccNum.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbAccNum.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbAccNum.Size = new System.Drawing.Size(241, 22);
-            this.cbAccNum.TabIndex = 0;
-            this.cbAccNum.SelectedIndexChanged += new System.EventHandler(this.cbAccNum_SelectedIndexChanged);
-            // 
-            // labelControl14
-            // 
-            this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl14.Location = new System.Drawing.Point(60, 68);
-            this.labelControl14.Name = "labelControl14";
-            this.labelControl14.Size = new System.Drawing.Size(67, 16);
-            this.labelControl14.TabIndex = 1;
-            this.labelControl14.Text = "พนักงานขาย";
-            // 
-            // cbSlmCod
-            // 
-            this.cbSlmCod.Location = new System.Drawing.Point(140, 65);
-            this.cbSlmCod.Name = "cbSlmCod";
-            this.cbSlmCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cbSlmCod.Properties.Appearance.Options.UseFont = true;
-            this.cbSlmCod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbSlmCod.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbSlmCod.Size = new System.Drawing.Size(241, 22);
-            this.cbSlmCod.TabIndex = 0;
-            this.cbSlmCod.SelectedIndexChanged += new System.EventHandler(this.cbSlmCod_SelectedIndexChanged);
+            this.labelControl16.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl16.Location = new System.Drawing.Point(60, 118);
+            this.labelControl16.Name = "labelControl16";
+            this.labelControl16.Size = new System.Drawing.Size(52, 16);
+            this.labelControl16.TabIndex = 1;
+            this.labelControl16.Text = "ขนส่งโดย";
             // 
             // labelControl15
             // 
@@ -461,27 +415,86 @@
             this.labelControl15.TabIndex = 1;
             this.labelControl15.Text = "เขตการขาย";
             // 
-            // cbAreaCod
+            // labelControl14
             // 
-            this.cbAreaCod.Location = new System.Drawing.Point(140, 90);
-            this.cbAreaCod.Name = "cbAreaCod";
-            this.cbAreaCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cbAreaCod.Properties.Appearance.Options.UseFont = true;
-            this.cbAreaCod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbAreaCod.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbAreaCod.Size = new System.Drawing.Size(176, 22);
-            this.cbAreaCod.TabIndex = 0;
-            this.cbAreaCod.SelectedIndexChanged += new System.EventHandler(this.cbAreaCod_SelectedIndexChanged);
+            this.labelControl14.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl14.Location = new System.Drawing.Point(60, 68);
+            this.labelControl14.Name = "labelControl14";
+            this.labelControl14.Size = new System.Drawing.Size(67, 16);
+            this.labelControl14.TabIndex = 1;
+            this.labelControl14.Text = "พนักงานขาย";
             // 
-            // labelControl16
+            // labelControl13
             // 
-            this.labelControl16.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl16.Location = new System.Drawing.Point(60, 118);
-            this.labelControl16.Name = "labelControl16";
-            this.labelControl16.Size = new System.Drawing.Size(52, 16);
-            this.labelControl16.TabIndex = 1;
-            this.labelControl16.Text = "ขนส่งโดย";
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl13.Location = new System.Drawing.Point(60, 43);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(56, 16);
+            this.labelControl13.TabIndex = 1;
+            this.labelControl13.Text = "เลขที่บัญชี";
+            // 
+            // labelControl18
+            // 
+            this.labelControl18.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl18.Location = new System.Drawing.Point(559, 18);
+            this.labelControl18.Name = "labelControl18";
+            this.labelControl18.Size = new System.Drawing.Size(14, 16);
+            this.labelControl18.TabIndex = 1;
+            this.labelControl18.Text = "วัน";
+            // 
+            // labelControl22
+            // 
+            this.labelControl22.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl22.Location = new System.Drawing.Point(431, 118);
+            this.labelControl22.Name = "labelControl22";
+            this.labelControl22.Size = new System.Drawing.Size(62, 16);
+            this.labelControl22.TabIndex = 1;
+            this.labelControl22.Text = "วงเงินอนุมัติ";
+            // 
+            // labelControl21
+            // 
+            this.labelControl21.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl21.Location = new System.Drawing.Point(455, 93);
+            this.labelControl21.Name = "labelControl21";
+            this.labelControl21.Size = new System.Drawing.Size(38, 16);
+            this.labelControl21.TabIndex = 1;
+            this.labelControl21.Text = "ส่วนลด";
+            // 
+            // labelControl20
+            // 
+            this.labelControl20.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl20.Location = new System.Drawing.Point(435, 68);
+            this.labelControl20.Name = "labelControl20";
+            this.labelControl20.Size = new System.Drawing.Size(58, 16);
+            this.labelControl20.TabIndex = 1;
+            this.labelControl20.Text = "ตารางราคา";
+            // 
+            // labelControl19
+            // 
+            this.labelControl19.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl19.Location = new System.Drawing.Point(388, 43);
+            this.labelControl19.Name = "labelControl19";
+            this.labelControl19.Size = new System.Drawing.Size(105, 16);
+            this.labelControl19.TabIndex = 1;
+            this.labelControl19.Text = "เงื่อนไขการชำระเงิน";
+            // 
+            // labelControl17
+            // 
+            this.labelControl17.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl17.Location = new System.Drawing.Point(459, 18);
+            this.labelControl17.Name = "labelControl17";
+            this.labelControl17.Size = new System.Drawing.Size(34, 16);
+            this.labelControl17.TabIndex = 1;
+            this.labelControl17.Text = "เครดิต";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl12.Location = new System.Drawing.Point(60, 18);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(71, 16);
+            this.labelControl12.TabIndex = 1;
+            this.labelControl12.Text = "ประเภทลูกค้า";
             // 
             // cbDlvBy
             // 
@@ -493,115 +506,47 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbDlvBy.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbDlvBy.Size = new System.Drawing.Size(176, 22);
-            this.cbDlvBy.TabIndex = 0;
+            this.cbDlvBy.TabIndex = 16;
             this.cbDlvBy.SelectedIndexChanged += new System.EventHandler(this.cbDlvBy_SelectedIndexChanged);
             // 
-            // labelControl17
+            // cbAreaCod
             // 
-            this.labelControl17.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl17.Location = new System.Drawing.Point(459, 18);
-            this.labelControl17.Name = "labelControl17";
-            this.labelControl17.Size = new System.Drawing.Size(34, 16);
-            this.labelControl17.TabIndex = 1;
-            this.labelControl17.Text = "เครดิต";
-            // 
-            // txtPayTrm
-            // 
-            this.txtPayTrm.EditValue = "0";
-            this.txtPayTrm.Location = new System.Drawing.Point(499, 15);
-            this.txtPayTrm.Name = "txtPayTrm";
-            this.txtPayTrm.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayTrm.Properties.Appearance.Options.UseFont = true;
-            this.txtPayTrm.Properties.Appearance.Options.UseTextOptions = true;
-            this.txtPayTrm.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.txtPayTrm.Properties.Mask.EditMask = "n0";
-            this.txtPayTrm.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
-            this.txtPayTrm.Size = new System.Drawing.Size(54, 22);
-            this.txtPayTrm.TabIndex = 2;
-            this.txtPayTrm.EditValueChanged += new System.EventHandler(this.txtPayTrm_EditValueChanged);
-            // 
-            // labelControl18
-            // 
-            this.labelControl18.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl18.Location = new System.Drawing.Point(559, 18);
-            this.labelControl18.Name = "labelControl18";
-            this.labelControl18.Size = new System.Drawing.Size(14, 16);
-            this.labelControl18.TabIndex = 1;
-            this.labelControl18.Text = "วัน";
-            // 
-            // labelControl19
-            // 
-            this.labelControl19.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl19.Location = new System.Drawing.Point(388, 43);
-            this.labelControl19.Name = "labelControl19";
-            this.labelControl19.Size = new System.Drawing.Size(105, 16);
-            this.labelControl19.TabIndex = 1;
-            this.labelControl19.Text = "เงื่อนไขการชำระเงิน";
-            // 
-            // txtPayCond
-            // 
-            this.txtPayCond.Location = new System.Drawing.Point(499, 40);
-            this.txtPayCond.Name = "txtPayCond";
-            this.txtPayCond.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtPayCond.Properties.Appearance.Options.UseFont = true;
-            this.txtPayCond.Size = new System.Drawing.Size(199, 22);
-            this.txtPayCond.TabIndex = 2;
-            this.txtPayCond.EditValueChanged += new System.EventHandler(this.txtPayCond_EditValueChanged);
-            // 
-            // labelControl20
-            // 
-            this.labelControl20.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl20.Location = new System.Drawing.Point(435, 68);
-            this.labelControl20.Name = "labelControl20";
-            this.labelControl20.Size = new System.Drawing.Size(58, 16);
-            this.labelControl20.TabIndex = 1;
-            this.labelControl20.Text = "ตารางราคา";
-            // 
-            // cbTabPr
-            // 
-            this.cbTabPr.Location = new System.Drawing.Point(499, 65);
-            this.cbTabPr.Name = "cbTabPr";
-            this.cbTabPr.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.cbTabPr.Properties.Appearance.Options.UseFont = true;
-            this.cbTabPr.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cbAreaCod.Location = new System.Drawing.Point(140, 90);
+            this.cbAreaCod.Name = "cbAreaCod";
+            this.cbAreaCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbAreaCod.Properties.Appearance.Options.UseFont = true;
+            this.cbAreaCod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbTabPr.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbTabPr.Size = new System.Drawing.Size(133, 22);
-            this.cbTabPr.TabIndex = 0;
-            this.cbTabPr.SelectedIndexChanged += new System.EventHandler(this.cbTabPr_SelectedIndexChanged);
+            this.cbAreaCod.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbAreaCod.Size = new System.Drawing.Size(176, 22);
+            this.cbAreaCod.TabIndex = 15;
+            this.cbAreaCod.SelectedIndexChanged += new System.EventHandler(this.cbAreaCod_SelectedIndexChanged);
             // 
-            // labelControl21
+            // cbSlmCod
             // 
-            this.labelControl21.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl21.Location = new System.Drawing.Point(455, 93);
-            this.labelControl21.Name = "labelControl21";
-            this.labelControl21.Size = new System.Drawing.Size(38, 16);
-            this.labelControl21.TabIndex = 1;
-            this.labelControl21.Text = "ส่วนลด";
+            this.cbSlmCod.Location = new System.Drawing.Point(140, 65);
+            this.cbSlmCod.Name = "cbSlmCod";
+            this.cbSlmCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbSlmCod.Properties.Appearance.Options.UseFont = true;
+            this.cbSlmCod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSlmCod.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbSlmCod.Size = new System.Drawing.Size(241, 22);
+            this.cbSlmCod.TabIndex = 14;
+            this.cbSlmCod.SelectedIndexChanged += new System.EventHandler(this.cbSlmCod_SelectedIndexChanged);
             // 
-            // txtDisc
+            // cbAccNum
             // 
-            this.txtDisc.Location = new System.Drawing.Point(499, 90);
-            this.txtDisc.Name = "txtDisc";
-            this.txtDisc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtDisc.Properties.Appearance.Options.UseFont = true;
-            this.txtDisc.Properties.Appearance.Options.UseTextOptions = true;
-            this.txtDisc.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.txtDisc.Properties.Mask.EditMask = "[+?|0-9][+?|0-9][+?|0-9][+?|0-9][+?|0-9][+?|0-9][+?|0-9][+?|0-9][+?|0-9][+?|0-9]";
-            this.txtDisc.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
-            this.txtDisc.Properties.Mask.ShowPlaceHolders = false;
-            this.txtDisc.Size = new System.Drawing.Size(116, 22);
-            this.txtDisc.TabIndex = 2;
-            this.txtDisc.EditValueChanged += new System.EventHandler(this.txtDisc_EditValueChanged);
-            // 
-            // labelControl22
-            // 
-            this.labelControl22.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl22.Location = new System.Drawing.Point(431, 118);
-            this.labelControl22.Name = "labelControl22";
-            this.labelControl22.Size = new System.Drawing.Size(62, 16);
-            this.labelControl22.TabIndex = 1;
-            this.labelControl22.Text = "วงเงินอนุมัติ";
+            this.cbAccNum.Location = new System.Drawing.Point(140, 40);
+            this.cbAccNum.Name = "cbAccNum";
+            this.cbAccNum.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbAccNum.Properties.Appearance.Options.UseFont = true;
+            this.cbAccNum.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbAccNum.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbAccNum.Size = new System.Drawing.Size(241, 22);
+            this.cbAccNum.TabIndex = 13;
+            this.cbAccNum.SelectedIndexChanged += new System.EventHandler(this.cbAccNum_SelectedIndexChanged);
             // 
             // txtCrLine
             // 
@@ -615,32 +560,99 @@
             this.txtCrLine.Properties.Mask.EditMask = "n2";
             this.txtCrLine.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtCrLine.Size = new System.Drawing.Size(116, 22);
-            this.txtCrLine.TabIndex = 2;
+            this.txtCrLine.TabIndex = 21;
             this.txtCrLine.EditValueChanged += new System.EventHandler(this.txtCrLine_EditValueChanged);
             // 
-            // simpleButton1
+            // txtDisc
             // 
-            this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(275, 446);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(95, 29);
-            this.simpleButton1.TabIndex = 3;
-            this.simpleButton1.Text = "ตกลง  <F9>";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.txtDisc.Location = new System.Drawing.Point(499, 90);
+            this.txtDisc.Name = "txtDisc";
+            this.txtDisc.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtDisc.Properties.Appearance.Options.UseFont = true;
+            this.txtDisc.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtDisc.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtDisc.Properties.Mask.EditMask = "[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?";
+            this.txtDisc.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
+            this.txtDisc.Properties.Mask.ShowPlaceHolders = false;
+            this.txtDisc.Size = new System.Drawing.Size(116, 22);
+            this.txtDisc.TabIndex = 20;
+            this.txtDisc.EditValueChanged += new System.EventHandler(this.txtDisc_EditValueChanged);
             // 
-            // simpleButton2
+            // txtPayCond
             // 
-            this.simpleButton2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.simpleButton2.Location = new System.Drawing.Point(376, 446);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(95, 29);
-            this.simpleButton2.TabIndex = 3;
-            this.simpleButton2.Text = "ยกเลิก  <Esc>";
+            this.txtPayCond.Location = new System.Drawing.Point(499, 40);
+            this.txtPayCond.Name = "txtPayCond";
+            this.txtPayCond.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPayCond.Properties.Appearance.Options.UseFont = true;
+            this.txtPayCond.Properties.MaxLength = 25;
+            this.txtPayCond.Size = new System.Drawing.Size(199, 22);
+            this.txtPayCond.TabIndex = 18;
+            this.txtPayCond.EditValueChanged += new System.EventHandler(this.txtPayCond_EditValueChanged);
+            // 
+            // txtPayTrm
+            // 
+            this.txtPayTrm.EditValue = "0";
+            this.txtPayTrm.Location = new System.Drawing.Point(499, 15);
+            this.txtPayTrm.Name = "txtPayTrm";
+            this.txtPayTrm.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.txtPayTrm.Properties.Appearance.Options.UseFont = true;
+            this.txtPayTrm.Properties.Appearance.Options.UseTextOptions = true;
+            this.txtPayTrm.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtPayTrm.Properties.Mask.EditMask = "n0";
+            this.txtPayTrm.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
+            this.txtPayTrm.Size = new System.Drawing.Size(54, 22);
+            this.txtPayTrm.TabIndex = 17;
+            this.txtPayTrm.EditValueChanged += new System.EventHandler(this.txtPayTrm_EditValueChanged);
+            // 
+            // cbTabPr
+            // 
+            this.cbTabPr.Location = new System.Drawing.Point(499, 65);
+            this.cbTabPr.Name = "cbTabPr";
+            this.cbTabPr.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbTabPr.Properties.Appearance.Options.UseFont = true;
+            this.cbTabPr.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbTabPr.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbTabPr.Size = new System.Drawing.Size(133, 22);
+            this.cbTabPr.TabIndex = 19;
+            this.cbTabPr.SelectedIndexChanged += new System.EventHandler(this.cbTabPr_SelectedIndexChanged);
+            // 
+            // cbCusTyp
+            // 
+            this.cbCusTyp.Location = new System.Drawing.Point(140, 15);
+            this.cbCusTyp.Name = "cbCusTyp";
+            this.cbCusTyp.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbCusTyp.Properties.Appearance.Options.UseFont = true;
+            this.cbCusTyp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbCusTyp.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbCusTyp.Size = new System.Drawing.Size(176, 22);
+            this.cbCusTyp.TabIndex = 12;
+            this.cbCusTyp.SelectedIndexChanged += new System.EventHandler(this.cbCusTyp_SelectedIndexChanged);
+            // 
+            // btnOK
+            // 
+            this.btnOK.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnOK.Appearance.Options.UseFont = true;
+            this.btnOK.Location = new System.Drawing.Point(275, 446);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(95, 29);
+            this.btnOK.TabIndex = 22;
+            this.btnOK.Text = "ตกลง  <F9>";
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(376, 446);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(95, 29);
+            this.btnCancel.TabIndex = 23;
+            this.btnCancel.Text = "ยกเลิก  <Esc>";
             // 
             // splashScreenManager1
             // 
@@ -652,8 +664,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(746, 481);
-            this.Controls.Add(this.simpleButton2);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOK);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.cbPreNam);
@@ -678,28 +690,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTaxId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtOrgNum.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtZipCod.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddr03.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContact.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtTelNum.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddr02.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAddr01.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             this.panelControl2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAddr01.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAddr02.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtAddr03.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtZipCod.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTelNum.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContact.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTaxId.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtOrgNum.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbRemark.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbCusTyp.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbAccNum.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbSlmCod.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbAreaCod.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbDlvBy.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPayTrm.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPayCond.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbTabPr.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtDisc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAreaCod.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbSlmCod.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbAccNum.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCrLine.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtDisc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayCond.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPayTrm.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbTabPr.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbCusTyp.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -753,8 +765,8 @@
         private DevExpress.XtraEditors.TextEdit txtCrLine;
         private DevExpress.XtraEditors.TextEdit txtDisc;
         private DevExpress.XtraEditors.ComboBoxEdit cbTabPr;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton btnOK;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

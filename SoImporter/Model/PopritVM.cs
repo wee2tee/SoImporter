@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SoImporter.MiscClass;
 
 namespace SoImporter.Model
 {
@@ -10,6 +11,7 @@ namespace SoImporter.Model
         public int Id { get; set; }
         public string PoNum { get; set; }
         public DateTime PoDat { get; set; }
+        public string FlgVat { get; set; }
         public string DlvBy { get; set; }
         public DateTime? DlvDat1 { get; set; }
         public DateTime? DlvDat2 { get; set; }
@@ -26,6 +28,15 @@ namespace SoImporter.Model
         public decimal NetAmt { get; set; }
         public string CreBy { get; set; }
         public DateTime CreDate { get; set; }
+        public string DealerCode { get; set; }
+        public int? DealerType { get; set; }
+        public string _DealerType
+        {
+            get
+            {
+                return this.DealerType.GetDealerTypeString();
+            }
+        }
         //public string CustPreName { get; set; }
         //public string CustName { get; set; }
         //public string CustAddr01 { get; set; }

@@ -34,22 +34,35 @@ namespace SoImporter.SubForm
         };
 
         public Armas armas;
+        private Armas pattern_ar;
 
         public ArMasDialog()
         {
             InitializeComponent();
         }
 
-        public ArMasDialog(MainForm main_form) : this()
+        public ArMasDialog(MainForm main_form, Armas armas) : this()
         {
             this.main_form = main_form;
+            this.pattern_ar = armas;
         }
 
         private void ArMasDialog_Load(object sender, EventArgs e)
         {
             this.BackColor = MainForm.express_theme_color;
-            this.armas = new Armas();
+            this.armas = new Armas(true);
             this.splashScreenManager1.ShowWaitForm();
+
+            this.cbPreNam.Text = this.pattern_ar.prenam;
+            this.txtCusNam.Text = this.pattern_ar.cusnam;
+            this.txtAddr01.Text = this.pattern_ar.addr01;
+            this.txtAddr02.Text = this.pattern_ar.addr02;
+            this.txtAddr03.Text = this.pattern_ar.addr03;
+            this.txtZipCod.Text = this.pattern_ar.zipcod;
+            this.txtTelNum.Text = this.pattern_ar.telnum;
+            this.txtContact.Text = this.pattern_ar.contact;
+            this.txtTaxId.Text = this.pattern_ar.taxid;
+            this.txtOrgNum.Text = this.pattern_ar.orgnum.ToString();
 
             // get all istab
             this.istab = MainForm.LoadIstabFromDBF(this.main_form.config);
@@ -208,9 +221,13 @@ namespace SoImporter.SubForm
             this.armas.crline = Convert.ToDouble(((TextEdit)sender).Text.Replace(",", ""));
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
+        private void btnOK_Click(object sender, EventArgs e)
         {
-            MainForm.inser
+            if (MainForm.InsertArmas(this.main_form.config, this.armas) == true)
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
     }
 }
