@@ -33,7 +33,11 @@
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnArmas = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.cbLocCod = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLocCod.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -61,10 +65,10 @@
             this.btnOK.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnOK.Appearance.Options.UseFont = true;
-            this.btnOK.Location = new System.Drawing.Point(164, 94);
+            this.btnOK.Location = new System.Drawing.Point(164, 129);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(91, 28);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 3;
             this.btnOK.Text = "ตกลง <F9>";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -74,10 +78,10 @@
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(261, 94);
+            this.btnCancel.Location = new System.Drawing.Point(261, 129);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 28);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "ยกเลิก <Esc>";
             // 
             // btnArmas
@@ -92,16 +96,44 @@
             this.btnArmas.Text = "เพิ่มรายละเอียดลูกค้าในโปรแกรม Express";
             this.btnArmas.Click += new System.EventHandler(this.btnArmas_Click);
             // 
+            // labelControl2
+            // 
+            this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl2.Location = new System.Drawing.Point(23, 91);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(89, 16);
+            this.labelControl2.TabIndex = 0;
+            this.labelControl2.Text = "ตัดสินค้าจากคลัง";
+            // 
+            // cbLocCod
+            // 
+            this.cbLocCod.Location = new System.Drawing.Point(118, 88);
+            this.cbLocCod.Name = "cbLocCod";
+            this.cbLocCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbLocCod.Properties.Appearance.Options.UseFont = true;
+            this.cbLocCod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbLocCod.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cbLocCod.Size = new System.Drawing.Size(215, 22);
+            this.cbLocCod.TabIndex = 2;
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
+            // 
             // OesoConfirmDialog
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 138);
+            this.ClientSize = new System.Drawing.Size(514, 173);
+            this.Controls.Add(this.cbLocCod);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnArmas);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtRemark);
+            this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -114,6 +146,7 @@
             this.Text = "OesoConfirmDialog";
             this.Load += new System.EventHandler(this.OesoConfirmDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbLocCod.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,5 +159,8 @@
         private DevExpress.XtraEditors.SimpleButton btnOK;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnArmas;
+        private DevExpress.XtraEditors.LabelControl labelControl2;
+        private DevExpress.XtraEditors.ComboBoxEdit cbLocCod;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

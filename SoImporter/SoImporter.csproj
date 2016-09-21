@@ -96,6 +96,7 @@
     <Compile Include="MiscClass\Helper.cs" />
     <Compile Include="Model\ApiAccessibilities.cs" />
     <Compile Include="Model\Armas.cs" />
+    <Compile Include="Model\Artrnrm.cs" />
     <Compile Include="Model\CustVM.cs" />
     <Compile Include="Model\Glacc.cs" />
     <Compile Include="Model\InternalUsers.cs" />

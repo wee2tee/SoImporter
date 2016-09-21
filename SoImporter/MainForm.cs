@@ -197,110 +197,51 @@ namespace SoImporter
 
         private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //Armas ar = new Armas();
             Oeso so = new Oeso();
             List<Oesoit> soit = new List<Oesoit>();
             if (this.PrepareInsertItem(so, soit) == false)
                 return;
 
-            //List<Oeso> oeso = LoadOesoFromDBF(this.config);
-            //List<Isrun> isrun = LoadIsrunFromDBF(this.config);
-
-            //if (oeso == null)
-            //{
-            //    return;
-            //}
-
-            //string last_sonum = isrun.Where(i => i.doctyp == this.config.DocPrefix).FirstOrDefault().docnum;
-            //string next_sonum = this.config.DocPrefix + (Convert.ToInt32(last_sonum) + 1).ToString().FillZeroLeft(7);
-
-            //if (File.Exists(this.config.ExpressDataPath + @"\OESO.DBF"))
-            //    File.Copy(this.config.ExpressDataPath + @"\OESO.DBF", this.config.ExpressDataPath + @"\OESO.DBF.BAK", true);
-
-            //if (File.Exists(this.config.ExpressDataPath + @"\OESOIT.DBF"))
-            //    File.Copy(this.config.ExpressDataPath + @"\OESOIT.DBF", this.config.ExpressDataPath + @"\OESOIT.DBF.BAK", true);
-
-            //Oeso o = new Oeso
-            //{
-            //    sorectyp = "0",
-            //    sonum = next_sonum,
-            //    sodat = DateTime.Now,
-            //    flgvat = "2",
-            //    depcod = "",
-            //    slmcod = "",
-            //    cuscod = "",
-            //    shipto = "",
-            //    youref = "",
-            //    rff = "",
-            //    areacod = "",
-            //    paytrm = 0,
-            //    dlvdat = null,
-            //    dlvtim = "",
-            //    dlvdat_it = "",
-            //    nxtseq = "",
-            //    amount = 999,
-            //    disc = "",
-            //    discamt = 99,
-            //    total = 999,
-            //    amtrat0 = 99,
-            //    vatrat = 99,
-            //    vatamt = 999,
-            //    netamt = 999,
-            //    netval = 999,
-            //    cmpldat = null,
-            //    docstat = "N",
-            //    dlvby = "",
-            //    userid = this.logedin_user.UserName,
-            //    chgdat = null,
-            //    userprn = "",
-            //    prndat = null,
-            //    prncnt = 0,
-            //    prntim = "",
-            //    authid = "",
-            //    approve = null,
-            //    billto = "",
-            //    orgnum = 0
-            //};
-
-            //if (InsertOeso(this.config, o))
-            //{
-            //    MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + o.sonum + "\" เรียบร้อย");
-            //}
+            try
+            {
+                if (InsertOeso(this.config, so))
+                {
+                    if(UpdateIsrunDocnum(this.config, so.sonum))
+                    {
+                        foreach (var item in soit)
+                        {
+                            if(InsertOesoit(this.config, item))
+                            {
+                                InsertArtrnrm(this.config, item, "อ้างถึง " + item.ponum);
+                            }
+                        }
+                        MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + so.sonum + "\" เรียบร้อย");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
 
         private bool PrepareInsertItem(Oeso oeso, List<Oesoit> oesoits)
         {
             #region collecting selected row
             List<PopritVM> poprit = new List<PopritVM>();
-            Armas armas = new Armas();
             foreach (int row_handle in this.gridView1.GetSelectedRows())
             {
                 if(this.gridView1.GetRowCellValue(row_handle, colId) != null)
                 {
                     int id = (int)this.gridView1.GetRowCellValue(row_handle, colId);
                     poprit.Add(
-                        new PopritVM
-                        {
-                            Id = this.poprit.Where(p => p.Id == id).First().Id,
-                            CreBy = this.poprit.Where(p => p.Id == id).First().CreBy,
-                            DealerCode = this.poprit.Where(p => p.Id == id).First().DealerCode,
-                            DealerType = this.poprit.Where(p => p.Id == id).First().DealerType,
-                            FlgVat = this.poprit.Where(p => p.Id == id).First().FlgVat
-                        }
+                        this.poprit.Where(p => p.Id == id).FirstOrDefault()
                     );
-
-                    armas.prenam = this.poprit.Where(p => p.Id == id).First().cust.First().PreName;
-                    armas.cusnam = this.poprit.Where(p => p.Id == id).First().cust.First().Name;
-                    armas.addr01 = this.poprit.Where(p => p.Id == id).First().cust.First().Addr01;
-                    armas.addr02 = this.poprit.Where(p => p.Id == id).First().cust.First().Addr02;
-                    armas.addr03 = this.poprit.Where(p => p.Id == id).First().cust.First().Addr03;
-                    armas.zipcod = this.poprit.Where(p => p.Id == id).First().cust.First().ZipCod;
-                    armas.telnum = this.poprit.Where(p => p.Id == id).First().cust.First().TelNum;
-                    armas.taxid = this.poprit.Where(p => p.Id == id).First().cust.First().TaxId;
                 }
             };
             #endregion collecting selected row
 
+            #region preparing Sonum
             List<Isrun> isrun = LoadIsrunFromDBF(this.config);
             if (isrun.Count() == 0)
             {
@@ -310,7 +251,6 @@ namespace SoImporter
                 return false;
             }
 
-            #region preparing Sonum
             string next_sonum = this.config.DocPrefix + isrun.Where(i => i.doctyp == this.config.DocPrefix).FirstOrDefault().docnum.Trim();
             if (LoadOesoFromDBF(this.config).Where(s => s.sonum.Trim() == next_sonum).Count() > 0)
             {
@@ -330,40 +270,76 @@ namespace SoImporter
             oeso.sodat = DateTime.Now;
             oeso.flgvat = poprit.First().FlgVat;
             oeso.depcod = "";
-            oeso.slmcod = "";
-            //oeso.cuscod = poprit.First().DealerType == (int)DEALER_TYPE.สำนักงานบัญชีไฮเทค ? "" : poprit.First().DealerCode;
+            oeso.slmcod = poprit.First().DealerCode;
+            oeso.cuscod = "";
             oeso.shipto = "";
-            //oeso.youref = "";
+            oeso.youref = "";
             oeso.rff = "";
-                //areacod = "",
-                //paytrm = 0,
-                //dlvdat = null,
-                //dlvtim = "",
-                //dlvdat_it = "",
-                //nxtseq = "",
-                //amount = 999,
-                //disc = "",
-                //discamt = 99,
-                //total = 999,
-                //amtrat0 = 99,
-                //vatrat = 99,
-                //vatamt = 999,
-                //netamt = 999,
-                //netval = 999,
-                //cmpldat = null,
-                //docstat = "N",
-                //dlvby = "",
-                //userid = this.logedin_user.UserName,
-                //chgdat = null,
-                //userprn = "",
-                //prndat = null,
-                //prncnt = 0,
-                //prntim = "",
-                //authid = "",
-                //approve = null,
-                //billto = "",
-                //orgnum = 0
+            oeso.areacod = "";
+            oeso.paytrm = 0;
+            oeso.dlvdat = null;
+            oeso.dlvtim = "";
+            oeso.dlvdat_it = "Y";
+            oeso.nxtseq = poprit.Count.ToString().PadLeft(3);
+            oeso.amount = (double)poprit.Sum(p => p.TrnVal);
+            oeso.disc = "";
+            oeso.discamt = 0d;
+            oeso.total = (double)poprit.Sum(p => p.TrnVal) - oeso.discamt;
+            oeso.amtrat0 = 0d;
+            oeso.vatrat = poprit.First().VatAmt > 0 ? 7 : 0;
+            oeso.vatamt = (double)poprit.Sum(p => p.VatAmt);
+            oeso.netamt = oeso.total + oeso.vatamt;
+            oeso.netval = oeso.netamt;
+            oeso.cmpldat = null;
+            oeso.docstat = "N";
+            oeso.dlvby = "";
+            oeso.userid = this.logedin_user.UserName;
+            oeso.chgdat = null;
+            oeso.userprn = "";
+            oeso.prndat = null;
+            oeso.prncnt = 0;
+            oeso.prntim = "";
+            oeso.authid = "";
+            oeso.approve = null;
+            oeso.billto = "";
+            oeso.orgnum = 0;
             #endregion preparing oeso
+
+            #region preparing oesoit
+            int seq = 1;
+            foreach (var item in poprit)
+            {
+                oesoits.Add(new Oesoit
+                {
+                    sorectyp = "0",
+                    sonum = next_sonum,
+                    seqnum = seq.ToString().PadLeft(3),
+                    sodat = oeso.sodat,
+                    dlvdat = (item.DlvDat1 != null ? item.DlvDat1 : item.DlvDat2),
+                    cuscod = oeso.cuscod,
+                    stkcod = item.StkCod,
+                    loccod = "",
+                    stkdes = item.StkDes,
+                    depcod = "",
+                    vatcod = "",
+                    free = "",
+                    ordqty = (double)item.OrdQty,
+                    cancelqty = 0d,
+                    canceltyp = "",
+                    canceldat = null,
+                    remqty = (double)item.OrdQty,
+                    tfactor = 1d,
+                    unitpr = (double)item.UnitPrice,
+                    tqucod = item.TquCod,
+                    disc = item.DiscAmt.ToString(),
+                    discamt = (double)item.DiscAmt,
+                    trnval = (double)item.TrnVal,
+                    packing = "",
+                    ponum = item.PoNum
+                });
+                seq++;
+            }
+            #endregion preparing oesoit
 
             if (poprit.GroupBy(d => d.CreBy).Distinct().Count() > 1)  // เลือกตัวแทนมากกว่า 1 ราย
             {
@@ -389,13 +365,14 @@ namespace SoImporter
             else
             {
                 #region confirm so
-                OesoConfirmDialog conf = new OesoConfirmDialog(this, oeso, armas, poprit.First().DealerType);
+                OesoConfirmDialog conf = new OesoConfirmDialog(this, oeso, oesoits, poprit.First());
                 if (conf.ShowDialog() != DialogResult.OK)
                 {
                     oeso = null;
                     oesoits = null;
                     return false;
                 }
+
                 Console.WriteLine(".. >> " + oeso.cuscod);
 
                 return true;
@@ -687,6 +664,90 @@ namespace SoImporter
             return false;
         }
 
+        public static bool InsertOesoit(ConfigValue config, Oesoit oesoit)
+        {
+            try
+            {
+                using (OleDbConnection conn = createConnection(config))
+                {
+                    using (OleDbCommand cmd = new OleDbCommand())
+                    {
+                        string empty_date = "CTOD('  /  /  ')";
+
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "Insert Into Oesoit ([sorectyp],[sonum],[seqnum],[sodat],[dlvdat],[cuscod],[stkcod],[loccod],[stkdes],[depcod],[vatcod],[free],[ordqty],[cancelqty],[canceltyp],[canceldat],[remqty],[tfactor],[unitpr],[tqucod],[disc],[discamt],[trnval],[packing]) Values ";
+                        cmd.CommandText += "('" + oesoit.sorectyp + "', "; // sorectyp
+                        cmd.CommandText += "'" + oesoit.sonum + "', "; // sonum
+                        cmd.CommandText += "'" + oesoit.seqnum + "', "; // seqnum
+                        cmd.CommandText += "CTOD('" + oesoit.sodat.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "'),"; // sodat
+                        cmd.CommandText += oesoit.dlvdat.HasValue ? "CTOD('" + oesoit.dlvdat.Value.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "'), " : empty_date + ", "; // dlvdat
+                        //"CTOD('" + oesoit.dlvdat.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "'),"; // dlvdat
+                        cmd.CommandText += "'" + oesoit.cuscod + "', "; // cuscod
+                        cmd.CommandText += "'" + oesoit.stkcod + "', "; // stkcod
+                        cmd.CommandText += "'" + oesoit.loccod + "', "; // loccod
+                        cmd.CommandText += "'" + oesoit.stkdes + "', "; //stkdes
+                        cmd.CommandText += "'" + oesoit.depcod + "', "; // depcod
+                        cmd.CommandText += "'" + oesoit.vatcod + "', "; // vatcod
+                        cmd.CommandText += "'" + oesoit.free + "', "; // free
+                        cmd.CommandText += oesoit.ordqty + ", "; // ordqty
+                        cmd.CommandText += oesoit.cancelqty + ", "; // cancelqty
+                        cmd.CommandText += "'" + oesoit.canceltyp + "',"; // canceltyp
+                        cmd.CommandText += oesoit.canceldat.HasValue ? "CTOD('" + oesoit.canceldat.Value.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "'), " : empty_date + ", "; // canceldat
+                        cmd.CommandText += oesoit.remqty + ", "; // remqty
+                        cmd.CommandText += oesoit.tfactor + ", "; // tfactor
+                        cmd.CommandText += oesoit.unitpr + ", "; // unitpr
+                        cmd.CommandText += "'" + oesoit.tqucod + "', "; // tqucod
+                        cmd.CommandText += "'" + oesoit.disc + "', "; // disc
+                        cmd.CommandText += oesoit.discamt + ", "; // discamt
+                        cmd.CommandText += oesoit.trnval + ", "; // trnval
+                        cmd.CommandText += "'" + oesoit.packing + "')"; // packing
+
+                        cmd.Connection = conn;
+                        conn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
+        }
+
+        public static bool InsertArtrnrm(ConfigValue config, Oesoit oesoit, string remark)
+        {
+            try
+            {
+                using (OleDbConnection conn = createConnection(config))
+                {
+                    using (OleDbCommand cmd = new OleDbCommand())
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "Insert Into Artrnrm ([docnum],[seqnum],[remark]) Values ";
+                        cmd.CommandText += "('" + oesoit.sonum + "', "; // sonum
+                        cmd.CommandText += "'" + oesoit.seqnum + "', "; // seqnum
+                        cmd.CommandText += "'" + remark + "')"; // remark
+
+                        cmd.Connection = conn;
+                        conn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
+        }
+
         public static bool InsertArmas(ConfigValue config, Armas armas)
         {
             List<Armas> a = LoadArmasFromDBF(config);
@@ -746,6 +807,35 @@ namespace SoImporter
                         cmd.CommandText += "'" + armas.status + "', "; // status
                         cmd.CommandText += empty_date + ")"; // inactdat
 
+                        cmd.Connection = conn;
+                        conn.Open();
+                        if (cmd.ExecuteNonQuery() > 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return false;
+        }
+
+        public static bool UpdateIsrunDocnum(ConfigValue config, string last_sonum)
+        {
+            string doc_prefix = last_sonum.Substring(0, 2);
+            string doc_num = (Convert.ToInt32(last_sonum.Substring(2, last_sonum.Trim().Length - 2)) + 1).ToString().FillZeroLeft(7);
+
+            try
+            {
+                using (OleDbConnection conn = createConnection(config))
+                {
+                    using (OleDbCommand cmd = new OleDbCommand())
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = "Update Isrun Set docnum = '" + doc_num + "' Where prefix = '" + doc_prefix + "'";
                         cmd.Connection = conn;
                         conn.Open();
                         if (cmd.ExecuteNonQuery() > 0)

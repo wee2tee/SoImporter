@@ -111,6 +111,7 @@
             this.cbSoNum.Properties.Appearance.Options.UseFont = true;
             this.cbSoNum.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbSoNum.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbSoNum.Size = new System.Drawing.Size(225, 22);
             this.cbSoNum.TabIndex = 3;
             this.cbSoNum.SelectedIndexChanged += new System.EventHandler(this.cbSoNum_SelectedIndexChanged);

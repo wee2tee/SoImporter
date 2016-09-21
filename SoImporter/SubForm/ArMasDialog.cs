@@ -34,17 +34,25 @@ namespace SoImporter.SubForm
         };
 
         public Armas armas;
-        private Armas pattern_ar;
+        private PopritVM poprit;
+        //private Armas pattern_ar;
 
         public ArMasDialog()
         {
             InitializeComponent();
         }
 
-        public ArMasDialog(MainForm main_form, Armas armas) : this()
+        //public ArMasDialog(MainForm main_form, Armas armas) : this()
+        //{
+        //    this.main_form = main_form;
+        //    this.pattern_ar = armas;
+        //}
+
+        public ArMasDialog(MainForm main_form, PopritVM poprit) : this()
         {
             this.main_form = main_form;
-            this.pattern_ar = armas;
+            this.poprit = poprit;
+            //this.pattern_ar = armas;
         }
 
         private void ArMasDialog_Load(object sender, EventArgs e)
@@ -53,16 +61,14 @@ namespace SoImporter.SubForm
             this.armas = new Armas(true);
             this.splashScreenManager1.ShowWaitForm();
 
-            this.cbPreNam.Text = this.pattern_ar.prenam;
-            this.txtCusNam.Text = this.pattern_ar.cusnam;
-            this.txtAddr01.Text = this.pattern_ar.addr01;
-            this.txtAddr02.Text = this.pattern_ar.addr02;
-            this.txtAddr03.Text = this.pattern_ar.addr03;
-            this.txtZipCod.Text = this.pattern_ar.zipcod;
-            this.txtTelNum.Text = this.pattern_ar.telnum;
-            this.txtContact.Text = this.pattern_ar.contact;
-            this.txtTaxId.Text = this.pattern_ar.taxid;
-            this.txtOrgNum.Text = this.pattern_ar.orgnum.ToString();
+            this.cbPreNam.Text = this.poprit.cust.First().PreName;
+            this.txtCusNam.Text = this.poprit.cust.First().Name;
+            this.txtAddr01.Text = this.poprit.cust.First().Addr01;
+            this.txtAddr02.Text = this.poprit.cust.First().Addr02;
+            this.txtAddr03.Text = this.poprit.cust.First().Addr03;
+            this.txtZipCod.Text = this.poprit.cust.First().ZipCod;
+            this.txtTelNum.Text = this.poprit.cust.First().TelNum;
+            this.txtTaxId.Text = this.poprit.cust.First().TaxId;
 
             // get all istab
             this.istab = MainForm.LoadIstabFromDBF(this.main_form.config);
@@ -228,6 +234,23 @@ namespace SoImporter.SubForm
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == Keys.Escape)
+            {
+                this.btnCancel.PerformClick();
+                return true;
+            }
+
+            if(keyData == Keys.Enter && !(this.btnOK.Focused || this.btnCancel.Focused))
+            {
+                SendKeys.Send("{TAB}");
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
