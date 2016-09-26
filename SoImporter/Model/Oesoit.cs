@@ -33,8 +33,9 @@ namespace SoImporter.Model
         public string packing { get; set; }
 
 
-        /** temporary keep ponum **/
+        /** temporary keep po data **/
         public string ponum { get; set; }
+        public int poprit_id { get; set; }
 
     }
 }

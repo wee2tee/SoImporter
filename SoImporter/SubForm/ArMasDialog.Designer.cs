@@ -120,6 +120,7 @@
             this.txtCusCod.Name = "txtCusCod";
             this.txtCusCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCusCod.Properties.Appearance.Options.UseFont = true;
+            this.txtCusCod.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCusCod.Properties.MaxLength = 10;
             this.txtCusCod.Size = new System.Drawing.Size(105, 22);
             this.txtCusCod.TabIndex = 0;

@@ -25,7 +25,9 @@ namespace SoImporter
 
         public ConfigValue config;
         private List<PopritVM> poprit;
-        private BindingSource bs;
+        private BindingSource bs_po;
+        private BindingSource bs_so;
+        private BindingSource bs_iv;
         public InternalUsers logedin_user;
         public static Color express_theme_color
         {
@@ -45,9 +47,17 @@ namespace SoImporter
             this.config = ConfigValue.Load();
             this.btnImport.Enabled = Directory.Exists(this.config.ExpressDataPath) ? true : false;
             this.lblDataPath.Caption = (this.config.ExpressDataPath.Trim().Length == 0 ? "[...]" : "[ " + this.config.ExpressDataPath + " ]");
-            this.bs = new BindingSource();
-            this.bs.DataSource = this.poprit;
-            this.gridControl1.DataSource = this.bs;
+            this.bs_po = new BindingSource();
+            //this.bs_po.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_NEW.ToString());
+            this.gridControl1.DataSource = this.bs_po;
+
+            this.bs_so = new BindingSource();
+            //this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString());
+            this.gridControl2.DataSource = this.bs_so;
+
+            this.bs_iv = new BindingSource();
+            //this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString());
+            this.gridControl3.DataSource = this.bs_iv;
             //this.configInfo();
         }
 
@@ -105,7 +115,9 @@ namespace SoImporter
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            this.gridView1.VisibleColumns[0].Width = 45;
+            this.gridViewPO.VisibleColumns[0].Width = 45;
+            this.gridViewSO.VisibleColumns[0].Width = 45;
+            //this.gridView1.VisibleColumns[0].Width = 45;
         }
 
         public static OleDbConnection createConnection(ConfigValue config)
@@ -113,95 +125,16 @@ namespace SoImporter
             return new OleDbConnection(@"Provider=VFPOLEDB.1;Data Source=" + config.ExpressDataPath + @"\");
         }
 
-        //private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    try
-        //    {
-        //        List<Oeso> oeso = this.OesoToList();
-
-        //        if (oeso == null)
-        //        {
-        //            return;
-        //        }
-
-        //        string last_sonum = oeso.OrderByDescending(o => o.sonum).First().sonum;
-        //        string next_sonum = last_sonum.Substring(0, 2) + (Convert.ToInt32(last_sonum.Substring(2, last_sonum.Trim().Length - 2)) + 1).ToString().FillZeroLeft(7);
-
-        //        if (File.Exists(this.config.ExpressDataPath + @"\OESO.DBF"))
-        //            File.Copy(this.config.ExpressDataPath + @"\OESO.DBF", this.config.ExpressDataPath + @"\OESO.DBF.BAK", true);
-
-        //        if (File.Exists(this.config.ExpressDataPath + @"\OESOIT.DBF"))
-        //            File.Copy(this.config.ExpressDataPath + @"\OESOIT.DBF", this.config.ExpressDataPath + @"\OESOIT.DBF.BAK", true);
-
-        //        using (OleDbConnection conn = this.createConnection())
-        //        {
-        //            using (OleDbCommand cmd = new OleDbCommand())
-        //            {
-        //                string empty_date = "CTOD('  /  /  ')";
-
-        //                cmd.CommandType = CommandType.Text;
-        //                cmd.CommandText = "Insert Into Oeso ([sorectyp],[sonum],[sodat],[flgvat],[depcod],[slmcod],[cuscod],[shipto],[youref],[rff],[areacod],[paytrm],[dlvdat],[dlvtim],[dlvdat_it],[nxtseq],[amount],[disc],[discamt],[total],[amtrat0],[vatrat],[vatamt],[netamt],[netval],[cmpldat],[docstat],[dlvby],[userid],[chgdat],[userprn],[prndat],[prncnt],[prntim],[authid],[approve],[billto],[orgnum]) Values ";
-        //                cmd.CommandText += "('0', "; // sorectyp
-        //                cmd.CommandText += "'" + next_sonum + "',"; // sonum
-        //                cmd.CommandText += "CTOD('" + DateTime.Now.ToString("MM/dd/yyyy", CultureInfo.GetCultureInfo("en-US")) + "'),"; // sodat
-        //                cmd.CommandText += "'2',"; // flgvat
-        //                cmd.CommandText += "'',"; // depcod
-        //                cmd.CommandText += "'',"; // slmcod
-        //                cmd.CommandText += "'',"; // cuscod
-        //                cmd.CommandText += "'',"; //shipto
-        //                cmd.CommandText += "'',"; // youref
-        //                cmd.CommandText += "'',"; // rff
-        //                cmd.CommandText += "'',"; // areacod
-        //                cmd.CommandText += "0,"; // paytrm
-        //                cmd.CommandText += empty_date + ","; // dlvdat
-        //                cmd.CommandText += "'',"; // dlvtim
-        //                cmd.CommandText += "'',"; // dlvdat_it
-        //                cmd.CommandText += "'',"; // nxtseq
-        //                cmd.CommandText += "14500,"; // amount
-        //                cmd.CommandText += "'',"; // disc
-        //                cmd.CommandText += "0,"; // discamt
-        //                cmd.CommandText += "14500,"; // total
-        //                cmd.CommandText += "0,"; // amtrat0
-        //                cmd.CommandText += "7,"; // vatrat
-        //                cmd.CommandText += "1015,"; // vatamt
-        //                cmd.CommandText += "15515,"; // netamt
-        //                cmd.CommandText += "15515,"; // netval
-        //                cmd.CommandText += empty_date + ","; // cmpldat
-        //                cmd.CommandText += "'N',"; // docstat
-        //                cmd.CommandText += "'EM',"; // dlvby
-        //                cmd.CommandText += "'BIT5',"; // userid
-        //                cmd.CommandText += empty_date + ","; // chgdat
-        //                cmd.CommandText += "'',"; // userprn
-        //                cmd.CommandText += empty_date + ","; // prndat
-        //                cmd.CommandText += "0,"; // prncnt
-        //                cmd.CommandText += "'',"; // prntim
-        //                cmd.CommandText += "'',"; // authid
-        //                cmd.CommandText += empty_date + ","; // approve
-        //                cmd.CommandText += "'',"; // billto
-        //                cmd.CommandText += "0)"; // orgnum
-
-        //                cmd.Connection = conn;
-        //                conn.Open();
-        //                if (cmd.ExecuteNonQuery() > 0)
-        //                {
-        //                    Console.WriteLine(" .. >> insert oeso successfully");
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-
         private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Oeso so = new Oeso();
             List<Oesoit> soit = new List<Oesoit>();
             if (this.PrepareInsertItem(so, soit) == false)
+            {
                 return;
+            }
 
+            this.splashScreenManager1.ShowWaitForm();
             try
             {
                 if (InsertOeso(this.config, so))
@@ -212,15 +145,23 @@ namespace SoImporter
                         {
                             if(InsertOesoit(this.config, item))
                             {
-                                InsertArtrnrm(this.config, item, "อ้างถึง " + item.ponum);
+                                if(InsertArtrnrm(this.config, item, "อ้างถึง " + item.ponum))
+                                {
+                                    if(this.UpdateSoNum2Po(item.poprit_id, item.sonum.PadRight(12) + "-" + item.seqnum.PadLeft(3), item.sodat, this.logedin_user.Id, so.youref) == true)
+                                    {
+                                        this.btnRetrieveData.PerformClick();
+                                    }
+                                }
                             }
                         }
+                        this.splashScreenManager1.CloseWaitForm();
                         MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + so.sonum + "\" เรียบร้อย");
                     }
                 }
             }
             catch (Exception ex)
             {
+                this.splashScreenManager1.CloseWaitForm();
                 MessageBox.Show(ex.Message, "Error");
             }
         }
@@ -229,11 +170,11 @@ namespace SoImporter
         {
             #region collecting selected row
             List<PopritVM> poprit = new List<PopritVM>();
-            foreach (int row_handle in this.gridView1.GetSelectedRows())
+            foreach (int row_handle in this.gridViewPO.GetSelectedRows())
             {
-                if(this.gridView1.GetRowCellValue(row_handle, colId) != null)
+                if(this.gridViewPO.GetRowCellValue(row_handle, colId) != null)
                 {
-                    int id = (int)this.gridView1.GetRowCellValue(row_handle, colId);
+                    int id = (int)this.gridViewPO.GetRowCellValue(row_handle, colId);
                     poprit.Add(
                         this.poprit.Where(p => p.Id == id).FirstOrDefault()
                     );
@@ -335,7 +276,8 @@ namespace SoImporter
                     discamt = (double)item.DiscAmt,
                     trnval = (double)item.TrnVal,
                     packing = "",
-                    ponum = item.PoNum
+                    ponum = item.PoNum,
+                    poprit_id = item.Id
                 });
                 seq++;
             }
@@ -372,8 +314,6 @@ namespace SoImporter
                     oesoits = null;
                     return false;
                 }
-
-                Console.WriteLine(".. >> " + oeso.cuscod);
 
                 return true;
                 #endregion confirm so
@@ -852,10 +792,72 @@ namespace SoImporter
             return false;
         }
 
-        private void gridView1_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        private bool UpdateSoNum2Po(int poprit_id, string sonum_seq, DateTime sodat, int so_by, string so_remark = "")
         {
-            //Console.WriteLine(" .. >> checked : " + ((GridView)sender).SelectedRowsCount);
+            ApiAccessibilities acc = new ApiAccessibilities
+            {
+                API_KEY = this.config.ApiKey,
+                poprit = new PopritVM
+                {
+                    Id = poprit_id,
+                    SoNum = sonum_seq,
+                    SoDat = sodat,
+                    SoBy = so_by,
+                    SoRemark = so_remark
+                }
+            };
+            APIResult put = APIClient.PUT(this.config.ApiUrl + "poprit/UpdateSoNum", acc);
+            if (put.Success)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(put.ErrorMessage);
+            }
+            return false;
+        }
+
+        public bool UpdateIvNum2Po(string sonum, string ivnum, DateTime ivdat, int iv_by)
+        {
+            ApiAccessibilities acc = new ApiAccessibilities
+            {
+                API_KEY = this.config.ApiKey,
+                poprit = new PopritVM
+                {
+                    SoNum = sonum,
+                    IvNum = ivnum,
+                    IvDat = ivdat,
+                    IvBy = iv_by
+                }
+            };
+
+
+            Console.WriteLine(" .. >> " + acc.poprit.SoNum);
+            Console.WriteLine(" .. >> " + acc.poprit.IvNum);
+            Console.WriteLine(" .. >> " + acc.poprit.IvDat);
+            Console.WriteLine(" .. >> " + acc.poprit.IvBy);
+            Console.WriteLine(" .. >> " + acc.poprit.SoNum);
+            //APIResult put = APIClient.PUT(this.config.ApiUrl + "poprit/UpdateIvNum", acc);
+            //if (put.Success)
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    MessageBox.Show(put.ErrorMessage);
+            //}
+            return false;
+        }
+
+        private void gridViewPO_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
             this.btnRecSO.Enabled = (((GridView)sender).SelectedRowsCount > 0 && File.Exists(this.config.ExpressDataPath + @"\oeso.dbf")) ? true : false;
+        }
+
+        private void gridViewSO_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            this.btnRecIvNum.Enabled = (((GridView)sender).SelectedRowsCount > 0 ? true : false);
         }
 
         private void btnApiUrl_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -873,11 +875,6 @@ namespace SoImporter
         {
             UsersDialog users = new UsersDialog(this);
             users.ShowDialog();
-        }
-
-        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -899,15 +896,27 @@ namespace SoImporter
 
         private void btnRetrieveData_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.btnRecSO.Enabled = false;
+            this.btnRecIvNum.Enabled = false;
+
             this.splashScreenManager1.ShowWaitForm();
             APIResult result = APIClient.GET(this.config.ApiUrl + "poprit/GetOrder", this.config.ApiKey);
 
             if (result.Success && result.ReturnValue != null)
             {
                 this.poprit = JsonConvert.DeserializeObject<List<PopritVM>>(result.ReturnValue);
-                this.bs.DataSource = this.poprit;
-                this.bs.ResetBindings(true);
-                this.gridControl1.DataSource = this.bs;
+
+                this.bs_po.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_NEW.ToString());
+                this.bs_po.ResetBindings(true);
+                this.gridControl1.DataSource = this.bs_po;
+
+                this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString()).ToOesoVM();
+                this.bs_so.ResetBindings(true);
+                this.gridControl2.DataSource = this.bs_so;
+
+                this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString());
+                this.bs_iv.ResetBindings(true);
+                this.gridControl3.DataSource = this.bs_iv;
             }
             else
             {
@@ -916,12 +925,12 @@ namespace SoImporter
             this.splashScreenManager1.CloseWaitForm();
         }
 
-        private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
+        private void gridViewPO_RowCellClick(object sender, RowCellClickEventArgs e)
         {
-            if (this.gridView1.GetRow(e.RowHandle) == null)
+            if (((GridView)sender).GetRow(e.RowHandle) == null)
                 return;
 
-            int id = (int)this.gridView1.GetRowCellValue(e.RowHandle, colId);
+            int id = (int)((GridView)sender).GetRowCellValue(e.RowHandle, this.colId);
 
             PopritVM poprit = this.poprit.Where(p => p.Id == id).FirstOrDefault();
             if (poprit == null)
@@ -931,6 +940,54 @@ namespace SoImporter
             {
                 ViewAttachFileDialog view = new ViewAttachFileDialog(this, poprit);
                 view.ShowDialog();
+            }
+        }
+
+        private void gridViewSO_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (((GridView)sender).GetRow(e.RowHandle) == null)
+                return;
+
+            string sonum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc2_SoNum);
+
+        }
+
+        private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            this.btnRecSO.Enabled = false;
+            this.btnRecIvNum.Enabled = false;
+
+            if(e.Page == this.tabPagePo && this.gridViewPO.SelectedRowsCount > 0)
+            {
+                this.btnRecSO.Enabled = true;
+                return;
+            }
+
+            if(e.Page == this.tabPageSo && this.gridViewSO.SelectedRowsCount > 0 && this.gridViewSO.SelectedRowsCount > 0)
+            {
+                this.btnRecIvNum.Enabled = true;
+                return;
+            }
+
+            if(e.Page == this.tabPageIv && this.gridView6.SelectedRowsCount > 0)
+            {
+
+                return;
+            }
+        }
+
+        private void btnRecIvNum_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int[] row_handle = this.gridViewSO.GetSelectedRows();
+            if (row_handle.Count() == 0 || this.gridViewSO.GetRow(row_handle[0]) == null)
+                return;
+
+            string sonum = (string)this.gridViewSO.GetRowCellValue(row_handle[0], gc2_SoNum);
+
+            RecIvNoDialog rec = new RecIvNoDialog(this, sonum);
+            if(rec.ShowDialog() == DialogResult.OK)
+            {
+                this.btnRetrieveData.PerformClick();
             }
         }
     }

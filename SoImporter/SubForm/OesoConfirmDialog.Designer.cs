@@ -143,7 +143,7 @@
             this.MinimizeBox = false;
             this.Name = "OesoConfirmDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "OesoConfirmDialog";
+            this.Text = "แปลงเป็นใบสั่งขาย";
             this.Load += new System.EventHandler(this.OesoConfirmDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocCod.Properties)).EndInit();

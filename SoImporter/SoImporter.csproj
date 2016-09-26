@@ -62,6 +62,8 @@
     <Reference Include="DevExpress.XtraReports.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraReports.v15.2.Extensions, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraRichEdit.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraScheduler.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -106,6 +108,7 @@
     <Compile Include="Model\Oeslm.cs" />
     <Compile Include="Model\Oeso.cs" />
     <Compile Include="Model\Oesoit.cs" />
+    <Compile Include="Model\OesoVM.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PopritVM.cs" />
     <Compile Include="Model\Tabpr.cs" />
@@ -158,6 +161,12 @@
     </Compile>
     <Compile Include="SubForm\OesoConfirmDialog.Designer.cs">
       <DependentUpon>OesoConfirmDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\RecIvNoDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\RecIvNoDialog.Designer.cs">
+      <DependentUpon>RecIvNoDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\UsersDialog.cs">
       <SubType>Form</SubType>
@@ -215,6 +224,9 @@
     <EmbeddedResource Include="SubForm\OesoConfirmDialog.resx">
       <DependentUpon>OesoConfirmDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\RecIvNoDialog.resx">
+      <DependentUpon>RecIvNoDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForm\UsersDialog.resx">
       <DependentUpon>UsersDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -250,6 +262,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\NO_PICTURE.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IV.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

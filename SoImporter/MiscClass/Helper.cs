@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using SoImporter.Model;
 
 namespace SoImporter.MiscClass
 {
@@ -76,8 +77,46 @@ namespace SoImporter.MiscClass
                     return item.ToString();
                 }
             }
-
+            
             return DEALER_TYPE.ไม่ระบุ.ToString();
+        }
+
+        public static List<OesoVM> ToOesoVM(this IEnumerable<PopritVM> poprits)
+        {
+            List<OesoVM> oeso = new List<OesoVM>();
+
+            var p = poprits.GroupBy(p1 => (p1.SoNum != null ? p1.SoNum.Substring(0, 12).Trim() : p1.SoNum));
+            Console.WriteLine(" .. >> x.count = " + p.Count());
+            foreach (var item in p)
+            {
+                PopritVM poprit = item.First();
+                oeso.Add(new OesoVM
+                {
+                    SoNum = poprit.SoNum.Substring(0, 12).Trim(),
+                    SoDat = poprit.SoDat,
+                    DealerName = poprit.CreBy,
+                    DealerType = poprit.DealerType,
+                    CustPreName = poprit.cust.First().PreName,
+                    CustName = poprit.cust.First().Name,
+                    CustAddr01 = poprit.cust.First().Addr01,
+                    CustAddr02 = poprit.cust.First().Addr02,
+                    CustAddr03 = poprit.cust.First().Addr03,
+                    CustZipCod = poprit.cust.First().ZipCod,
+                    CustTaxId = poprit.cust.First().TaxId,
+                    CustTelNum = poprit.cust.First().TelNum,
+                    CustFaxNum = poprit.cust.First().FaxNum,
+                    Remark = poprit.SoRemark,
+                    Amount = (double)poprits.Where(po => po.SoNum != null).Where(po => po.SoNum.Substring(0, 12).Trim() == poprit.SoNum.Substring(0, 12).Trim()).Sum(po => po.TrnVal),
+                    Disc = poprits.Where(po => po.SoNum != null).Where(po => po.SoNum.Substring(0, 12).Trim() == poprit.SoNum.Substring(0, 12).Trim()).Sum(po => po.DiscAmt).ToString(),
+                    DiscAmt = (double)poprits.Where(po => po.SoNum != null).Where(po => po.SoNum.Substring(0, 12).Trim() == poprit.SoNum.Substring(0, 12).Trim()).Sum(po => po.DiscAmt),
+                    TaxAmt = (double)poprits.Where(po => po.SoNum != null).Where(po => po.SoNum.Substring(0, 12).Trim() == poprit.SoNum.Substring(0, 12).Trim()).Sum(po => po.TaxAmt),
+                    VatAmt = (double)poprits.Where(po => po.SoNum != null).Where(po => po.SoNum.Substring(0, 12).Trim() == poprit.SoNum.Substring(0, 12).Trim()).Sum(po => po.VatAmt),
+                    NetAmt = (double)poprits.Where(po => po.SoNum != null).Where(po => po.SoNum.Substring(0, 12).Trim() == poprit.SoNum.Substring(0, 12).Trim()).Sum(po => po.NetAmt),
+                    po = poprits.Where(po => po.SoNum != null).Where(po => po.SoNum.Substring(0, 12).Trim() == poprit.SoNum.Substring(0, 12).Trim()).ToList()
+                });
+            }
+
+            return oeso;
         }
 
         //public static string formatErrorData(this WebExceptionStatus exception_status)
