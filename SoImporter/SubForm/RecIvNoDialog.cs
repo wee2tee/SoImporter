@@ -51,7 +51,7 @@ namespace SoImporter.SubForm
 
             if (!this.ivdat.HasValue)
             {
-                MessageBox.Show("กรุณาระบุวันที่อินวอยซ์", "", MessageBoxButtons.OK);
+                MessageBox.Show("กรุณาระบุวันที่อินวอยซ์", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.dtIvDat.Focus();
                 return;
             }

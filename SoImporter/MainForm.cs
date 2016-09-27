@@ -58,6 +58,7 @@ namespace SoImporter
             this.bs_iv = new BindingSource();
             //this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString());
             this.gridControl3.DataSource = this.bs_iv;
+            
             //this.configInfo();
         }
 
@@ -116,8 +117,6 @@ namespace SoImporter
         {
             base.OnLoad(e);
             this.gridViewPO.VisibleColumns[0].Width = 45;
-            this.gridViewSO.VisibleColumns[0].Width = 45;
-            //this.gridView1.VisibleColumns[0].Width = 45;
         }
 
         public static OleDbConnection createConnection(ConfigValue config)
@@ -149,12 +148,12 @@ namespace SoImporter
                                 {
                                     if(this.UpdateSoNum2Po(item.poprit_id, item.sonum.PadRight(12) + "-" + item.seqnum.PadLeft(3), item.sodat, this.logedin_user.Id, so.youref) == true)
                                     {
+                                        this.splashScreenManager1.CloseWaitForm();
                                         this.btnRetrieveData.PerformClick();
                                     }
                                 }
                             }
                         }
-                        this.splashScreenManager1.CloseWaitForm();
                         MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + so.sonum + "\" เรียบร้อย");
                     }
                 }
@@ -832,21 +831,39 @@ namespace SoImporter
                 }
             };
 
+            APIResult put = APIClient.PUT(this.config.ApiUrl + "poprit/UpdateIvNum", acc);
+            if (put.Success)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(put.ErrorMessage);
+            }
+            return false;
+        }
 
-            Console.WriteLine(" .. >> " + acc.poprit.SoNum);
-            Console.WriteLine(" .. >> " + acc.poprit.IvNum);
-            Console.WriteLine(" .. >> " + acc.poprit.IvDat);
-            Console.WriteLine(" .. >> " + acc.poprit.IvBy);
-            Console.WriteLine(" .. >> " + acc.poprit.SoNum);
-            //APIResult put = APIClient.PUT(this.config.ApiUrl + "poprit/UpdateIvNum", acc);
-            //if (put.Success)
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    MessageBox.Show(put.ErrorMessage);
-            //}
+        public bool UpdateEmsTracking(string ivnum, string ems_tracking_number)
+        {
+            ApiAccessibilities acc = new ApiAccessibilities
+            {
+                API_KEY = this.config.ApiKey,
+                poprit = new PopritVM
+                {
+                    IvNum = ivnum,
+                    EmsTracking = ems_tracking_number
+                }
+            };
+
+            APIResult put = APIClient.PUT(this.config.ApiUrl + "poprit/UpdateEmsTracking", acc);
+            if (put.Success)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(put.ErrorMessage);
+            }
             return false;
         }
 
@@ -858,6 +875,11 @@ namespace SoImporter
         private void gridViewSO_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
             this.btnRecIvNum.Enabled = (((GridView)sender).SelectedRowsCount > 0 ? true : false);
+        }
+
+        private void gridViewIV_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            this.btnEmsTracking.Enabled = (((GridView)sender).SelectedRowsCount > 0 ? true : false);
         }
 
         private void btnApiUrl_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -885,7 +907,7 @@ namespace SoImporter
                 if(login.ShowDialog() == DialogResult.OK)
                 {
                     this.logedin_user = login.user;
-                    
+                    this.btnRetrieveData.PerformClick();
                 }
                 else
                 {
@@ -910,11 +932,11 @@ namespace SoImporter
                 this.bs_po.ResetBindings(true);
                 this.gridControl1.DataSource = this.bs_po;
 
-                this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString()).ToOesoVM();
+                this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString()).ToOesoVM().OrderBy(o => o.SoNum);
                 this.bs_so.ResetBindings(true);
                 this.gridControl2.DataSource = this.bs_so;
 
-                this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString());
+                this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString()).ToArtrnVM().OrderBy(o => o.IvNum);
                 this.bs_iv.ResetBindings(true);
                 this.gridControl3.DataSource = this.bs_iv;
             }
@@ -930,14 +952,14 @@ namespace SoImporter
             if (((GridView)sender).GetRow(e.RowHandle) == null)
                 return;
 
-            int id = (int)((GridView)sender).GetRowCellValue(e.RowHandle, this.colId);
-
-            PopritVM poprit = this.poprit.Where(p => p.Id == id).FirstOrDefault();
-            if (poprit == null)
-                return;
-
             if(e.Column == this.col_ViewAttachment)
             {
+                int id = (int)((GridView)sender).GetRowCellValue(e.RowHandle, this.colId);
+
+                PopritVM poprit = this.poprit.Where(p => p.Id == id).FirstOrDefault();
+                if (poprit == null)
+                    return;
+
                 ViewAttachFileDialog view = new ViewAttachFileDialog(this, poprit);
                 view.ShowDialog();
             }
@@ -948,14 +970,72 @@ namespace SoImporter
             if (((GridView)sender).GetRow(e.RowHandle) == null)
                 return;
 
-            string sonum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc2_SoNum);
+            if(e.Column == this.gc2_Iv)
+            {
+                string sonum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc2_SoNum);
+                RecIvNoDialog reciv = new RecIvNoDialog(this, sonum);
+                if (reciv.ShowDialog() == DialogResult.OK)
+                {
+                    this.btnRetrieveData.PerformClick();
+                }
+            }
+        }
 
+        private void gridViewSO_PO_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (((GridView)sender).GetRow(e.RowHandle) == null)
+                return;
+
+            if (e.Column.Name == this.gc2_ViewAttachment.Name)
+            {
+                var poprit = this.poprit.Where(p => p.Id == (int)((GridView)sender).GetRowCellValue(e.RowHandle, gc2_PoId)).FirstOrDefault();
+
+                if (poprit == null)
+                    return;
+
+                ViewAttachFileDialog view = new ViewAttachFileDialog(this, poprit);
+                view.ShowDialog();
+            }
+        }
+
+        private void gridViewIV_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (((GridView)sender).GetRow(e.RowHandle) == null)
+                return;
+
+            if(e.Column.Name == this.gc3_EmsTrackingNo.Name)
+            {
+                string ivnum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc3_IvNum);
+                RecEmsTrackingDialog rec_ems = new RecEmsTrackingDialog(this, ivnum);
+                if (rec_ems.ShowDialog() == DialogResult.OK)
+                {
+                    this.btnRetrieveData.PerformClick();
+                }
+            }
+        }
+
+        private void gridViewIV_PO_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if (((GridView)sender).GetRow(e.RowHandle) == null)
+                return;
+
+            if(e.Column.Name == this.gc3_ViewAttachment.Name)
+            {
+                var poprit = this.poprit.Where(p => p.Id == (int)((GridView)sender).GetRowCellValue(e.RowHandle, gc3_PoId)).FirstOrDefault();
+
+                if (poprit == null)
+                    return;
+
+                ViewAttachFileDialog view = new ViewAttachFileDialog(this, poprit);
+                view.ShowDialog();
+            }
         }
 
         private void xtraTabControl1_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
             this.btnRecSO.Enabled = false;
             this.btnRecIvNum.Enabled = false;
+            this.btnEmsTracking.Enabled = false;
 
             if(e.Page == this.tabPagePo && this.gridViewPO.SelectedRowsCount > 0)
             {
@@ -963,15 +1043,15 @@ namespace SoImporter
                 return;
             }
 
-            if(e.Page == this.tabPageSo && this.gridViewSO.SelectedRowsCount > 0 && this.gridViewSO.SelectedRowsCount > 0)
+            if(e.Page == this.tabPageSo && this.gridViewSO.SelectedRowsCount > 0)
             {
                 this.btnRecIvNum.Enabled = true;
                 return;
             }
 
-            if(e.Page == this.tabPageIv && this.gridView6.SelectedRowsCount > 0)
+            if (e.Page == this.tabPageIv && this.gridViewIV.SelectedRowsCount > 0)
             {
-
+                this.btnEmsTracking.Enabled = true;
                 return;
             }
         }
@@ -986,6 +1066,21 @@ namespace SoImporter
 
             RecIvNoDialog rec = new RecIvNoDialog(this, sonum);
             if(rec.ShowDialog() == DialogResult.OK)
+            {
+                this.btnRetrieveData.PerformClick();
+            }
+        }
+
+        private void btnEmsTracking_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int[] row_handle = this.gridViewIV.GetSelectedRows();
+            if (row_handle.Count() == 0 || this.gridViewIV.GetRow(row_handle[0]) == null)
+                return;
+
+            string ivnum = (string)this.gridViewIV.GetRowCellValue(row_handle[0], gc3_IvNum);
+
+            RecEmsTrackingDialog rec = new RecEmsTrackingDialog(this, ivnum);
+            if (rec.ShowDialog() == DialogResult.OK)
             {
                 this.btnRetrieveData.PerformClick();
             }

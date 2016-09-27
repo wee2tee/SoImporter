@@ -33,6 +33,7 @@
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode4 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode5 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPreName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -83,6 +84,7 @@
             this.btnApiUrl = new DevExpress.XtraBars.BarButtonItem();
             this.btnRetrieveData = new DevExpress.XtraBars.BarButtonItem();
             this.btnRecIvNum = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEmsTracking = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -91,14 +93,16 @@
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridView7 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewSO_PO = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gc2_PoId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc2_StkCod = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc2_StkDes = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gc2_DlvDat1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gc2_DlvDat2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc2_OrdQty = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc2_TrnVal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc2_PoNum = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc2_DlvDat1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc2_DlvDat2 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc2_ViewAttachment = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.gridViewSO = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gc2_SoNum = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -112,7 +116,7 @@
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc2_Iv = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridViewSO_PO_CUST = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -125,46 +129,42 @@
             this.gridColumn10 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn11 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridView5 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridViewIV_PO = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gc3_PoId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn14 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn18 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn19 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn20 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc3_ViewAttachment = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
+            this.gridViewIV = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gc3_IvNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn48 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridControl3 = new DevExpress.XtraGrid.GridControl();
-            this.gridView6 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn50 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn51 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn52 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn53 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn54 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn55 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn56 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn57 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn58 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn59 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn60 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn61 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn62 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn63 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn64 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn65 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn66 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn67 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn68 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn69 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn70 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn71 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn72 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc3_EmsTrackingNo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.gridViewIV_PO_CUST = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn31 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn32 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn33 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn34 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn35 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn36 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn37 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn38 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn39 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.tabPagePo = new DevExpress.XtraTab.XtraTabPage();
@@ -178,15 +178,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSO_PO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSO_PO_CUST)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewIV_PO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewIV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewIV_PO_CUST)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.tabPagePo.SuspendLayout();
@@ -376,12 +377,13 @@
             // 
             this.colSoNum.Caption = "ใบสั่งซื้อ #";
             this.colSoNum.FieldName = "PoNum";
-            this.colSoNum.MaxWidth = 75;
-            this.colSoNum.MinWidth = 75;
+            this.colSoNum.MaxWidth = 85;
+            this.colSoNum.MinWidth = 85;
             this.colSoNum.Name = "colSoNum";
             this.colSoNum.OptionsColumn.FixedWidth = true;
             this.colSoNum.Visible = true;
             this.colSoNum.VisibleIndex = 1;
+            this.colSoNum.Width = 85;
             // 
             // colSoDat
             // 
@@ -593,8 +595,11 @@
             // 
             // col_ViewAttachment
             // 
+            this.col_ViewAttachment.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.col_ViewAttachment.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.col_ViewAttachment.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
-            this.col_ViewAttachment.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.col_ViewAttachment.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.col_ViewAttachment.AppearanceCell.Options.UseBackColor = true;
             this.col_ViewAttachment.AppearanceCell.Options.UseFont = true;
             this.col_ViewAttachment.AppearanceCell.Options.UseForeColor = true;
             this.col_ViewAttachment.AppearanceCell.Options.UseTextOptions = true;
@@ -642,9 +647,10 @@
             this.btnUsers,
             this.btnApiUrl,
             this.btnRetrieveData,
-            this.btnRecIvNum});
+            this.btnRecIvNum,
+            this.btnEmsTracking});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 17;
+            this.ribbonControl1.MaxItemId = 18;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -744,6 +750,16 @@
             this.btnRecIvNum.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnRecIvNum.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRecIvNum_ItemClick);
             // 
+            // btnEmsTracking
+            // 
+            this.btnEmsTracking.Caption = "ป้อนหมายเลข EMS Tracking";
+            this.btnEmsTracking.Enabled = false;
+            this.btnEmsTracking.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEmsTracking.Glyph")));
+            this.btnEmsTracking.Id = 17;
+            this.btnEmsTracking.Name = "btnEmsTracking";
+            this.btnEmsTracking.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnEmsTracking.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEmsTracking_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -758,6 +774,7 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnImport);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecSO);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecIvNum);
+            this.ribbonPageGroup2.ItemLinks.Add(this.btnEmsTracking);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการข้อมูล";
             // 
@@ -798,22 +815,25 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit1.Name = "repositoryItemButtonEdit1";
             // 
-            // gridView7
+            // gridViewSO_PO
             // 
-            this.gridView7.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewSO_PO.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gc2_PoId,
             this.gc2_StkCod,
             this.gc2_StkDes,
+            this.gc2_OrdQty,
+            this.gc2_TrnVal,
+            this.gc2_PoNum,
             this.gc2_DlvDat1,
             this.gc2_DlvDat2,
-            this.gc2_OrdQty,
-            this.gc2_TrnVal});
-            this.gridView7.GridControl = this.gridControl2;
-            this.gridView7.Name = "gridView7";
-            this.gridView7.OptionsBehavior.Editable = false;
-            this.gridView7.OptionsBehavior.ReadOnly = true;
-            this.gridView7.OptionsView.ShowGroupPanel = false;
-            this.gridView7.ViewCaption = "รายการสินค้า";
+            this.gc2_ViewAttachment});
+            this.gridViewSO_PO.GridControl = this.gridControl2;
+            this.gridViewSO_PO.Name = "gridViewSO_PO";
+            this.gridViewSO_PO.OptionsBehavior.Editable = false;
+            this.gridViewSO_PO.OptionsBehavior.ReadOnly = true;
+            this.gridViewSO_PO.OptionsView.ShowGroupPanel = false;
+            this.gridViewSO_PO.ViewCaption = "รายการสินค้า";
+            this.gridViewSO_PO.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewSO_PO_RowCellClick);
             // 
             // gc2_PoId
             // 
@@ -841,36 +861,6 @@
             this.gc2_StkDes.Visible = true;
             this.gc2_StkDes.VisibleIndex = 1;
             this.gc2_StkDes.Width = 200;
-            // 
-            // gc2_DlvDat1
-            // 
-            this.gc2_DlvDat1.AppearanceCell.Options.UseTextOptions = true;
-            this.gc2_DlvDat1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gc2_DlvDat1.AppearanceHeader.Options.UseTextOptions = true;
-            this.gc2_DlvDat1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gc2_DlvDat1.Caption = "วันที่รับของ 1";
-            this.gc2_DlvDat1.FieldName = "DlvDat1";
-            this.gc2_DlvDat1.MaxWidth = 90;
-            this.gc2_DlvDat1.MinWidth = 90;
-            this.gc2_DlvDat1.Name = "gc2_DlvDat1";
-            this.gc2_DlvDat1.Visible = true;
-            this.gc2_DlvDat1.VisibleIndex = 4;
-            this.gc2_DlvDat1.Width = 90;
-            // 
-            // gc2_DlvDat2
-            // 
-            this.gc2_DlvDat2.AppearanceCell.Options.UseTextOptions = true;
-            this.gc2_DlvDat2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gc2_DlvDat2.AppearanceHeader.Options.UseTextOptions = true;
-            this.gc2_DlvDat2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gc2_DlvDat2.Caption = "วันที่รับของ 2";
-            this.gc2_DlvDat2.FieldName = "DlvDat2";
-            this.gc2_DlvDat2.MaxWidth = 90;
-            this.gc2_DlvDat2.MinWidth = 90;
-            this.gc2_DlvDat2.Name = "gc2_DlvDat2";
-            this.gc2_DlvDat2.Visible = true;
-            this.gc2_DlvDat2.VisibleIndex = 5;
-            this.gc2_DlvDat2.Width = 90;
             // 
             // gc2_OrdQty
             // 
@@ -902,13 +892,76 @@
             this.gc2_TrnVal.VisibleIndex = 3;
             this.gc2_TrnVal.Width = 100;
             // 
+            // gc2_PoNum
+            // 
+            this.gc2_PoNum.Caption = "อ้างถึง PO#";
+            this.gc2_PoNum.FieldName = "PoNum";
+            this.gc2_PoNum.MaxWidth = 85;
+            this.gc2_PoNum.MinWidth = 85;
+            this.gc2_PoNum.Name = "gc2_PoNum";
+            this.gc2_PoNum.Visible = true;
+            this.gc2_PoNum.VisibleIndex = 4;
+            this.gc2_PoNum.Width = 85;
+            // 
+            // gc2_DlvDat1
+            // 
+            this.gc2_DlvDat1.AppearanceCell.Options.UseTextOptions = true;
+            this.gc2_DlvDat1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc2_DlvDat1.AppearanceHeader.Options.UseTextOptions = true;
+            this.gc2_DlvDat1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc2_DlvDat1.Caption = "วันที่รับของ 1";
+            this.gc2_DlvDat1.FieldName = "DlvDat1";
+            this.gc2_DlvDat1.MaxWidth = 90;
+            this.gc2_DlvDat1.MinWidth = 90;
+            this.gc2_DlvDat1.Name = "gc2_DlvDat1";
+            this.gc2_DlvDat1.Visible = true;
+            this.gc2_DlvDat1.VisibleIndex = 5;
+            this.gc2_DlvDat1.Width = 90;
+            // 
+            // gc2_DlvDat2
+            // 
+            this.gc2_DlvDat2.AppearanceCell.Options.UseTextOptions = true;
+            this.gc2_DlvDat2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc2_DlvDat2.AppearanceHeader.Options.UseTextOptions = true;
+            this.gc2_DlvDat2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc2_DlvDat2.Caption = "วันที่รับของ 2";
+            this.gc2_DlvDat2.FieldName = "DlvDat2";
+            this.gc2_DlvDat2.MaxWidth = 90;
+            this.gc2_DlvDat2.MinWidth = 90;
+            this.gc2_DlvDat2.Name = "gc2_DlvDat2";
+            this.gc2_DlvDat2.Visible = true;
+            this.gc2_DlvDat2.VisibleIndex = 6;
+            this.gc2_DlvDat2.Width = 90;
+            // 
+            // gc2_ViewAttachment
+            // 
+            this.gc2_ViewAttachment.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gc2_ViewAttachment.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gc2_ViewAttachment.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
+            this.gc2_ViewAttachment.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.gc2_ViewAttachment.AppearanceCell.Options.UseBackColor = true;
+            this.gc2_ViewAttachment.AppearanceCell.Options.UseFont = true;
+            this.gc2_ViewAttachment.AppearanceCell.Options.UseForeColor = true;
+            this.gc2_ViewAttachment.AppearanceCell.Options.UseTextOptions = true;
+            this.gc2_ViewAttachment.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc2_ViewAttachment.AppearanceHeader.Options.UseTextOptions = true;
+            this.gc2_ViewAttachment.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc2_ViewAttachment.Caption = "ไฟล์แนบ";
+            this.gc2_ViewAttachment.FieldName = "_ViewAttachment";
+            this.gc2_ViewAttachment.MaxWidth = 60;
+            this.gc2_ViewAttachment.MinWidth = 60;
+            this.gc2_ViewAttachment.Name = "gc2_ViewAttachment";
+            this.gc2_ViewAttachment.Visible = true;
+            this.gc2_ViewAttachment.VisibleIndex = 7;
+            this.gc2_ViewAttachment.Width = 60;
+            // 
             // gridControl2
             // 
             this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode2.LevelTemplate = this.gridView7;
-            gridLevelNode3.LevelTemplate = this.gridView3;
+            gridLevelNode2.LevelTemplate = this.gridViewSO_PO;
+            gridLevelNode3.LevelTemplate = this.gridViewSO_PO_CUST;
             gridLevelNode3.RelationName = "cust";
             gridLevelNode2.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode3});
@@ -925,8 +978,8 @@
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSO,
-            this.gridView3,
-            this.gridView7});
+            this.gridViewSO_PO_CUST,
+            this.gridViewSO_PO});
             // 
             // gridViewSO
             // 
@@ -955,12 +1008,13 @@
             // 
             this.gc2_SoNum.Caption = "ใบสั่งขาย #";
             this.gc2_SoNum.FieldName = "SoNum";
-            this.gc2_SoNum.MaxWidth = 75;
-            this.gc2_SoNum.MinWidth = 75;
+            this.gc2_SoNum.MaxWidth = 85;
+            this.gc2_SoNum.MinWidth = 85;
             this.gc2_SoNum.Name = "gc2_SoNum";
             this.gc2_SoNum.OptionsColumn.FixedWidth = true;
             this.gc2_SoNum.Visible = true;
             this.gc2_SoNum.VisibleIndex = 0;
+            this.gc2_SoNum.Width = 85;
             // 
             // gridColumn15
             // 
@@ -985,7 +1039,7 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 2;
-            this.gridColumn16.Width = 223;
+            this.gridColumn16.Width = 224;
             // 
             // gridColumn17
             // 
@@ -1069,12 +1123,15 @@
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 8;
-            this.gridColumn21.Width = 277;
+            this.gridColumn21.Width = 281;
             // 
             // gc2_Iv
             // 
+            this.gc2_Iv.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gc2_Iv.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.gc2_Iv.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
-            this.gc2_Iv.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
+            this.gc2_Iv.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.gc2_Iv.AppearanceCell.Options.UseBackColor = true;
             this.gc2_Iv.AppearanceCell.Options.UseFont = true;
             this.gc2_Iv.AppearanceCell.Options.UseForeColor = true;
             this.gc2_Iv.AppearanceCell.Options.UseTextOptions = true;
@@ -1097,9 +1154,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit2.Name = "repositoryItemButtonEdit2";
             // 
-            // gridView3
+            // gridViewSO_PO_CUST
             // 
-            this.gridView3.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewSO_PO_CUST.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn3,
@@ -1112,13 +1169,13 @@
             this.gridColumn10,
             this.gridColumn11,
             this.gridColumn12});
-            this.gridView3.GridControl = this.gridControl2;
-            this.gridView3.Name = "gridView3";
-            this.gridView3.OptionsBehavior.Editable = false;
-            this.gridView3.OptionsBehavior.ReadOnly = true;
-            this.gridView3.OptionsDetail.AllowZoomDetail = false;
-            this.gridView3.OptionsView.ShowGroupPanel = false;
-            this.gridView3.ViewCaption = "รายละเอียดลูกค้า";
+            this.gridViewSO_PO_CUST.GridControl = this.gridControl2;
+            this.gridViewSO_PO_CUST.Name = "gridViewSO_PO_CUST";
+            this.gridViewSO_PO_CUST.OptionsBehavior.Editable = false;
+            this.gridViewSO_PO_CUST.OptionsBehavior.ReadOnly = true;
+            this.gridViewSO_PO_CUST.OptionsDetail.AllowZoomDetail = false;
+            this.gridViewSO_PO_CUST.OptionsView.ShowGroupPanel = false;
+            this.gridViewSO_PO_CUST.ViewCaption = "รายละเอียดลูกค้า";
             // 
             // gridColumn1
             // 
@@ -1210,407 +1267,339 @@
             this.gridColumn12.VisibleIndex = 3;
             this.gridColumn12.Width = 120;
             // 
-            // gridView5
+            // gridViewIV_PO
             // 
-            this.gridView5.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.gridColumn37,
-            this.gridColumn38,
-            this.gridColumn39,
-            this.gridColumn40,
-            this.gridColumn41,
-            this.gridColumn42,
-            this.gridColumn43,
-            this.gridColumn44,
-            this.gridColumn45,
-            this.gridColumn46,
-            this.gridColumn47,
-            this.gridColumn48});
-            this.gridView5.GridControl = this.gridControl3;
-            this.gridView5.Name = "gridView5";
-            this.gridView5.OptionsBehavior.Editable = false;
-            this.gridView5.OptionsBehavior.ReadOnly = true;
-            this.gridView5.OptionsDetail.AllowZoomDetail = false;
-            this.gridView5.OptionsView.ShowGroupPanel = false;
-            this.gridView5.ViewCaption = "รายละเอียดลูกค้า";
+            this.gridViewIV_PO.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gc3_PoId,
+            this.gridColumn14,
+            this.gridColumn18,
+            this.gridColumn19,
+            this.gridColumn20,
+            this.gridColumn22,
+            this.gridColumn23,
+            this.gridColumn24,
+            this.gc3_ViewAttachment});
+            this.gridViewIV_PO.GridControl = this.gridControl3;
+            this.gridViewIV_PO.Name = "gridViewIV_PO";
+            this.gridViewIV_PO.OptionsBehavior.Editable = false;
+            this.gridViewIV_PO.OptionsBehavior.ReadOnly = true;
+            this.gridViewIV_PO.OptionsView.ShowGroupPanel = false;
+            this.gridViewIV_PO.ViewCaption = "รายการสินค้า";
+            this.gridViewIV_PO.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewIV_PO_RowCellClick);
             // 
-            // gridColumn37
+            // gc3_PoId
             // 
-            this.gridColumn37.Caption = "คำนำหน้าชื่อ";
-            this.gridColumn37.FieldName = "PreName";
-            this.gridColumn37.Name = "gridColumn37";
+            this.gc3_PoId.Caption = "Id";
+            this.gc3_PoId.FieldName = "Id";
+            this.gc3_PoId.Name = "gc3_PoId";
             // 
-            // gridColumn38
+            // gridColumn14
             // 
-            this.gridColumn38.Caption = "ชื่อ";
-            this.gridColumn38.FieldName = "Name";
-            this.gridColumn38.Name = "gridColumn38";
+            this.gridColumn14.Caption = "รหัสสินค้า";
+            this.gridColumn14.FieldName = "StkCod";
+            this.gridColumn14.MaxWidth = 140;
+            this.gridColumn14.MinWidth = 140;
+            this.gridColumn14.Name = "gridColumn14";
+            this.gridColumn14.Visible = true;
+            this.gridColumn14.VisibleIndex = 0;
+            this.gridColumn14.Width = 140;
             // 
-            // gridColumn39
+            // gridColumn18
             // 
-            this.gridColumn39.Caption = "ที่อยู่ 1";
-            this.gridColumn39.FieldName = "Addr01";
-            this.gridColumn39.Name = "gridColumn39";
+            this.gridColumn18.Caption = "รายละเอียด";
+            this.gridColumn18.FieldName = "StkDes";
+            this.gridColumn18.MaxWidth = 400;
+            this.gridColumn18.Name = "gridColumn18";
+            this.gridColumn18.Visible = true;
+            this.gridColumn18.VisibleIndex = 1;
+            this.gridColumn18.Width = 200;
             // 
-            // gridColumn40
+            // gridColumn19
             // 
-            this.gridColumn40.Caption = "ที่อยู่ 2";
-            this.gridColumn40.FieldName = "Addr02";
-            this.gridColumn40.Name = "gridColumn40";
+            this.gridColumn19.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn19.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn19.Caption = "จำนวน";
+            this.gridColumn19.DisplayFormat.FormatString = "#,#0.00";
+            this.gridColumn19.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn19.FieldName = "OrdQty";
+            this.gridColumn19.MaxWidth = 90;
+            this.gridColumn19.MinWidth = 90;
+            this.gridColumn19.Name = "gridColumn19";
+            this.gridColumn19.Visible = true;
+            this.gridColumn19.VisibleIndex = 2;
+            this.gridColumn19.Width = 90;
             // 
-            // gridColumn41
+            // gridColumn20
             // 
-            this.gridColumn41.Caption = "ที่อยู่ 3";
-            this.gridColumn41.FieldName = "Addr03";
-            this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn20.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn20.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn20.Caption = "จำนวนเงิน";
+            this.gridColumn20.DisplayFormat.FormatString = "#,#0.00";
+            this.gridColumn20.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn20.FieldName = "TrnVal";
+            this.gridColumn20.MaxWidth = 100;
+            this.gridColumn20.MinWidth = 100;
+            this.gridColumn20.Name = "gridColumn20";
+            this.gridColumn20.Visible = true;
+            this.gridColumn20.VisibleIndex = 3;
+            this.gridColumn20.Width = 100;
             // 
-            // gridColumn42
+            // gridColumn22
             // 
-            this.gridColumn42.Caption = "รหัสไปรษณีย์";
-            this.gridColumn42.FieldName = "ZipCod";
-            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn22.Caption = "อ้างถึง PO#";
+            this.gridColumn22.FieldName = "PoNum";
+            this.gridColumn22.MaxWidth = 85;
+            this.gridColumn22.MinWidth = 85;
+            this.gridColumn22.Name = "gridColumn22";
+            this.gridColumn22.Visible = true;
+            this.gridColumn22.VisibleIndex = 4;
+            this.gridColumn22.Width = 85;
             // 
-            // gridColumn43
+            // gridColumn23
             // 
-            this.gridColumn43.Caption = "โทรศัพท์";
-            this.gridColumn43.FieldName = "TelNum";
-            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn23.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn23.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn23.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn23.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn23.Caption = "วันที่รับของ 1";
+            this.gridColumn23.FieldName = "DlvDat1";
+            this.gridColumn23.MaxWidth = 90;
+            this.gridColumn23.MinWidth = 90;
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 5;
+            this.gridColumn23.Width = 90;
             // 
-            // gridColumn44
+            // gridColumn24
             // 
-            this.gridColumn44.Caption = "โทรสาร (Fax.)";
-            this.gridColumn44.FieldName = "FaxNum";
-            this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn24.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn24.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn24.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn24.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn24.Caption = "วันที่รับของ 2";
+            this.gridColumn24.FieldName = "DlvDat2";
+            this.gridColumn24.MaxWidth = 90;
+            this.gridColumn24.MinWidth = 90;
+            this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.Visible = true;
+            this.gridColumn24.VisibleIndex = 6;
+            this.gridColumn24.Width = 90;
             // 
-            // gridColumn45
+            // gc3_ViewAttachment
             // 
-            this.gridColumn45.Caption = "ชื่อลูกค้า";
-            this.gridColumn45.FieldName = "_CustName";
-            this.gridColumn45.MinWidth = 80;
-            this.gridColumn45.Name = "gridColumn45";
-            this.gridColumn45.Visible = true;
-            this.gridColumn45.VisibleIndex = 0;
-            this.gridColumn45.Width = 100;
-            // 
-            // gridColumn46
-            // 
-            this.gridColumn46.Caption = "ที่อยู่";
-            this.gridColumn46.FieldName = "_CustAddr";
-            this.gridColumn46.MinWidth = 80;
-            this.gridColumn46.Name = "gridColumn46";
-            this.gridColumn46.Visible = true;
-            this.gridColumn46.VisibleIndex = 1;
-            this.gridColumn46.Width = 120;
-            // 
-            // gridColumn47
-            // 
-            this.gridColumn47.Caption = "โทรศัพท์ / โทรสาร(Fax.)";
-            this.gridColumn47.FieldName = "_CustTelFax";
-            this.gridColumn47.MaxWidth = 150;
-            this.gridColumn47.Name = "gridColumn47";
-            this.gridColumn47.Visible = true;
-            this.gridColumn47.VisibleIndex = 2;
-            this.gridColumn47.Width = 90;
-            // 
-            // gridColumn48
-            // 
-            this.gridColumn48.Caption = "เลขประจำตัวผู้เสียภาษี";
-            this.gridColumn48.FieldName = "TaxId";
-            this.gridColumn48.MaxWidth = 120;
-            this.gridColumn48.MinWidth = 120;
-            this.gridColumn48.Name = "gridColumn48";
-            this.gridColumn48.OptionsColumn.FixedWidth = true;
-            this.gridColumn48.Visible = true;
-            this.gridColumn48.VisibleIndex = 3;
-            this.gridColumn48.Width = 120;
+            this.gc3_ViewAttachment.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gc3_ViewAttachment.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gc3_ViewAttachment.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
+            this.gc3_ViewAttachment.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.gc3_ViewAttachment.AppearanceCell.Options.UseBackColor = true;
+            this.gc3_ViewAttachment.AppearanceCell.Options.UseFont = true;
+            this.gc3_ViewAttachment.AppearanceCell.Options.UseForeColor = true;
+            this.gc3_ViewAttachment.AppearanceCell.Options.UseTextOptions = true;
+            this.gc3_ViewAttachment.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc3_ViewAttachment.AppearanceHeader.Options.UseTextOptions = true;
+            this.gc3_ViewAttachment.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc3_ViewAttachment.Caption = "ไฟล์แนบ";
+            this.gc3_ViewAttachment.FieldName = "_ViewAttachment";
+            this.gc3_ViewAttachment.MaxWidth = 60;
+            this.gc3_ViewAttachment.MinWidth = 60;
+            this.gc3_ViewAttachment.Name = "gc3_ViewAttachment";
+            this.gc3_ViewAttachment.Visible = true;
+            this.gc3_ViewAttachment.VisibleIndex = 7;
+            this.gc3_ViewAttachment.Width = 60;
             // 
             // gridControl3
             // 
             this.gridControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode4.LevelTemplate = this.gridView5;
-            gridLevelNode4.RelationName = "cust";
+            gridLevelNode4.LevelTemplate = this.gridViewIV_PO;
+            gridLevelNode5.LevelTemplate = this.gridViewIV_PO_CUST;
+            gridLevelNode5.RelationName = "cust";
+            gridLevelNode4.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode5});
+            gridLevelNode4.RelationName = "po";
             this.gridControl3.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
             gridLevelNode4});
             this.gridControl3.Location = new System.Drawing.Point(3, 3);
-            this.gridControl3.MainView = this.gridView6;
+            this.gridControl3.MainView = this.gridViewIV;
             this.gridControl3.MenuManager = this.ribbonControl1;
             this.gridControl3.Name = "gridControl3";
             this.gridControl3.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit3});
             this.gridControl3.Size = new System.Drawing.Size(1198, 323);
-            this.gridControl3.TabIndex = 2;
+            this.gridControl3.TabIndex = 3;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView6,
-            this.gridView5});
+            this.gridViewIV,
+            this.gridViewIV_PO_CUST,
+            this.gridViewIV_PO});
             // 
-            // gridView6
+            // gridViewIV
             // 
-            this.gridView6.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridViewIV.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gc3_IvNum,
+            this.gridColumn43,
+            this.gridColumn13,
+            this.gridColumn44,
+            this.gridColumn45,
+            this.gridColumn46,
+            this.gridColumn47,
+            this.gridColumn48,
             this.gridColumn49,
-            this.gridColumn50,
-            this.gridColumn51,
-            this.gridColumn52,
-            this.gridColumn53,
-            this.gridColumn54,
-            this.gridColumn55,
-            this.gridColumn56,
-            this.gridColumn57,
-            this.gridColumn58,
-            this.gridColumn59,
-            this.gridColumn60,
-            this.gridColumn61,
-            this.gridColumn62,
-            this.gridColumn63,
-            this.gridColumn64,
-            this.gridColumn65,
-            this.gridColumn66,
-            this.gridColumn67,
-            this.gridColumn68,
-            this.gridColumn69,
-            this.gridColumn70,
-            this.gridColumn71,
-            this.gridColumn72});
-            this.gridView6.GridControl = this.gridControl3;
-            this.gridView6.Name = "gridView6";
-            this.gridView6.OptionsBehavior.Editable = false;
-            this.gridView6.OptionsBehavior.ReadOnly = true;
-            this.gridView6.OptionsSelection.MultiSelect = true;
-            this.gridView6.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
-            this.gridView6.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
-            this.gridView6.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gc3_EmsTrackingNo});
+            this.gridViewIV.GridControl = this.gridControl3;
+            this.gridViewIV.Name = "gridViewIV";
+            this.gridViewIV.OptionsBehavior.Editable = false;
+            this.gridViewIV.OptionsBehavior.ReadOnly = true;
+            this.gridViewIV.OptionsSelection.MultiSelect = true;
+            this.gridViewIV.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewIV.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
+            this.gridViewIV.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewIV_RowCellClick);
+            this.gridViewIV.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewIV_SelectionChanged);
+            // 
+            // gc3_IvNum
+            // 
+            this.gc3_IvNum.Caption = "อินวอยซ์ #";
+            this.gc3_IvNum.FieldName = "IvNum";
+            this.gc3_IvNum.MaxWidth = 85;
+            this.gc3_IvNum.MinWidth = 85;
+            this.gc3_IvNum.Name = "gc3_IvNum";
+            this.gc3_IvNum.OptionsColumn.FixedWidth = true;
+            this.gc3_IvNum.Visible = true;
+            this.gc3_IvNum.VisibleIndex = 0;
+            this.gc3_IvNum.Width = 85;
+            // 
+            // gridColumn43
+            // 
+            this.gridColumn43.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn43.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn43.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn43.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn43.Caption = "วันที่";
+            this.gridColumn43.FieldName = "IvDat";
+            this.gridColumn43.MaxWidth = 70;
+            this.gridColumn43.MinWidth = 70;
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.OptionsColumn.FixedWidth = true;
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 1;
+            this.gridColumn43.Width = 70;
+            // 
+            // gridColumn13
+            // 
+            this.gridColumn13.Caption = "อ้างถึงใบสั่งขาย #";
+            this.gridColumn13.FieldName = "SoNum";
+            this.gridColumn13.MaxWidth = 90;
+            this.gridColumn13.MinWidth = 90;
+            this.gridColumn13.Name = "gridColumn13";
+            this.gridColumn13.Visible = true;
+            this.gridColumn13.VisibleIndex = 2;
+            this.gridColumn13.Width = 90;
+            // 
+            // gridColumn44
+            // 
+            this.gridColumn44.Caption = "ตัวแทนจำหน่าย";
+            this.gridColumn44.FieldName = "DealerName";
+            this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.Visible = true;
+            this.gridColumn44.VisibleIndex = 3;
+            this.gridColumn44.Width = 224;
+            // 
+            // gridColumn45
+            // 
+            this.gridColumn45.Caption = "ประเภทตัวแทนฯ";
+            this.gridColumn45.FieldName = "_DealerType";
+            this.gridColumn45.MaxWidth = 120;
+            this.gridColumn45.MinWidth = 120;
+            this.gridColumn45.Name = "gridColumn45";
+            this.gridColumn45.Visible = true;
+            this.gridColumn45.VisibleIndex = 4;
+            this.gridColumn45.Width = 120;
+            // 
+            // gridColumn46
+            // 
+            this.gridColumn46.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn46.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn46.Caption = "จำนวนเงิน";
+            this.gridColumn46.DisplayFormat.FormatString = "#,#0.00";
+            this.gridColumn46.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn46.FieldName = "Amount";
+            this.gridColumn46.MaxWidth = 90;
+            this.gridColumn46.MinWidth = 90;
+            this.gridColumn46.Name = "gridColumn46";
+            this.gridColumn46.OptionsColumn.FixedWidth = true;
+            this.gridColumn46.Visible = true;
+            this.gridColumn46.VisibleIndex = 5;
+            this.gridColumn46.Width = 90;
+            // 
+            // gridColumn47
+            // 
+            this.gridColumn47.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn47.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn47.Caption = "Vat.";
+            this.gridColumn47.DisplayFormat.FormatString = "#,#0.00";
+            this.gridColumn47.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn47.FieldName = "VatAmt";
+            this.gridColumn47.MaxWidth = 80;
+            this.gridColumn47.MinWidth = 80;
+            this.gridColumn47.Name = "gridColumn47";
+            this.gridColumn47.OptionsColumn.FixedWidth = true;
+            this.gridColumn47.Visible = true;
+            this.gridColumn47.VisibleIndex = 6;
+            this.gridColumn47.Width = 80;
+            // 
+            // gridColumn48
+            // 
+            this.gridColumn48.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn48.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn48.Caption = "Tax";
+            this.gridColumn48.DisplayFormat.FormatString = "#,#0.00";
+            this.gridColumn48.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn48.FieldName = "TaxAmt";
+            this.gridColumn48.MaxWidth = 80;
+            this.gridColumn48.MinWidth = 80;
+            this.gridColumn48.Name = "gridColumn48";
+            this.gridColumn48.OptionsColumn.FixedWidth = true;
+            this.gridColumn48.Visible = true;
+            this.gridColumn48.VisibleIndex = 7;
+            this.gridColumn48.Width = 80;
             // 
             // gridColumn49
             // 
-            this.gridColumn49.Caption = "Id";
-            this.gridColumn49.FieldName = "Id";
+            this.gridColumn49.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn49.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn49.Caption = "จำนวนเงินสุทธิ";
+            this.gridColumn49.DisplayFormat.FormatString = "#,#0.00";
+            this.gridColumn49.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn49.FieldName = "NetAmt";
+            this.gridColumn49.MaxWidth = 90;
+            this.gridColumn49.MinWidth = 90;
             this.gridColumn49.Name = "gridColumn49";
+            this.gridColumn49.OptionsColumn.FixedWidth = true;
+            this.gridColumn49.Visible = true;
+            this.gridColumn49.VisibleIndex = 8;
+            this.gridColumn49.Width = 90;
             // 
-            // gridColumn50
+            // gc3_EmsTrackingNo
             // 
-            this.gridColumn50.Caption = "ใบสั่งซื้อ #";
-            this.gridColumn50.FieldName = "PoNum";
-            this.gridColumn50.MaxWidth = 75;
-            this.gridColumn50.MinWidth = 75;
-            this.gridColumn50.Name = "gridColumn50";
-            this.gridColumn50.OptionsColumn.FixedWidth = true;
-            this.gridColumn50.Visible = true;
-            this.gridColumn50.VisibleIndex = 1;
-            // 
-            // gridColumn51
-            // 
-            this.gridColumn51.Caption = "วันที่ใบสั่งซื้อ";
-            this.gridColumn51.FieldName = "PoDat";
-            this.gridColumn51.MaxWidth = 70;
-            this.gridColumn51.MinWidth = 70;
-            this.gridColumn51.Name = "gridColumn51";
-            this.gridColumn51.OptionsColumn.FixedWidth = true;
-            this.gridColumn51.Visible = true;
-            this.gridColumn51.VisibleIndex = 2;
-            this.gridColumn51.Width = 70;
-            // 
-            // gridColumn52
-            // 
-            this.gridColumn52.Caption = "ตัวแทนจำหน่าย";
-            this.gridColumn52.FieldName = "CreBy";
-            this.gridColumn52.Name = "gridColumn52";
-            this.gridColumn52.Visible = true;
-            this.gridColumn52.VisibleIndex = 3;
-            this.gridColumn52.Width = 92;
-            // 
-            // gridColumn53
-            // 
-            this.gridColumn53.Caption = "ประเภทตัวแทนฯ";
-            this.gridColumn53.FieldName = "_DealerType";
-            this.gridColumn53.MaxWidth = 90;
-            this.gridColumn53.Name = "gridColumn53";
-            this.gridColumn53.Visible = true;
-            this.gridColumn53.VisibleIndex = 4;
-            this.gridColumn53.Width = 90;
-            // 
-            // gridColumn54
-            // 
-            this.gridColumn54.Caption = "ขนส่งโดย";
-            this.gridColumn54.FieldName = "DlvBy";
-            this.gridColumn54.Name = "gridColumn54";
-            this.gridColumn54.Visible = true;
-            this.gridColumn54.VisibleIndex = 5;
-            this.gridColumn54.Width = 72;
-            // 
-            // gridColumn55
-            // 
-            this.gridColumn55.Caption = "วันที่รับของ 1";
-            this.gridColumn55.FieldName = "DlvDat1";
-            this.gridColumn55.Name = "gridColumn55";
-            this.gridColumn55.Visible = true;
-            this.gridColumn55.VisibleIndex = 6;
-            this.gridColumn55.Width = 49;
-            // 
-            // gridColumn56
-            // 
-            this.gridColumn56.Caption = "วันที่รับของ 2";
-            this.gridColumn56.FieldName = "DlvDat2";
-            this.gridColumn56.Name = "gridColumn56";
-            this.gridColumn56.Visible = true;
-            this.gridColumn56.VisibleIndex = 7;
-            this.gridColumn56.Width = 49;
-            // 
-            // gridColumn57
-            // 
-            this.gridColumn57.Caption = "หมายเหตุ";
-            this.gridColumn57.FieldName = "Remark";
-            this.gridColumn57.Name = "gridColumn57";
-            this.gridColumn57.Visible = true;
-            this.gridColumn57.VisibleIndex = 8;
-            this.gridColumn57.Width = 59;
-            // 
-            // gridColumn58
-            // 
-            this.gridColumn58.Caption = "รหัสสินค้า";
-            this.gridColumn58.FieldName = "StkCod";
-            this.gridColumn58.MaxWidth = 120;
-            this.gridColumn58.MinWidth = 120;
-            this.gridColumn58.Name = "gridColumn58";
-            this.gridColumn58.Visible = true;
-            this.gridColumn58.VisibleIndex = 9;
-            this.gridColumn58.Width = 120;
-            // 
-            // gridColumn59
-            // 
-            this.gridColumn59.Caption = "รายละเอียดสินค้า";
-            this.gridColumn59.FieldName = "StkDes";
-            this.gridColumn59.Name = "gridColumn59";
-            this.gridColumn59.Visible = true;
-            this.gridColumn59.VisibleIndex = 10;
-            this.gridColumn59.Width = 76;
-            // 
-            // gridColumn60
-            // 
-            this.gridColumn60.Caption = "จำนวน";
-            this.gridColumn60.DisplayFormat.FormatString = "#,#0.00";
-            this.gridColumn60.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn60.FieldName = "OrdQty";
-            this.gridColumn60.MaxWidth = 40;
-            this.gridColumn60.MinWidth = 40;
-            this.gridColumn60.Name = "gridColumn60";
-            this.gridColumn60.OptionsColumn.FixedWidth = true;
-            this.gridColumn60.Visible = true;
-            this.gridColumn60.VisibleIndex = 11;
-            this.gridColumn60.Width = 40;
-            // 
-            // gridColumn61
-            // 
-            this.gridColumn61.Caption = "จำนวนเงิน";
-            this.gridColumn61.DisplayFormat.FormatString = "#,#0.00";
-            this.gridColumn61.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn61.FieldName = "TrnVal";
-            this.gridColumn61.MaxWidth = 70;
-            this.gridColumn61.MinWidth = 70;
-            this.gridColumn61.Name = "gridColumn61";
-            this.gridColumn61.OptionsColumn.FixedWidth = true;
-            this.gridColumn61.Visible = true;
-            this.gridColumn61.VisibleIndex = 12;
-            this.gridColumn61.Width = 70;
-            // 
-            // gridColumn62
-            // 
-            this.gridColumn62.Caption = "Vat.";
-            this.gridColumn62.DisplayFormat.FormatString = "#,#0.00";
-            this.gridColumn62.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn62.FieldName = "VatAmt";
-            this.gridColumn62.MaxWidth = 60;
-            this.gridColumn62.MinWidth = 60;
-            this.gridColumn62.Name = "gridColumn62";
-            this.gridColumn62.OptionsColumn.FixedWidth = true;
-            this.gridColumn62.Visible = true;
-            this.gridColumn62.VisibleIndex = 13;
-            this.gridColumn62.Width = 60;
-            // 
-            // gridColumn63
-            // 
-            this.gridColumn63.Caption = "Tax";
-            this.gridColumn63.DisplayFormat.FormatString = "#,#0.00";
-            this.gridColumn63.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn63.FieldName = "TaxAmt";
-            this.gridColumn63.MaxWidth = 55;
-            this.gridColumn63.MinWidth = 55;
-            this.gridColumn63.Name = "gridColumn63";
-            this.gridColumn63.OptionsColumn.FixedWidth = true;
-            this.gridColumn63.Visible = true;
-            this.gridColumn63.VisibleIndex = 14;
-            this.gridColumn63.Width = 55;
-            // 
-            // gridColumn64
-            // 
-            this.gridColumn64.Caption = "จำนวนเงินสุทธิ";
-            this.gridColumn64.DisplayFormat.FormatString = "#,#0.00";
-            this.gridColumn64.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.gridColumn64.FieldName = "NetAmt";
-            this.gridColumn64.MaxWidth = 80;
-            this.gridColumn64.MinWidth = 80;
-            this.gridColumn64.Name = "gridColumn64";
-            this.gridColumn64.OptionsColumn.FixedWidth = true;
-            this.gridColumn64.Visible = true;
-            this.gridColumn64.VisibleIndex = 15;
-            this.gridColumn64.Width = 80;
-            // 
-            // gridColumn65
-            // 
-            this.gridColumn65.Caption = "วัน/เวลา บันทึก";
-            this.gridColumn65.FieldName = "CreDate";
-            this.gridColumn65.Name = "gridColumn65";
-            this.gridColumn65.Width = 20;
-            // 
-            // gridColumn66
-            // 
-            this.gridColumn66.Caption = "สถานะรายการ";
-            this.gridColumn66.FieldName = "Status";
-            this.gridColumn66.Name = "gridColumn66";
-            // 
-            // gridColumn67
-            // 
-            this.gridColumn67.Caption = "หลักฐานการชำระ";
-            this.gridColumn67.FieldName = "SlipFileName";
-            this.gridColumn67.Name = "gridColumn67";
-            // 
-            // gridColumn68
-            // 
-            this.gridColumn68.Caption = "หัก ณ ที่จ่าย";
-            this.gridColumn68.FieldName = "TaxFileName";
-            this.gridColumn68.Name = "gridColumn68";
-            // 
-            // gridColumn69
-            // 
-            this.gridColumn69.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
-            this.gridColumn69.AppearanceCell.ForeColor = System.Drawing.Color.Blue;
-            this.gridColumn69.AppearanceCell.Options.UseFont = true;
-            this.gridColumn69.AppearanceCell.Options.UseForeColor = true;
-            this.gridColumn69.Caption = "ไฟล์แนบ";
-            this.gridColumn69.FieldName = "_ViewAttachment";
-            this.gridColumn69.MaxWidth = 60;
-            this.gridColumn69.MinWidth = 60;
-            this.gridColumn69.Name = "gridColumn69";
-            this.gridColumn69.Visible = true;
-            this.gridColumn69.VisibleIndex = 16;
-            this.gridColumn69.Width = 60;
-            // 
-            // gridColumn70
-            // 
-            this.gridColumn70.Caption = "DealerType";
-            this.gridColumn70.FieldName = "DealerType";
-            this.gridColumn70.Name = "gridColumn70";
-            // 
-            // gridColumn71
-            // 
-            this.gridColumn71.Caption = "DealerCode";
-            this.gridColumn71.FieldName = "DealerCode";
-            this.gridColumn71.Name = "gridColumn71";
-            // 
-            // gridColumn72
-            // 
-            this.gridColumn72.Caption = "FlgVat";
-            this.gridColumn72.FieldName = "FlgVat";
-            this.gridColumn72.Name = "gridColumn72";
+            this.gc3_EmsTrackingNo.AppearanceCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gc3_EmsTrackingNo.AppearanceCell.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.gc3_EmsTrackingNo.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
+            this.gc3_EmsTrackingNo.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.gc3_EmsTrackingNo.AppearanceCell.Options.UseBackColor = true;
+            this.gc3_EmsTrackingNo.AppearanceCell.Options.UseFont = true;
+            this.gc3_EmsTrackingNo.AppearanceCell.Options.UseForeColor = true;
+            this.gc3_EmsTrackingNo.AppearanceCell.Options.UseTextOptions = true;
+            this.gc3_EmsTrackingNo.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc3_EmsTrackingNo.AppearanceHeader.Options.UseTextOptions = true;
+            this.gc3_EmsTrackingNo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc3_EmsTrackingNo.Caption = "EMS No.?";
+            this.gc3_EmsTrackingNo.FieldName = "_EmsTrackingNo";
+            this.gc3_EmsTrackingNo.MaxWidth = 90;
+            this.gc3_EmsTrackingNo.MinWidth = 90;
+            this.gc3_EmsTrackingNo.Name = "gc3_EmsTrackingNo";
+            this.gc3_EmsTrackingNo.Visible = true;
+            this.gc3_EmsTrackingNo.VisibleIndex = 9;
+            this.gc3_EmsTrackingNo.Width = 90;
             // 
             // repositoryItemButtonEdit3
             // 
@@ -1618,6 +1607,119 @@
             this.repositoryItemButtonEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.repositoryItemButtonEdit3.Name = "repositoryItemButtonEdit3";
+            // 
+            // gridViewIV_PO_CUST
+            // 
+            this.gridViewIV_PO_CUST.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn30,
+            this.gridColumn31,
+            this.gridColumn32,
+            this.gridColumn33,
+            this.gridColumn34,
+            this.gridColumn35,
+            this.gridColumn36,
+            this.gridColumn37,
+            this.gridColumn38,
+            this.gridColumn39,
+            this.gridColumn40,
+            this.gridColumn41});
+            this.gridViewIV_PO_CUST.GridControl = this.gridControl3;
+            this.gridViewIV_PO_CUST.Name = "gridViewIV_PO_CUST";
+            this.gridViewIV_PO_CUST.OptionsBehavior.Editable = false;
+            this.gridViewIV_PO_CUST.OptionsBehavior.ReadOnly = true;
+            this.gridViewIV_PO_CUST.OptionsDetail.AllowZoomDetail = false;
+            this.gridViewIV_PO_CUST.OptionsView.ShowGroupPanel = false;
+            this.gridViewIV_PO_CUST.ViewCaption = "รายละเอียดลูกค้า";
+            // 
+            // gridColumn30
+            // 
+            this.gridColumn30.Caption = "คำนำหน้าชื่อ";
+            this.gridColumn30.FieldName = "PreName";
+            this.gridColumn30.Name = "gridColumn30";
+            // 
+            // gridColumn31
+            // 
+            this.gridColumn31.Caption = "ชื่อ";
+            this.gridColumn31.FieldName = "Name";
+            this.gridColumn31.Name = "gridColumn31";
+            // 
+            // gridColumn32
+            // 
+            this.gridColumn32.Caption = "ที่อยู่ 1";
+            this.gridColumn32.FieldName = "Addr01";
+            this.gridColumn32.Name = "gridColumn32";
+            // 
+            // gridColumn33
+            // 
+            this.gridColumn33.Caption = "ที่อยู่ 2";
+            this.gridColumn33.FieldName = "Addr02";
+            this.gridColumn33.Name = "gridColumn33";
+            // 
+            // gridColumn34
+            // 
+            this.gridColumn34.Caption = "ที่อยู่ 3";
+            this.gridColumn34.FieldName = "Addr03";
+            this.gridColumn34.Name = "gridColumn34";
+            // 
+            // gridColumn35
+            // 
+            this.gridColumn35.Caption = "รหัสไปรษณีย์";
+            this.gridColumn35.FieldName = "ZipCod";
+            this.gridColumn35.Name = "gridColumn35";
+            // 
+            // gridColumn36
+            // 
+            this.gridColumn36.Caption = "โทรศัพท์";
+            this.gridColumn36.FieldName = "TelNum";
+            this.gridColumn36.Name = "gridColumn36";
+            // 
+            // gridColumn37
+            // 
+            this.gridColumn37.Caption = "โทรสาร (Fax.)";
+            this.gridColumn37.FieldName = "FaxNum";
+            this.gridColumn37.Name = "gridColumn37";
+            // 
+            // gridColumn38
+            // 
+            this.gridColumn38.Caption = "ชื่อลูกค้า";
+            this.gridColumn38.FieldName = "_CustName";
+            this.gridColumn38.MinWidth = 80;
+            this.gridColumn38.Name = "gridColumn38";
+            this.gridColumn38.Visible = true;
+            this.gridColumn38.VisibleIndex = 0;
+            this.gridColumn38.Width = 100;
+            // 
+            // gridColumn39
+            // 
+            this.gridColumn39.Caption = "ที่อยู่";
+            this.gridColumn39.FieldName = "_CustAddr";
+            this.gridColumn39.MinWidth = 80;
+            this.gridColumn39.Name = "gridColumn39";
+            this.gridColumn39.Visible = true;
+            this.gridColumn39.VisibleIndex = 1;
+            this.gridColumn39.Width = 120;
+            // 
+            // gridColumn40
+            // 
+            this.gridColumn40.Caption = "โทรศัพท์ / โทรสาร(Fax.)";
+            this.gridColumn40.FieldName = "_CustTelFax";
+            this.gridColumn40.MaxWidth = 150;
+            this.gridColumn40.Name = "gridColumn40";
+            this.gridColumn40.Visible = true;
+            this.gridColumn40.VisibleIndex = 2;
+            this.gridColumn40.Width = 90;
+            // 
+            // gridColumn41
+            // 
+            this.gridColumn41.Caption = "เลขประจำตัวผู้เสียภาษี";
+            this.gridColumn41.FieldName = "TaxId";
+            this.gridColumn41.MaxWidth = 120;
+            this.gridColumn41.MinWidth = 120;
+            this.gridColumn41.Name = "gridColumn41";
+            this.gridColumn41.OptionsColumn.FixedWidth = true;
+            this.gridColumn41.Visible = true;
+            this.gridColumn41.VisibleIndex = 3;
+            this.gridColumn41.Width = 120;
             // 
             // splashScreenManager1
             // 
@@ -1685,15 +1787,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSO_PO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewSO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewSO_PO_CUST)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewIV_PO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewIV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewIV_PO_CUST)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.tabPagePo.ResumeLayout(false);
@@ -1767,7 +1870,7 @@
         private DevExpress.XtraTab.XtraTabPage tabPagePo;
         private DevExpress.XtraTab.XtraTabPage tabPageSo;
         private DevExpress.XtraGrid.GridControl gridControl2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewSO_PO_CUST;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
@@ -1793,48 +1896,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn gc2_Iv;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit2;
         private DevExpress.XtraTab.XtraTabPage tabPageIv;
-        private DevExpress.XtraGrid.GridControl gridControl3;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn47;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn48;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView6;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn49;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn50;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn51;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn52;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn53;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn54;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn55;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn56;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn57;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn58;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn59;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn60;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn61;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn62;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn63;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn64;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn65;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn66;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn67;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn68;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn69;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn70;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn71;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn72;
-        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit3;
         private DevExpress.XtraBars.BarButtonItem btnRecIvNum;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView7;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewSO_PO;
         private DevExpress.XtraGrid.Columns.GridColumn gc2_PoId;
         private DevExpress.XtraGrid.Columns.GridColumn gc2_StkCod;
         private DevExpress.XtraGrid.Columns.GridColumn gc2_StkDes;
@@ -1842,6 +1905,45 @@
         private DevExpress.XtraGrid.Columns.GridColumn gc2_TrnVal;
         private DevExpress.XtraGrid.Columns.GridColumn gc2_DlvDat1;
         private DevExpress.XtraGrid.Columns.GridColumn gc2_DlvDat2;
+        private DevExpress.XtraGrid.Columns.GridColumn gc2_PoNum;
+        private DevExpress.XtraGrid.Columns.GridColumn gc2_ViewAttachment;
+        private DevExpress.XtraGrid.GridControl gridControl3;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewIV_PO;
+        private DevExpress.XtraGrid.Columns.GridColumn gc3_PoId;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn14;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraGrid.Columns.GridColumn gc3_ViewAttachment;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewIV_PO_CUST;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn30;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn31;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn32;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn33;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn34;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn35;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn36;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn37;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn38;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn39;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewIV;
+        private DevExpress.XtraGrid.Columns.GridColumn gc3_IvNum;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn47;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn48;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn49;
+        private DevExpress.XtraGrid.Columns.GridColumn gc3_EmsTrackingNo;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
+        private DevExpress.XtraBars.BarButtonItem btnEmsTracking;
     }
 }
 

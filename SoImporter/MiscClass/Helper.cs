@@ -84,9 +84,7 @@ namespace SoImporter.MiscClass
         public static List<OesoVM> ToOesoVM(this IEnumerable<PopritVM> poprits)
         {
             List<OesoVM> oeso = new List<OesoVM>();
-
-            var p = poprits.GroupBy(p1 => (p1.SoNum != null ? p1.SoNum.Substring(0, 12).Trim() : p1.SoNum));
-            Console.WriteLine(" .. >> x.count = " + p.Count());
+            var p = poprits.Where(p1 => p1.SoNum != null).GroupBy(p1 => p1.SoNum);
             foreach (var item in p)
             {
                 PopritVM poprit = item.First();
@@ -117,6 +115,46 @@ namespace SoImporter.MiscClass
             }
 
             return oeso;
+        }
+
+        public static List<ArtrnVM> ToArtrnVM(this IEnumerable<PopritVM> poprits)
+        {
+            List<ArtrnVM> artrn = new List<ArtrnVM>();
+
+            var p = poprits.Where(p1 => p1.IvNum != null).GroupBy(p1 => p1.IvNum);
+            //Console.WriteLine(" .. >> x.count = " + p.Count());
+            foreach (var item in p)
+            {
+                PopritVM poprit = item.First();
+                artrn.Add(new ArtrnVM
+                {
+                    IvNum = poprit.IvNum,
+                    IvDat = poprit.IvDat,
+                    SoNum = poprit.SoNum.Substring(0, 12).Trim(),
+                    SoDat = poprit.SoDat,
+                    DealerName = poprit.CreBy,
+                    DealerType = poprit.DealerType,
+                    CustPreName = poprit.cust.First().PreName,
+                    CustName = poprit.cust.First().Name,
+                    CustAddr01 = poprit.cust.First().Addr01,
+                    CustAddr02 = poprit.cust.First().Addr02,
+                    CustAddr03 = poprit.cust.First().Addr03,
+                    CustZipCod = poprit.cust.First().ZipCod,
+                    CustTaxId = poprit.cust.First().TaxId,
+                    CustTelNum = poprit.cust.First().TelNum,
+                    CustFaxNum = poprit.cust.First().FaxNum,
+                    Remark = poprit.IvRemark,
+                    Amount = (double)poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.TrnVal),
+                    Disc = poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.DiscAmt).ToString(),
+                    DiscAmt = (double)poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.DiscAmt),
+                    TaxAmt = (double)poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.TaxAmt),
+                    VatAmt = (double)poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.VatAmt),
+                    NetAmt = (double)poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.NetAmt),
+                    po = poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).ToList()
+                });
+            }
+
+            return artrn;
         }
 
         //public static string formatErrorData(this WebExceptionStatus exception_status)
