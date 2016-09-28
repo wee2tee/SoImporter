@@ -85,8 +85,11 @@
             this.btnRetrieveData = new DevExpress.XtraBars.BarButtonItem();
             this.btnRecIvNum = new DevExpress.XtraBars.BarButtonItem();
             this.btnEmsTracking = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDealer = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -648,12 +651,14 @@
             this.btnApiUrl,
             this.btnRetrieveData,
             this.btnRecIvNum,
-            this.btnEmsTracking});
+            this.btnEmsTracking,
+            this.btnDealer});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 18;
+            this.ribbonControl1.MaxItemId = 20;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1});
+            this.ribbonPage1,
+            this.ribbonPage2});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemTextEdit1,
             this.repositoryItemTextEdit2,
@@ -760,13 +765,22 @@
             this.btnEmsTracking.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnEmsTracking.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEmsTracking_ItemClick);
             // 
+            // btnDealer
+            // 
+            this.btnDealer.Caption = "รายชื่อ ตัวแทนจำหน่าย";
+            this.btnDealer.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDealer.Glyph")));
+            this.btnDealer.Id = 19;
+            this.btnDealer.Name = "btnDealer";
+            this.btnDealer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnDealer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDealer_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2,
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup3});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "จัดการข้อมูล";
+            this.ribbonPage1.Text = "รายการประจำวัน";
             // 
             // ribbonPageGroup2
             // 
@@ -777,6 +791,19 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnEmsTracking);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการข้อมูล";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.btnDealer);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "ตัวแทนจำหน่าย";
+            // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "ตั้งค่า";
             // 
             // ribbonPageGroup1
             // 
@@ -1944,6 +1971,9 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit repositoryItemButtonEdit3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraBars.BarButtonItem btnEmsTracking;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
+        private DevExpress.XtraBars.BarButtonItem btnDealer;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
     }
 }
 

@@ -101,17 +101,21 @@
     <Compile Include="Model\Artrnrm.cs" />
     <Compile Include="Model\ArtrnVM.cs" />
     <Compile Include="Model\CustVM.cs" />
+    <Compile Include="Model\DealerVM.cs" />
+    <Compile Include="Model\DlvProfileVM.cs" />
     <Compile Include="Model\Glacc.cs" />
     <Compile Include="Model\InternalUsers.cs" />
     <Compile Include="Model\InternalUsersVM.cs" />
     <Compile Include="Model\Isrun.cs" />
     <Compile Include="Model\Istab.cs" />
+    <Compile Include="Model\IstabVM.cs" />
     <Compile Include="Model\Oeslm.cs" />
     <Compile Include="Model\Oeso.cs" />
     <Compile Include="Model\Oesoit.cs" />
     <Compile Include="Model\OesoVM.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PopritVM.cs" />
+    <Compile Include="Model\StpriVM.cs" />
     <Compile Include="Model\Tabpr.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -150,6 +154,18 @@
     </Compile>
     <Compile Include="SubForm\DataPathDialog.Designer.cs">
       <DependentUpon>DataPathDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\DealerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\DealerDialog.Designer.cs">
+      <DependentUpon>DealerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\DealerEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\DealerEditDialog.Designer.cs">
+      <DependentUpon>DealerEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\LoginDialog.cs">
       <SubType>Form</SubType>
@@ -224,6 +240,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\DataPathDialog.resx">
       <DependentUpon>DataPathDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\DealerDialog.resx">
+      <DependentUpon>DealerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\DealerEditDialog.resx">
+      <DependentUpon>DealerEditDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\LoginDialog.resx">
       <DependentUpon>LoginDialog.cs</DependentUpon>

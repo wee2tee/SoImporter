@@ -1085,5 +1085,11 @@ namespace SoImporter
                 this.btnRetrieveData.PerformClick();
             }
         }
+
+        private void btnDealer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            DealerDialog dealer = new DealerDialog(this);
+            dealer.ShowDialog();
+        }
     }
 }
