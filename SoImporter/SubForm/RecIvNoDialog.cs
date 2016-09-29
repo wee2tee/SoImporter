@@ -77,6 +77,12 @@ namespace SoImporter.SubForm
                 return true;
             }
 
+            if(keyData == Keys.F9)
+            {
+                this.btnOK.PerformClick();
+                return true;
+            }
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }

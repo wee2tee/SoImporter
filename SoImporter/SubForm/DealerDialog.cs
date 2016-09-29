@@ -16,7 +16,7 @@ namespace SoImporter.SubForm
 {
     public partial class DealerDialog : DevExpress.XtraEditors.XtraForm
     {
-        private MainForm main_form;
+        public MainForm main_form;
         private List<DealerVM> dealers;
         private List<StpriVM> stpris;
         private List<DlvProfileVM> dlv_profiles;
@@ -41,6 +41,28 @@ namespace SoImporter.SubForm
             this.gridControl1.DataSource = this.bs_dealer;
 
             this.splashScreenManager1.CloseWaitForm();
+        }
+
+        public DealerVM LoadSingerDealerFromServer(string dealer_id)
+        {
+            APIResult get = APIClient.GET(this.main_form.config.ApiUrl + "Dealers/GetDealerAt", this.main_form.config.ApiKey, "&id=" + dealer_id);
+
+            if (get.Success)
+            {
+                DealerVM dealer = JsonConvert.DeserializeObject<DealerVM>(get.ReturnValue);
+                return dealer;
+            }
+            else
+            {
+                if (MessageBox.Show(get.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return this.LoadSingerDealerFromServer(dealer_id);
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
 
         public List<DealerVM> LoadDealersFromServer()
@@ -108,7 +130,21 @@ namespace SoImporter.SubForm
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (this.gridViewDealer.GetRow(this.gridViewDealer.FocusedRowHandle) == null)
+                return;
 
+            var dealer = this.dealers.Where(d => d.Id == (string)this.gridViewDealer.GetRowCellValue(this.gridViewDealer.FocusedRowHandle, this.colId)).ToList().FirstOrDefault();
+
+            if (dealer == null)
+                return;
+
+            DealerEditDialog edit = new DealerEditDialog(this, dealer, this.stpris, this.dlv_profiles);
+            if(edit.ShowDialog() == DialogResult.OK)
+            {
+                this.dealers = this.LoadDealersFromServer();
+                this.bs_dealer.ResetBindings(true);
+                this.bs_dealer.DataSource = this.dealers;
+            }
         }
     }
 }

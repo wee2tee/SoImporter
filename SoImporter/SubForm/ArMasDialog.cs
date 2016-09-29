@@ -78,7 +78,7 @@ namespace SoImporter.SubForm
             this.remark = this.istab.Where(i => i.tabtyp == "51" && i.typcod.Trim() == "18").ToList();
             this.areacod = this.istab.Where(i => i.tabtyp == "40").ToList();
             this.dlvby = this.istab.Where(i => i.tabtyp == "41").ToList();
-            this.glacc = MainForm.LoadGlaccFromDBF(this.main_form.config);
+            this.glacc = MainForm.LoadGlaccFromDBF(this.main_form.config).Where(g => g.acctyp == "0").ToList();
             this.oeslm = MainForm.LoadOeslmFromDBF(this.main_form.config);
 
             foreach (var item in this.prenam)
@@ -222,6 +222,49 @@ namespace SoImporter.SubForm
             this.armas.disc = ((TextEdit)sender).Text.Contains("+") ? (((TextEdit)sender).Text.Trim() + "%").PadLeft(10) : ((TextEdit)sender).Text.Trim().PadLeft(10);
         }
 
+        private void txtDisc_Leave(object sender, EventArgs e)
+        {
+            string val = ((TextEdit)sender).Text;
+            
+            if (val.Contains("+") || val.Contains("%"))
+            {
+                val = val.Replace("++", "+").Replace("++", "+").Replace("++", "+").Replace("++", "+").Trim();
+                val = val.Substring(0, 1) == "+" ? val.Substring(1, val.Length - 1) : val;
+
+                if (val.IndexOf("%") == 0 || (val.IndexOf("+") == 0 && val.Length == 1))
+                    val = string.Empty;
+
+                if (val.Contains("%"))
+                {
+                    int pos_of_perc = val.IndexOf("%");
+                    val = val.Substring(0, pos_of_perc + 1);
+                }
+                else
+                {
+                    if(val.IndexOf("+") == 0 && val.Length == 1)
+                    {
+                        val = string.Empty;
+                    }
+                    else
+                    {
+                        if(val != string.Empty)
+                        {
+                            if(val.Substring(val.Length - 1, 1) == "+")
+                            {
+                                val = val.Substring(0, val.Length - 1) + "%";
+                            }
+                            else
+                            {
+                                val = val.Length < 10 ? val + "%" : val.Substring(0, 9) + "%";
+                            }
+                        }
+                    }
+                }
+            }
+
+            ((TextEdit)sender).Text = val;
+        }
+
         private void txtCrLine_EditValueChanged(object sender, EventArgs e)
         {
             this.armas.crline = Convert.ToDouble(((TextEdit)sender).Text.Replace(",", ""));
@@ -247,6 +290,12 @@ namespace SoImporter.SubForm
             if(keyData == Keys.Enter && !(this.btnOK.Focused || this.btnCancel.Focused))
             {
                 SendKeys.Send("{TAB}");
+                return true;
+            }
+
+            if(keyData == Keys.F9)
+            {
+                this.btnOK.PerformClick();
                 return true;
             }
 

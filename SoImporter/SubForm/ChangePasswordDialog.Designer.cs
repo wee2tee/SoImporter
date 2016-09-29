@@ -75,7 +75,7 @@
             this.btnOK.Appearance.Options.UseFont = true;
             this.btnOK.Location = new System.Drawing.Point(79, 193);
             this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(87, 29);
+            this.btnOK.Size = new System.Drawing.Size(87, 31);
             this.btnOK.TabIndex = 3;
             this.btnOK.Text = "ตกลง <F9>";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -141,7 +141,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Location = new System.Drawing.Point(172, 193);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(87, 29);
+            this.btnCancel.Size = new System.Drawing.Size(87, 31);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "ยกเลิก <Esc>";
             // 

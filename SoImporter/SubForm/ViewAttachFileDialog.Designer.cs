@@ -488,9 +488,9 @@
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
             this.btnPrint.Location = new System.Drawing.Point(2, 472);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(140, 30);
+            this.btnPrint.Size = new System.Drawing.Size(198, 30);
             this.btnPrint.TabIndex = 3;
-            this.btnPrint.Text = "ดูตัวอย่างก่อนพิมพ์";
+            this.btnPrint.Text = "ดูตัวอย่างก่อนพิมพ์ <Alt + P>";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // ViewAttachFileDialog

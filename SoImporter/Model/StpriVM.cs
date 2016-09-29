@@ -39,5 +39,11 @@ namespace SoImporter.Model
 
         // แก้ไขล่าสุดเมื่อ
         public DateTime? ChgDate { get; set; }
+
+        /** A string to display in comboboxedit **/
+        public override string ToString()
+        {
+            return this.PriceCode;
+        }
     }
 }

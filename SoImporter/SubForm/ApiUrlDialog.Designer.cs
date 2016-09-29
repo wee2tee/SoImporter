@@ -54,7 +54,7 @@
             this.txtUrl.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtUrl.Properties.Appearance.Options.UseFont = true;
             this.txtUrl.Size = new System.Drawing.Size(398, 22);
-            this.txtUrl.TabIndex = 1;
+            this.txtUrl.TabIndex = 0;
             this.txtUrl.TextChanged += new System.EventHandler(this.txtUrl_TextChanged);
             // 
             // btnOK
@@ -78,7 +78,7 @@
             this.btnCancel.Location = new System.Drawing.Point(270, 88);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(97, 30);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "ยกเลิก <Esc>";
             // 
             // labelControl2

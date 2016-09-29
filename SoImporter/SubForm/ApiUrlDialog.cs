@@ -65,6 +65,12 @@ namespace SoImporter.SubForm
                 return true;
             }
 
+            if(keyData == Keys.Enter && !(this.btnOK.Focused || this.btnCancel.Focused))
+            {
+                SendKeys.Send("{TAB}");
+                return true;
+            }
+
             if(keyData == Keys.F9)
             {
                 this.btnOK.PerformClick();

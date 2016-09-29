@@ -35,5 +35,20 @@ namespace SoImporter.Model
 
         /** dlv member **/
         public List<IstabVM> dlv { get; set; }
+
+        /** A string to display in comboboxedit **/
+        public override string ToString()
+        {
+            string str = this.TypCod + " : " + this.TypDesTh;
+            //str += "[";
+            //int cnt = 1;
+            //foreach (var item in this.dlv)
+            //{
+            //    str += (cnt == 1 ? "" : ", ") + item.TypDesTh;
+            //    cnt++;
+            //}
+            //str += "]";
+            return str;
+        }
     }
 }

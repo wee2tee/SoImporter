@@ -143,6 +143,12 @@ namespace SoImporter.SubForm
                 return true;
             }
 
+            if(keyData == (Keys.Alt | Keys.P))
+            {
+                this.btnPrint.PerformClick();
+                return true;
+            }
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
     }

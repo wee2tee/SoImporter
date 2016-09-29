@@ -190,7 +190,7 @@
             this.panelControl1.Location = new System.Drawing.Point(12, 74);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(722, 201);
-            this.panelControl1.TabIndex = 2;
+            this.panelControl1.TabIndex = 3;
             // 
             // labelControl11
             // 
@@ -396,7 +396,7 @@
             this.panelControl2.Location = new System.Drawing.Point(12, 281);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(722, 152);
-            this.panelControl2.TabIndex = 2;
+            this.panelControl2.TabIndex = 12;
             // 
             // labelControl16
             // 
@@ -572,12 +572,14 @@
             this.txtDisc.Properties.Appearance.Options.UseFont = true;
             this.txtDisc.Properties.Appearance.Options.UseTextOptions = true;
             this.txtDisc.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.txtDisc.Properties.Mask.EditMask = "[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?[+|0-9]?";
+            this.txtDisc.Properties.Mask.EditMask = "[+|%|0-9]?[+|%|0-9]?[+|%|0-9]?[+|%|0-9]?[+|%|0-9]?[+|%|0-9]?[+|%|0-9]?[+|%|0-9]?[" +
+    "+|%|0-9]?[+|%|0-9]?";
             this.txtDisc.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.RegEx;
             this.txtDisc.Properties.Mask.ShowPlaceHolders = false;
             this.txtDisc.Size = new System.Drawing.Size(116, 22);
             this.txtDisc.TabIndex = 20;
             this.txtDisc.EditValueChanged += new System.EventHandler(this.txtDisc_EditValueChanged);
+            this.txtDisc.Leave += new System.EventHandler(this.txtDisc_Leave);
             // 
             // txtPayCond
             // 

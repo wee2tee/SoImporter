@@ -55,7 +55,8 @@
             this.btnBrowse.Location = new System.Drawing.Point(526, 18);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(30, 22);
-            this.btnBrowse.TabIndex = 2;
+            this.btnBrowse.TabIndex = 1;
+            this.btnBrowse.TabStop = false;
             this.btnBrowse.Text = "...";
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
@@ -68,7 +69,7 @@
             this.btnOK.Location = new System.Drawing.Point(183, 88);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(96, 30);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 3;
             this.btnOK.Text = "ตกลง <F9>";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
@@ -82,7 +83,7 @@
             this.btnCancel.Location = new System.Drawing.Point(285, 88);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(96, 30);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "ยกเลิก <Esc>";
             // 
             // labelControl2
@@ -113,7 +114,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbSoNum.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbSoNum.Size = new System.Drawing.Size(225, 22);
-            this.cbSoNum.TabIndex = 3;
+            this.cbSoNum.TabIndex = 2;
             this.cbSoNum.SelectedIndexChanged += new System.EventHandler(this.cbSoNum_SelectedIndexChanged);
             // 
             // DataPathDialog

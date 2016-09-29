@@ -17,6 +17,55 @@ namespace SoImporter.MiscClass
         สำนักงานบัญชีไฮเทค = 3
     }
 
+    public enum TABPR : int
+    {
+        ราคาขายล่าสุด = 0,
+        ราคาขายที่_1 = 1,
+        ราคาขายที่_2 = 2,
+        ราคาขายที่_3 = 3,
+        ราคาขายที่_4 = 4,
+        ราคาขายที่_5 = 5,
+    }
+
+    public enum DEALER_STATUS
+    {
+        A_ปกติ,
+        X_ห้ามใช้
+    }
+
+    public class DealerTypeObj
+    {
+        public string Desc { get; set; }
+        public int Value { get; set; }
+
+        public override string ToString()
+        {
+            return this.Value.ToString() + " : " + this.Desc;
+        }
+    }
+
+    public class TabPrObj
+    {
+        public string Desc { get; set; }
+        public string Value { get; set; }
+
+        public override string ToString()
+        {
+            return this.Value + " : " + this.Desc;
+        }
+    }
+
+    public class DealerStatusObj
+    {
+        public string Desc { get; set; }
+        public string Value { get; set; }
+
+        public override string ToString()
+        {
+            return this.Value + " : " + this.Desc;
+        }
+    }
+
     public static class Helper
     {
         public static List<T> ToList<T>(this DataTable table) where T : class, new()
@@ -155,6 +204,48 @@ namespace SoImporter.MiscClass
             }
 
             return artrn;
+        }
+
+        public static List<DealerTypeObj> GetDealerTypeObject(this Object obj)
+        {
+            List<DealerTypeObj> d = new List<DealerTypeObj>();
+            foreach (var item in Enum.GetValues(typeof(DEALER_TYPE)))
+            {
+                d.Add(new DealerTypeObj
+                {
+                    Desc = item.ToString(),
+                    Value = (int)item
+                });
+            }
+            return d;
+        }
+
+        public static List<TabPrObj> GetTabPrObject(this Object obj)
+        {
+            List<TabPrObj> t = new List<TabPrObj>();
+            foreach (var item in Enum.GetValues(typeof(TABPR)))
+            {
+                t.Add(new TabPrObj
+                {
+                    Desc = ((int)item).ToString(),
+                    Value = item.ToString()
+                });
+            }
+            return t;
+        }
+
+        public static List<DealerStatusObj> GetDealerStatusObject(this Object obj)
+        {
+            List<DealerStatusObj> d = new List<DealerStatusObj>();
+            foreach (var item in Enum.GetValues(typeof(DEALER_STATUS)))
+            {
+                d.Add(new DealerStatusObj
+                {
+                    Desc = item.ToString().Substring(2, item.ToString().Length - 2),
+                    Value = item.ToString().Substring(0, 1)
+                });
+            }
+            return d;
         }
 
         //public static string formatErrorData(this WebExceptionStatus exception_status)

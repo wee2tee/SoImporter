@@ -1091,5 +1091,36 @@ namespace SoImporter
             DealerDialog dealer = new DealerDialog(this);
             dealer.ShowDialog();
         }
+
+        private void btnQuCod_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnStkGrp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnDlvBy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnDlvProfile_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnStpri_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            StpriDialog stpri = new StpriDialog(this);
+            stpri.ShowDialog();
+        }
+
+        private void btnStmas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
     }
 }

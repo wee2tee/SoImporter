@@ -179,6 +179,12 @@
     <Compile Include="SubForm\OesoConfirmDialog.Designer.cs">
       <DependentUpon>OesoConfirmDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\StpriDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\StpriDialog.Designer.cs">
+      <DependentUpon>StpriDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\RecEmsTrackingDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\OesoConfirmDialog.resx">
       <DependentUpon>OesoConfirmDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\StpriDialog.resx">
+      <DependentUpon>StpriDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\RecEmsTrackingDialog.resx">
       <DependentUpon>RecEmsTrackingDialog.cs</DependentUpon>
