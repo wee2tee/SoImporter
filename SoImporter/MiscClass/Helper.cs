@@ -27,6 +27,12 @@ namespace SoImporter.MiscClass
         ราคาขายที่_5 = 5,
     }
 
+    public enum IS_PERCENT
+    {
+        Y_เปอร์เซ็นต์,
+        N_บาท
+    }
+
     public enum DEALER_STATUS
     {
         A_ปกติ,
@@ -47,11 +53,22 @@ namespace SoImporter.MiscClass
     public class TabPrObj
     {
         public string Desc { get; set; }
-        public string Value { get; set; }
+        public int Value { get; set; }
 
         public override string ToString()
         {
             return this.Value + " : " + this.Desc;
+        }
+    }
+
+    public class IsPercentObj
+    {
+        public string Desc { get; set; }
+        public bool Value { get; set; }
+
+        public override string ToString()
+        {
+            return this.Desc;
         }
     }
 
@@ -227,11 +244,25 @@ namespace SoImporter.MiscClass
             {
                 t.Add(new TabPrObj
                 {
-                    Desc = ((int)item).ToString(),
-                    Value = item.ToString()
+                    Desc = item.ToString().Replace("_", " "),
+                    Value = (int)item
                 });
             }
             return t;
+        }
+
+        public static List<IsPercentObj> GetIsPercentObject(this Object obj)
+        {
+            List<IsPercentObj> p = new List<IsPercentObj>();
+            foreach (var item in Enum.GetValues(typeof(IS_PERCENT)))
+            {
+                p.Add(new IsPercentObj
+                {
+                    Desc = item.ToString().Substring(2, item.ToString().Length - 2),
+                    Value = item.ToString().Substring(0, 1) == "Y" ? true : false
+                });
+            }
+            return p;
         }
 
         public static List<DealerStatusObj> GetDealerStatusObject(this Object obj)

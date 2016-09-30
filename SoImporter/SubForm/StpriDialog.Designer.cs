@@ -31,6 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StpriDialog));
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridViewStpri = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPriceCode = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDesCription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_TabPr = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_Disc1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.col_Disc2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
@@ -56,10 +62,91 @@
             // 
             // gridViewStpri
             // 
+            this.gridViewStpri.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId,
+            this.colPriceCode,
+            this.colDesCription,
+            this.col_TabPr,
+            this.col_Disc1,
+            this.col_Disc2});
             this.gridViewStpri.GridControl = this.gridControl1;
             this.gridViewStpri.Name = "gridViewStpri";
             this.gridViewStpri.OptionsBehavior.Editable = false;
             this.gridViewStpri.OptionsBehavior.ReadOnly = true;
+            this.gridViewStpri.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewStpri_RowCellClick);
+            this.gridViewStpri.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewStpri_FocusedRowChanged);
+            // 
+            // colId
+            // 
+            this.colId.Caption = "Id";
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            // 
+            // colPriceCode
+            // 
+            this.colPriceCode.AppearanceHeader.Options.UseTextOptions = true;
+            this.colPriceCode.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colPriceCode.Caption = "รหัส";
+            this.colPriceCode.FieldName = "PriceCode";
+            this.colPriceCode.MaxWidth = 100;
+            this.colPriceCode.MinWidth = 100;
+            this.colPriceCode.Name = "colPriceCode";
+            this.colPriceCode.Visible = true;
+            this.colPriceCode.VisibleIndex = 0;
+            this.colPriceCode.Width = 100;
+            // 
+            // colDesCription
+            // 
+            this.colDesCription.Caption = "คำอธิบาย";
+            this.colDesCription.FieldName = "Description";
+            this.colDesCription.MinWidth = 90;
+            this.colDesCription.Name = "colDesCription";
+            this.colDesCription.Visible = true;
+            this.colDesCription.VisibleIndex = 1;
+            this.colDesCription.Width = 90;
+            // 
+            // col_TabPr
+            // 
+            this.col_TabPr.AppearanceHeader.Options.UseTextOptions = true;
+            this.col_TabPr.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.col_TabPr.Caption = "ใช้ราคาขายที่?";
+            this.col_TabPr.FieldName = "_TabPr";
+            this.col_TabPr.MaxWidth = 90;
+            this.col_TabPr.MinWidth = 90;
+            this.col_TabPr.Name = "col_TabPr";
+            this.col_TabPr.Visible = true;
+            this.col_TabPr.VisibleIndex = 2;
+            this.col_TabPr.Width = 90;
+            // 
+            // col_Disc1
+            // 
+            this.col_Disc1.AppearanceCell.Options.UseTextOptions = true;
+            this.col_Disc1.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.col_Disc1.AppearanceHeader.Options.UseTextOptions = true;
+            this.col_Disc1.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.col_Disc1.Caption = "ส่วนลดตามเป้า";
+            this.col_Disc1.FieldName = "_Disc1";
+            this.col_Disc1.MaxWidth = 120;
+            this.col_Disc1.MinWidth = 120;
+            this.col_Disc1.Name = "col_Disc1";
+            this.col_Disc1.Visible = true;
+            this.col_Disc1.VisibleIndex = 3;
+            this.col_Disc1.Width = 120;
+            // 
+            // col_Disc2
+            // 
+            this.col_Disc2.AppearanceCell.Options.UseTextOptions = true;
+            this.col_Disc2.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.col_Disc2.AppearanceHeader.Options.UseTextOptions = true;
+            this.col_Disc2.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.col_Disc2.Caption = "ส่วนลดตัวแทน ตจว.";
+            this.col_Disc2.FieldName = "_Disc2";
+            this.col_Disc2.MaxWidth = 120;
+            this.col_Disc2.MinWidth = 120;
+            this.col_Disc2.Name = "col_Disc2";
+            this.col_Disc2.Visible = true;
+            this.col_Disc2.VisibleIndex = 4;
+            this.col_Disc2.Width = 120;
             // 
             // panelControl1
             // 
@@ -83,30 +170,35 @@
             this.btnAdd.Size = new System.Drawing.Size(62, 29);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "เพิ่ม";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnEdit.Appearance.Options.UseFont = true;
+            this.btnEdit.Enabled = false;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.Location = new System.Drawing.Point(641, 12);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(62, 29);
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "แก้ไข";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnDelete.Appearance.Options.UseFont = true;
+            this.btnDelete.Enabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.Location = new System.Drawing.Point(709, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(62, 29);
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "ลบ";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // splashScreenManager1
             // 
@@ -145,5 +237,11 @@
         private DevExpress.XtraEditors.SimpleButton btnEdit;
         private DevExpress.XtraEditors.SimpleButton btnDelete;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colPriceCode;
+        private DevExpress.XtraGrid.Columns.GridColumn col_TabPr;
+        private DevExpress.XtraGrid.Columns.GridColumn col_Disc1;
+        private DevExpress.XtraGrid.Columns.GridColumn col_Disc2;
+        private DevExpress.XtraGrid.Columns.GridColumn colDesCription;
     }
 }

@@ -174,7 +174,7 @@ namespace SoImporter.SubForm
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if(keyData == Keys.Escape)
+            if(keyData == Keys.Escape && !(this.cbDealerType.IsPopupOpen || this.cbPriceCode.IsPopupOpen || this.cbDlvProfile.IsPopupOpen || this.cbStatus.IsPopupOpen))
             {
                 this.btnCancel.PerformClick();
                 return true;

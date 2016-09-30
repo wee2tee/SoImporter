@@ -1094,17 +1094,20 @@ namespace SoImporter
 
         private void btnQuCod_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            IstabDialog istab = new IstabDialog(this, ISTAB_TABTYP.QUCOD);
+            istab.ShowDialog();
         }
 
         private void btnStkGrp_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            IstabDialog istab = new IstabDialog(this, ISTAB_TABTYP.STKGRP);
+            istab.ShowDialog();
         }
 
         private void btnDlvBy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            IstabDialog istab = new IstabDialog(this, ISTAB_TABTYP.DLVBY);
+            istab.ShowDialog();
         }
 
         private void btnDlvProfile_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

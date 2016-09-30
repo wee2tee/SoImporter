@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 
 namespace SoImporter.SubForm
 {
-    public partial class AddEditUserDialog : DevExpress.XtraEditors.XtraForm
+    public partial class UserAddEditDialog : DevExpress.XtraEditors.XtraForm
     {
         private MainForm main_form;
         //private string user_name, full_name, department, status;
@@ -27,18 +27,18 @@ namespace SoImporter.SubForm
             EDIT
         }
 
-        public AddEditUserDialog()
+        public UserAddEditDialog()
         {
             InitializeComponent();
         }
 
-        public AddEditUserDialog(MainForm main_form) : this()
+        public UserAddEditDialog(MainForm main_form) : this()
         {
             this.main_form = main_form;
             this.form_mode = FORM_MODE.ADD;
         }
 
-        public AddEditUserDialog(MainForm main_form, InternalUsers user = null) : this()
+        public UserAddEditDialog(MainForm main_form, InternalUsers user = null) : this()
         {
             this.main_form = main_form;
             this.form_mode = FORM_MODE.EDIT;

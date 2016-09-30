@@ -92,7 +92,7 @@ namespace SoImporter.SubForm
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddEditUserDialog add = new AddEditUserDialog(this.main_form);
+            UserAddEditDialog add = new UserAddEditDialog(this.main_form);
             if (add.ShowDialog() == DialogResult.OK)
             {
                 this.RefreshGridUsers();
@@ -110,7 +110,7 @@ namespace SoImporter.SubForm
                 if (result.Success && result.ReturnValue != null)
                 {
                     InternalUsers user = JsonConvert.DeserializeObject<InternalUsers>(result.ReturnValue);
-                    AddEditUserDialog edit = new AddEditUserDialog(this.main_form, user);
+                    UserAddEditDialog edit = new UserAddEditDialog(this.main_form, user);
                     if(edit.ShowDialog() == DialogResult.OK)
                     {
                         this.RefreshGridUsers();

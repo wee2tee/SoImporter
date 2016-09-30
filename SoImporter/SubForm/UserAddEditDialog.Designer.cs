@@ -1,6 +1,6 @@
 ﻿namespace SoImporter.SubForm
 {
-    partial class AddEditUserDialog
+    partial class UserAddEditDialog
     {
         /// <summary>
         /// Required designer variable.

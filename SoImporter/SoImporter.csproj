@@ -125,11 +125,23 @@
     <Compile Include="Report\ReportAttachImage.Designer.cs">
       <DependentUpon>ReportAttachImage.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForm\AddEditUserDialog.cs">
+    <Compile Include="SubForm\IstabAddEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForm\AddEditUserDialog.Designer.cs">
-      <DependentUpon>AddEditUserDialog.cs</DependentUpon>
+    <Compile Include="SubForm\IstabAddEditDialog.Designer.cs">
+      <DependentUpon>IstabAddEditDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\IstabDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\IstabDialog.Designer.cs">
+      <DependentUpon>IstabDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\UserAddEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\UserAddEditDialog.Designer.cs">
+      <DependentUpon>UserAddEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\ApiUrlDialog.cs">
       <SubType>Form</SubType>
@@ -178,6 +190,12 @@
     </Compile>
     <Compile Include="SubForm\OesoConfirmDialog.Designer.cs">
       <DependentUpon>OesoConfirmDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\StpriAddEditDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\StpriAddEditDialog.Designer.cs">
+      <DependentUpon>StpriAddEditDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\StpriDialog.cs">
       <SubType>Form</SubType>
@@ -232,8 +250,14 @@
     <EmbeddedResource Include="Report\ReportAttachImage.resx">
       <DependentUpon>ReportAttachImage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForm\AddEditUserDialog.resx">
-      <DependentUpon>AddEditUserDialog.cs</DependentUpon>
+    <EmbeddedResource Include="SubForm\IstabAddEditDialog.resx">
+      <DependentUpon>IstabAddEditDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\IstabDialog.resx">
+      <DependentUpon>IstabDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\UserAddEditDialog.resx">
+      <DependentUpon>UserAddEditDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\ApiUrlDialog.resx">
       <DependentUpon>ApiUrlDialog.cs</DependentUpon>
@@ -258,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\OesoConfirmDialog.resx">
       <DependentUpon>OesoConfirmDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\StpriAddEditDialog.resx">
+      <DependentUpon>StpriAddEditDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\StpriDialog.resx">
       <DependentUpon>StpriDialog.cs</DependentUpon>
