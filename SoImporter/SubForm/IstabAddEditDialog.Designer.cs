@@ -40,6 +40,7 @@
             this.txtTypDesEn = new DevExpress.XtraEditors.TextEdit();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.txtTypCod.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbbrTh.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtAbbrEn.Properties)).BeginInit();
@@ -87,6 +88,7 @@
             this.txtAbbrTh.Size = new System.Drawing.Size(157, 22);
             this.txtAbbrTh.TabIndex = 1;
             this.txtAbbrTh.EditValueChanged += new System.EventHandler(this.txtAbbrTh_EditValueChanged);
+            this.txtAbbrTh.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl3
             // 
@@ -107,6 +109,7 @@
             this.txtAbbrEn.Size = new System.Drawing.Size(157, 22);
             this.txtAbbrEn.TabIndex = 2;
             this.txtAbbrEn.EditValueChanged += new System.EventHandler(this.txtAbbrEn_EditValueChanged);
+            this.txtAbbrEn.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl4
             // 
@@ -127,6 +130,7 @@
             this.txtTypDesTh.Size = new System.Drawing.Size(373, 22);
             this.txtTypDesTh.TabIndex = 3;
             this.txtTypDesTh.EditValueChanged += new System.EventHandler(this.txtTypDesTh_EditValueChanged);
+            this.txtTypDesTh.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl5
             // 
@@ -147,6 +151,7 @@
             this.txtTypDesEn.Size = new System.Drawing.Size(373, 22);
             this.txtTypDesEn.TabIndex = 4;
             this.txtTypDesEn.EditValueChanged += new System.EventHandler(this.txtTypDesEn_EditValueChanged);
+            this.txtTypDesEn.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // btnOK
             // 
@@ -171,6 +176,10 @@
             this.btnCancel.Size = new System.Drawing.Size(91, 30);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "ยกเลิก <Esc>";
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // IstabAddEditDialog
             // 
@@ -222,5 +231,6 @@
         private DevExpress.XtraEditors.TextEdit txtTypDesEn;
         private DevExpress.XtraEditors.SimpleButton btnOK;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

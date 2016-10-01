@@ -7,20 +7,14 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using SoImporter.Model;
 using SoImporter.MiscClass;
 using Newtonsoft.Json;
 
 namespace SoImporter.SubForm
 {
-    public enum ISTAB_TABTYP : int
-    {
-        QUCOD = 20,
-        LOCCOD = 21,
-        STKGRP = 22,
-        DLVBY = 41,
-        DEPCOD = 50
-    }
+    
 
     public partial class IstabDialog : DevExpress.XtraEditors.XtraForm
     {
@@ -38,6 +32,7 @@ namespace SoImporter.SubForm
 
         private void IstabDialog_Load(object sender, EventArgs e)
         {
+            this.Text = this.tabtyp.GetDescription();
             this.istab = this.LoadIstabFromServer();
             this.bs = new BindingSource();
             this.bs.DataSource = this.istab;
@@ -86,6 +81,20 @@ namespace SoImporter.SubForm
             }
         }
 
+        private void gridViewIstab_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (((GridView)sender).GetRow(e.FocusedRowHandle) == null)
+            {
+                this.btnEdit.Enabled = false;
+                this.btnDelete.Enabled = false;
+            }
+            else
+            {
+                this.btnEdit.Enabled = true;
+                this.btnDelete.Enabled = true;
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             IstabAddEditDialog add = new IstabAddEditDialog(this, this.tabtyp);
@@ -99,12 +108,99 @@ namespace SoImporter.SubForm
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (this.gridViewIstab.GetRow(this.gridViewIstab.FocusedRowHandle) == null)
+                return;
 
+            IstabVM istab = this.istab.Where(i => i.Id == (int)this.gridViewIstab.GetRowCellValue(this.gridViewIstab.FocusedRowHandle, this.colId)).FirstOrDefault();
+
+            if (istab == null)
+                return;
+
+            IstabAddEditDialog edit = new IstabAddEditDialog(this, this.tabtyp, istab);
+            if(edit.ShowDialog() == DialogResult.OK)
+            {
+                this.istab = this.LoadIstabFromServer();
+                this.bs.ResetBindings(true);
+                this.bs.DataSource = this.istab;
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (this.gridViewIstab.GetRow(this.gridViewIstab.FocusedRowHandle) == null)
+                return;
 
+            IstabVM istab = this.istab.Where(i => i.Id == (int)this.gridViewIstab.GetRowCellValue(this.gridViewIstab.FocusedRowHandle, this.colId)).FirstOrDefault();
+
+            if (istab == null)
+                return;
+
+            if(MessageBox.Show("ลบรหัส \"" + istab.TypCod + "\" ทำต่อหรือไม่?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                this.splashScreenManager1.ShowWaitForm();
+
+                ApiAccessibilities acc = new ApiAccessibilities
+                {
+                    API_KEY = this.main_form.config.ApiKey,
+                    istab = istab
+                };
+                APIResult delete = APIClient.DELETE(this.main_form.config.ApiUrl + "Istab/DeleteIstab", acc);
+                if (delete.Success)
+                {
+                    this.istab = this.LoadIstabFromServer();
+                    this.bs.ResetBindings(true);
+                    this.bs.DataSource = this.istab;
+                    this.splashScreenManager1.CloseWaitForm();
+                }
+                else
+                {
+                    this.splashScreenManager1.CloseWaitForm();
+                    if(MessageBox.Show(delete.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    {
+                        this.btnDelete.PerformClick();
+                    }
+                }
+            }
+        }
+
+        private void gridViewIstab_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+                MenuItem mnu_add = new MenuItem();
+                mnu_add.Text = "เพิ่ม";
+                mnu_add.Click += delegate
+                {
+                    this.btnAdd.PerformClick();
+                };
+                MenuItem mnu_edit = new MenuItem();
+                mnu_edit.Text = "แก้ไข";
+                mnu_edit.Click += delegate
+                {
+                    this.btnEdit.PerformClick();
+                };
+                MenuItem mnu_delete = new MenuItem();
+                mnu_delete.Text = "ลบ";
+                mnu_delete.Click += delegate
+                {
+                    this.btnDelete.PerformClick();
+                };
+
+                cm.MenuItems.Add(mnu_add);
+                cm.MenuItems.Add(mnu_edit);
+                cm.MenuItems.Add(mnu_delete);
+
+                cm.Show(this.gridControl1, new Point(e.X, e.Y));
+
+                e.Handled = true;
+            }
+
+            if(e.Button == MouseButtons.Left && e.Clicks == 2) // Double click with left button
+            {
+                this.btnEdit.PerformClick();
+                e.Handled = true;
+            }
         }
     }
 }

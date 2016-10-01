@@ -39,6 +39,15 @@ namespace SoImporter.MiscClass
         X_ห้ามใช้
     }
 
+    public enum ISTAB_TABTYP : int
+    {
+        QUCOD = 20,
+        LOCCOD = 21,
+        STKGRP = 22,
+        DLVBY = 41,
+        DEPCOD = 50
+    }
+
     public class DealerTypeObj
     {
         public string Desc { get; set; }
@@ -221,6 +230,25 @@ namespace SoImporter.MiscClass
             }
 
             return artrn;
+        }
+
+        public static string GetDescription(this ISTAB_TABTYP tabtyp)
+        {
+            switch (tabtyp)
+            {
+                case ISTAB_TABTYP.QUCOD:
+                    return "หน่วยนับ";
+                case ISTAB_TABTYP.LOCCOD:
+                    return "คลังสินค้า";
+                case ISTAB_TABTYP.STKGRP:
+                    return "หมวดสินค้า";
+                case ISTAB_TABTYP.DLVBY:
+                    return "ขนส่งโดย";
+                case ISTAB_TABTYP.DEPCOD:
+                    return "แผนก";
+                default:
+                    return "";
+            }
         }
 
         public static List<DealerTypeObj> GetDealerTypeObject(this Object obj)

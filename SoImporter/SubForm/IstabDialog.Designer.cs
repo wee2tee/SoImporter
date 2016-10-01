@@ -41,6 +41,7 @@
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewIstab)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -72,6 +73,8 @@
             this.gridViewIstab.OptionsBehavior.Editable = false;
             this.gridViewIstab.OptionsBehavior.ReadOnly = true;
             this.gridViewIstab.OptionsView.ShowGroupPanel = false;
+            this.gridViewIstab.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewIstab_RowCellClick);
+            this.gridViewIstab.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewIstab_FocusedRowChanged);
             // 
             // colId
             // 
@@ -171,6 +174,7 @@
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEdit.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnEdit.Appearance.Options.UseFont = true;
+            this.btnEdit.Enabled = false;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.Location = new System.Drawing.Point(654, 12);
             this.btnEdit.Name = "btnEdit";
@@ -184,6 +188,7 @@
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnDelete.Appearance.Options.UseFont = true;
+            this.btnDelete.Enabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.Location = new System.Drawing.Point(723, 12);
             this.btnDelete.Name = "btnDelete";
@@ -191,6 +196,10 @@
             this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "ลบ";
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // IstabDialog
             // 
@@ -231,5 +240,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAbbreviateEn;
         private DevExpress.XtraGrid.Columns.GridColumn colTypDesTh;
         private DevExpress.XtraGrid.Columns.GridColumn colTypDesEn;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
     }
 }

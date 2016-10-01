@@ -141,6 +141,7 @@
             this.txtDealerCode.Size = new System.Drawing.Size(116, 22);
             this.txtDealerCode.TabIndex = 0;
             this.txtDealerCode.EditValueChanged += new System.EventHandler(this.txtDealerCode_EditValueChanged);
+            this.txtDealerCode.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl6
             // 
@@ -160,6 +161,7 @@
             this.txtName.Properties.ReadOnly = true;
             this.txtName.Size = new System.Drawing.Size(364, 22);
             this.txtName.TabIndex = 7;
+            this.txtName.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // txtAddr01
             // 
@@ -170,6 +172,7 @@
             this.txtAddr01.Properties.ReadOnly = true;
             this.txtAddr01.Size = new System.Drawing.Size(452, 22);
             this.txtAddr01.TabIndex = 8;
+            this.txtAddr01.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // txtTelNum
             // 
@@ -180,6 +183,7 @@
             this.txtTelNum.Properties.ReadOnly = true;
             this.txtTelNum.Size = new System.Drawing.Size(170, 22);
             this.txtTelNum.TabIndex = 13;
+            this.txtTelNum.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // txtFaxNum
             // 
@@ -190,6 +194,7 @@
             this.txtFaxNum.Properties.ReadOnly = true;
             this.txtFaxNum.Size = new System.Drawing.Size(170, 22);
             this.txtFaxNum.TabIndex = 14;
+            this.txtFaxNum.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // txtEmail
             // 
@@ -200,6 +205,7 @@
             this.txtEmail.Properties.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(271, 22);
             this.txtEmail.TabIndex = 15;
+            this.txtEmail.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl7
             // 
@@ -229,6 +235,7 @@
             this.txtPreName.Properties.ReadOnly = true;
             this.txtPreName.Size = new System.Drawing.Size(170, 22);
             this.txtPreName.TabIndex = 6;
+            this.txtPreName.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // txtAddr02
             // 
@@ -239,6 +246,7 @@
             this.txtAddr02.Properties.ReadOnly = true;
             this.txtAddr02.Size = new System.Drawing.Size(452, 22);
             this.txtAddr02.TabIndex = 9;
+            this.txtAddr02.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // txtAddr03
             // 
@@ -249,6 +257,7 @@
             this.txtAddr03.Properties.ReadOnly = true;
             this.txtAddr03.Size = new System.Drawing.Size(271, 22);
             this.txtAddr03.TabIndex = 10;
+            this.txtAddr03.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl9
             // 
@@ -268,6 +277,7 @@
             this.txtZipCod.Properties.ReadOnly = true;
             this.txtZipCod.Size = new System.Drawing.Size(76, 22);
             this.txtZipCod.TabIndex = 11;
+            this.txtZipCod.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl10
             // 
@@ -296,6 +306,7 @@
             this.txtSN.Properties.ReadOnly = true;
             this.txtSN.Size = new System.Drawing.Size(116, 22);
             this.txtSN.TabIndex = 5;
+            this.txtSN.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl12
             // 
@@ -315,6 +326,7 @@
             this.txtTaxId.Properties.ReadOnly = true;
             this.txtTaxId.Size = new System.Drawing.Size(170, 22);
             this.txtTaxId.TabIndex = 12;
+            this.txtTaxId.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl13
             // 
@@ -463,6 +475,7 @@
             this.btnListPriceCode.Size = new System.Drawing.Size(27, 23);
             this.btnListPriceCode.TabIndex = 18;
             this.btnListPriceCode.TabStop = false;
+            this.btnListPriceCode.Click += new System.EventHandler(this.btnListPriceCode_Click);
             // 
             // btnListDlvProfile
             // 

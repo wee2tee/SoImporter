@@ -35,25 +35,13 @@ namespace SoImporter.SubForm
             this.form_mode = istab != null ? FORM_MODE.EDIT : FORM_MODE.ADD;
             this.istab = istab;
             this.tabtyp = tabtyp;
-            //this.istab = istab != null ? istab : new IstabVM()
-            //{
-            //    TypCod = "",
-            //    AbbreviateEn = "",
-            //    AbbreviateTh = "",
-            //    TypDesEn = "",
-            //    TypDesTh = "",
-            //    Rate = 0
-            //};
-
-            //this.istab.TabTyp = tabtyp.ToString();
-
-            
         }
 
         private void IstabAddEditDialog_Load(object sender, EventArgs e)
         {
             if (this.form_mode == FORM_MODE.ADD)
             {
+                this.Text = "เพิ่ม" + this.tabtyp.GetDescription();
                 this.istab = new IstabVM
                 {
                     TabTyp = ((int)this.tabtyp).ToString(),
@@ -69,6 +57,7 @@ namespace SoImporter.SubForm
 
             if (this.form_mode == FORM_MODE.EDIT)
             {
+                this.Text = "แก้ไข" + this.tabtyp.GetDescription();
                 this.istab = this.istab_dialog.LoadSingleIstabFromServer(this.istab.Id);
                 this.istab.ChgBy = this.main_form.logedin_user.Id;
 
@@ -86,6 +75,14 @@ namespace SoImporter.SubForm
         {
             if (this.form_mode == FORM_MODE.EDIT)
                 this.txtAbbrTh.SelectionStart = this.txtAbbrTh.Text.Length;
+        }
+
+        private void textEdit_Enter(object sender, EventArgs e)
+        {
+            ((TextEdit)sender).BeginInvoke(new MethodInvoker(delegate
+            {
+                ((TextEdit)sender).SelectionStart = ((TextEdit)sender).Text.Length;
+            }));
         }
 
         private void txtTypCod_EditValueChanged(object sender, EventArgs e)
@@ -122,6 +119,7 @@ namespace SoImporter.SubForm
                 return;
             }
 
+            this.splashScreenManager1.ShowWaitForm();
             ApiAccessibilities acc = new ApiAccessibilities
             {
                 API_KEY = this.main_form.config.ApiKey,
@@ -133,11 +131,13 @@ namespace SoImporter.SubForm
                 APIResult post = APIClient.POST(this.main_form.config.ApiUrl + "Istab/AddIstab", acc);
                 if (post.Success)
                 {
+                    this.splashScreenManager1.CloseWaitForm();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
+                    this.splashScreenManager1.CloseWaitForm();
                     if(MessageBox.Show(post.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnOK.PerformClick();
@@ -149,17 +149,42 @@ namespace SoImporter.SubForm
                 APIResult put = APIClient.PUT(this.main_form.config.ApiUrl + "Istab/UpdateIstab", acc);
                 if (put.Success)
                 {
+                    this.splashScreenManager1.CloseWaitForm();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
+                    this.splashScreenManager1.CloseWaitForm();
                     if (MessageBox.Show(put.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnOK.PerformClick();
                     }
                 }
             }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == Keys.Escape)
+            {
+                this.btnCancel.PerformClick();
+                return true;
+            }
+
+            if(keyData == Keys.Enter && !(this.btnOK.Focused || this.btnCancel.Focused))
+            {
+                SendKeys.Send("{TAB}");
+                return true;
+            }
+
+            if(keyData == Keys.F9)
+            {
+                this.btnOK.PerformClick();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

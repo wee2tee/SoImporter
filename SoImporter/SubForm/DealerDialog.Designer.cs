@@ -87,6 +87,7 @@
             this.gridViewDealer.Name = "gridViewDealer";
             this.gridViewDealer.OptionsBehavior.Editable = false;
             this.gridViewDealer.OptionsBehavior.ReadOnly = true;
+            this.gridViewDealer.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewDealer_RowCellClick);
             this.gridViewDealer.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gridViewDealer_FocusedRowChanged);
             // 
             // colId

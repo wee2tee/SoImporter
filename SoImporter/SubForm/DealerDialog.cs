@@ -146,5 +146,26 @@ namespace SoImporter.SubForm
                 this.bs_dealer.DataSource = this.dealers;
             }
         }
+
+        private void gridViewDealer_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+                MenuItem mnu_edit = new MenuItem();
+                mnu_edit.Text = "แก้ไข/ดูรายละเอียด";
+                mnu_edit.Click += delegate { this.btnEdit.PerformClick(); };
+
+                cm.MenuItems.Add(mnu_edit);
+                cm.Show(this.gridControl1, new Point(e.X, e.Y));
+                e.Handled = true;
+            }
+
+            if(e.Button == MouseButtons.Left && e.Clicks == 2) // Double clicks with left button
+            {
+                this.btnEdit.PerformClick();
+                e.Handled = true;
+            }
+        }
     }
 }

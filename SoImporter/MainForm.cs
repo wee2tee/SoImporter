@@ -1112,7 +1112,8 @@ namespace SoImporter
 
         private void btnDlvProfile_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            DlvProfileDialog dlv = new DlvProfileDialog(this);
+            dlv.ShowDialog();
         }
 
         private void btnStpri_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

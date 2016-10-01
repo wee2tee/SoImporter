@@ -125,6 +125,12 @@
     <Compile Include="Report\ReportAttachImage.Designer.cs">
       <DependentUpon>ReportAttachImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\DlvProfileDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\DlvProfileDialog.Designer.cs">
+      <DependentUpon>DlvProfileDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\IstabAddEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -249,6 +255,9 @@
     </Compile>
     <EmbeddedResource Include="Report\ReportAttachImage.resx">
       <DependentUpon>ReportAttachImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\DlvProfileDialog.resx">
+      <DependentUpon>DlvProfileDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\IstabAddEditDialog.resx">
       <DependentUpon>IstabAddEditDialog.cs</DependentUpon>

@@ -72,6 +72,7 @@
             this.txtPriceCode.Size = new System.Drawing.Size(137, 22);
             this.txtPriceCode.TabIndex = 0;
             this.txtPriceCode.EditValueChanged += new System.EventHandler(this.txtPriceCode_EditValueChanged);
+            this.txtPriceCode.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // cbTabPr
             // 
@@ -105,6 +106,7 @@
             this.txtDescription.Size = new System.Drawing.Size(340, 22);
             this.txtDescription.TabIndex = 1;
             this.txtDescription.EditValueChanged += new System.EventHandler(this.txtDescription_EditValueChanged);
+            this.txtDescription.Enter += new System.EventHandler(this.textEdit_Enter);
             // 
             // labelControl3
             // 
@@ -148,6 +150,7 @@
             this.txtDisc1.Size = new System.Drawing.Size(138, 22);
             this.txtDisc1.TabIndex = 3;
             this.txtDisc1.EditValueChanged += new System.EventHandler(this.txtDisc1_EditValueChanged);
+            this.txtDisc1.Enter += new System.EventHandler(this.decimalEdit_Enter);
             this.txtDisc1.Leave += new System.EventHandler(this.txtDisc1_Leave);
             // 
             // cbDisc1Perc
@@ -233,6 +236,7 @@
             this.txtDisc2.Size = new System.Drawing.Size(138, 22);
             this.txtDisc2.TabIndex = 5;
             this.txtDisc2.EditValueChanged += new System.EventHandler(this.txtDisc2_EditValueChanged);
+            this.txtDisc2.Enter += new System.EventHandler(this.decimalEdit_Enter);
             this.txtDisc2.Leave += new System.EventHandler(this.txtDisc2_Leave);
             // 
             // splashScreenManager1

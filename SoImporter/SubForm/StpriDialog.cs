@@ -130,6 +130,8 @@ namespace SoImporter.SubForm
             if (MessageBox.Show("ลบรหัส \"" + stpri.PriceCode + "\" ทำต่อหรือไม่?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                 return;
 
+            this.splashScreenManager1.ShowWaitForm();
+
             ApiAccessibilities acc = new ApiAccessibilities
             {
                 API_KEY = this.main_form.config.ApiKey,
@@ -142,9 +144,11 @@ namespace SoImporter.SubForm
                 this.stpri = this.LoadStpriFromServer();
                 this.bs.ResetBindings(true);
                 this.bs.DataSource = this.stpri;
+                this.splashScreenManager1.CloseWaitForm();
             }
             else
             {
+                this.splashScreenManager1.CloseWaitForm();
                 if(MessageBox.Show(delete.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                 {
                     this.btnDelete.PerformClick();
@@ -154,9 +158,16 @@ namespace SoImporter.SubForm
 
         private void gridViewStpri_RowCellClick(object sender, RowCellClickEventArgs e)
         {
+            // Show context menu in gridview
             if(e.Button == MouseButtons.Right)
             {
                 ContextMenu cm = new ContextMenu();
+                MenuItem mnu_add = new MenuItem();
+                mnu_add.Text = "เพิ่ม";
+                mnu_add.Click += delegate
+                {
+                    this.btnAdd.PerformClick();
+                };
                 MenuItem mnu_edit = new MenuItem();
                 mnu_edit.Text = "แก้ไข";
                 mnu_edit.Click += delegate
@@ -170,9 +181,18 @@ namespace SoImporter.SubForm
                     this.btnDelete.PerformClick();
                 };
 
+                cm.MenuItems.Add(mnu_add);
                 cm.MenuItems.Add(mnu_edit);
                 cm.MenuItems.Add(mnu_delete);
                 cm.Show(this.gridControl1, new Point(e.X, e.Y));
+
+                e.Handled = true;
+            }
+
+            if(e.Button == MouseButtons.Left && e.Clicks == 2) // Double click with left button
+            {
+                this.btnEdit.PerformClick();
+                e.Handled = true;
             }
         }
     }

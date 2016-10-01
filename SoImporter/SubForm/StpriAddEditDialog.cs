@@ -102,6 +102,23 @@ namespace SoImporter.SubForm
                 this.txtDescription.SelectionStart = this.txtDescription.Text.Length;
         }
 
+        private void textEdit_Enter(object sender, EventArgs e)
+        {
+            ((TextEdit)sender).BeginInvoke(new MethodInvoker(delegate
+            {
+                ((TextEdit)sender).SelectionStart = ((TextEdit)sender).Text.Length;
+            }));
+        }
+
+        private void decimalEdit_Enter(object sender, EventArgs e)
+        {
+            ((TextEdit)sender).BeginInvoke(new MethodInvoker(delegate
+            {
+                ((TextEdit)sender).SelectionStart = ((TextEdit)sender).Text.Length - 3;
+                ((TextEdit)sender).SelectionLength = 0;
+            }));
+        }
+
         private void txtPriceCode_EditValueChanged(object sender, EventArgs e)
         {
             this.stpri.PriceCode = ((TextEdit)sender).Text;
@@ -171,7 +188,6 @@ namespace SoImporter.SubForm
             }
 
             this.splashScreenManager1.ShowWaitForm();
-
             ApiAccessibilities acc = new ApiAccessibilities
             {
                 API_KEY = this.main_form.config.ApiKey,
@@ -183,11 +199,13 @@ namespace SoImporter.SubForm
                 APIResult post = APIClient.POST(this.main_form.config.ApiUrl + "Stpri/AddStpri", acc);
                 if (post.Success)
                 {
+                    this.splashScreenManager1.CloseWaitForm();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
+                    this.splashScreenManager1.CloseWaitForm();
                     if (MessageBox.Show(post.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnOK.PerformClick();
@@ -199,11 +217,13 @@ namespace SoImporter.SubForm
                 APIResult put = APIClient.PUT(this.main_form.config.ApiUrl + "Stpri/UpdateStpri", acc);
                 if (put.Success)
                 {
+                    this.splashScreenManager1.CloseWaitForm();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else
                 {
+                    this.splashScreenManager1.CloseWaitForm();
                     if (MessageBox.Show(put.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnOK.PerformClick();

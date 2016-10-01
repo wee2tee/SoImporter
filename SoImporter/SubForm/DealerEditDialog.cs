@@ -90,6 +90,14 @@ namespace SoImporter.SubForm
             this.splashScreenManager1.CloseWaitForm();
         }
 
+        private void textEdit_Enter(object sender, EventArgs e)
+        {
+            ((TextEdit)sender).BeginInvoke(new MethodInvoker(delegate
+            {
+                ((TextEdit)sender).SelectionStart = ((TextEdit)sender).Text.Length;
+            }));
+        }
+
         private void txtDealerCode_EditValueChanged(object sender, EventArgs e)
         {
             this.dealer.DealerCode = ((TextEdit)sender).Text;
@@ -199,6 +207,12 @@ namespace SoImporter.SubForm
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void btnListPriceCode_Click(object sender, EventArgs e)
+        {
+            StpriDialog stpri = new StpriDialog(this.main_form);
+            stpri.ShowDialog();
         }
     }
 }
