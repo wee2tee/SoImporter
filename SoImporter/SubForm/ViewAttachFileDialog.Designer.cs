@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewAttachFileDialog));
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
@@ -69,8 +70,9 @@
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn13 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
+            this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
-            this.reportGenerator1 = new DevExpress.XtraReports.ReportGeneration.ReportGenerator();
+            this.reportGenerator1 = new DevExpress.XtraReports.ReportGeneration.ReportGenerator(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -96,7 +98,7 @@
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureEdit1.Size = new System.Drawing.Size(501, 502);
+            this.pictureEdit1.Size = new System.Drawing.Size(816, 540);
             this.pictureEdit1.TabIndex = 0;
             // 
             // splashScreenManager1
@@ -112,7 +114,7 @@
             this.xtraTabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tabPageSlip;
-            this.xtraTabControl1.Size = new System.Drawing.Size(284, 462);
+            this.xtraTabControl1.Size = new System.Drawing.Size(284, 500);
             this.xtraTabControl1.TabIndex = 1;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPageSlip,
@@ -124,7 +126,7 @@
             this.tabPageSlip.Controls.Add(this.gridControl1);
             this.tabPageSlip.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageSlip.Name = "tabPageSlip";
-            this.tabPageSlip.Size = new System.Drawing.Size(278, 434);
+            this.tabPageSlip.Size = new System.Drawing.Size(278, 472);
             this.tabPageSlip.Text = "หลักฐานการชำระเงิน";
             // 
             // gridControl1
@@ -137,7 +139,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(263, 417);
+            this.gridControl1.Size = new System.Drawing.Size(263, 455);
             this.gridControl1.TabIndex = 2;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSlip,
@@ -295,7 +297,7 @@
             this.tabPageTax.Controls.Add(this.gridControl2);
             this.tabPageTax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPageTax.Name = "tabPageTax";
-            this.tabPageTax.Size = new System.Drawing.Size(278, 434);
+            this.tabPageTax.Size = new System.Drawing.Size(278, 472);
             this.tabPageTax.Text = "หนังสือรับรองหักภาษี ณ ที่จ่าย";
             // 
             // gridControl2
@@ -470,15 +472,29 @@
             this.splitContainerControl1.IsSplitterFixed = true;
             this.splitContainerControl1.Location = new System.Drawing.Point(12, 12);
             this.splitContainerControl1.Name = "splitContainerControl1";
+            this.splitContainerControl1.Panel1.Controls.Add(this.pdfViewer1);
             this.splitContainerControl1.Panel1.Controls.Add(this.pictureEdit1);
             this.splitContainerControl1.Panel1.Text = "Panel1";
             this.splitContainerControl1.Panel2.Controls.Add(this.btnPrint);
             this.splitContainerControl1.Panel2.Controls.Add(this.xtraTabControl1);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(790, 502);
+            this.splitContainerControl1.Size = new System.Drawing.Size(1105, 540);
             this.splitContainerControl1.SplitterPosition = 284;
             this.splitContainerControl1.TabIndex = 2;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            // 
+            // pdfViewer1
+            // 
+            this.pdfViewer1.DetachStreamAfterLoadComplete = true;
+            this.pdfViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pdfViewer1.HandTool = true;
+            this.pdfViewer1.Location = new System.Drawing.Point(0, 0);
+            this.pdfViewer1.Name = "pdfViewer1";
+            this.pdfViewer1.NavigationPaneInitialVisibility = DevExpress.XtraPdfViewer.PdfNavigationPaneVisibility.Hidden;
+            this.pdfViewer1.ReadOnly = true;
+            this.pdfViewer1.Size = new System.Drawing.Size(816, 540);
+            this.pdfViewer1.TabIndex = 1;
+            this.pdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToWidth;
             // 
             // btnPrint
             // 
@@ -486,11 +502,11 @@
             this.btnPrint.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnPrint.Appearance.Options.UseFont = true;
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(2, 472);
+            this.btnPrint.Location = new System.Drawing.Point(2, 510);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(198, 30);
+            this.btnPrint.Size = new System.Drawing.Size(129, 30);
             this.btnPrint.TabIndex = 3;
-            this.btnPrint.Text = "ดูตัวอย่างก่อนพิมพ์ <Alt + P>";
+            this.btnPrint.Text = "พิมพ์ <Alt + P>";
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // ViewAttachFileDialog
@@ -498,7 +514,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 526);
+            this.ClientSize = new System.Drawing.Size(1129, 564);
             this.Controls.Add(this.splitContainerControl1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.KeyPreview = true;
@@ -571,5 +587,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
         private DevExpress.XtraReports.ReportGeneration.ReportGenerator reportGenerator1;
+        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
     }
 }

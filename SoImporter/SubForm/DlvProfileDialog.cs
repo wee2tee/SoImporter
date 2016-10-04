@@ -76,6 +76,27 @@ namespace SoImporter.SubForm
             }
         }
 
+        public List<IstabVM> LoadDlvByFromServer()
+        {
+            APIResult get = APIClient.GET(this.main_form.config.ApiUrl + "Istab/GetIstab", this.main_form.config.ApiKey, "&tabtyp=" + ((int)ISTAB_TABTYP.DLVBY).ToString());
+            if (get.Success)
+            {
+                List<IstabVM> dlvby = JsonConvert.DeserializeObject<List<IstabVM>>(get.ReturnValue);
+                return dlvby;
+            }
+            else
+            {
+                if(MessageBox.Show(get.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return this.LoadDlvByFromServer();
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         private void gridViewDlvProfile_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if(((GridView)sender).GetRow(((GridView)sender).FocusedRowHandle) == null)
@@ -92,7 +113,13 @@ namespace SoImporter.SubForm
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            DlvProfileAddEditDialog dlv = new DlvProfileAddEditDialog(this);
+            if(dlv.ShowDialog() == DialogResult.OK)
+            {
+                this.dlvprofile = this.LoadDlvProfileFromServer();
+                this.bs.ResetBindings(true);
+                this.bs.DataSource = this.dlvprofile;
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -105,12 +132,47 @@ namespace SoImporter.SubForm
             if (dlvprofile == null)
                 return;
 
-            Console.WriteLine(" .. >> selected profile is " + dlvprofile.Id + " : " + dlvprofile.TypCod);
+            DlvProfileAddEditDialog dlv = new DlvProfileAddEditDialog(this, dlvprofile);
+            if(dlv.ShowDialog() == DialogResult.OK)
+            {
+                this.dlvprofile = this.LoadDlvProfileFromServer();
+                this.bs.ResetBindings(true);
+                this.bs.DataSource = this.dlvprofile;
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (this.gridViewDlvProfile.GetRow(this.gridViewDlvProfile.FocusedRowHandle) == null)
+                return;
 
+            DlvProfileVM dlvprofile = this.dlvprofile.Where(d => d.Id == (int)this.gridViewDlvProfile.GetRowCellValue(this.gridViewDlvProfile.FocusedRowHandle, this.colProfileId)).FirstOrDefault();
+
+            if (dlvprofile == null)
+                return;
+
+            if(MessageBox.Show("ลบรหัสกลุ่ม \"" + dlvprofile.TypCod + "\" ทำต่อหรือไม่?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                ApiAccessibilities acc = new ApiAccessibilities
+                {
+                    API_KEY = this.main_form.config.ApiKey,
+                    dlvprofile = dlvprofile
+                };
+                APIResult delete = APIClient.DELETE(this.main_form.config.ApiUrl + "DlvProfile/DeleteDlvProfile", acc);
+                if (delete.Success)
+                {
+                    this.dlvprofile = this.LoadDlvProfileFromServer();
+                    this.bs.ResetBindings(true);
+                    this.bs.DataSource = this.dlvprofile;
+                }
+                else
+                {
+                    if(MessageBox.Show(delete.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    {
+                        this.btnDelete.PerformClick();
+                    }
+                }
+            }
         }
 
         private void gridViewDlvProfile_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
@@ -135,6 +197,21 @@ namespace SoImporter.SubForm
                 cm.MenuItems.Add(mnu_delete);
 
                 cm.Show(this.gridControl1, new Point(e.X, e.Y));
+            }
+        }
+
+        private void gridViewDlvBy_GotFocus(object sender, EventArgs e)
+        {
+            this.btnEdit.Enabled = false;
+            this.btnDelete.Enabled = false;
+        }
+
+        private void gridViewDlvProfile_GotFocus(object sender, EventArgs e)
+        {
+            if(((GridView)sender).GetRow(((GridView)sender).FocusedRowHandle) != null)
+            {
+                this.btnEdit.Enabled = true;
+                this.btnDelete.Enabled = true;
             }
         }
     }

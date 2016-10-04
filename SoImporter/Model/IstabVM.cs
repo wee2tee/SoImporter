@@ -36,6 +36,14 @@ namespace SoImporter.Model
         public int? ChgBy { get; set; }
         public DateTime? ChgDate { get; set; }
 
+        public string _ShortDesc
+        {
+            get
+            {
+                return this.TypCod.Trim() + " : " + this.TypDesTh.Trim();
+            }
+        }
+
         /** CONSTANT VALUE **/
         public const string TABTYP_QUCOD = "20";
         public const string TABTYP_LOCCOD = "21";
