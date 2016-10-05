@@ -138,7 +138,7 @@ namespace SoImporter.SubForm
                 else
                 {
                     this.splashScreenManager1.CloseWaitForm();
-                    if(MessageBox.Show(post.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    if(MessageBox.Show(post.ErrorMessage.RemoveBeginAndEndQuote(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnOK.PerformClick();
                     }
@@ -156,7 +156,7 @@ namespace SoImporter.SubForm
                 else
                 {
                     this.splashScreenManager1.CloseWaitForm();
-                    if (MessageBox.Show(put.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    if (MessageBox.Show(put.ErrorMessage.RemoveBeginAndEndQuote(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnOK.PerformClick();
                     }

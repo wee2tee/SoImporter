@@ -92,7 +92,6 @@ namespace SoImporter.SubForm
             {
                 item.loccod = ((Istab)this.cbLocCod.SelectedItem).typcod;
             }
-            Console.WriteLine(" .. >> oesoit.loccod = " + this.oesoit.First().loccod);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

@@ -18,18 +18,18 @@ namespace SoImporter.SubForm
         private DealerDialog dealer_dialog;
         private string dealer_id;
         private DealerVM dealer;
-        private List<StpriVM> stpri;
-        private List<DlvProfileVM> dlvprofile;
+        //private List<StpriVM> stpri;
+        //private List<DlvProfileVM> dlvprofile;
 
-        public DealerEditDialog(DealerDialog dealer_dialog, DealerVM dealer, List<StpriVM> stpri, List<DlvProfileVM> dlvprofile)
+        public DealerEditDialog(DealerDialog dealer_dialog, DealerVM dealer) //, List<StpriVM> stpri, List<DlvProfileVM> dlvprofile
         {
             InitializeComponent();
             this.main_form = dealer_dialog.main_form;
             this.dealer_dialog = dealer_dialog;
             this.dealer_id = dealer.Id;
             //this.dealer = dealer;
-            this.stpri = stpri;
-            this.dlvprofile = dlvprofile;
+            //this.stpri = stpri;
+            //this.dlvprofile = dlvprofile;
         }
 
         private void DealerEditDialog_Load(object sender, EventArgs e)
@@ -44,25 +44,10 @@ namespace SoImporter.SubForm
                 return;
             }
 
-            foreach (var item in this.GetDealerTypeObject())
-            {
-                this.cbDealerType.Properties.Items.Add(item);
-            }
-
-            foreach (var item in this.GetDealerStatusObject())
-            {
-                this.cbStatus.Properties.Items.Add(item);
-            }
-
-            foreach (var item in this.stpri)
-            {
-                this.cbPriceCode.Properties.Items.Add(item);
-            }
-
-            foreach (var item in this.dlvprofile)
-            {
-                this.cbDlvProfile.Properties.Items.Add(item);
-            }
+            this.cbDealerType.AddItem<DealerTypeObj>(this.GetDealerTypeObject());
+            this.cbStatus.AddItem<DealerStatusObj>(this.GetDealerStatusObject());
+            this.cbPriceCode.AddItem<StpriVM>(this.dealer_dialog.stpris);
+            this.cbDlvProfile.AddItem<DlvProfileVM>(this.dealer_dialog.dlv_profiles);
 
             /** Display value in each control **/
             this.txtDealerCode.Text = this.dealer.DealerCode;
@@ -171,7 +156,7 @@ namespace SoImporter.SubForm
             }
             else
             {
-                if(MessageBox.Show(put.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                if(MessageBox.Show(put.ErrorMessage.RemoveBeginAndEndQuote(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                 {
                     this.btnOK.PerformClick();
                 }
@@ -213,6 +198,18 @@ namespace SoImporter.SubForm
         {
             StpriDialog stpri = new StpriDialog(this.main_form);
             stpri.ShowDialog();
+            this.dealer_dialog.stpris = stpri.LoadStpriFromServer();
+            this.cbPriceCode.AddItem<StpriVM>(this.dealer_dialog.stpris, true);
+            this.cbPriceCode.Text = this.cbPriceCode.Properties.Items.Cast<StpriVM>().Where(i => i.ToString().Trim() == this.cbPriceCode.Text.Trim()).Count() > 0 ? this.cbPriceCode.Text : "";
+        }
+
+        private void btnListDlvProfile_Click(object sender, EventArgs e)
+        {
+            DlvProfileDialog dlv = new DlvProfileDialog(this.main_form);
+            dlv.ShowDialog();
+            this.dealer_dialog.dlv_profiles = dlv.LoadDlvProfileFromServer();
+            this.cbDlvProfile.AddItem<DlvProfileVM>(this.dealer_dialog.dlv_profiles, true);
+            this.cbDlvProfile.Text = this.cbDlvProfile.Properties.Items.Cast<DlvProfileVM>().Where(i => i.ToString().Trim() == this.cbDlvProfile.Text.Trim()).Count() > 0 ? this.cbDlvProfile.Text : "";
         }
     }
 }

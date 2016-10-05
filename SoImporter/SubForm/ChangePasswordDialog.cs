@@ -98,7 +98,7 @@ namespace SoImporter.SubForm
                 }
                 else
                 {
-                    MessageBox.Show(result.ErrorMessage);
+                    MessageBox.Show(result.ErrorMessage.RemoveBeginAndEndQuote());
                     return false;
                 }
             }

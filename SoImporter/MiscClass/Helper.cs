@@ -6,6 +6,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using SoImporter.Model;
+using DevExpress.XtraEditors;
 
 namespace SoImporter.MiscClass
 {
@@ -307,55 +308,41 @@ namespace SoImporter.MiscClass
             return d;
         }
 
-        //public static string formatErrorData(this WebExceptionStatus exception_status)
-        //{
-        //    switch (exception_status)
-        //    {
-        //        case WebExceptionStatus.CacheEntryNotFound:
-        //            return "CACHE_ENTRY_NOT_FOUND";
-        //        case WebExceptionStatus.ConnectFailure:
-        //            return "CONNECT_FAILURE";
-        //        case WebExceptionStatus.ConnectionClosed:
-        //            return "CONNECTION_CLOSED";
-        //        case WebExceptionStatus.KeepAliveFailure:
-        //            return "KEEP_ALIVE_FAILURE";
-        //        case WebExceptionStatus.MessageLengthLimitExceeded:
-        //            return "MESSAGE_LENGTH_LIMIT_EXCEEDED";
-        //        case WebExceptionStatus.NameResolutionFailure:
-        //            return "NAME_RESOLUTION_FAILURE";
-        //        case WebExceptionStatus.Pending:
-        //            return "PENDING";
-        //        case WebExceptionStatus.PipelineFailure:
-        //            return "PIPE_LINE_FAILURE";
-        //        case WebExceptionStatus.ProtocolError:
-        //            return "PROTOCOL_ERROR";
-        //        case WebExceptionStatus.ProxyNameResolutionFailure:
-        //            return "PROXY_NAME_RESOLUTION_FAILURE";
-        //        case WebExceptionStatus.ReceiveFailure:
-        //            return "RECEIVE_FAILURE";
-        //        case WebExceptionStatus.RequestCanceled:
-        //            return "REQUEST_CANCEL";
-        //        case WebExceptionStatus.RequestProhibitedByCachePolicy:
-        //            return "REQUEST_PROHIBITED_BY_CACHE_POLICY";
-        //        case WebExceptionStatus.RequestProhibitedByProxy:
-        //            return "REQUEST_PROHIBITED_BY_PROXY";
-        //        case WebExceptionStatus.SecureChannelFailure:
-        //            return "SECURE_CHANNEL_FAILURE";
-        //        case WebExceptionStatus.SendFailure:
-        //            return "SEND_FAILURE";
-        //        case WebExceptionStatus.ServerProtocolViolation:
-        //            return "SERVER_PROTOCOL_VIOLATION";
-        //        case WebExceptionStatus.Success:
-        //            return "SUCCESS";
-        //        case WebExceptionStatus.Timeout:
-        //            return "TIME_OUT";
-        //        case WebExceptionStatus.TrustFailure:
-        //            return "TRUST_FAILURE";
-        //        case WebExceptionStatus.UnknownError:
-        //            return "UNKNOWN_ERROR";
-        //        default:
-        //            return "UNKNOWN_ERROR";
-        //    }
-        //}
+        public static void AddItem<T>(this ComboBoxEdit combobox, List<T> list_object, bool clear_exist_before = false)
+        {
+            if (clear_exist_before)
+            {
+                combobox.Properties.Items.Clear();
+            }
+
+            foreach (var item in list_object)
+            {
+                combobox.Properties.Items.Add(item);
+            }
+        }
+
+        public static string RemoveBeginAndEndQuote(this string string_source)
+        {
+            return string_source.Trim('"');
+        }
+
+        /** Convert Model to View-Model **/
+        public static InternalUsersVM ToViewModel(this InternalUsers user)
+        {
+            InternalUsersVM user_vm = new InternalUsersVM
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                PasswordHash = user.PasswordHash,
+                FullName = user.FullName,
+                Department = user.Department,
+                Status = user.Status,
+                CreDate = user.CreDate,
+                NewPassword = string.Empty
+            };
+            return user_vm;
+        }
+
     }
 }

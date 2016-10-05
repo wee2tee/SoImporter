@@ -102,6 +102,7 @@
             this.gridViewDlvByRemain.OptionsSelection.MultiSelect = true;
             this.gridViewDlvByRemain.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewDlvByRemain.OptionsView.ShowGroupPanel = false;
+            this.gridViewDlvByRemain.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewDlvByRemain_RowCellClick);
             this.gridViewDlvByRemain.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewDlvByRemain_SelectionChanged);
             // 
             // colRemainId
@@ -231,6 +232,7 @@
             this.gridViewDlvBySelected.OptionsSelection.MultiSelect = true;
             this.gridViewDlvBySelected.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewDlvBySelected.OptionsView.ShowGroupPanel = false;
+            this.gridViewDlvBySelected.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewDlvBySelected_RowCellClick);
             this.gridViewDlvBySelected.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewDlvBySelected_SelectionChanged);
             // 
             // colSelectedId
@@ -348,6 +350,7 @@
             this.txtTypcod.Name = "txtTypcod";
             this.txtTypcod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtTypcod.Properties.Appearance.Options.UseFont = true;
+            this.txtTypcod.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTypcod.Size = new System.Drawing.Size(100, 22);
             this.txtTypcod.TabIndex = 0;
             this.txtTypcod.EditValueChanged += new System.EventHandler(this.txtTypcod_EditValueChanged);

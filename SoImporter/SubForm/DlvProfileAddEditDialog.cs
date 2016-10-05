@@ -54,6 +54,7 @@ namespace SoImporter.SubForm
 
             if(this.form_mode == FORM_MODE.ADD) // Add mode
             {
+                this.Text = "เพิ่มกลุ่มวิธีการจัดส่ง";
                 this.dlvprofile = new DlvProfileVM()
                 {
                     TabTyp = "D0",
@@ -68,6 +69,7 @@ namespace SoImporter.SubForm
             }
             else // Edit mode
             {
+                this.Text = "แก้ไขกลุ่มวิธีการจัดส่ง";
                 this.dlvprofile = this.dlvprofile_dialog.LoadSingleDlvProfileFromServer(this.dlvprofile.Id);
                 this.txtTypcod.Enabled = false;
             }
@@ -212,6 +214,13 @@ namespace SoImporter.SubForm
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            if(this.dlvprofile.TypCod.Trim().Length == 0)
+            {
+                MessageBox.Show("กรุณาป้อนรหัสกลุ่ม", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.txtTypcod.Focus();
+                return;
+            }
+
             this.splashScreenManager1.ShowWaitForm();
 
             ApiAccessibilities acc = new ApiAccessibilities
@@ -232,7 +241,7 @@ namespace SoImporter.SubForm
                 else
                 {
                     this.splashScreenManager1.CloseWaitForm();
-                    if(MessageBox.Show(post.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    if(MessageBox.Show(post.ErrorMessage.RemoveBeginAndEndQuote(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnOK.PerformClick();
                     }
@@ -251,7 +260,7 @@ namespace SoImporter.SubForm
                 else
                 {
                     this.splashScreenManager1.CloseWaitForm();
-                    if (MessageBox.Show(put.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    if (MessageBox.Show(put.ErrorMessage.RemoveBeginAndEndQuote(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnOK.PerformClick();
                     }
@@ -280,6 +289,42 @@ namespace SoImporter.SubForm
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void gridViewDlvByRemain_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+                MenuItem mnu_use = new MenuItem();
+                mnu_use.Text = "นำมาใช้กับกลุ่มนี้";
+                mnu_use.Click += delegate
+                {
+                    this.gridViewDlvByRemain.SelectRows(e.RowHandle, e.RowHandle);
+                    this.btnIn.PerformClick();
+                };
+
+                cm.MenuItems.Add(mnu_use);
+                cm.Show(this.gridControl1, new Point(e.X, e.Y));
+            }
+        }
+
+        private void gridViewDlvBySelected_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+                MenuItem mnu_unuse = new MenuItem();
+                mnu_unuse.Text = "นำออกจากกลุ่มนี้";
+                mnu_unuse.Click += delegate
+                {
+                    this.gridViewDlvBySelected.SelectRows(e.RowHandle, e.RowHandle);
+                    this.btnOut.PerformClick();
+                };
+
+                cm.MenuItems.Add(mnu_unuse);
+                cm.Show(this.gridControl2, new Point(e.X, e.Y));
+            }
         }
     }
 }

@@ -18,8 +18,8 @@ namespace SoImporter.SubForm
     {
         public MainForm main_form;
         private List<DealerVM> dealers;
-        private List<StpriVM> stpris;
-        private List<DlvProfileVM> dlv_profiles;
+        public List<StpriVM> stpris;
+        public List<DlvProfileVM> dlv_profiles;
         private BindingSource bs_dealer;
         
         public DealerDialog(MainForm main_form)
@@ -138,8 +138,8 @@ namespace SoImporter.SubForm
             if (dealer == null)
                 return;
 
-            DealerEditDialog edit = new DealerEditDialog(this, dealer, this.stpris, this.dlv_profiles);
-            if(edit.ShowDialog() == DialogResult.OK)
+            DealerEditDialog edit = new DealerEditDialog(this, dealer); //, this.stpris, this.dlv_profiles
+            if (edit.ShowDialog() == DialogResult.OK)
             {
                 this.dealers = this.LoadDealersFromServer();
                 this.bs_dealer.ResetBindings(true);

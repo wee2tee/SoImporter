@@ -155,7 +155,7 @@ namespace SoImporter.SubForm
                 else
                 {
                     this.splashScreenManager1.CloseWaitForm();
-                    if(MessageBox.Show(delete.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    if(MessageBox.Show(delete.ErrorMessage.RemoveBeginAndEndQuote(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnDelete.PerformClick();
                     }

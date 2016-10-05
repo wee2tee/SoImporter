@@ -128,26 +128,29 @@ namespace SoImporter.SubForm
             int user_id = (int)this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, colId);
             string user_name = (string)this.gridView1.GetRowCellValue(this.gridView1.FocusedRowHandle, colUserName);
 
+            InternalUsers user = this.users.Where(u => u.Id == user_id).FirstOrDefault();
+
+            if (user == null)
+                return;
+
             if(MessageBox.Show("ลบรหัสผู้ใช้ \"" + user_name + "\"", "Delete", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) == DialogResult.OK)
             {
                 try
                 {
-                    APIResult result = APIClient.DELETE(this.main_form.config.ApiUrl + "users/delete", new ApiAccessibilities
+                    ApiAccessibilities acc = new ApiAccessibilities
                     {
                         API_KEY = this.main_form.config.ApiKey,
-                        internalUsers = new InternalUsers
-                        {
-                            Id = user_id
-                        }
-                    });
-                    Console.WriteLine(".. >> result.Success = " + result.Success);
+                        internalUsers = user
+                    };
+
+                    APIResult result = APIClient.DELETE(this.main_form.config.ApiUrl + "users/delete", acc);
                     if (result.Success)
                     {
                         this.RefreshGridUsers();
                     }
                     else
                     {
-                        MessageBox.Show(result.ErrorMessage);
+                        MessageBox.Show(result.ErrorMessage.RemoveBeginAndEndQuote());
                     }
                 }
                 catch (Exception ex)
@@ -198,13 +201,45 @@ namespace SoImporter.SubForm
                     }
                     else
                     {
-                        MessageBox.Show(result.ErrorMessage);
+                        MessageBox.Show(result.ErrorMessage.RemoveBeginAndEndQuote());
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private void gridView1_RowCellClick(object sender, RowCellClickEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+                MenuItem mnu_add = new MenuItem();
+                mnu_add.Text = "เพิ่ม";
+                mnu_add.Click += delegate { this.btnAdd.PerformClick(); };
+
+                MenuItem mnu_edit = new MenuItem();
+                mnu_edit.Text = "แก้ไข";
+                mnu_edit.Click += delegate { this.btnEdit.PerformClick(); };
+
+                MenuItem mnu_delete = new MenuItem();
+                mnu_delete.Text = "ลบ";
+                mnu_delete.Click += delegate { this.btnDelete.PerformClick(); };
+
+                cm.MenuItems.Add(mnu_add);
+                cm.MenuItems.Add(mnu_edit);
+                cm.MenuItems.Add(mnu_delete);
+
+                cm.Show(this.gridControl1, new Point(e.X, e.Y));
+                e.Handled = true;
+            }
+
+            if(e.Button == MouseButtons.Left && e.Clicks == 2)
+            {
+                this.btnEdit.PerformClick();
+                e.Handled = true;
             }
         }
     }

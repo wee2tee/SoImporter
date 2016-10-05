@@ -149,7 +149,7 @@ namespace SoImporter.SubForm
             }
             else
             {
-                MessageBox.Show(result.ErrorMessage);
+                MessageBox.Show(result.ErrorMessage.RemoveBeginAndEndQuote());
                 this.txtUserName.Focus();
             }
         }
@@ -183,7 +183,7 @@ namespace SoImporter.SubForm
             }
             else
             {
-                MessageBox.Show(result.ErrorMessage);
+                MessageBox.Show(result.ErrorMessage.RemoveBeginAndEndQuote());
                 this.txtUserName.Focus();
             }
         }

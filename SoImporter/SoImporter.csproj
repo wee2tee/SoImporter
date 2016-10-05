@@ -118,6 +118,7 @@
     <Compile Include="Model\OesoVM.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PopritVM.cs" />
+    <Compile Include="Model\StmasVM.cs" />
     <Compile Include="Model\StpriVM.cs" />
     <Compile Include="Model\Tabpr.cs" />
     <Compile Include="Program.cs" />
@@ -151,6 +152,12 @@
     </Compile>
     <Compile Include="SubForm\IstabDialog.Designer.cs">
       <DependentUpon>IstabDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\StmasDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\StmasDialog.Designer.cs">
+      <DependentUpon>StmasDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\UserAddEditDialog.cs">
       <SubType>Form</SubType>
@@ -276,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\IstabDialog.resx">
       <DependentUpon>IstabDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\StmasDialog.resx">
+      <DependentUpon>StmasDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\UserAddEditDialog.resx">
       <DependentUpon>UserAddEditDialog.cs</DependentUpon>

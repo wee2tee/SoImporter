@@ -86,9 +86,18 @@
             this.btnRecIvNum = new DevExpress.XtraBars.BarButtonItem();
             this.btnEmsTracking = new DevExpress.XtraBars.BarButtonItem();
             this.btnDealer = new DevExpress.XtraBars.BarButtonItem();
+            this.btnQuCod = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDlvBy = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDlvProfile = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStpri = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStkGrp = new DevExpress.XtraBars.BarButtonItem();
+            this.btnStmas = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -173,15 +182,6 @@
             this.tabPagePo = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageSo = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageIv = new DevExpress.XtraTab.XtraTabPage();
-            this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.btnQuCod = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDlvBy = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDlvProfile = new DevExpress.XtraBars.BarButtonItem();
-            this.btnStpri = new DevExpress.XtraBars.BarButtonItem();
-            this.btnStkGrp = new DevExpress.XtraBars.BarButtonItem();
-            this.btnStmas = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPO)).BeginInit();
@@ -764,7 +764,7 @@
             // 
             // btnRecIvNum
             // 
-            this.btnRecIvNum.Caption = "ใส่หมายเลข อินวอยซ์";
+            this.btnRecIvNum.Caption = "ทำเครื่องหมายว่า \"เปิดอินวอยซ์แล้ว\"";
             this.btnRecIvNum.Enabled = false;
             this.btnRecIvNum.Glyph = global::SoImporter.Properties.Resources.IV;
             this.btnRecIvNum.Id = 16;
@@ -791,6 +791,70 @@
             this.btnDealer.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnDealer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDealer_ItemClick);
             // 
+            // btnQuCod
+            // 
+            this.btnQuCod.Caption = "หน่วยนับ";
+            this.btnQuCod.Glyph = ((System.Drawing.Image)(resources.GetObject("btnQuCod.Glyph")));
+            this.btnQuCod.Id = 20;
+            this.btnQuCod.Name = "btnQuCod";
+            this.btnQuCod.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnQuCod.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQuCod_ItemClick);
+            // 
+            // btnDlvBy
+            // 
+            this.btnDlvBy.Caption = "ขนส่งโดย";
+            this.btnDlvBy.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDlvBy.Glyph")));
+            this.btnDlvBy.Id = 21;
+            this.btnDlvBy.Name = "btnDlvBy";
+            this.btnDlvBy.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnDlvBy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDlvBy_ItemClick);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "จัดกลุ่มวิธีการขนส่ง";
+            this.barButtonItem4.Id = 22;
+            this.barButtonItem4.Name = "barButtonItem4";
+            this.barButtonItem4.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            // 
+            // btnDlvProfile
+            // 
+            this.btnDlvProfile.Caption = "จัดกลุ่ม วิธีการจัดส่ง";
+            this.btnDlvProfile.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDlvProfile.Glyph")));
+            this.btnDlvProfile.Id = 23;
+            this.btnDlvProfile.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnDlvProfile.LargeGlyph")));
+            this.btnDlvProfile.Name = "btnDlvProfile";
+            this.btnDlvProfile.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnDlvProfile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDlvProfile_ItemClick);
+            // 
+            // btnStpri
+            // 
+            this.btnStpri.Caption = "กำหนด ตารางราคา";
+            this.btnStpri.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStpri.Glyph")));
+            this.btnStpri.Id = 24;
+            this.btnStpri.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnStpri.LargeGlyph")));
+            this.btnStpri.Name = "btnStpri";
+            this.btnStpri.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnStpri.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStpri_ItemClick);
+            // 
+            // btnStkGrp
+            // 
+            this.btnStkGrp.Caption = "หมวดสินค้า";
+            this.btnStkGrp.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStkGrp.Glyph")));
+            this.btnStkGrp.Id = 25;
+            this.btnStkGrp.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnStkGrp.LargeGlyph")));
+            this.btnStkGrp.Name = "btnStkGrp";
+            this.btnStkGrp.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnStkGrp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStkGrp_ItemClick);
+            // 
+            // btnStmas
+            // 
+            this.btnStmas.Caption = "รายละเอียดสินค้า";
+            this.btnStmas.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStmas.Glyph")));
+            this.btnStmas.Id = 26;
+            this.btnStmas.Name = "btnStmas";
+            this.btnStmas.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnStmas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStmas_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -808,12 +872,30 @@
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการข้อมูล";
             // 
+            // ribbonPage3
+            // 
+            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup4});
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "ข้อมูลบนเซิร์ฟเวอร์";
+            // 
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.btnDealer);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnStmas);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "ข้อมูลหลัก";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnQuCod);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnStkGrp);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnDlvBy);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnDlvProfile);
+            this.ribbonPageGroup4.ItemLinks.Add(this.btnStpri);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.Text = "ตารางข้อมูลอื่น ๆ";
             // 
             // ribbonPage2
             // 
@@ -1803,88 +1885,6 @@
             this.tabPageIv.Name = "tabPageIv";
             this.tabPageIv.Size = new System.Drawing.Size(1204, 329);
             this.tabPageIv.Text = "3. เปิดอินวอยซ์แล้ว";
-            // 
-            // ribbonPage3
-            // 
-            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup3,
-            this.ribbonPageGroup4});
-            this.ribbonPage3.Name = "ribbonPage3";
-            this.ribbonPage3.Text = "ข้อมูลบนเซิร์ฟเวอร์";
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnQuCod);
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnStkGrp);
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnDlvBy);
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnDlvProfile);
-            this.ribbonPageGroup4.ItemLinks.Add(this.btnStpri);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            this.ribbonPageGroup4.Text = "ตารางข้อมูลอื่น ๆ";
-            // 
-            // btnQuCod
-            // 
-            this.btnQuCod.Caption = "หน่วยนับ";
-            this.btnQuCod.Glyph = ((System.Drawing.Image)(resources.GetObject("btnQuCod.Glyph")));
-            this.btnQuCod.Id = 20;
-            this.btnQuCod.Name = "btnQuCod";
-            this.btnQuCod.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            this.btnQuCod.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQuCod_ItemClick);
-            // 
-            // btnDlvBy
-            // 
-            this.btnDlvBy.Caption = "ขนส่งโดย";
-            this.btnDlvBy.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDlvBy.Glyph")));
-            this.btnDlvBy.Id = 21;
-            this.btnDlvBy.Name = "btnDlvBy";
-            this.btnDlvBy.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            this.btnDlvBy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDlvBy_ItemClick);
-            // 
-            // barButtonItem4
-            // 
-            this.barButtonItem4.Caption = "จัดกลุ่มวิธีการขนส่ง";
-            this.barButtonItem4.Id = 22;
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            // 
-            // btnDlvProfile
-            // 
-            this.btnDlvProfile.Caption = "จัดกลุ่ม วิธีการจัดส่ง";
-            this.btnDlvProfile.Glyph = ((System.Drawing.Image)(resources.GetObject("btnDlvProfile.Glyph")));
-            this.btnDlvProfile.Id = 23;
-            this.btnDlvProfile.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnDlvProfile.LargeGlyph")));
-            this.btnDlvProfile.Name = "btnDlvProfile";
-            this.btnDlvProfile.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnDlvProfile.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDlvProfile_ItemClick);
-            // 
-            // btnStpri
-            // 
-            this.btnStpri.Caption = "กำหนด ตารางราคา";
-            this.btnStpri.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStpri.Glyph")));
-            this.btnStpri.Id = 24;
-            this.btnStpri.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnStpri.LargeGlyph")));
-            this.btnStpri.Name = "btnStpri";
-            this.btnStpri.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnStpri.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStpri_ItemClick);
-            // 
-            // btnStkGrp
-            // 
-            this.btnStkGrp.Caption = "หมวดสินค้า";
-            this.btnStkGrp.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStkGrp.Glyph")));
-            this.btnStkGrp.Id = 25;
-            this.btnStkGrp.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnStkGrp.LargeGlyph")));
-            this.btnStkGrp.Name = "btnStkGrp";
-            this.btnStkGrp.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            this.btnStkGrp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStkGrp_ItemClick);
-            // 
-            // btnStmas
-            // 
-            this.btnStmas.Caption = "รายละเอียดสินค้า";
-            this.btnStmas.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStmas.Glyph")));
-            this.btnStmas.Id = 26;
-            this.btnStmas.Name = "btnStmas";
-            this.btnStmas.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnStmas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStmas_ItemClick);
             // 
             // MainForm
             // 

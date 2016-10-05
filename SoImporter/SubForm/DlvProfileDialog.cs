@@ -167,7 +167,7 @@ namespace SoImporter.SubForm
                 }
                 else
                 {
-                    if(MessageBox.Show(delete.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    if(MessageBox.Show(delete.ErrorMessage.RemoveBeginAndEndQuote(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                     {
                         this.btnDelete.PerformClick();
                     }
@@ -197,6 +197,10 @@ namespace SoImporter.SubForm
                 cm.MenuItems.Add(mnu_delete);
 
                 cm.Show(this.gridControl1, new Point(e.X, e.Y));
+            }
+            if(e.Button == MouseButtons.Left && e.Clicks == 2)
+            {
+                this.btnEdit.PerformClick();
             }
         }
 

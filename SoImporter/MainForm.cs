@@ -126,14 +126,22 @@ namespace SoImporter
 
         private void btnRecSO_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.splashScreenManager1.ShowWaitForm();
+
             Oeso so = new Oeso();
             List<Oesoit> soit = new List<Oesoit>();
             if (this.PrepareInsertItem(so, soit) == false)
             {
+                if(this.splashScreenManager1.IsSplashFormVisible)
+                    this.splashScreenManager1.CloseWaitForm();
+
+                foreach (var row_handle in this.gridViewPO.GetSelectedRows())
+                {
+                    this.gridViewPO.UnselectRow(row_handle);
+                }
                 return;
             }
 
-            this.splashScreenManager1.ShowWaitForm();
             try
             {
                 if (InsertOeso(this.config, so))
@@ -185,6 +193,9 @@ namespace SoImporter
             List<Isrun> isrun = LoadIsrunFromDBF(this.config);
             if (isrun.Count() == 0)
             {
+                if (this.splashScreenManager1.IsSplashFormVisible)
+                    this.splashScreenManager1.CloseWaitForm();
+
                 MessageBox.Show("กรุณาระบุที่เก็บข้อมูล Express ให้ถูกต้อง", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 oeso = null;
                 oesoits = null;
@@ -196,6 +207,9 @@ namespace SoImporter
             {
                 do
                 {
+                    if (this.splashScreenManager1.IsSplashFormVisible)
+                        this.splashScreenManager1.CloseWaitForm();
+
                     MessageBox.Show("ใบสั่งขายเลขที่ \"" + next_sonum + "\" มีอยู่แล้ว", "Message", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     next_sonum = this.config.DocPrefix + (Convert.ToInt32(next_sonum.Substring(2, next_sonum.Length - 2)) + 1).ToString().FillZeroLeft(7);
@@ -284,6 +298,9 @@ namespace SoImporter
 
             if (poprit.GroupBy(d => d.CreBy).Distinct().Count() > 1)  // เลือกตัวแทนมากกว่า 1 ราย
             {
+                if (this.splashScreenManager1.IsSplashFormVisible)
+                    this.splashScreenManager1.CloseWaitForm();
+
                 MessageBox.Show("รายการที่เลือกต้องมาจากตัวแทนจำหน่ายรายเดียวกันเท่านั้น", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 oeso = null;
                 oesoits = null;
@@ -291,6 +308,9 @@ namespace SoImporter
             }
             else if(poprit.GroupBy(d => d.FlgVat).Distinct().Count() > 1) // เลือกรายการที่มี flgvat ต่างกัน
             {
+                if (this.splashScreenManager1.IsSplashFormVisible)
+                    this.splashScreenManager1.CloseWaitForm();
+
                 MessageBox.Show("รายการที่เลือกมีประเภทราคาต่างกัน, กรุณาเลือกรายการที่มีประเภทราคาเดียวกัน", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 oeso = null;
                 oesoits = null;
@@ -298,6 +318,9 @@ namespace SoImporter
             }
             else if(poprit.First().DealerType == (int)DEALER_TYPE.สำนักงานบัญชีไฮเทค && poprit.Count() > 1) // เลือกรายการของ สนง.ไฮเทคมากกว่า 1 รายการ
             {
+                if (this.splashScreenManager1.IsSplashFormVisible)
+                    this.splashScreenManager1.CloseWaitForm();
+
                 MessageBox.Show("รายการสั่งซื้อจาก \"สำนักงานบัญชีไฮเทค\" ต้องเลือกครั้งละ 1 รายการเท่านั้น", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 oeso = null;
                 oesoits = null;
@@ -306,6 +329,9 @@ namespace SoImporter
             else
             {
                 #region confirm so
+                if (this.splashScreenManager1.IsSplashFormVisible)
+                    this.splashScreenManager1.CloseWaitForm();
+
                 OesoConfirmDialog conf = new OesoConfirmDialog(this, oeso, oesoits, poprit.First());
                 if (conf.ShowDialog() != DialogResult.OK)
                 {
@@ -812,7 +838,7 @@ namespace SoImporter
             }
             else
             {
-                MessageBox.Show(put.ErrorMessage);
+                MessageBox.Show(put.ErrorMessage.RemoveBeginAndEndQuote());
             }
             return false;
         }
@@ -838,7 +864,7 @@ namespace SoImporter
             }
             else
             {
-                MessageBox.Show(put.ErrorMessage);
+                MessageBox.Show(put.ErrorMessage.RemoveBeginAndEndQuote());
             }
             return false;
         }
@@ -862,7 +888,7 @@ namespace SoImporter
             }
             else
             {
-                MessageBox.Show(put.ErrorMessage);
+                MessageBox.Show(put.ErrorMessage.RemoveBeginAndEndQuote());
             }
             return false;
         }
@@ -942,7 +968,7 @@ namespace SoImporter
             }
             else
             {
-                MessageBox.Show(result.ErrorMessage);
+                MessageBox.Show(result.ErrorMessage.RemoveBeginAndEndQuote());
             }
             this.splashScreenManager1.CloseWaitForm();
         }
@@ -952,7 +978,7 @@ namespace SoImporter
             if (((GridView)sender).GetRow(e.RowHandle) == null)
                 return;
 
-            if(e.Column == this.col_ViewAttachment)
+            if(e.Button == MouseButtons.Left && e.Clicks == 1 && e.Column == this.col_ViewAttachment)
             {
                 int id = (int)((GridView)sender).GetRowCellValue(e.RowHandle, this.colId);
 
@@ -962,6 +988,23 @@ namespace SoImporter
 
                 ViewAttachFileDialog view = new ViewAttachFileDialog(this, poprit);
                 view.ShowDialog();
+                e.Handled = true;
+            }
+
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+                MenuItem mnu_convert_to_so = new MenuItem();
+                mnu_convert_to_so.Text = "แปลงรายการเป็นใบสั่งขาย";
+                mnu_convert_to_so.Click += delegate
+                {
+                    ((GridView)sender).SelectRows(e.RowHandle, e.RowHandle);
+                    this.btnRecSO.PerformClick();
+                };
+
+                cm.MenuItems.Add(mnu_convert_to_so);
+                cm.Show(this.gridControl1, new Point(e.X, e.Y));
+                e.Handled = true;
             }
         }
 
@@ -970,7 +1013,7 @@ namespace SoImporter
             if (((GridView)sender).GetRow(e.RowHandle) == null)
                 return;
 
-            if(e.Column == this.gc2_Iv)
+            if(e.Button == MouseButtons.Left && e.Clicks == 1 && e.Column == this.gc2_Iv)
             {
                 string sonum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc2_SoNum);
                 RecIvNoDialog reciv = new RecIvNoDialog(this, sonum);
@@ -978,6 +1021,23 @@ namespace SoImporter
                 {
                     this.btnRetrieveData.PerformClick();
                 }
+                e.Handled = true;
+            }
+
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+                MenuItem mnu_rec_ivnum = new MenuItem();
+                mnu_rec_ivnum.Text = "ทำเครื่องหมายว่า \"เปิดอินวอยซ์แล้ว\"";
+                mnu_rec_ivnum.Click += delegate
+                {
+                    ((GridView)sender).SelectRows(e.RowHandle, e.RowHandle);
+                    this.btnRecIvNum.PerformClick();
+                };
+
+                cm.MenuItems.Add(mnu_rec_ivnum);
+                cm.Show(this.gridControl2, new Point(e.X, e.Y));
+                e.Handled = true;
             }
         }
 
@@ -1003,7 +1063,7 @@ namespace SoImporter
             if (((GridView)sender).GetRow(e.RowHandle) == null)
                 return;
 
-            if(e.Column.Name == this.gc3_EmsTrackingNo.Name)
+            if(e.Button == MouseButtons.Left && e.Clicks == 1 && e.Column.Name == this.gc3_EmsTrackingNo.Name)
             {
                 string ivnum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc3_IvNum);
                 RecEmsTrackingDialog rec_ems = new RecEmsTrackingDialog(this, ivnum);
@@ -1011,6 +1071,23 @@ namespace SoImporter
                 {
                     this.btnRetrieveData.PerformClick();
                 }
+                e.Handled = true;
+            }
+
+            if(e.Button == MouseButtons.Right)
+            {
+                ContextMenu cm = new ContextMenu();
+                MenuItem mnu_rec_ems = new MenuItem();
+                mnu_rec_ems.Text = "ป้อนหมายเลข EMS Tracking";
+                mnu_rec_ems.Click += delegate
+                {
+                    ((GridView)sender).SelectRows(e.RowHandle, e.RowHandle);
+                    this.btnEmsTracking.PerformClick();
+                };
+
+                cm.MenuItems.Add(mnu_rec_ems);
+                cm.Show(this.gridControl3, new Point(e.X, e.Y));
+                e.Handled = true;
             }
         }
 
@@ -1124,7 +1201,8 @@ namespace SoImporter
 
         private void btnStmas_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            StmasDialog stmas = new StmasDialog(this);
+            stmas.ShowDialog();
         }
     }
 }

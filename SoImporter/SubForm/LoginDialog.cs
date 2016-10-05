@@ -72,7 +72,7 @@ namespace SoImporter.SubForm
             else
             {
                 this.splashScreenManager1.CloseWaitForm();
-                MessageBox.Show(result.ErrorMessage);
+                MessageBox.Show(result.ErrorMessage.RemoveBeginAndEndQuote());
             }
             
         }

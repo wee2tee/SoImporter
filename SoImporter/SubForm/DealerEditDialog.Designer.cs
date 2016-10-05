@@ -469,24 +469,31 @@
             // 
             this.btnListPriceCode.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnListPriceCode.Appearance.Options.UseFont = true;
+            this.btnListPriceCode.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnListPriceCode.Image = ((System.Drawing.Image)(resources.GetObject("btnListPriceCode.Image")));
+            this.btnListPriceCode.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnListPriceCode.Location = new System.Drawing.Point(295, 68);
             this.btnListPriceCode.Name = "btnListPriceCode";
             this.btnListPriceCode.Size = new System.Drawing.Size(27, 23);
             this.btnListPriceCode.TabIndex = 18;
             this.btnListPriceCode.TabStop = false;
+            this.btnListPriceCode.ToolTip = "ตารางราคาทั้งหมด";
             this.btnListPriceCode.Click += new System.EventHandler(this.btnListPriceCode_Click);
             // 
             // btnListDlvProfile
             // 
             this.btnListDlvProfile.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnListDlvProfile.Appearance.Options.UseFont = true;
+            this.btnListDlvProfile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnListDlvProfile.Image = ((System.Drawing.Image)(resources.GetObject("btnListDlvProfile.Image")));
+            this.btnListDlvProfile.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.btnListDlvProfile.Location = new System.Drawing.Point(371, 93);
             this.btnListDlvProfile.Name = "btnListDlvProfile";
             this.btnListDlvProfile.Size = new System.Drawing.Size(27, 23);
             this.btnListDlvProfile.TabIndex = 18;
             this.btnListDlvProfile.TabStop = false;
+            this.btnListDlvProfile.ToolTip = "กลุ่มวิธีการจัดส่งทั้งหมด";
+            this.btnListDlvProfile.Click += new System.EventHandler(this.btnListDlvProfile_Click);
             // 
             // DealerEditDialog
             // 
