@@ -44,6 +44,11 @@ namespace SoImporter.Model
             }
         }
 
+        public override string ToString()
+        {
+            return this.TypCod.Trim() + " : " + this.TypDesTh.Trim();
+        }
+
         /** CONSTANT VALUE **/
         public const string TABTYP_QUCOD = "20";
         public const string TABTYP_LOCCOD = "21";

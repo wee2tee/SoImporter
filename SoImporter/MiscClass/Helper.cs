@@ -49,6 +49,24 @@ namespace SoImporter.MiscClass
         DEPCOD = 50
     }
 
+    public enum STKTYP : int
+    {
+        STOCK = 0,
+        SET_ORDINARY = 1,
+        SET_SPECIAL = 2,
+        SERVICE = 3,
+        REVENUE = 4,
+        EXPENSE = 5
+    }
+
+    public enum RECORD_NAVIGATION
+    {
+        FIRST,
+        PREVIOUS,
+        NEXT,
+        LAST
+    }
+
     public class DealerTypeObj
     {
         public string Desc { get; set; }

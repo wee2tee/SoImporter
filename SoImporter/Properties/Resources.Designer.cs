@@ -63,6 +63,16 @@ namespace SoImporter.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap import_data {
+            get {
+                object obj = ResourceManager.GetObject("import_data", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap IV {
             get {
                 object obj = ResourceManager.GetObject("IV", resourceCulture);
@@ -96,6 +106,16 @@ namespace SoImporter.Properties {
         internal static System.Drawing.Bitmap SAVE_SO {
             get {
                 object obj = ResourceManager.GetObject("SAVE_SO", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash {
+            get {
+                object obj = ResourceManager.GetObject("trash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
