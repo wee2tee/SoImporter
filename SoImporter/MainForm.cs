@@ -562,6 +562,37 @@ namespace SoImporter
             return dt.ToList<Istab>();
         }
 
+        public static List<Stmas> LoadStmasFromDBF(ConfigValue config)
+        {
+            if (!File.Exists(config.ExpressDataPath + @"\STMAS.DBF"))
+            {
+                MessageBox.Show("กรุณาระบุที่เก็บข้อมูลโปรแกรม Express ให้ถูกต้อง");
+                return null;
+            }
+
+            DataTable dt = new DataTable();
+
+            using (OleDbConnection conn = createConnection(config))
+            {
+                // Open the connection, and if open successfully, you can try to query it
+                conn.Open();
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    string sql = "Select * From STMAS Where stktyp='0'";
+
+                    OleDbCommand query = new OleDbCommand(sql, conn);
+                    OleDbDataAdapter DA = new OleDbDataAdapter(query);
+
+                    DA.Fill(dt);
+
+                    conn.Close();
+                }
+            }
+
+            return dt.ToList<Stmas>();
+        }
+
         public static bool InsertOeso(ConfigValue config, Oeso oeso)
         {
             try

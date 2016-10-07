@@ -15,5 +15,6 @@ namespace SoImporter.Model
         public DlvProfileVM dlvprofile { get; set; }
         public IstabVM istab { get; set; }
         public StpriVM stpri { get; set; }
+        public StmasVM stmas { get; set; }
     }
 }

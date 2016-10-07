@@ -146,6 +146,7 @@
     <Compile Include="Model\OesoVM.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PopritVM.cs" />
+    <Compile Include="Model\Stmas.cs" />
     <Compile Include="Model\StmasVM.cs" />
     <Compile Include="Model\StpriVM.cs" />
     <Compile Include="Model\Tabpr.cs" />
@@ -169,6 +170,12 @@
     <Compile Include="SubForm\DlvProfileDialog.Designer.cs">
       <DependentUpon>DlvProfileDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\FindDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\FindDialog.Designer.cs">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\IstabAddEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +193,12 @@
     </Compile>
     <Compile Include="SubForm\StmasDialog.Designer.cs">
       <DependentUpon>StmasDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\StmasImportDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\StmasImportDialog.Designer.cs">
+      <DependentUpon>StmasImportDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\StmasListDialog.cs">
       <SubType>Form</SubType>
@@ -312,6 +325,9 @@
     <EmbeddedResource Include="SubForm\DlvProfileDialog.resx">
       <DependentUpon>DlvProfileDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\FindDialog.resx">
+      <DependentUpon>FindDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForm\IstabAddEditDialog.resx">
       <DependentUpon>IstabAddEditDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -320,6 +336,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\StmasDialog.resx">
       <DependentUpon>StmasDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\StmasImportDialog.resx">
+      <DependentUpon>StmasImportDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\StmasListDialog.resx">
       <DependentUpon>StmasListDialog.cs</DependentUpon>
@@ -391,6 +410,10 @@
     <ProjectReference Include="..\Crypto\Crypto.csproj">
       <Project>{1188f184-c68f-427f-be14-edea975533ce}</Project>
       <Name>Crypto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileUpload\FileUpload.csproj">
+      <Project>{1631d4f4-33c1-4e45-8cf0-98b372cfcc87}</Project>
+      <Name>FileUpload</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,7 @@
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
             this.btnStop = new DevExpress.XtraBars.BarButtonItem();
             this.btnSave = new DevExpress.XtraBars.BarButtonItem();
-            this.btnCancel = new DevExpress.XtraBars.BarButtonItem();
+            this.btnDelete = new DevExpress.XtraBars.BarButtonItem();
             this.btnFirst = new DevExpress.XtraBars.BarButtonItem();
             this.btnPrev = new DevExpress.XtraBars.BarButtonItem();
             this.btnNext = new DevExpress.XtraBars.BarButtonItem();
@@ -73,12 +73,10 @@
             this.txtSellpr3 = new DevExpress.XtraEditors.TextEdit();
             this.txtSellpr2 = new DevExpress.XtraEditors.TextEdit();
             this.txtSellpr1 = new DevExpress.XtraEditors.TextEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnBrowseImg = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancelChangeImg = new DevExpress.XtraEditors.SimpleButton();
+            this.btnChangeImg = new DevExpress.XtraEditors.SimpleButton();
             this.picProductImg = new DevExpress.XtraEditors.PictureEdit();
-            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.txtProductImg = new DevExpress.XtraEditors.TextEdit();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -95,7 +93,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSellpr2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSellpr1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProductImg.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtProductImg.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -117,7 +114,7 @@
             this.btnLast,
             this.btnSave,
             this.barButtonItem8,
-            this.btnCancel,
+            this.btnDelete,
             this.btnStop,
             this.btnImport,
             this.barButtonItem2,
@@ -141,7 +138,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnEdit, DevExpress.XtraBars.BarItemPaintStyle.Standard),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnStop),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSave),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnCancel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnDelete),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnFirst, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnPrev),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnNext),
@@ -188,14 +185,14 @@
             this.btnSave.Name = "btnSave";
             this.btnSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSave_ItemClick);
             // 
-            // btnCancel
+            // btnDelete
             // 
-            this.btnCancel.Caption = "ลบ";
-            this.btnCancel.Glyph = global::SoImporter.Properties.Resources.trash;
-            this.btnCancel.Id = 8;
-            this.btnCancel.LargeGlyph = global::SoImporter.Properties.Resources.trash;
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnCancel_ItemClick);
+            this.btnDelete.Caption = "ลบ";
+            this.btnDelete.Glyph = global::SoImporter.Properties.Resources.trash;
+            this.btnDelete.Id = 8;
+            this.btnDelete.LargeGlyph = global::SoImporter.Properties.Resources.trash;
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDelete_ItemClick);
             // 
             // btnFirst
             // 
@@ -271,6 +268,7 @@
             this.bar3.OptionsBar.DrawDragBorder = false;
             this.bar3.OptionsBar.UseWholeRow = true;
             this.bar3.Text = "Status bar";
+            this.bar3.Visible = false;
             // 
             // barDockControlTop
             // 
@@ -330,6 +328,7 @@
             this.cbStkGrp.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbStkGrp.Size = new System.Drawing.Size(147, 22);
             this.cbStkGrp.TabIndex = 6;
+            this.cbStkGrp.SelectedIndexChanged += new System.EventHandler(this.cbStkGrp_SelectedIndexChanged);
             // 
             // labelControl2
             // 
@@ -348,6 +347,7 @@
             this.txtStkdesTh.Properties.Appearance.Options.UseFont = true;
             this.txtStkdesTh.Size = new System.Drawing.Size(426, 22);
             this.txtStkdesTh.TabIndex = 5;
+            this.txtStkdesTh.EditValueChanged += new System.EventHandler(this.txtStkdesTh_EditValueChanged);
             // 
             // labelControl3
             // 
@@ -366,6 +366,7 @@
             this.txtStkdesEn.Properties.Appearance.Options.UseFont = true;
             this.txtStkdesEn.Size = new System.Drawing.Size(426, 22);
             this.txtStkdesEn.TabIndex = 5;
+            this.txtStkdesEn.EditValueChanged += new System.EventHandler(this.txtStkdesEn_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -396,6 +397,7 @@
             this.cbQucod.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbQucod.Size = new System.Drawing.Size(147, 22);
             this.cbQucod.TabIndex = 6;
+            this.cbQucod.SelectedIndexChanged += new System.EventHandler(this.cbQucod_SelectedIndexChanged);
             // 
             // labelControl6
             // 
@@ -450,6 +452,7 @@
             this.txtStkcod.Properties.Appearance.Options.UseFont = true;
             this.txtStkcod.Size = new System.Drawing.Size(147, 22);
             this.txtStkcod.TabIndex = 5;
+            this.txtStkcod.EditValueChanged += new System.EventHandler(this.txtStkcod_EditValueChanged);
             // 
             // panelControl1
             // 
@@ -463,14 +466,12 @@
             this.panelControl1.Controls.Add(this.txtSellpr3);
             this.panelControl1.Controls.Add(this.txtSellpr2);
             this.panelControl1.Controls.Add(this.txtSellpr1);
-            this.panelControl1.Controls.Add(this.simpleButton1);
-            this.panelControl1.Controls.Add(this.btnBrowseImg);
+            this.panelControl1.Controls.Add(this.btnCancelChangeImg);
+            this.panelControl1.Controls.Add(this.btnChangeImg);
             this.panelControl1.Controls.Add(this.picProductImg);
             this.panelControl1.Controls.Add(this.cbQucod);
-            this.panelControl1.Controls.Add(this.labelControl11);
             this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.cbStkGrp);
-            this.panelControl1.Controls.Add(this.txtProductImg);
             this.panelControl1.Controls.Add(this.labelControl6);
             this.panelControl1.Controls.Add(this.labelControl5);
             this.panelControl1.Controls.Add(this.labelControl7);
@@ -533,6 +534,7 @@
             this.txtSellpr5.Properties.MaxLength = 12;
             this.txtSellpr5.Size = new System.Drawing.Size(114, 22);
             this.txtSellpr5.TabIndex = 9;
+            this.txtSellpr5.EditValueChanged += new System.EventHandler(this.txtSellpr5_EditValueChanged);
             // 
             // txtSellpr4
             // 
@@ -557,6 +559,7 @@
             this.txtSellpr4.Properties.MaxLength = 12;
             this.txtSellpr4.Size = new System.Drawing.Size(114, 22);
             this.txtSellpr4.TabIndex = 9;
+            this.txtSellpr4.EditValueChanged += new System.EventHandler(this.txtSellpr4_EditValueChanged);
             // 
             // txtSellpr3
             // 
@@ -581,6 +584,7 @@
             this.txtSellpr3.Properties.MaxLength = 12;
             this.txtSellpr3.Size = new System.Drawing.Size(114, 22);
             this.txtSellpr3.TabIndex = 9;
+            this.txtSellpr3.EditValueChanged += new System.EventHandler(this.txtSellpr3_EditValueChanged);
             // 
             // txtSellpr2
             // 
@@ -605,6 +609,7 @@
             this.txtSellpr2.Properties.MaxLength = 12;
             this.txtSellpr2.Size = new System.Drawing.Size(114, 22);
             this.txtSellpr2.TabIndex = 9;
+            this.txtSellpr2.EditValueChanged += new System.EventHandler(this.txtSellpr2_EditValueChanged);
             // 
             // txtSellpr1
             // 
@@ -629,47 +634,42 @@
             this.txtSellpr1.Properties.MaxLength = 12;
             this.txtSellpr1.Size = new System.Drawing.Size(114, 22);
             this.txtSellpr1.TabIndex = 9;
+            this.txtSellpr1.EditValueChanged += new System.EventHandler(this.txtSellpr1_EditValueChanged);
             // 
-            // simpleButton1
+            // btnCancelChangeImg
             // 
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(399, 264);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(124, 30);
-            this.simpleButton1.TabIndex = 8;
-            this.simpleButton1.Text = "Test upload image";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            this.btnCancelChangeImg.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnCancelChangeImg.Appearance.Options.UseFont = true;
+            this.btnCancelChangeImg.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelChangeImg.Image")));
+            this.btnCancelChangeImg.Location = new System.Drawing.Point(238, 279);
+            this.btnCancelChangeImg.Name = "btnCancelChangeImg";
+            this.btnCancelChangeImg.Size = new System.Drawing.Size(155, 23);
+            this.btnCancelChangeImg.TabIndex = 8;
+            this.btnCancelChangeImg.Text = "ยกเลิกการเปลี่ยนรูปสินค้า";
+            this.btnCancelChangeImg.Click += new System.EventHandler(this.btnCancelChangeImg_Click);
             // 
-            // btnBrowseImg
+            // btnChangeImg
             // 
-            this.btnBrowseImg.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnBrowseImg.Appearance.Options.UseFont = true;
-            this.btnBrowseImg.Location = new System.Drawing.Point(367, 14);
-            this.btnBrowseImg.Name = "btnBrowseImg";
-            this.btnBrowseImg.Size = new System.Drawing.Size(26, 23);
-            this.btnBrowseImg.TabIndex = 8;
-            this.btnBrowseImg.Text = "...";
-            this.btnBrowseImg.Click += new System.EventHandler(this.btnBrowseImg_Click);
+            this.btnChangeImg.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnChangeImg.Appearance.Options.UseFont = true;
+            this.btnChangeImg.Image = ((System.Drawing.Image)(resources.GetObject("btnChangeImg.Image")));
+            this.btnChangeImg.Location = new System.Drawing.Point(126, 279);
+            this.btnChangeImg.Name = "btnChangeImg";
+            this.btnChangeImg.Size = new System.Drawing.Size(107, 23);
+            this.btnChangeImg.TabIndex = 8;
+            this.btnChangeImg.Text = "เปลี่ยนรูปสินค้า";
+            this.btnChangeImg.Click += new System.EventHandler(this.btnBrowseImg_Click);
             // 
             // picProductImg
             // 
-            this.picProductImg.Location = new System.Drawing.Point(13, 40);
+            this.picProductImg.Location = new System.Drawing.Point(13, 11);
             this.picProductImg.MenuManager = this.barManager1;
             this.picProductImg.Name = "picProductImg";
+            this.picProductImg.Properties.ReadOnly = true;
             this.picProductImg.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.picProductImg.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.picProductImg.Size = new System.Drawing.Size(380, 254);
+            this.picProductImg.Size = new System.Drawing.Size(380, 263);
             this.picProductImg.TabIndex = 7;
-            // 
-            // labelControl11
-            // 
-            this.labelControl11.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl11.Location = new System.Drawing.Point(13, 18);
-            this.labelControl11.Name = "labelControl11";
-            this.labelControl11.Size = new System.Drawing.Size(44, 16);
-            this.labelControl11.TabIndex = 4;
-            this.labelControl11.Text = "รูปสินค้า";
             // 
             // labelControl1
             // 
@@ -679,16 +679,6 @@
             this.labelControl1.Size = new System.Drawing.Size(68, 16);
             this.labelControl1.TabIndex = 4;
             this.labelControl1.Text = "ราคาขายที่ 1";
-            // 
-            // txtProductImg
-            // 
-            this.txtProductImg.Location = new System.Drawing.Point(63, 15);
-            this.txtProductImg.Name = "txtProductImg";
-            this.txtProductImg.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtProductImg.Properties.Appearance.Options.UseFont = true;
-            this.txtProductImg.Properties.ReadOnly = true;
-            this.txtProductImg.Size = new System.Drawing.Size(303, 22);
-            this.txtProductImg.TabIndex = 5;
             // 
             // splashScreenManager1
             // 
@@ -737,7 +727,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtSellpr2.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSellpr1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picProductImg.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtProductImg.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -770,10 +759,8 @@
         private DevExpress.XtraEditors.LabelControl labelControl10;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.PictureEdit picProductImg;
-        private DevExpress.XtraEditors.SimpleButton btnBrowseImg;
-        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private DevExpress.XtraEditors.SimpleButton btnChangeImg;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit txtProductImg;
         private DevExpress.XtraBars.BarButtonItem btnFirst;
         private DevExpress.XtraBars.BarButtonItem btnPrev;
         private DevExpress.XtraBars.BarButtonItem btnNext;
@@ -781,7 +768,7 @@
         private DevExpress.XtraBars.BarButtonItem btnSave;
         private DevExpress.XtraBars.BarButtonItem barButtonItem8;
         private DevExpress.XtraBars.BarButtonItem btnStop;
-        private DevExpress.XtraBars.BarButtonItem btnCancel;
+        private DevExpress.XtraBars.BarButtonItem btnDelete;
         private DevExpress.XtraEditors.TextEdit txtSellpr5;
         private DevExpress.XtraEditors.TextEdit txtSellpr4;
         private DevExpress.XtraEditors.TextEdit txtSellpr3;
@@ -795,6 +782,6 @@
         private DevExpress.XtraBars.BarButtonItem btnFind;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem btnList;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnCancelChangeImg;
     }
 }

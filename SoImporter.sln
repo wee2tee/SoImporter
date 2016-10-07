@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoImporter", "SoImporter\So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto", "Crypto\Crypto.csproj", "{1188F184-C68F-427F-BE14-EDEA975533CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileUpload", "FileUpload\FileUpload.csproj", "{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{1188F184-C68F-427F-BE14-EDEA975533CE}.Release|x64.Build.0 = Release|Any CPU
 		{1188F184-C68F-427F-BE14-EDEA975533CE}.Release|x86.ActiveCfg = Release|Any CPU
 		{1188F184-C68F-427F-BE14-EDEA975533CE}.Release|x86.Build.0 = Release|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Debug|x64.Build.0 = Debug|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Debug|x86.Build.0 = Debug|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Release|x64.ActiveCfg = Release|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Release|x64.Build.0 = Release|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Release|x86.ActiveCfg = Release|Any CPU
+		{1631D4F4-33C1-4E45-8CF0-98B372CFCC87}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

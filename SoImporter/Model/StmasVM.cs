@@ -59,5 +59,10 @@ namespace SoImporter.Model
 
         // วันที่แก้ไขล่าสุด
         public DateTime? ChgDate { get; set; }
+
+        public StmasVM Clone()
+        {
+            return (StmasVM)this.MemberwiseClone();
+        }
     }
 }
