@@ -190,5 +190,40 @@ namespace SoImporter.SubForm
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
+        private void tabPageSlip_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void gridControl1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPageTax_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void gridControl2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void splitContainerControl1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pdfViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

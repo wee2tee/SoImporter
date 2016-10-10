@@ -158,6 +158,12 @@
     <Compile Include="Report\ReportAttachImage.Designer.cs">
       <DependentUpon>ReportAttachImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Report\ReportSoDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportSoDocument.Designer.cs">
+      <DependentUpon>ReportSoDocument.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\DlvProfileAddEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,12 @@
     </Compile>
     <Compile Include="SubForm\IstabDialog.Designer.cs">
       <DependentUpon>IstabDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\OrderDetailsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\OrderDetailsDialog.Designer.cs">
+      <DependentUpon>OrderDetailsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\StmasDialog.cs">
       <SubType>Form</SubType>
@@ -319,6 +331,9 @@
     <EmbeddedResource Include="Report\ReportAttachImage.resx">
       <DependentUpon>ReportAttachImage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportSoDocument.resx">
+      <DependentUpon>ReportSoDocument.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SubForm\DlvProfileAddEditDialog.resx">
       <DependentUpon>DlvProfileAddEditDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -333,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\IstabDialog.resx">
       <DependentUpon>IstabDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\OrderDetailsDialog.resx">
+      <DependentUpon>OrderDetailsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\StmasDialog.resx">
       <DependentUpon>StmasDialog.cs</DependentUpon>

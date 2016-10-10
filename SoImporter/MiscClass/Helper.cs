@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Runtime.InteropServices;
 using SoImporter.Model;
 using DevExpress.XtraEditors;
 
@@ -113,6 +114,19 @@ namespace SoImporter.MiscClass
 
     public static class Helper
     {
+        private const uint SW_RESTORE = 0X09;
+
+        [DllImport("user32.dll")]
+        private static extern int ShowWindow(IntPtr hWnd, uint Msg);
+
+        public static void RestoreWindows(this XtraForm form)
+        {
+            if(form.WindowState == System.Windows.Forms.FormWindowState.Minimized)
+            {
+                ShowWindow(form.Handle, SW_RESTORE);
+            }
+        }
+
         public static List<T> ToList<T>(this DataTable table) where T : class, new()
         {
             try

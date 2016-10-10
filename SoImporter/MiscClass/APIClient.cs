@@ -194,8 +194,15 @@ namespace SoImporter.MiscClass
         public bool Success { get; set; }
         public string ReturnValue { get; set; }
         public string ErrorMessage { get; set; }
-
         public string ErrorCode { get; set; }
+
+        public APIResult()
+        {
+            this.Success = false;
+            this.ReturnValue = string.Empty;
+            this.ErrorMessage = string.Empty;
+            this.ErrorCode = string.Empty;
+        }
 
         public void FormatError(WebException ex)
         {

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewAttachFileDialog));
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
@@ -72,7 +71,7 @@
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
             this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
-            this.reportGenerator1 = new DevExpress.XtraReports.ReportGeneration.ReportGenerator(this.components);
+            this.reportGenerator1 = new DevExpress.XtraReports.ReportGeneration.ReportGenerator();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
@@ -100,6 +99,7 @@
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
             this.pictureEdit1.Size = new System.Drawing.Size(816, 540);
             this.pictureEdit1.TabIndex = 0;
+            this.pictureEdit1.EditValueChanged += new System.EventHandler(this.pictureEdit1_EditValueChanged);
             // 
             // splashScreenManager1
             // 
@@ -128,6 +128,7 @@
             this.tabPageSlip.Name = "tabPageSlip";
             this.tabPageSlip.Size = new System.Drawing.Size(278, 472);
             this.tabPageSlip.Text = "หลักฐานการชำระเงิน";
+            this.tabPageSlip.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPageSlip_Paint);
             // 
             // gridControl1
             // 
@@ -144,6 +145,7 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSlip,
             this.gridView2});
+            this.gridControl1.Click += new System.EventHandler(this.gridControl1_Click);
             // 
             // gridViewSlip
             // 
@@ -299,6 +301,7 @@
             this.tabPageTax.Name = "tabPageTax";
             this.tabPageTax.Size = new System.Drawing.Size(278, 472);
             this.tabPageTax.Text = "หนังสือรับรองหักภาษี ณ ที่จ่าย";
+            this.tabPageTax.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPageTax_Paint);
             // 
             // gridControl2
             // 
@@ -315,6 +318,7 @@
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewTax,
             this.gridView4});
+            this.gridControl2.Click += new System.EventHandler(this.gridControl2_Click);
             // 
             // gridViewTax
             // 
@@ -482,6 +486,7 @@
             this.splitContainerControl1.SplitterPosition = 284;
             this.splitContainerControl1.TabIndex = 2;
             this.splitContainerControl1.Text = "splitContainerControl1";
+            this.splitContainerControl1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainerControl1_Paint);
             // 
             // pdfViewer1
             // 
@@ -495,6 +500,7 @@
             this.pdfViewer1.Size = new System.Drawing.Size(816, 540);
             this.pdfViewer1.TabIndex = 1;
             this.pdfViewer1.ZoomMode = DevExpress.XtraPdfViewer.PdfZoomMode.FitToWidth;
+            this.pdfViewer1.Load += new System.EventHandler(this.pdfViewer1_Load);
             // 
             // btnPrint
             // 

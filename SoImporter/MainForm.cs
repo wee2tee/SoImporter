@@ -16,6 +16,10 @@ using System.Data.OleDb;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using System.Globalization;
+using DevExpress.XtraBars.Alerter;
+using System.Drawing.Printing;
+using SoImporter.Report;
+using DevExpress.XtraReports.UI;
 
 namespace SoImporter
 {
@@ -23,12 +27,15 @@ namespace SoImporter
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
 
-        public ConfigValue config;
         private List<PopritVM> poprit;
         private BindingSource bs_po;
         private BindingSource bs_so;
         private BindingSource bs_iv;
+        private Timer timer;
+
+        public ConfigValue config;
         public InternalUsers logedin_user;
+        public AlertControl alert;
         public static Color express_theme_color
         {
             get
@@ -44,6 +51,26 @@ namespace SoImporter
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            this.alert = new AlertControl();
+            this.alert.AlertClick += Alert_AlertClick;
+            this.timer = new Timer()
+            {
+                Interval = 10000,
+                Enabled = true
+            };
+            this.timer.Tick += delegate
+            {
+                var new_order = this.GetNewOrderFromServer();
+
+                if (new_order == null)
+                    return;
+
+                if(new_order.Count() > 0)
+                {
+                    this.alert.Show(this, "มีรายการสั่งซื้อใหม่", "จำนวน " + new_order.Count().ToString() + " รายการ");
+                }
+            };
+
             this.config = ConfigValue.Load();
             this.btnImport.Enabled = Directory.Exists(this.config.ExpressDataPath) ? true : false;
             this.lblDataPath.Caption = (this.config.ExpressDataPath.Trim().Length == 0 ? "[...]" : "[ " + this.config.ExpressDataPath + " ]");
@@ -58,8 +85,34 @@ namespace SoImporter
             this.bs_iv = new BindingSource();
             //this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString());
             this.gridControl3.DataSource = this.bs_iv;
-            
-            //this.configInfo();
+
+        }
+
+        private void Alert_AlertClick(object sender, AlertClickEventArgs e)
+        {
+            this.RestoreWindows();
+            this.xtraTabControl1.SelectedTabPage = this.tabPagePo;
+            this.btnRetrieveData.PerformClick();
+        }
+
+        private List<PopritVM> GetNewOrderFromServer()
+        {
+            APIResult result = new APIResult();
+            try
+            {
+                result = APIClient.GET(this.config.ApiUrl + "poprit/GetOrderByStatus", this.config.ApiKey, "&status=" + POPR_STATUS.PO_NEW.ToString());
+
+                List<PopritVM> poprit = JsonConvert.DeserializeObject<List<PopritVM>>(result.ReturnValue);
+                return poprit;
+            }
+            catch (Exception ex)
+            {
+                if(MessageBox.Show(result.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return this.GetNewOrderFromServer();
+                }
+            }
+            return null;
         }
 
         private void btnDataPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -73,16 +126,8 @@ namespace SoImporter
                 this.lblDataPath.Caption = (this.config.ExpressDataPath.Trim().Length == 0 ? "[...]" : "[ " + this.config.ExpressDataPath + " ]");
 
                 this.btnImport.Enabled = Directory.Exists(this.config.ExpressDataPath) ? true : false;
-                //this.configInfo();
             }
         }
-
-
-        //private void configInfo()
-        //{
-        //    Console.WriteLine(" ... >> express_data_path : " + this.config.ExpressDataPath);
-        //    Console.WriteLine(" ... >> lines : " + this.config.Lines);
-        //}
 
         private void btnImport_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -156,30 +201,38 @@ namespace SoImporter
                                 {
                                     if(this.UpdateSoNum2Po(item.poprit_id, item.sonum.PadRight(12) + "-" + item.seqnum.PadLeft(3), item.sodat, this.logedin_user.Id, so.youref) == true)
                                     {
-                                        this.splashScreenManager1.CloseWaitForm();
-                                        this.btnRetrieveData.PerformClick();
+                                        continue;
                                     }
                                 }
                             }
                         }
-                        MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + so.sonum + "\" เรียบร้อย");
+
+                        if (MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข " + so.sonum + " เรียบร้อย, ต้องการสั่งพิมพ์ใบสั่งขายนี้เลยหรือไม่?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            this.PrintSo(so.sonum, so.sodat, this.PreparingSelectedItem());
+                        }
+
+                        if (this.splashScreenManager1.IsSplashFormVisible)
+                            this.splashScreenManager1.CloseWaitForm();
+                        this.btnRetrieveData.PerformClick();
+                        //MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + so.sonum + "\" เรียบร้อย");
                     }
                 }
             }
             catch (Exception ex)
             {
-                this.splashScreenManager1.CloseWaitForm();
+                if (this.splashScreenManager1.IsSplashFormVisible)
+                    this.splashScreenManager1.CloseWaitForm();
                 MessageBox.Show(ex.Message, "Error");
             }
         }
 
-        private bool PrepareInsertItem(Oeso oeso, List<Oesoit> oesoits)
+        private List<PopritVM> PreparingSelectedItem()
         {
-            #region collecting selected row
             List<PopritVM> poprit = new List<PopritVM>();
             foreach (int row_handle in this.gridViewPO.GetSelectedRows())
             {
-                if(this.gridViewPO.GetRowCellValue(row_handle, colId) != null)
+                if (this.gridViewPO.GetRowCellValue(row_handle, colId) != null)
                 {
                     int id = (int)this.gridViewPO.GetRowCellValue(row_handle, colId);
                     poprit.Add(
@@ -187,6 +240,22 @@ namespace SoImporter
                     );
                 }
             };
+
+            return poprit;
+        }
+
+        private void PrintSo(string sonum, DateTime sodat, List<PopritVM> poprit)
+        {
+            ReportSoDocument rep = new ReportSoDocument();
+            rep.DataSource = poprit;
+            rep.FillDataSource();
+            rep.ShowPreview();
+        }
+
+        private bool PrepareInsertItem(Oeso oeso, List<Oesoit> oesoits)
+        {
+            #region collecting selected row
+            List<PopritVM> poprit = this.PreparingSelectedItem();
             #endregion collecting selected row
 
             #region preparing Sonum
