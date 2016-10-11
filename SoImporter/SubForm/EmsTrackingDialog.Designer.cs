@@ -1,6 +1,6 @@
 ﻿namespace SoImporter.SubForm
 {
-    partial class RecEmsTrackingDialog
+    partial class EmsTrackingDialog
     {
         /// <summary>
         /// Required designer variable.

@@ -55,7 +55,7 @@ namespace SoImporter
             this.alert.AlertClick += Alert_AlertClick;
             this.timer = new Timer()
             {
-                Interval = 10000,
+                Interval = 60000,
                 Enabled = true
             };
             this.timer.Tick += delegate
@@ -209,7 +209,16 @@ namespace SoImporter
 
                         if (MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข " + so.sonum + " เรียบร้อย, ต้องการสั่งพิมพ์ใบสั่งขายนี้เลยหรือไม่?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            this.PrintSo(so.sonum, so.sodat, this.PreparingSelectedItem());
+                            //this.PrintSo(so.sonum, so.sodat, this.PreparingSelectedItem());
+                            List<PrintSoVM> print_data = this.LoadPrintItemFromServer(so.sonum).ToPrintModel();
+                            if(print_data == null)
+                            {
+                                MessageBox.Show("ค้นหาข้อมูลที่ท่านต้องการพิมพ์ไม่พบ");
+                            }
+                            else
+                            {
+                                this.PrintSo(print_data);
+                            }
                         }
 
                         if (this.splashScreenManager1.IsSplashFormVisible)
@@ -244,10 +253,46 @@ namespace SoImporter
             return poprit;
         }
 
+        private List<PopritVM> LoadPrintItemFromServer(string sonum)
+        {
+            try
+            {
+                APIResult get = APIClient.GET(this.config.ApiUrl + "Poprit/GetOrderBySonum", this.config.ApiKey, "&sonum=" + sonum);
+                if (get.Success)
+                {
+                    List<PopritVM> print_item = JsonConvert.DeserializeObject<List<PopritVM>>(get.ReturnValue);
+                    return print_item;
+                }
+                else
+                {
+                    if (MessageBox.Show(get.ErrorMessage, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                    {
+                        return this.LoadPrintItemFromServer(sonum);
+                    }
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                if(MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return this.LoadPrintItemFromServer(sonum);
+                }
+                return null;
+            }
+        }
+
         private void PrintSo(string sonum, DateTime sodat, List<PopritVM> poprit)
         {
             ReportSoDocument rep = new ReportSoDocument();
             rep.DataSource = poprit;
+            rep.ShowPreview();
+        }
+
+        private void PrintSo(List<PrintSoVM> print_model)
+        {
+            ReportSoDocument rep = new ReportSoDocument();
+            rep.DataSource = print_model;
             rep.FillDataSource();
             rep.ShowPreview();
         }
@@ -927,7 +972,7 @@ namespace SoImporter
                     Id = poprit_id,
                     SoNum = sonum_seq,
                     SoDat = sodat,
-                    SoBy = so_by,
+                    SoBy_Id = so_by,
                     SoRemark = so_remark
                 }
             };
@@ -953,7 +998,7 @@ namespace SoImporter
                     SoNum = sonum,
                     IvNum = ivnum,
                     IvDat = ivdat,
-                    IvBy = iv_by
+                    IvBy_Id = iv_by
                 }
             };
 
@@ -971,14 +1016,12 @@ namespace SoImporter
 
         public bool UpdateEmsTracking(string ivnum, string ems_tracking_number)
         {
+            var poprit = this.poprit.Where(p => p.IvNum == ivnum).First();
+            poprit.EmsTracking = ems_tracking_number;
             ApiAccessibilities acc = new ApiAccessibilities
             {
                 API_KEY = this.config.ApiKey,
-                poprit = new PopritVM
-                {
-                    IvNum = ivnum,
-                    EmsTracking = ems_tracking_number
-                }
+                poprit = poprit
             };
 
             APIResult put = APIClient.PUT(this.config.ApiUrl + "poprit/UpdateEmsTracking", acc);
@@ -1058,7 +1101,7 @@ namespace SoImporter
                 this.bs_po.ResetBindings(true);
                 this.gridControl1.DataSource = this.bs_po;
 
-                this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString()).ToOesoVM().OrderBy(o => o.SoNum);
+                this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString()).ToOesoVM().OrderByDescending(o => o.SoNum);
                 this.bs_so.ResetBindings(true);
                 this.gridControl2.DataSource = this.bs_so;
 
@@ -1072,6 +1115,16 @@ namespace SoImporter
             }
             this.splashScreenManager1.CloseWaitForm();
         }
+
+        //private List<PopritVM> PreparingOesoDataToDisplay(List<PopritVM> poprit)
+        //{
+        //    List<PopritVM> group_by_sonum = new List<PopritVM>();
+        //    foreach (var item in poprit.Where(p => p.SoNum != null).GroupBy(p => p.SoNum.Substring(0, 12).Trim()))
+        //    {
+        //        group_by_sonum.Add(item.First());
+        //    }
+        //    return group_by_sonum;
+        //}
 
         private void gridViewPO_RowCellClick(object sender, RowCellClickEventArgs e)
         {
@@ -1113,14 +1166,25 @@ namespace SoImporter
             if (((GridView)sender).GetRow(e.RowHandle) == null)
                 return;
 
-            if(e.Button == MouseButtons.Left && e.Clicks == 1 && e.Column == this.gc2_Iv)
+            string sonum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc2_SoNum);
+
+            if (e.Button == MouseButtons.Left && e.Clicks == 1 && e.Column == this.gc2_Iv)
             {
-                string sonum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc2_SoNum);
                 RecIvNoDialog reciv = new RecIvNoDialog(this, sonum);
                 if (reciv.ShowDialog() == DialogResult.OK)
                 {
                     this.btnRetrieveData.PerformClick();
                 }
+                e.Handled = true;
+            }
+
+            if(e.Button == MouseButtons.Left && e.Clicks == 1 && e.Column == this.gc2_Print)
+            {
+                List<PrintSoVM> print_model = this.LoadPrintItemFromServer(sonum).ToPrintModel();
+                if (print_model == null)
+                    return;
+
+                this.PrintSo(print_model);
                 e.Handled = true;
             }
 
@@ -1166,7 +1230,8 @@ namespace SoImporter
             if(e.Button == MouseButtons.Left && e.Clicks == 1 && e.Column.Name == this.gc3_EmsTrackingNo.Name)
             {
                 string ivnum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc3_IvNum);
-                RecEmsTrackingDialog rec_ems = new RecEmsTrackingDialog(this, ivnum);
+                string ems = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc3_EmsTracking);
+                EmsTrackingDialog rec_ems = new EmsTrackingDialog(this, ivnum, ems);
                 if (rec_ems.ShowDialog() == DialogResult.OK)
                 {
                     this.btnRetrieveData.PerformClick();
@@ -1256,7 +1321,7 @@ namespace SoImporter
 
             string ivnum = (string)this.gridViewIV.GetRowCellValue(row_handle[0], gc3_IvNum);
 
-            RecEmsTrackingDialog rec = new RecEmsTrackingDialog(this, ivnum);
+            EmsTrackingDialog rec = new EmsTrackingDialog(this, ivnum);
             if (rec.ShowDialog() == DialogResult.OK)
             {
                 this.btnRetrieveData.PerformClick();

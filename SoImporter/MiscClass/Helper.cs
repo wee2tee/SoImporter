@@ -192,7 +192,7 @@ namespace SoImporter.MiscClass
         public static List<OesoVM> ToOesoVM(this IEnumerable<PopritVM> poprits)
         {
             List<OesoVM> oeso = new List<OesoVM>();
-            var p = poprits.Where(p1 => p1.SoNum != null).GroupBy(p1 => p1.SoNum);
+            var p = poprits.Where(p1 => p1.SoNum != null).GroupBy(p1 => p1.SoNum.Substring(0, 12).Trim());
             foreach (var item in p)
             {
                 PopritVM poprit = item.First();
@@ -258,6 +258,7 @@ namespace SoImporter.MiscClass
                     TaxAmt = (double)poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.TaxAmt),
                     VatAmt = (double)poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.VatAmt),
                     NetAmt = (double)poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).Sum(po => po.NetAmt),
+                    EmsTracking = poprit.EmsTracking,
                     po = poprits.Where(po => po.IvNum != null).Where(po => po.IvNum.Trim() == poprit.IvNum.Trim()).ToList()
                 });
             }
@@ -376,5 +377,72 @@ namespace SoImporter.MiscClass
             return user_vm;
         }
 
+        /** Convert poprit to print_model(PrintSoVM) **/
+        public static PrintSoVM ToPrintModel(this PopritVM item)
+        {
+            if (item == null)
+                return null;
+
+            PrintSoVM print_model = new PrintSoVM
+            {
+                Id = item.Id,
+                PoNum = item.PoNum,
+                PoDat = item.PoDat,
+                SoNum = (item.SoNum != null ? item.SoNum.Substring(0, 12).Trim() : ""),
+                SoDat = item.SoDat,
+                SeqNum = (item.SoNum != null ? item.SoNum.Substring(13, 3).Trim() : ""),
+                PrintSeq = string.Empty,
+                IvNum = (item.IvNum != null ? item.IvNum : ""),
+                IvDat = item.IvDat,
+                FlgVat = item.FlgVat,
+                DlvBy = item.DlvBy,
+                DlvDat1 = item.DlvDat1,
+                DlvDat2 = item.DlvDat2,
+                DealerCode = item.DealerCode,
+                DealerPrename = item.DealerPreName,
+                DealerName = item.DealerName,
+                CustPrename = item.cust.First().PreName,
+                CustName = item.cust.First().Name,
+                CustTaxID = item.cust.First().TaxId,
+                CustAddr01 = item.cust.First().Addr01,
+                CustAddr02 = item.cust.First().Addr02,
+                CustAddr03 = item.cust.First().Addr03,
+                CustZipCod = item.cust.First().ZipCod,
+                CustTelNum = item.cust.First().TelNum,
+                CustFaxNum = item.cust.First().FaxNum,
+                EmsTracking = item.EmsTracking,
+                SoBy_Id = item.SoBy_Id,
+                SoBy_Name = item.SoBy_Name,
+                IvBy_Id = item.IvBy_Id,
+                IvBy_Name = item.IvBy_Name,
+                RemarkPO = item.Remark,
+                RemarkSO = item.SoRemark,
+                RemarkIV = item.IvRemark,
+
+                StkCod = item.StkCod,
+                StkDes = item.StkDes,
+                OrdQty = item.OrdQty,
+                TquCod = item.TquCod,
+                UnitPrice = item.UnitPrice,
+                DiscAmt = item.DiscAmt,
+                TrnVal = item.TrnVal,
+                VatAmt = item.VatAmt,
+                TaxAmt = item.TaxAmt,
+                NetAmt = item.NetAmt
+            };
+
+            return print_model;
+        }
+
+        public static List<PrintSoVM> ToPrintModel(this List<PopritVM> source_list)
+        {
+            List<PrintSoVM> print_model = new List<PrintSoVM>();
+            foreach (var item in source_list)
+            {
+                print_model.Add(item.ToPrintModel());
+            }
+
+            return print_model;
+        }
     }
 }

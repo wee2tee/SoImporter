@@ -45,13 +45,38 @@ namespace SoImporter.SubForm
         private void RefreshGridUsers()
         {
             splashScreenManager1.ShowWaitForm();
-            this.users = this.LoadUsersList();
+            this.users = this.LoadUsersListFromServer();
             this.bs.ResetBindings(true);
             this.gridControl1.DataSource = this.users;
             splashScreenManager1.CloseWaitForm();
         }
 
-        private List<InternalUsers> LoadUsersList()
+        public InternalUsers LoadSingleUserFromServer(int? id)
+        {
+            if (!id.HasValue)
+                return null;
+
+            try
+            {
+                APIResult get = APIClient.GET(this.main_form.config.ApiUrl + "Users/GetUserById", this.main_form.config.ApiKey, "&id=" + id.ToString());
+                if (get.Success)
+                {
+                    InternalUsers user = JsonConvert.DeserializeObject<InternalUsers>(get.ReturnValue);
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                if(MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return this.LoadSingleUserFromServer(id);
+                }
+            }
+
+            return null;
+        }
+
+        public List<InternalUsers> LoadUsersListFromServer()
         {
             List<InternalUsers> users = null;
             APIResult result = APIClient.GET(this.main_form.config.ApiUrl + "users/", this.main_form.config.ApiKey);

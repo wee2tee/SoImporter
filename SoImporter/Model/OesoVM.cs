@@ -49,5 +49,12 @@ namespace SoImporter.Model
             }
         }
 
+        public string _Print
+        {
+            get
+            {
+                return "Print";
+            }
+        }
     }
 }

@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode6 = new DevExpress.XtraGrid.GridLevelNode();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
-            DevExpress.XtraGrid.GridLevelNode gridLevelNode7 = new DevExpress.XtraGrid.GridLevelNode();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             DevExpress.XtraGrid.GridLevelNode gridLevelNode2 = new DevExpress.XtraGrid.GridLevelNode();
             DevExpress.XtraGrid.GridLevelNode gridLevelNode3 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode4 = new DevExpress.XtraGrid.GridLevelNode();
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode5 = new DevExpress.XtraGrid.GridLevelNode();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colPreName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -93,7 +93,6 @@
             this.btnStpri = new DevExpress.XtraBars.BarButtonItem();
             this.btnStkGrp = new DevExpress.XtraBars.BarButtonItem();
             this.btnStmas = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage3 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -128,6 +127,7 @@
             this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc2_Iv = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc2_Print = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridViewSO_PO_CUST = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -164,6 +164,7 @@
             this.gridColumn48 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn49 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gc3_EmsTrackingNo = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gc3_EmsTracking = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemButtonEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.gridViewIV_PO_CUST = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridColumn30 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -326,10 +327,10 @@
             this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode6.LevelTemplate = this.gridView2;
-            gridLevelNode6.RelationName = "cust";
+            gridLevelNode1.LevelTemplate = this.gridView2;
+            gridLevelNode1.RelationName = "cust";
             this.gridControl1.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode6});
+            gridLevelNode1});
             this.gridControl1.Location = new System.Drawing.Point(3, 3);
             this.gridControl1.MainView = this.gridViewPO;
             this.gridControl1.MenuManager = this.ribbonControl1;
@@ -669,8 +670,7 @@
             this.btnDlvProfile,
             this.btnStpri,
             this.btnStkGrp,
-            this.btnStmas,
-            this.barButtonItem2});
+            this.btnStmas});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 28;
             this.ribbonControl1.Name = "ribbonControl1";
@@ -857,12 +857,6 @@
             this.btnStmas.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnStmas.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnStmas_ItemClick);
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 27;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -877,7 +871,6 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecSO);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecIvNum);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnEmsTracking);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "จัดการข้อมูล";
             // 
@@ -1095,14 +1088,14 @@
             this.gridControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode1.LevelTemplate = this.gridViewSO_PO;
-            gridLevelNode7.LevelTemplate = this.gridViewSO_PO_CUST;
-            gridLevelNode7.RelationName = "cust";
-            gridLevelNode1.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode7});
-            gridLevelNode1.RelationName = "po";
+            gridLevelNode2.LevelTemplate = this.gridViewSO_PO;
+            gridLevelNode3.LevelTemplate = this.gridViewSO_PO_CUST;
+            gridLevelNode3.RelationName = "cust";
+            gridLevelNode2.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode3});
+            gridLevelNode2.RelationName = "po";
             this.gridControl2.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode1});
+            gridLevelNode2});
             this.gridControl2.Location = new System.Drawing.Point(3, 3);
             this.gridControl2.MainView = this.gridViewSO;
             this.gridControl2.MenuManager = this.ribbonControl1;
@@ -1128,7 +1121,8 @@
             this.gridColumn27,
             this.gridColumn28,
             this.gridColumn21,
-            this.gc2_Iv});
+            this.gc2_Iv,
+            this.gc2_Print});
             this.gridViewSO.GridControl = this.gridControl2;
             this.gridViewSO.Name = "gridViewSO";
             this.gridViewSO.OptionsBehavior.Editable = false;
@@ -1174,7 +1168,7 @@
             this.gridColumn16.Name = "gridColumn16";
             this.gridColumn16.Visible = true;
             this.gridColumn16.VisibleIndex = 2;
-            this.gridColumn16.Width = 224;
+            this.gridColumn16.Width = 201;
             // 
             // gridColumn17
             // 
@@ -1258,7 +1252,7 @@
             this.gridColumn21.Name = "gridColumn21";
             this.gridColumn21.Visible = true;
             this.gridColumn21.VisibleIndex = 8;
-            this.gridColumn21.Width = 281;
+            this.gridColumn21.Width = 229;
             // 
             // gc2_Iv
             // 
@@ -1281,6 +1275,28 @@
             this.gc2_Iv.Visible = true;
             this.gc2_Iv.VisibleIndex = 9;
             this.gc2_Iv.Width = 60;
+            // 
+            // gc2_Print
+            // 
+            this.gc2_Print.AppearanceCell.BackColor = System.Drawing.Color.Purple;
+            this.gc2_Print.AppearanceCell.BackColor2 = System.Drawing.Color.Purple;
+            this.gc2_Print.AppearanceCell.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Underline);
+            this.gc2_Print.AppearanceCell.ForeColor = System.Drawing.Color.White;
+            this.gc2_Print.AppearanceCell.Options.UseBackColor = true;
+            this.gc2_Print.AppearanceCell.Options.UseFont = true;
+            this.gc2_Print.AppearanceCell.Options.UseForeColor = true;
+            this.gc2_Print.AppearanceCell.Options.UseTextOptions = true;
+            this.gc2_Print.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc2_Print.AppearanceHeader.Options.UseTextOptions = true;
+            this.gc2_Print.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gc2_Print.Caption = "Print SO";
+            this.gc2_Print.FieldName = "_Print";
+            this.gc2_Print.MaxWidth = 50;
+            this.gc2_Print.MinWidth = 50;
+            this.gc2_Print.Name = "gc2_Print";
+            this.gc2_Print.Visible = true;
+            this.gc2_Print.VisibleIndex = 10;
+            this.gc2_Print.Width = 50;
             // 
             // repositoryItemButtonEdit2
             // 
@@ -1547,14 +1563,14 @@
             this.gridControl3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            gridLevelNode2.LevelTemplate = this.gridViewIV_PO;
-            gridLevelNode3.LevelTemplate = this.gridViewIV_PO_CUST;
-            gridLevelNode3.RelationName = "cust";
-            gridLevelNode2.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode3});
-            gridLevelNode2.RelationName = "po";
+            gridLevelNode4.LevelTemplate = this.gridViewIV_PO;
+            gridLevelNode5.LevelTemplate = this.gridViewIV_PO_CUST;
+            gridLevelNode5.RelationName = "cust";
+            gridLevelNode4.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode5});
+            gridLevelNode4.RelationName = "po";
             this.gridControl3.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
-            gridLevelNode2});
+            gridLevelNode4});
             this.gridControl3.Location = new System.Drawing.Point(3, 3);
             this.gridControl3.MainView = this.gridViewIV;
             this.gridControl3.MenuManager = this.ribbonControl1;
@@ -1580,7 +1596,8 @@
             this.gridColumn47,
             this.gridColumn48,
             this.gridColumn49,
-            this.gc3_EmsTrackingNo});
+            this.gc3_EmsTrackingNo,
+            this.gc3_EmsTracking});
             this.gridViewIV.GridControl = this.gridControl3;
             this.gridViewIV.Name = "gridViewIV";
             this.gridViewIV.OptionsBehavior.Editable = false;
@@ -1727,14 +1744,20 @@
             this.gc3_EmsTrackingNo.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.gc3_EmsTrackingNo.AppearanceHeader.Options.UseTextOptions = true;
             this.gc3_EmsTrackingNo.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gc3_EmsTrackingNo.Caption = "EMS No.?";
+            this.gc3_EmsTrackingNo.Caption = "EMS No.";
             this.gc3_EmsTrackingNo.FieldName = "_EmsTrackingNo";
-            this.gc3_EmsTrackingNo.MaxWidth = 90;
-            this.gc3_EmsTrackingNo.MinWidth = 90;
+            this.gc3_EmsTrackingNo.MaxWidth = 120;
+            this.gc3_EmsTrackingNo.MinWidth = 120;
             this.gc3_EmsTrackingNo.Name = "gc3_EmsTrackingNo";
             this.gc3_EmsTrackingNo.Visible = true;
             this.gc3_EmsTrackingNo.VisibleIndex = 9;
-            this.gc3_EmsTrackingNo.Width = 90;
+            this.gc3_EmsTrackingNo.Width = 120;
+            // 
+            // gc3_EmsTracking
+            // 
+            this.gc3_EmsTracking.Caption = "Ems";
+            this.gc3_EmsTracking.FieldName = "EmsTracking";
+            this.gc3_EmsTracking.Name = "gc3_EmsTracking";
             // 
             // repositoryItemButtonEdit3
             // 
@@ -2091,7 +2114,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage3;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
         private DevExpress.XtraBars.BarButtonItem btnStmas;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraGrid.Columns.GridColumn gc2_Print;
+        private DevExpress.XtraGrid.Columns.GridColumn gc3_EmsTracking;
     }
 }
 

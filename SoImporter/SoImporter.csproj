@@ -146,6 +146,7 @@
     <Compile Include="Model\OesoVM.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\PopritVM.cs" />
+    <Compile Include="Model\PrintSoVM.cs" />
     <Compile Include="Model\Stmas.cs" />
     <Compile Include="Model\StmasVM.cs" />
     <Compile Include="Model\StpriVM.cs" />
@@ -193,12 +194,6 @@
     </Compile>
     <Compile Include="SubForm\IstabDialog.Designer.cs">
       <DependentUpon>IstabDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SubForm\OrderDetailsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SubForm\OrderDetailsDialog.Designer.cs">
-      <DependentUpon>OrderDetailsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\StmasDialog.cs">
       <SubType>Form</SubType>
@@ -284,11 +279,11 @@
     <Compile Include="SubForm\StpriDialog.Designer.cs">
       <DependentUpon>StpriDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="SubForm\RecEmsTrackingDialog.cs">
+    <Compile Include="SubForm\EmsTrackingDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SubForm\RecEmsTrackingDialog.Designer.cs">
-      <DependentUpon>RecEmsTrackingDialog.cs</DependentUpon>
+    <Compile Include="SubForm\EmsTrackingDialog.Designer.cs">
+      <DependentUpon>EmsTrackingDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\RecIvNoDialog.cs">
       <SubType>Form</SubType>
@@ -349,9 +344,6 @@
     <EmbeddedResource Include="SubForm\IstabDialog.resx">
       <DependentUpon>IstabDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForm\OrderDetailsDialog.resx">
-      <DependentUpon>OrderDetailsDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SubForm\StmasDialog.resx">
       <DependentUpon>StmasDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,8 +386,8 @@
     <EmbeddedResource Include="SubForm\StpriDialog.resx">
       <DependentUpon>StpriDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SubForm\RecEmsTrackingDialog.resx">
-      <DependentUpon>RecEmsTrackingDialog.cs</DependentUpon>
+    <EmbeddedResource Include="SubForm\EmsTrackingDialog.resx">
+      <DependentUpon>EmsTrackingDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\RecIvNoDialog.resx">
       <DependentUpon>RecIvNoDialog.cs</DependentUpon>

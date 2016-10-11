@@ -24,11 +24,13 @@ namespace SoImporter.Model
         public DateTime PoDat { get; set; }
         public string SoNum { get; set; }
         public DateTime? SoDat { get; set; }
-        public int? SoBy { get; set; }
+        public int? SoBy_Id { get; set; }
+        public string SoBy_Name { get; set; }
         public string SoRemark { get; set; }
         public string IvNum { get; set; }
         public DateTime? IvDat { get; set; }
-        public int? IvBy { get; set; }
+        public int? IvBy_Id { get; set; }
+        public string IvBy_Name { get; set; }
         public string IvRemark { get; set; }
         public string EmsTracking { get; set; }
         public string FlgVat { get; set; }
@@ -49,6 +51,8 @@ namespace SoImporter.Model
         public string CreBy { get; set; }
         public DateTime CreDate { get; set; }
         public string DealerCode { get; set; }
+        public string DealerPreName { get; set; }
+        public string DealerName { get; set; }
         public int? DealerType { get; set; }
         public string _DealerType
         {

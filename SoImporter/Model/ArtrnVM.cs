@@ -31,6 +31,7 @@ namespace SoImporter.Model
         public double TaxAmt { get; set; }
         public double VatAmt { get; set; }
         public double NetAmt { get; set; }
+        public string EmsTracking { get; set; }
 
         public List<PopritVM> po { get; set; }
 
@@ -47,7 +48,7 @@ namespace SoImporter.Model
         {
             get
             {
-                return "EMS Tracking...";
+                return this.EmsTracking == null || this.EmsTracking.Trim().Length == 0 ? "?" : this.EmsTracking;
             }
         }
     }

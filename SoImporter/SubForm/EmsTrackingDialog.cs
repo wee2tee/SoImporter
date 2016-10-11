@@ -12,22 +12,24 @@ using SoImporter.Model;
 
 namespace SoImporter.SubForm
 {
-    public partial class RecEmsTrackingDialog : DevExpress.XtraEditors.XtraForm
+    public partial class EmsTrackingDialog : DevExpress.XtraEditors.XtraForm
     {
         private MainForm main_form;
         private string ivnum;
         private string ems;
 
-        public RecEmsTrackingDialog(MainForm main_form, string ivnum)
+        public EmsTrackingDialog(MainForm main_form, string ivnum, string ems_tracking_number = "")
         {
             InitializeComponent();
             this.main_form = main_form;
             this.ivnum = ivnum;
+            this.ems = ems_tracking_number;
         }
 
         private void RecEmsTrackingDialog_Load(object sender, EventArgs e)
         {
             this.txtIvNum.Text = this.ivnum;
+            this.txtEms.Text = this.ems;
         }
 
         private void txtEms_EditValueChanged(object sender, EventArgs e)
@@ -41,8 +43,7 @@ namespace SoImporter.SubForm
             {
                 MessageBox.Show("กรุณาป้อนหมายเลข EMS Tracking", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-
-            if(this.main_form.UpdateEmsTracking(this.ivnum, this.ems) == true)
+            if (this.main_form.UpdateEmsTracking(this.ivnum, this.ems) == true)
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
