@@ -24,6 +24,7 @@ namespace FileUpload
                 {
                     //formData.Add(stringContent, "param1", "param1");
                     formData.Add(file_stream_content, post_object_name, file_name);
+                    //formData.Add(file_stream_content, "file2", "tn_" + file_name);
                     //formData.Add(destination_folder, "destination_folder", "destination_folder");
                     //formData.Add(bytesContent, "file2", "file2");
                     var response = client.PostAsync(actionUrl, formData).Result;

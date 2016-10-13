@@ -46,9 +46,8 @@ namespace SoImporter.SubForm
 
         private void StmasDialog_Load(object sender, EventArgs e)
         {
-            this.splashScreenManager1.ShowWaitForm();
-
-            this.form_mode = FORM_MODE.READ;
+            if(!this.splashScreenManager1.IsSplashFormVisible)
+                this.splashScreenManager1.ShowWaitForm();
 
             istab_dialog_stkgrp = new IstabDialog(this.main_form, ISTAB_TABTYP.STKGRP);
             istab_dialog_qucod = new IstabDialog(this.main_form, ISTAB_TABTYP.QUCOD);
@@ -61,7 +60,11 @@ namespace SoImporter.SubForm
             this.current_stmas = this.LoadSingleStmasFromServer(RECORD_NAVIGATION.LAST);
             this.FillForm(this.current_stmas);
 
-            this.splashScreenManager1.CloseWaitForm();
+            if(this.splashScreenManager1.IsSplashFormVisible)
+                this.splashScreenManager1.CloseWaitForm();
+
+            this.form_mode = FORM_MODE.READ;
+            this.SetFormControlState();
         }
 
         private void FillForm(StmasVM stmas)
@@ -80,11 +83,9 @@ namespace SoImporter.SubForm
             this.txtSellpr4.EditValue = stmas.Sellpr4;
             this.txtSellpr5.EditValue = stmas.Sellpr5;
             this.img_file_path = stmas.ProductImg == null || stmas.ProductImg.Trim().Length == 0 ? "" : this.main_form.config.ApiUrl.ToLower().Replace("/api/", "") + "/Images/Product/" + stmas.ProductImg;
-            if(this.img_file_path.Length == 0)
-            {
-                this.picProductImg.Image = null; // SoImporter.Properties.Resources.NO_PICTURE;
-            }
-            else
+
+            this.picProductImg.Image = null;
+            if (this.img_file_path.Length > 0)
             {
                 this.picProductImg.LoadAsync(this.img_file_path);
             }
@@ -95,7 +96,14 @@ namespace SoImporter.SubForm
             if (!id.HasValue)
                 return null;
 
+            if (!this.splashScreenManager1.IsSplashFormVisible)
+                this.splashScreenManager1.ShowWaitForm();
+
             APIResult get = APIClient.GET(this.main_form.config.ApiUrl + "Stmas/GetAt", this.main_form.config.ApiKey, "&id=" + id);
+
+            if (this.splashScreenManager1.IsSplashFormVisible)
+                this.splashScreenManager1.CloseWaitForm();
+
             if (get.Success)
             {
                 return JsonConvert.DeserializeObject<StmasVM>(get.ReturnValue);
@@ -113,6 +121,9 @@ namespace SoImporter.SubForm
 
         public StmasVM LoadSingleStmasFromServer(RECORD_NAVIGATION nav, int? current_id = null)
         {
+            if (!this.splashScreenManager1.IsSplashFormVisible)
+                this.splashScreenManager1.ShowWaitForm();
+
             string url = this.main_form.config.ApiUrl;
             switch (nav)
             {
@@ -135,6 +146,10 @@ namespace SoImporter.SubForm
 
             var id_args = current_id.HasValue ? "&current_id=" + current_id : "";
             APIResult get = APIClient.GET(url, this.main_form.config.ApiKey, id_args);
+
+            if (this.splashScreenManager1.IsSplashFormVisible)
+                this.splashScreenManager1.CloseWaitForm();
+
             if (get.Success)
             {
                 return JsonConvert.DeserializeObject<StmasVM>(get.ReturnValue);
@@ -192,12 +207,16 @@ namespace SoImporter.SubForm
             };
             this.FillForm(this.current_stmas);
             this.form_mode = FORM_MODE.ADD;
+            this.SetFormControlState();
             this.txtStkcod.Focus();
         }
 
         private void btnEdit_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.backup_stmas = this.current_stmas.Clone();
+            this.form_mode = FORM_MODE.EDIT;
+            this.SetFormControlState();
+            this.txtStkdesTh.Focus();
         }
 
         private void btnStop_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -205,6 +224,7 @@ namespace SoImporter.SubForm
             if(MessageBox.Show("ยกเลิกการเพิ่ม/แก้ไข, ใช่หรือไม่?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
                 this.form_mode = FORM_MODE.READ;
+                this.SetFormControlState();
                 this.current_stmas = this.backup_stmas.Clone();
                 this.FillForm(this.current_stmas);
             }
@@ -221,7 +241,7 @@ namespace SoImporter.SubForm
             };
 
             APIResult add_edit;
-            if(this.form_mode == FORM_MODE.ADD) // Add mode
+            if (this.form_mode == FORM_MODE.ADD) // Add mode
             {
                 add_edit = APIClient.POST(this.main_form.config.ApiUrl + "Stmas/AddStmas", acc);
             }
@@ -234,7 +254,7 @@ namespace SoImporter.SubForm
             {
                 StmasVM added_item = JsonConvert.DeserializeObject<StmasVM>(add_edit.ReturnValue);
 
-                if (this.img_file_path.Trim().Length > 0) // have image
+                if (this.img_file_path.Trim().Length > 0 && !(this.img_file_path.StartsWith("http://") || this.img_file_path.StartsWith("https://"))) // have image
                 {
                     var upload = FIleUpload.Upload(this.main_form.config.ApiUrl + "Stmas/UploadImage", File.OpenRead(this.img_file_path), "file1", added_item.Id.ToString() + Path.GetExtension(this.img_file_path));
 
@@ -244,11 +264,20 @@ namespace SoImporter.SubForm
                         acc.stmas.ProductImg = acc.stmas.Id.ToString() + Path.GetExtension(this.img_file_path);
 
                         APIResult update = APIClient.PUT(this.main_form.config.ApiUrl + "Stmas/UpdateStmas", acc);
-                        if (!update.Success)
+                        if (update.Success)
+                        {
+                            APIResult create_resize_img = APIClient.GET(this.main_form.config.ApiUrl + "Stmas/CreateResizedImage", this.main_form.config.ApiKey, "&id=" + acc.stmas.Id.ToString());
+                            if (!create_resize_img.Success)
+                            {
+                                if (this.splashScreenManager1.IsSplashFormVisible)
+                                    this.splashScreenManager1.CloseWaitForm();
+                                MessageBox.Show("บันทึกข้อมูลสำเร็จ, แต่การอัพโหลดรูปภาพอาจมีปัญหา กรุณาตรวจสอบรูปภาพอีกครั้งในภายหลัง", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
                         {
                             if (this.splashScreenManager1.IsSplashFormVisible)
                                 this.splashScreenManager1.CloseWaitForm();
-
                             MessageBox.Show("บันทึกข้อมูลสำเร็จ, แต่การอัพโหลดรูปภาพล้มเหลว กรุณาอัพโหลดรูปภาพอีกครั้งในภายหลัง", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
@@ -268,6 +297,9 @@ namespace SoImporter.SubForm
                     this.current_stmas = added_item;
                     this.FillForm(this.current_stmas);
                 }
+
+                this.form_mode = FORM_MODE.READ;
+                this.SetFormControlState();
             }
             else
             {
@@ -282,6 +314,8 @@ namespace SoImporter.SubForm
                 {
                     this.current_stmas = this.backup_stmas.Clone();
                     this.FillForm(this.current_stmas);
+                    this.form_mode = FORM_MODE.READ;
+                    this.SetFormControlState();
                 }
             }
 
@@ -476,6 +510,137 @@ namespace SoImporter.SubForm
         private void txtSellpr5_EditValueChanged(object sender, EventArgs e)
         {
             this.current_stmas.Sellpr5 = (decimal)((TextEdit)sender).EditValue;
+        }
+
+        private void SetFormControlState()
+        {
+            switch (this.form_mode)
+            {
+                case FORM_MODE.READ:
+                    this.btnAdd.Enabled = true;
+                    this.btnEdit.Enabled = (this.current_stmas != null ? true : false);
+                    this.btnStop.Enabled = false;
+                    this.btnSave.Enabled = false;
+                    this.btnDelete.Enabled = (this.current_stmas != null ? true : false);
+                    this.btnFirst.Enabled = true;
+                    this.btnPrev.Enabled = true;
+                    this.btnNext.Enabled = true;
+                    this.btnLast.Enabled = true;
+                    this.btnFind.Enabled = true;
+                    this.btnList.Enabled = true;
+                    this.btnImport.Enabled = true;
+                    this.btnChangeImg.Enabled = false;
+                    this.btnCancelChangeImg.Enabled = false;
+
+                    this.txtStkcod.Enabled = false;
+                    this.txtStkdesTh.Enabled = false;
+                    this.txtStkdesEn.Enabled = false;
+                    this.cbStkGrp.Enabled = false;
+                    this.cbQucod.Enabled = false;
+                    this.txtSellpr1.Enabled = false;
+                    this.txtSellpr2.Enabled = false;
+                    this.txtSellpr3.Enabled = false;
+                    this.txtSellpr4.Enabled = false;
+                    this.txtSellpr5.Enabled = false;
+                    break;
+                case FORM_MODE.ADD:
+                    this.btnAdd.Enabled = false;
+                    this.btnEdit.Enabled = false;
+                    this.btnStop.Enabled = true;
+                    this.btnSave.Enabled = true;
+                    this.btnDelete.Enabled = false;
+                    this.btnFirst.Enabled = false;
+                    this.btnPrev.Enabled = false;
+                    this.btnNext.Enabled = false;
+                    this.btnLast.Enabled = false;
+                    this.btnFind.Enabled = false;
+                    this.btnList.Enabled = false;
+                    this.btnImport.Enabled = false;
+                    this.btnChangeImg.Enabled = true;
+                    this.btnCancelChangeImg.Enabled = true;
+
+                    this.txtStkcod.Enabled = true;
+                    this.txtStkdesTh.Enabled = true;
+                    this.txtStkdesEn.Enabled = true;
+                    this.cbStkGrp.Enabled = true;
+                    this.cbQucod.Enabled = true;
+                    this.txtSellpr1.Enabled = true;
+                    this.txtSellpr2.Enabled = true;
+                    this.txtSellpr3.Enabled = true;
+                    this.txtSellpr4.Enabled = true;
+                    this.txtSellpr5.Enabled = true;
+                    break;
+                case FORM_MODE.EDIT:
+                    this.btnAdd.Enabled = false;
+                    this.btnEdit.Enabled = false;
+                    this.btnStop.Enabled = true;
+                    this.btnSave.Enabled = true;
+                    this.btnDelete.Enabled = false;
+                    this.btnFirst.Enabled = false;
+                    this.btnPrev.Enabled = false;
+                    this.btnNext.Enabled = false;
+                    this.btnLast.Enabled = false;
+                    this.btnFind.Enabled = false;
+                    this.btnList.Enabled = false;
+                    this.btnImport.Enabled = false;
+                    this.btnChangeImg.Enabled = true;
+                    this.btnCancelChangeImg.Enabled = true;
+
+                    this.txtStkcod.Enabled = false;
+                    this.txtStkdesTh.Enabled = true;
+                    this.txtStkdesEn.Enabled = true;
+                    this.cbStkGrp.Enabled = true;
+                    this.cbQucod.Enabled = true;
+                    this.txtSellpr1.Enabled = true;
+                    this.txtSellpr2.Enabled = true;
+                    this.txtSellpr3.Enabled = true;
+                    this.txtSellpr4.Enabled = true;
+                    this.txtSellpr5.Enabled = true;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void btnStkGrp_Click(object sender, EventArgs e)
+        {
+            IstabDialog stkgrp = new IstabDialog(this.main_form, ISTAB_TABTYP.STKGRP);
+            stkgrp.ShowDialog();
+        }
+
+        private void btnQucod_Click(object sender, EventArgs e)
+        {
+            IstabDialog qucod = new IstabDialog(this.main_form, ISTAB_TABTYP.QUCOD);
+            qucod.ShowDialog();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if(keyData == Keys.Enter && !(this.btnChangeImg.Focused || this.btnCancelChangeImg.Focused))
+            {
+                SendKeys.Send("{TAB}");
+                return true;
+            }
+
+            if(keyData == Keys.Escape)
+            {
+                this.btnStop.PerformClick();
+                return true;
+            }
+
+            if(keyData == Keys.F9)
+            {
+                this.btnSave.PerformClick();
+                return true;
+            }
+
+            if(keyData == Keys.F6 && (this.cbQucod.Focused || this.cbStkGrp.Focused))
+            {
+                SendKeys.Send("{F4}");
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

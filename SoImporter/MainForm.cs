@@ -74,16 +74,14 @@ namespace SoImporter
             this.config = ConfigValue.Load();
             this.btnImport.Enabled = Directory.Exists(this.config.ExpressDataPath) ? true : false;
             this.lblDataPath.Caption = (this.config.ExpressDataPath.Trim().Length == 0 ? "[...]" : "[ " + this.config.ExpressDataPath + " ]");
+
             this.bs_po = new BindingSource();
-            //this.bs_po.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_NEW.ToString());
             this.gridControl1.DataSource = this.bs_po;
 
             this.bs_so = new BindingSource();
-            //this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString());
             this.gridControl2.DataSource = this.bs_so;
 
             this.bs_iv = new BindingSource();
-            //this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString());
             this.gridControl3.DataSource = this.bs_iv;
 
         }
@@ -180,10 +178,10 @@ namespace SoImporter
                 if(this.splashScreenManager1.IsSplashFormVisible)
                     this.splashScreenManager1.CloseWaitForm();
 
-                foreach (var row_handle in this.gridViewPO.GetSelectedRows())
-                {
-                    this.gridViewPO.UnselectRow(row_handle);
-                }
+                //foreach (var row_handle in this.gridViewPO.GetSelectedRows())
+                //{
+                //    this.gridViewPO.UnselectRow(row_handle);
+                //}
                 return;
             }
 
@@ -430,12 +428,22 @@ namespace SoImporter
                 oesoits = null;
                 return false;
             }
-            else if(poprit.First().DealerType == (int)DEALER_TYPE.สำนักงานบัญชีไฮเทค && poprit.Count() > 1) // เลือกรายการของ สนง.ไฮเทคมากกว่า 1 รายการ
+            else if (poprit.First().DealerType == (int)DEALER_TYPE.สำนักงานบัญชีไฮเทค && poprit.Count() > 1) // เลือกรายการของ สนง.ไฮเทคมากกว่า 1 รายการ
             {
                 if (this.splashScreenManager1.IsSplashFormVisible)
                     this.splashScreenManager1.CloseWaitForm();
 
                 MessageBox.Show("รายการสั่งซื้อจาก \"สำนักงานบัญชีไฮเทค\" ต้องเลือกครั้งละ 1 รายการเท่านั้น", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                oeso = null;
+                oesoits = null;
+                return false;
+            }
+            else if(poprit.GroupBy(d => d.DlvBy).Distinct().Count() > 1) // เลือกวิธีการรับ/ส่งสินค้า ต่างกัน
+            {
+                if (this.splashScreenManager1.IsSplashFormVisible)
+                    this.splashScreenManager1.CloseWaitForm();
+
+                MessageBox.Show("รายการที่เลือกมีวิธีการส่งสินค้าที่ต่างกัน, กรุณาเลือกรายการที่มีวิธีการส่งสินค้าแบบเดียวกัน", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 oeso = null;
                 oesoits = null;
                 return false;
@@ -1096,16 +1104,17 @@ namespace SoImporter
             if (result.Success && result.ReturnValue != null)
             {
                 this.poprit = JsonConvert.DeserializeObject<List<PopritVM>>(result.ReturnValue);
+                Console.WriteLine("... >> poprit.count = " + this.poprit.Count());
 
-                this.bs_po.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_NEW.ToString());
+                this.bs_po.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_NEW.ToString()).ToList();
                 this.bs_po.ResetBindings(true);
                 this.gridControl1.DataSource = this.bs_po;
 
-                this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString()).ToOesoVM().OrderByDescending(o => o.SoNum);
+                this.bs_so.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_CONVERTED.ToString()).ToOesoVM().OrderByDescending(o => o.SoNum).ToList();
                 this.bs_so.ResetBindings(true);
                 this.gridControl2.DataSource = this.bs_so;
 
-                this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString()).ToArtrnVM().OrderBy(o => o.IvNum);
+                this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString()).ToArtrnVM().OrderBy(o => o.IvNum).ToList();
                 this.bs_iv.ResetBindings(true);
                 this.gridControl3.DataSource = this.bs_iv;
             }
@@ -1229,13 +1238,7 @@ namespace SoImporter
 
             if(e.Button == MouseButtons.Left && e.Clicks == 1 && e.Column.Name == this.gc3_EmsTrackingNo.Name)
             {
-                string ivnum = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc3_IvNum);
-                string ems = (string)((GridView)sender).GetRowCellValue(e.RowHandle, this.gc3_EmsTracking);
-                EmsTrackingDialog rec_ems = new EmsTrackingDialog(this, ivnum, ems);
-                if (rec_ems.ShowDialog() == DialogResult.OK)
-                {
-                    this.btnRetrieveData.PerformClick();
-                }
+                this.btnEmsTracking.PerformClick();
                 e.Handled = true;
             }
 
@@ -1320,8 +1323,9 @@ namespace SoImporter
                 return;
 
             string ivnum = (string)this.gridViewIV.GetRowCellValue(row_handle[0], gc3_IvNum);
+            string ems = (string)this.gridViewIV.GetRowCellValue(row_handle[0], gc3_EmsTracking);
 
-            EmsTrackingDialog rec = new EmsTrackingDialog(this, ivnum);
+            EmsTrackingDialog rec = new EmsTrackingDialog(this, ivnum, ems);
             if (rec.ShowDialog() == DialogResult.OK)
             {
                 this.btnRetrieveData.PerformClick();

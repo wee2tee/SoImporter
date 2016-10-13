@@ -153,6 +153,7 @@
             // btnAdd
             // 
             this.btnAdd.Caption = "เพิ่ม";
+            this.btnAdd.Enabled = false;
             this.btnAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("btnAdd.Glyph")));
             this.btnAdd.Id = 0;
             this.btnAdd.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnAdd.LargeGlyph")));
@@ -162,6 +163,7 @@
             // btnEdit
             // 
             this.btnEdit.Caption = "แก้ไข";
+            this.btnEdit.Enabled = false;
             this.btnEdit.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEdit.Glyph")));
             this.btnEdit.Id = 1;
             this.btnEdit.Name = "btnEdit";
@@ -170,6 +172,7 @@
             // btnStop
             // 
             this.btnStop.Caption = "ยกเลิกการเพิ่ม/แก้ไข";
+            this.btnStop.Enabled = false;
             this.btnStop.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStop.Glyph")));
             this.btnStop.Id = 9;
             this.btnStop.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnStop.LargeGlyph")));
@@ -179,6 +182,7 @@
             // btnSave
             // 
             this.btnSave.Caption = "บันทึก";
+            this.btnSave.Enabled = false;
             this.btnSave.Glyph = ((System.Drawing.Image)(resources.GetObject("btnSave.Glyph")));
             this.btnSave.Id = 6;
             this.btnSave.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnSave.LargeGlyph")));
@@ -188,6 +192,7 @@
             // btnDelete
             // 
             this.btnDelete.Caption = "ลบ";
+            this.btnDelete.Enabled = false;
             this.btnDelete.Glyph = global::SoImporter.Properties.Resources.trash;
             this.btnDelete.Id = 8;
             this.btnDelete.LargeGlyph = global::SoImporter.Properties.Resources.trash;
@@ -197,6 +202,7 @@
             // btnFirst
             // 
             this.btnFirst.Caption = "รายการแรก";
+            this.btnFirst.Enabled = false;
             this.btnFirst.Glyph = ((System.Drawing.Image)(resources.GetObject("btnFirst.Glyph")));
             this.btnFirst.Id = 2;
             this.btnFirst.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnFirst.LargeGlyph")));
@@ -206,6 +212,7 @@
             // btnPrev
             // 
             this.btnPrev.Caption = "รายการก่อนหน้า";
+            this.btnPrev.Enabled = false;
             this.btnPrev.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPrev.Glyph")));
             this.btnPrev.Id = 3;
             this.btnPrev.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnPrev.LargeGlyph")));
@@ -215,6 +222,7 @@
             // btnNext
             // 
             this.btnNext.Caption = "รายการถัดไป";
+            this.btnNext.Enabled = false;
             this.btnNext.Glyph = ((System.Drawing.Image)(resources.GetObject("btnNext.Glyph")));
             this.btnNext.Id = 4;
             this.btnNext.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnNext.LargeGlyph")));
@@ -224,6 +232,7 @@
             // btnLast
             // 
             this.btnLast.Caption = "รายการสุดท้าย";
+            this.btnLast.Enabled = false;
             this.btnLast.Glyph = ((System.Drawing.Image)(resources.GetObject("btnLast.Glyph")));
             this.btnLast.Id = 5;
             this.btnLast.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnLast.LargeGlyph")));
@@ -233,6 +242,7 @@
             // btnFind
             // 
             this.btnFind.Caption = "ค้นหา";
+            this.btnFind.Enabled = false;
             this.btnFind.Glyph = ((System.Drawing.Image)(resources.GetObject("btnFind.Glyph")));
             this.btnFind.Id = 19;
             this.btnFind.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnFind.LargeGlyph")));
@@ -242,6 +252,7 @@
             // btnList
             // 
             this.btnList.Caption = "แสดงข้อมูลแบบลิสต์";
+            this.btnList.Enabled = false;
             this.btnList.Glyph = ((System.Drawing.Image)(resources.GetObject("btnList.Glyph")));
             this.btnList.Id = 20;
             this.btnList.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnList.LargeGlyph")));
@@ -251,6 +262,7 @@
             // btnImport
             // 
             this.btnImport.Caption = "นำเข้าข้อมูลสินค้าจาก Express";
+            this.btnImport.Enabled = false;
             this.btnImport.Glyph = global::SoImporter.Properties.Resources.import_data;
             this.btnImport.Id = 11;
             this.btnImport.LargeGlyph = global::SoImporter.Properties.Resources.import_data;
@@ -323,11 +335,23 @@
             this.cbStkGrp.Name = "cbStkGrp";
             this.cbStkGrp.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cbStkGrp.Properties.Appearance.Options.UseFont = true;
+            this.cbStkGrp.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.cbStkGrp.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.cbStkGrp.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.cbStkGrp.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.cbStkGrp.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.cbStkGrp.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.cbStkGrp.Properties.AppearanceDisabled.Options.UseForeColor = true;
+            this.cbStkGrp.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cbStkGrp.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cbStkGrp.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cbStkGrp.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.cbStkGrp.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.cbStkGrp.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbStkGrp.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbStkGrp.Size = new System.Drawing.Size(147, 22);
-            this.cbStkGrp.TabIndex = 6;
+            this.cbStkGrp.TabIndex = 3;
             this.cbStkGrp.SelectedIndexChanged += new System.EventHandler(this.cbStkGrp_SelectedIndexChanged);
             // 
             // labelControl2
@@ -345,8 +369,20 @@
             this.txtStkdesTh.Name = "txtStkdesTh";
             this.txtStkdesTh.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtStkdesTh.Properties.Appearance.Options.UseFont = true;
+            this.txtStkdesTh.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.txtStkdesTh.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.txtStkdesTh.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.txtStkdesTh.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtStkdesTh.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtStkdesTh.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.txtStkdesTh.Properties.AppearanceDisabled.Options.UseForeColor = true;
+            this.txtStkdesTh.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkdesTh.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkdesTh.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkdesTh.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtStkdesTh.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.txtStkdesTh.Size = new System.Drawing.Size(426, 22);
-            this.txtStkdesTh.TabIndex = 5;
+            this.txtStkdesTh.TabIndex = 1;
             this.txtStkdesTh.EditValueChanged += new System.EventHandler(this.txtStkdesTh_EditValueChanged);
             // 
             // labelControl3
@@ -364,8 +400,20 @@
             this.txtStkdesEn.Name = "txtStkdesEn";
             this.txtStkdesEn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtStkdesEn.Properties.Appearance.Options.UseFont = true;
+            this.txtStkdesEn.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.txtStkdesEn.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.txtStkdesEn.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.txtStkdesEn.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtStkdesEn.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtStkdesEn.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.txtStkdesEn.Properties.AppearanceDisabled.Options.UseForeColor = true;
+            this.txtStkdesEn.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkdesEn.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkdesEn.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkdesEn.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtStkdesEn.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.txtStkdesEn.Size = new System.Drawing.Size(426, 22);
-            this.txtStkdesEn.TabIndex = 5;
+            this.txtStkdesEn.TabIndex = 2;
             this.txtStkdesEn.EditValueChanged += new System.EventHandler(this.txtStkdesEn_EditValueChanged);
             // 
             // labelControl4
@@ -392,11 +440,23 @@
             this.cbQucod.Name = "cbQucod";
             this.cbQucod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cbQucod.Properties.Appearance.Options.UseFont = true;
+            this.cbQucod.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.cbQucod.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.cbQucod.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.cbQucod.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.cbQucod.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.cbQucod.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.cbQucod.Properties.AppearanceDisabled.Options.UseForeColor = true;
+            this.cbQucod.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cbQucod.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cbQucod.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.cbQucod.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.cbQucod.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.cbQucod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbQucod.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbQucod.Size = new System.Drawing.Size(147, 22);
-            this.cbQucod.TabIndex = 6;
+            this.cbQucod.TabIndex = 4;
             this.cbQucod.SelectedIndexChanged += new System.EventHandler(this.cbQucod_SelectedIndexChanged);
             // 
             // labelControl6
@@ -450,8 +510,20 @@
             this.txtStkcod.Name = "txtStkcod";
             this.txtStkcod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtStkcod.Properties.Appearance.Options.UseFont = true;
+            this.txtStkcod.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.txtStkcod.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.txtStkcod.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.txtStkcod.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtStkcod.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtStkcod.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.txtStkcod.Properties.AppearanceDisabled.Options.UseForeColor = true;
+            this.txtStkcod.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkcod.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkcod.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtStkcod.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtStkcod.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.txtStkcod.Size = new System.Drawing.Size(147, 22);
-            this.txtStkcod.TabIndex = 5;
+            this.txtStkcod.TabIndex = 0;
             this.txtStkcod.EditValueChanged += new System.EventHandler(this.txtStkcod_EditValueChanged);
             // 
             // panelControl1
@@ -481,7 +553,7 @@
             this.panelControl1.Location = new System.Drawing.Point(12, 145);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(708, 307);
-            this.panelControl1.TabIndex = 7;
+            this.panelControl1.TabIndex = 3;
             // 
             // btnQucod
             // 
@@ -496,6 +568,7 @@
             this.btnQucod.TabIndex = 20;
             this.btnQucod.TabStop = false;
             this.btnQucod.ToolTip = "กลุ่มวิธีการจัดส่งทั้งหมด";
+            this.btnQucod.Click += new System.EventHandler(this.btnQucod_Click);
             // 
             // btnStkGrp
             // 
@@ -510,6 +583,7 @@
             this.btnStkGrp.TabIndex = 19;
             this.btnStkGrp.TabStop = false;
             this.btnStkGrp.ToolTip = "กลุ่มวิธีการจัดส่งทั้งหมด";
+            this.btnStkGrp.Click += new System.EventHandler(this.btnStkGrp_Click);
             // 
             // txtSellpr5
             // 
@@ -519,8 +593,20 @@
             this.txtSellpr5.Properties.Appearance.Options.UseFont = true;
             this.txtSellpr5.Properties.Appearance.Options.UseTextOptions = true;
             this.txtSellpr5.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr5.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.txtSellpr5.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.txtSellpr5.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.txtSellpr5.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtSellpr5.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtSellpr5.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.txtSellpr5.Properties.AppearanceDisabled.Options.UseForeColor = true;
             this.txtSellpr5.Properties.AppearanceDisabled.Options.UseTextOptions = true;
             this.txtSellpr5.Properties.AppearanceDisabled.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr5.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr5.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr5.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr5.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtSellpr5.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.txtSellpr5.Properties.AppearanceFocused.Options.UseTextOptions = true;
             this.txtSellpr5.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtSellpr5.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
@@ -544,8 +630,20 @@
             this.txtSellpr4.Properties.Appearance.Options.UseFont = true;
             this.txtSellpr4.Properties.Appearance.Options.UseTextOptions = true;
             this.txtSellpr4.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr4.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.txtSellpr4.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.txtSellpr4.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.txtSellpr4.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtSellpr4.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtSellpr4.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.txtSellpr4.Properties.AppearanceDisabled.Options.UseForeColor = true;
             this.txtSellpr4.Properties.AppearanceDisabled.Options.UseTextOptions = true;
             this.txtSellpr4.Properties.AppearanceDisabled.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr4.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr4.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr4.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr4.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtSellpr4.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.txtSellpr4.Properties.AppearanceFocused.Options.UseTextOptions = true;
             this.txtSellpr4.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtSellpr4.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
@@ -558,7 +656,7 @@
             this.txtSellpr4.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtSellpr4.Properties.MaxLength = 12;
             this.txtSellpr4.Size = new System.Drawing.Size(114, 22);
-            this.txtSellpr4.TabIndex = 9;
+            this.txtSellpr4.TabIndex = 8;
             this.txtSellpr4.EditValueChanged += new System.EventHandler(this.txtSellpr4_EditValueChanged);
             // 
             // txtSellpr3
@@ -569,8 +667,20 @@
             this.txtSellpr3.Properties.Appearance.Options.UseFont = true;
             this.txtSellpr3.Properties.Appearance.Options.UseTextOptions = true;
             this.txtSellpr3.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr3.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.txtSellpr3.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.txtSellpr3.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.txtSellpr3.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtSellpr3.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtSellpr3.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.txtSellpr3.Properties.AppearanceDisabled.Options.UseForeColor = true;
             this.txtSellpr3.Properties.AppearanceDisabled.Options.UseTextOptions = true;
             this.txtSellpr3.Properties.AppearanceDisabled.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr3.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr3.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr3.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr3.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtSellpr3.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.txtSellpr3.Properties.AppearanceFocused.Options.UseTextOptions = true;
             this.txtSellpr3.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtSellpr3.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
@@ -583,7 +693,7 @@
             this.txtSellpr3.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtSellpr3.Properties.MaxLength = 12;
             this.txtSellpr3.Size = new System.Drawing.Size(114, 22);
-            this.txtSellpr3.TabIndex = 9;
+            this.txtSellpr3.TabIndex = 7;
             this.txtSellpr3.EditValueChanged += new System.EventHandler(this.txtSellpr3_EditValueChanged);
             // 
             // txtSellpr2
@@ -594,8 +704,20 @@
             this.txtSellpr2.Properties.Appearance.Options.UseFont = true;
             this.txtSellpr2.Properties.Appearance.Options.UseTextOptions = true;
             this.txtSellpr2.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr2.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.txtSellpr2.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.txtSellpr2.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.txtSellpr2.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtSellpr2.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtSellpr2.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.txtSellpr2.Properties.AppearanceDisabled.Options.UseForeColor = true;
             this.txtSellpr2.Properties.AppearanceDisabled.Options.UseTextOptions = true;
             this.txtSellpr2.Properties.AppearanceDisabled.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr2.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr2.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr2.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr2.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtSellpr2.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.txtSellpr2.Properties.AppearanceFocused.Options.UseTextOptions = true;
             this.txtSellpr2.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtSellpr2.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
@@ -608,7 +730,7 @@
             this.txtSellpr2.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtSellpr2.Properties.MaxLength = 12;
             this.txtSellpr2.Size = new System.Drawing.Size(114, 22);
-            this.txtSellpr2.TabIndex = 9;
+            this.txtSellpr2.TabIndex = 6;
             this.txtSellpr2.EditValueChanged += new System.EventHandler(this.txtSellpr2_EditValueChanged);
             // 
             // txtSellpr1
@@ -619,8 +741,20 @@
             this.txtSellpr1.Properties.Appearance.Options.UseFont = true;
             this.txtSellpr1.Properties.Appearance.Options.UseTextOptions = true;
             this.txtSellpr1.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr1.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.White;
+            this.txtSellpr1.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.White;
+            this.txtSellpr1.Properties.AppearanceDisabled.BorderColor = System.Drawing.Color.White;
+            this.txtSellpr1.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtSellpr1.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtSellpr1.Properties.AppearanceDisabled.Options.UseBorderColor = true;
+            this.txtSellpr1.Properties.AppearanceDisabled.Options.UseForeColor = true;
             this.txtSellpr1.Properties.AppearanceDisabled.Options.UseTextOptions = true;
             this.txtSellpr1.Properties.AppearanceDisabled.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.txtSellpr1.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr1.Properties.AppearanceFocused.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr1.Properties.AppearanceFocused.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtSellpr1.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.txtSellpr1.Properties.AppearanceFocused.Options.UseBorderColor = true;
             this.txtSellpr1.Properties.AppearanceFocused.Options.UseTextOptions = true;
             this.txtSellpr1.Properties.AppearanceFocused.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txtSellpr1.Properties.AppearanceReadOnly.Options.UseTextOptions = true;
@@ -633,7 +767,7 @@
             this.txtSellpr1.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.txtSellpr1.Properties.MaxLength = 12;
             this.txtSellpr1.Size = new System.Drawing.Size(114, 22);
-            this.txtSellpr1.TabIndex = 9;
+            this.txtSellpr1.TabIndex = 5;
             this.txtSellpr1.EditValueChanged += new System.EventHandler(this.txtSellpr1_EditValueChanged);
             // 
             // btnCancelChangeImg
@@ -644,7 +778,7 @@
             this.btnCancelChangeImg.Location = new System.Drawing.Point(238, 279);
             this.btnCancelChangeImg.Name = "btnCancelChangeImg";
             this.btnCancelChangeImg.Size = new System.Drawing.Size(155, 23);
-            this.btnCancelChangeImg.TabIndex = 8;
+            this.btnCancelChangeImg.TabIndex = 11;
             this.btnCancelChangeImg.Text = "ยกเลิกการเปลี่ยนรูปสินค้า";
             this.btnCancelChangeImg.Click += new System.EventHandler(this.btnCancelChangeImg_Click);
             // 
@@ -656,7 +790,7 @@
             this.btnChangeImg.Location = new System.Drawing.Point(126, 279);
             this.btnChangeImg.Name = "btnChangeImg";
             this.btnChangeImg.Size = new System.Drawing.Size(107, 23);
-            this.btnChangeImg.TabIndex = 8;
+            this.btnChangeImg.TabIndex = 10;
             this.btnChangeImg.Text = "เปลี่ยนรูปสินค้า";
             this.btnChangeImg.Click += new System.EventHandler(this.btnBrowseImg_Click);
             // 

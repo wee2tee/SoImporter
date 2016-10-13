@@ -337,7 +337,7 @@
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit1});
-            this.gridControl1.Size = new System.Drawing.Size(1198, 323);
+            this.gridControl1.Size = new System.Drawing.Size(1132, 323);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewPO,
@@ -683,7 +683,7 @@
             this.repositoryItemTextEdit2,
             this.repositoryItemTextEdit3});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(1210, 143);
+            this.ribbonControl1.Size = new System.Drawing.Size(1144, 143);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // btnImport
@@ -749,6 +749,7 @@
             // btnApiUrl
             // 
             this.btnApiUrl.Caption = "ตั้งค่า Web API";
+            this.btnApiUrl.Enabled = false;
             this.btnApiUrl.Glyph = ((System.Drawing.Image)(resources.GetObject("btnApiUrl.Glyph")));
             this.btnApiUrl.Id = 11;
             this.btnApiUrl.Name = "btnApiUrl";
@@ -934,7 +935,7 @@
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 500);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1210, 31);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1144, 31);
             // 
             // repositoryItemButtonEdit1
             // 
@@ -1102,7 +1103,7 @@
             this.gridControl2.Name = "gridControl2";
             this.gridControl2.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit2});
-            this.gridControl2.Size = new System.Drawing.Size(1198, 323);
+            this.gridControl2.Size = new System.Drawing.Size(1132, 323);
             this.gridControl2.TabIndex = 2;
             this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewSO,
@@ -1577,7 +1578,7 @@
             this.gridControl3.Name = "gridControl3";
             this.gridControl3.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemButtonEdit3});
-            this.gridControl3.Size = new System.Drawing.Size(1198, 323);
+            this.gridControl3.Size = new System.Drawing.Size(1132, 323);
             this.gridControl3.TabIndex = 3;
             this.gridControl3.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewIV,
@@ -1889,7 +1890,7 @@
             this.xtraTabControl1.Location = new System.Drawing.Point(0, 143);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.tabPagePo;
-            this.xtraTabControl1.Size = new System.Drawing.Size(1210, 357);
+            this.xtraTabControl1.Size = new System.Drawing.Size(1144, 357);
             this.xtraTabControl1.TabIndex = 5;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPagePo,
@@ -1901,21 +1902,21 @@
             // 
             this.tabPagePo.Controls.Add(this.gridControl1);
             this.tabPagePo.Name = "tabPagePo";
-            this.tabPagePo.Size = new System.Drawing.Size(1204, 329);
+            this.tabPagePo.Size = new System.Drawing.Size(1138, 329);
             this.tabPagePo.Text = "1. รายการสั่งซื้อเข้ามาใหม่";
             // 
             // tabPageSo
             // 
             this.tabPageSo.Controls.Add(this.gridControl2);
             this.tabPageSo.Name = "tabPageSo";
-            this.tabPageSo.Size = new System.Drawing.Size(1204, 329);
+            this.tabPageSo.Size = new System.Drawing.Size(1138, 329);
             this.tabPageSo.Text = "2. เปิดใบสั่งขายแล้ว";
             // 
             // tabPageIv
             // 
             this.tabPageIv.Controls.Add(this.gridControl3);
             this.tabPageIv.Name = "tabPageIv";
-            this.tabPageIv.Size = new System.Drawing.Size(1204, 329);
+            this.tabPageIv.Size = new System.Drawing.Size(1138, 329);
             this.tabPageIv.Text = "3. เปิดอินวอยซ์แล้ว";
             // 
             // MainForm
@@ -1923,7 +1924,7 @@
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1210, 531);
+            this.ClientSize = new System.Drawing.Size(1144, 531);
             this.Controls.Add(this.xtraTabControl1);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
