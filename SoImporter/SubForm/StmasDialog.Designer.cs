@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StmasDialog));
-            this.barManager1 = new DevExpress.XtraBars.BarManager();
+            this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnAdd = new DevExpress.XtraBars.BarButtonItem();
             this.btnEdit = new DevExpress.XtraBars.BarButtonItem();
@@ -152,7 +153,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Caption = "เพิ่ม";
+            this.btnAdd.Caption = "เพิ่ม <Alt+A>";
             this.btnAdd.Enabled = false;
             this.btnAdd.Glyph = ((System.Drawing.Image)(resources.GetObject("btnAdd.Glyph")));
             this.btnAdd.Id = 0;
@@ -162,7 +163,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Caption = "แก้ไข";
+            this.btnEdit.Caption = "แก้ไข <Alt+E>";
             this.btnEdit.Enabled = false;
             this.btnEdit.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEdit.Glyph")));
             this.btnEdit.Id = 1;
@@ -171,7 +172,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Caption = "ยกเลิกการเพิ่ม/แก้ไข";
+            this.btnStop.Caption = "ยกเลิกการเพิ่ม/แก้ไข <Esc>";
             this.btnStop.Enabled = false;
             this.btnStop.Glyph = ((System.Drawing.Image)(resources.GetObject("btnStop.Glyph")));
             this.btnStop.Id = 9;
@@ -181,7 +182,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Caption = "บันทึก";
+            this.btnSave.Caption = "บันทึก <F9>";
             this.btnSave.Enabled = false;
             this.btnSave.Glyph = ((System.Drawing.Image)(resources.GetObject("btnSave.Glyph")));
             this.btnSave.Id = 6;
@@ -191,7 +192,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Caption = "ลบ";
+            this.btnDelete.Caption = "ลบ <Alt+D>";
             this.btnDelete.Enabled = false;
             this.btnDelete.Glyph = global::SoImporter.Properties.Resources.trash;
             this.btnDelete.Id = 8;
@@ -201,7 +202,7 @@
             // 
             // btnFirst
             // 
-            this.btnFirst.Caption = "รายการแรก";
+            this.btnFirst.Caption = "รายการแรก <Alt+T>";
             this.btnFirst.Enabled = false;
             this.btnFirst.Glyph = ((System.Drawing.Image)(resources.GetObject("btnFirst.Glyph")));
             this.btnFirst.Id = 2;
@@ -211,7 +212,7 @@
             // 
             // btnPrev
             // 
-            this.btnPrev.Caption = "รายการก่อนหน้า";
+            this.btnPrev.Caption = "รายการก่อนหน้า <Page Up>";
             this.btnPrev.Enabled = false;
             this.btnPrev.Glyph = ((System.Drawing.Image)(resources.GetObject("btnPrev.Glyph")));
             this.btnPrev.Id = 3;
@@ -221,7 +222,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Caption = "รายการถัดไป";
+            this.btnNext.Caption = "รายการถัดไป <Page Down>";
             this.btnNext.Enabled = false;
             this.btnNext.Glyph = ((System.Drawing.Image)(resources.GetObject("btnNext.Glyph")));
             this.btnNext.Id = 4;
@@ -231,7 +232,7 @@
             // 
             // btnLast
             // 
-            this.btnLast.Caption = "รายการสุดท้าย";
+            this.btnLast.Caption = "รายการสุดท้าย <Alt+B>";
             this.btnLast.Enabled = false;
             this.btnLast.Glyph = ((System.Drawing.Image)(resources.GetObject("btnLast.Glyph")));
             this.btnLast.Id = 5;
@@ -241,7 +242,7 @@
             // 
             // btnFind
             // 
-            this.btnFind.Caption = "ค้นหา";
+            this.btnFind.Caption = "ค้นหา <Alt+S>";
             this.btnFind.Enabled = false;
             this.btnFind.Glyph = ((System.Drawing.Image)(resources.GetObject("btnFind.Glyph")));
             this.btnFind.Id = 19;
@@ -251,7 +252,7 @@
             // 
             // btnList
             // 
-            this.btnList.Caption = "แสดงข้อมูลแบบลิสต์";
+            this.btnList.Caption = "แสดงข้อมูลแบบลิสต์ <Alt+L>";
             this.btnList.Enabled = false;
             this.btnList.Glyph = ((System.Drawing.Image)(resources.GetObject("btnList.Glyph")));
             this.btnList.Id = 20;

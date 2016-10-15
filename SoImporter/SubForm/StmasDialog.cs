@@ -622,6 +622,18 @@ namespace SoImporter.SubForm
                 return true;
             }
 
+            if(keyData == (Keys.Alt | Keys.A))
+            {
+                this.btnAdd.PerformClick();
+                return true;
+            }
+
+            if(keyData == (Keys.Alt | Keys.E))
+            {
+                this.btnEdit.PerformClick();
+                return true;
+            }
+
             if(keyData == Keys.Escape)
             {
                 this.btnStop.PerformClick();
@@ -634,7 +646,49 @@ namespace SoImporter.SubForm
                 return true;
             }
 
-            if(keyData == Keys.F6 && (this.cbQucod.Focused || this.cbStkGrp.Focused))
+            if (keyData == (Keys.Alt | Keys.D))
+            {
+                this.btnDelete.PerformClick();
+                return true;
+            }
+
+            if(keyData == (Keys.Alt | Keys.T))
+            {
+                this.btnFirst.PerformClick();
+                return true;
+            }
+
+            if(keyData == Keys.PageUp)
+            {
+                this.btnPrev.PerformClick();
+                return true;
+            }
+
+            if(keyData == Keys.PageDown)
+            {
+                this.btnNext.PerformClick();
+                return true;
+            }
+
+            if(keyData == (Keys.Alt | Keys.B))
+            {
+                this.btnLast.PerformClick();
+                return true;
+            }
+
+            if(keyData == (Keys.Alt | Keys.S))
+            {
+                this.btnFind.PerformClick();
+                return true;
+            }
+
+            if(keyData == (Keys.Alt | Keys.L))
+            {
+                this.btnList.PerformClick();
+                return true;
+            }
+
+            if (keyData == Keys.F6 && (this.cbQucod.Focused || this.cbStkGrp.Focused))
             {
                 SendKeys.Send("{F4}");
                 return true;

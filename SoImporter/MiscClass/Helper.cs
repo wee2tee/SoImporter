@@ -377,6 +377,103 @@ namespace SoImporter.MiscClass
             return user_vm;
         }
 
+        public static StmasImportVM ToViewModel(this Stmas stmas, List<Istab> stkgrp_list, List<Istab> qucod_list)
+        {
+            if (stmas == null)
+                return null;
+            var grp = stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp.Trim()).FirstOrDefault();
+            var qu = qucod_list.Where(i => i.typcod.Trim() == stmas.qucod.Trim()).FirstOrDefault();
+            var stkgrp = new IstabVM
+            {
+                TabTyp = ((int)ISTAB_TABTYP.STKGRP).ToString(),
+                TypCod = stmas.stkgrp.Trim()
+            };
+            if (grp != null)
+            {
+                stkgrp.AbbreviateTh = grp.shortnam.Trim();
+                stkgrp.AbbreviateEn = grp.shortnam2.Trim();
+                stkgrp.TypDesTh = grp.typdes.Trim();
+                stkgrp.TypDesEn = grp.typdes2.Trim();
+            }
+            else
+            {
+                stkgrp.AbbreviateTh = "";
+                stkgrp.AbbreviateEn = "";
+                stkgrp.TypDesTh = "";
+                stkgrp.TypDesEn = "";
+            }
+
+            var qucod = new IstabVM
+            {
+                TabTyp = ((int)ISTAB_TABTYP.QUCOD).ToString(),
+                TypCod = stmas.qucod.Trim()
+            };
+            if (qu != null)
+            {
+                qucod.AbbreviateTh = grp.shortnam.Trim();
+                qucod.AbbreviateEn = grp.shortnam2.Trim();
+                qucod.TypDesTh = grp.typdes.Trim();
+                qucod.TypDesEn = grp.typdes2.Trim();
+            }
+            else
+            {
+                qucod.AbbreviateTh = "";
+                qucod.AbbreviateEn = "";
+                qucod.TypDesTh = "";
+                qucod.TypDesEn = "";
+            }
+            //var stkgrp = new IstabVM
+            //{
+            //    TabTyp = ((int)ISTAB_TABTYP.STKGRP).ToString(),
+            //    TypCod = stmas.stkgrp.Trim(),
+            //    AbbreviateEn = stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp.Trim()).FirstOrDefault() != null ? stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp.Trim()).First().shortnam2.Trim() : "",
+            //    AbbreviateTh = stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp.Trim()).FirstOrDefault() != null ? stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp.Trim()).First().shortnam.Trim() : "",
+            //    TypDesEn = stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp.Trim()).FirstOrDefault() != null ? stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp).First().typdes2.Trim() : "",
+            //    TypDesTh = stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp.Trim()).FirstOrDefault() != null ? stkgrp_list.Where(i => i.typcod.Trim() == stmas.stkgrp).First().typdes.Trim() : "",
+            //    Rate = 0,
+            //};
+            //var qucod = new IstabVM
+            //{
+            //    TabTyp = ((int)ISTAB_TABTYP.QUCOD).ToString(),
+            //    TypCod = stmas.qucod.Trim(),
+            //    AbbreviateEn = qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()) != null ? qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()).shortnam2.Trim() : "",
+            //    AbbreviateTh = qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()) != null ? qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()).shortnam.Trim() : "",
+            //    TypDesEn = qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()) != null ? qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()).typdes2.Trim() : "",
+            //    TypDesTh = qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()) != null ? qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()).typdes.Trim() : "",
+            //    Rate = qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()) != null ? (decimal)qucod_list.Find(i => i.typcod.Trim() == stmas.qucod.Trim()).fld02 : 0,
+            //};
+            StmasImportVM st = new StmasImportVM
+            {
+                Stkcod = stmas.stkcod,
+                StkDesTh = stmas.stkdes,
+                StkDesEn = stmas.stkdes2,
+                Barcod = stmas.barcod,
+                StkTyp = stmas.stktyp,
+                //StkGrp = stmas.StkGrp,
+                //Qucod = stmas.Qucod,
+                Sellpr1 = (decimal)stmas.sellpr1,
+                Sellpr2 = (decimal)stmas.sellpr2,
+                Sellpr3 = (decimal)stmas.sellpr3,
+                Sellpr4 = (decimal)stmas.sellpr4,
+                Sellpr5 = (decimal)stmas.sellpr5,
+                //ProductImg = stmas.ProductImg,
+                _StkGrp = stkgrp,
+                _QuCod = qucod
+            };
+            return st;
+        }
+
+        public static List<StmasImportVM> ToViewModel(this List<Stmas> stmas_list, List<Istab> stkgrp_list, List<Istab> qucod_list)
+        {
+            List<StmasImportVM> stmas = new List<StmasImportVM>();
+            foreach (var item in stmas_list)
+            {
+                stmas.Add(item.ToViewModel(stkgrp_list, qucod_list));
+            }
+
+            return stmas;
+        }
+
         /** Convert poprit to print_model(PrintSoVM) **/
         public static PrintSoVM ToPrintModel(this PopritVM item)
         {

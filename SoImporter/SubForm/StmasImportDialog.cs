@@ -15,7 +15,7 @@ namespace SoImporter.SubForm
 {
     public partial class StmasImportDialog : DevExpress.XtraEditors.XtraForm
     {
-        private MainForm main_form;
+        public MainForm main_form;
         private List<Stmas> stmas_dbf;
         private BindingSource bs;
 
@@ -41,6 +41,18 @@ namespace SoImporter.SubForm
         {
             base.OnLoad(e);
             this.gridViewStmas.VisibleColumns[0].Width = 25;
+        }
+
+        private void btnBeginImport_Click(object sender, EventArgs e)
+        {
+            List<Stmas> stmas = new List<Stmas>();
+            foreach (var row_handel in this.gridViewStmas.GetSelectedRows())
+            {
+                stmas.Add(this.stmas_dbf.Where(s => s.stkcod == (string)this.gridViewStmas.GetRowCellValue(row_handel, this.colStkCod)).FirstOrDefault());
+            }
+
+            StmasImportProgressDialog import = new StmasImportProgressDialog(this.main_form, stmas);
+            import.ShowDialog();
         }
     }
 }

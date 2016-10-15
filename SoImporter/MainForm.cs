@@ -680,7 +680,6 @@ namespace SoImporter
                     conn.Close();
                 }
             }
-
             return dt.ToList<Istab>();
         }
 

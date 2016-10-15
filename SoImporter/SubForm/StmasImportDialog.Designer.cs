@@ -31,8 +31,6 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridViewStmas = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
             this.colStkCod = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStkdes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStkdes2 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -41,6 +39,8 @@
             this.colSellpr3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSellpr4 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSellpr5 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnBeginImport = new DevExpress.XtraEditors.SimpleButton();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -89,21 +89,6 @@
             this.gridViewStmas.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewStmas.OptionsView.ShowGroupPanel = false;
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Location = new System.Drawing.Point(12, 347);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(99, 35);
-            this.simpleButton1.TabIndex = 1;
-            this.simpleButton1.Text = "เริ่มนำเข้าข้อมูล";
-            // 
-            // splashScreenManager1
-            // 
-            this.splashScreenManager1.ClosingDelay = 500;
-            // 
             // colStkCod
             // 
             this.colStkCod.AppearanceHeader.Options.UseTextOptions = true;
@@ -114,7 +99,7 @@
             this.colStkCod.MinWidth = 140;
             this.colStkCod.Name = "colStkCod";
             this.colStkCod.Visible = true;
-            this.colStkCod.VisibleIndex = 0;
+            this.colStkCod.VisibleIndex = 1;
             this.colStkCod.Width = 140;
             // 
             // colStkdes
@@ -126,7 +111,7 @@
             this.colStkdes.MinWidth = 100;
             this.colStkdes.Name = "colStkdes";
             this.colStkdes.Visible = true;
-            this.colStkdes.VisibleIndex = 1;
+            this.colStkdes.VisibleIndex = 2;
             this.colStkdes.Width = 250;
             // 
             // colStkdes2
@@ -138,7 +123,7 @@
             this.colStkdes2.MinWidth = 100;
             this.colStkdes2.Name = "colStkdes2";
             this.colStkdes2.Visible = true;
-            this.colStkdes2.VisibleIndex = 2;
+            this.colStkdes2.VisibleIndex = 3;
             this.colStkdes2.Width = 240;
             // 
             // colSellpr1
@@ -155,7 +140,7 @@
             this.colSellpr1.MinWidth = 90;
             this.colSellpr1.Name = "colSellpr1";
             this.colSellpr1.Visible = true;
-            this.colSellpr1.VisibleIndex = 3;
+            this.colSellpr1.VisibleIndex = 4;
             this.colSellpr1.Width = 90;
             // 
             // colSellpr2
@@ -172,7 +157,7 @@
             this.colSellpr2.MinWidth = 90;
             this.colSellpr2.Name = "colSellpr2";
             this.colSellpr2.Visible = true;
-            this.colSellpr2.VisibleIndex = 4;
+            this.colSellpr2.VisibleIndex = 5;
             this.colSellpr2.Width = 90;
             // 
             // colSellpr3
@@ -189,7 +174,7 @@
             this.colSellpr3.MinWidth = 90;
             this.colSellpr3.Name = "colSellpr3";
             this.colSellpr3.Visible = true;
-            this.colSellpr3.VisibleIndex = 5;
+            this.colSellpr3.VisibleIndex = 6;
             this.colSellpr3.Width = 90;
             // 
             // colSellpr4
@@ -206,7 +191,7 @@
             this.colSellpr4.MinWidth = 90;
             this.colSellpr4.Name = "colSellpr4";
             this.colSellpr4.Visible = true;
-            this.colSellpr4.VisibleIndex = 6;
+            this.colSellpr4.VisibleIndex = 7;
             this.colSellpr4.Width = 90;
             // 
             // colSellpr5
@@ -223,8 +208,24 @@
             this.colSellpr5.MinWidth = 90;
             this.colSellpr5.Name = "colSellpr5";
             this.colSellpr5.Visible = true;
-            this.colSellpr5.VisibleIndex = 7;
+            this.colSellpr5.VisibleIndex = 8;
             this.colSellpr5.Width = 90;
+            // 
+            // btnBeginImport
+            // 
+            this.btnBeginImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnBeginImport.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnBeginImport.Appearance.Options.UseFont = true;
+            this.btnBeginImport.Location = new System.Drawing.Point(12, 347);
+            this.btnBeginImport.Name = "btnBeginImport";
+            this.btnBeginImport.Size = new System.Drawing.Size(99, 35);
+            this.btnBeginImport.TabIndex = 1;
+            this.btnBeginImport.Text = "เริ่มนำเข้าข้อมูล";
+            this.btnBeginImport.Click += new System.EventHandler(this.btnBeginImport_Click);
+            // 
+            // splashScreenManager1
+            // 
+            this.splashScreenManager1.ClosingDelay = 500;
             // 
             // StmasImportDialog
             // 
@@ -232,7 +233,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1116, 394);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnBeginImport);
             this.Controls.Add(this.panelControl1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.KeyPreview = true;
@@ -254,7 +255,7 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewStmas;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnBeginImport;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private DevExpress.XtraGrid.Columns.GridColumn colStkCod;
         private DevExpress.XtraGrid.Columns.GridColumn colStkdes;
