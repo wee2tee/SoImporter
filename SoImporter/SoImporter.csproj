@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DBFHelper">
+      <HintPath>..\_SOURCE\DBFHelper.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.BonusSkins.v15.2" />
     <Reference Include="DevExpress.Charts.v15.2.Core, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v15.2, Version=15.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -196,6 +199,12 @@
     <Compile Include="SubForm\IstabDialog.Designer.cs">
       <DependentUpon>IstabDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\StmasImportDuplicateAlertDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\StmasImportDuplicateAlertDialog.Designer.cs">
+      <DependentUpon>StmasImportDuplicateAlertDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\StmasImportProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,6 +359,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\IstabDialog.resx">
       <DependentUpon>IstabDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\StmasImportDuplicateAlertDialog.resx">
+      <DependentUpon>StmasImportDuplicateAlertDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\StmasImportProgressDialog.resx">
       <DependentUpon>StmasImportProgressDialog.cs</DependentUpon>

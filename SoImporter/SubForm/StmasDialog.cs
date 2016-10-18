@@ -49,13 +49,7 @@ namespace SoImporter.SubForm
             if(!this.splashScreenManager1.IsSplashFormVisible)
                 this.splashScreenManager1.ShowWaitForm();
 
-            istab_dialog_stkgrp = new IstabDialog(this.main_form, ISTAB_TABTYP.STKGRP);
-            istab_dialog_qucod = new IstabDialog(this.main_form, ISTAB_TABTYP.QUCOD);
-            this.stkgrp = this.istab_dialog_stkgrp.LoadIstabFromServer();
-            this.qucod = this.istab_dialog_qucod.LoadIstabFromServer();
-
-            this.cbStkGrp.AddItem<IstabVM>(this.stkgrp);
-            this.cbQucod.AddItem<IstabVM>(this.qucod);
+            this.LoadComboboxItem();
 
             this.current_stmas = this.LoadSingleStmasFromServer(RECORD_NAVIGATION.LAST);
             this.FillForm(this.current_stmas);
@@ -65,6 +59,17 @@ namespace SoImporter.SubForm
 
             this.form_mode = FORM_MODE.READ;
             this.SetFormControlState();
+        }
+
+        private void LoadComboboxItem()
+        {
+            istab_dialog_stkgrp = new IstabDialog(this.main_form, ISTAB_TABTYP.STKGRP);
+            istab_dialog_qucod = new IstabDialog(this.main_form, ISTAB_TABTYP.QUCOD);
+            this.stkgrp = this.istab_dialog_stkgrp.LoadIstabFromServer();
+            this.qucod = this.istab_dialog_qucod.LoadIstabFromServer();
+
+            this.cbStkGrp.AddItem<IstabVM>(this.stkgrp);
+            this.cbQucod.AddItem<IstabVM>(this.qucod);
         }
 
         private void FillForm(StmasVM stmas)
@@ -435,6 +440,7 @@ namespace SoImporter.SubForm
         {
             StmasImportDialog import = new StmasImportDialog(this.main_form);
             import.ShowDialog();
+            this.LoadComboboxItem();
         }
 
         private void btnBrowseImg_Click(object sender, EventArgs e)

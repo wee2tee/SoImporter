@@ -56,6 +56,7 @@
             this.btnCancel.Size = new System.Drawing.Size(101, 32);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "ยกเลิก <Esc>";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // labelControl1
             // 
@@ -85,7 +86,7 @@
             this.lblCounter.TabIndex = 2;
             this.lblCounter.Text = "[0/0]";
             // 
-            // ProgressBarDialog
+            // StmasImportProgressDialog
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -102,7 +103,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ProgressBarDialog";
+            this.Name = "StmasImportProgressDialog";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ProgressBarDialog";

@@ -20,6 +20,7 @@ using DevExpress.XtraBars.Alerter;
 using System.Drawing.Printing;
 using SoImporter.Report;
 using DevExpress.XtraReports.UI;
+using DBFHelper;
 
 namespace SoImporter
 {
@@ -690,6 +691,8 @@ namespace SoImporter
                 MessageBox.Show("กรุณาระบุที่เก็บข้อมูลโปรแกรม Express ให้ถูกต้อง");
                 return null;
             }
+
+            //DataTable stmas = DBFParse.ReadDBF(config.ExpressDataPath + @"\STMAS.DBF");
 
             DataTable dt = new DataTable();
 
