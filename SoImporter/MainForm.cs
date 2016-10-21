@@ -21,6 +21,7 @@ using System.Drawing.Printing;
 using SoImporter.Report;
 using DevExpress.XtraReports.UI;
 using DBFHelper;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace SoImporter
 {
@@ -714,7 +715,7 @@ namespace SoImporter
                 }
             }
 
-            return dt.ToList<Stmas>();
+            return dt.ToList();
         }
 
         public static bool InsertOeso(ConfigValue config, Oeso oeso)
@@ -1375,5 +1376,57 @@ namespace SoImporter
             StmasDialog stmas = new StmasDialog(this);
             stmas.ShowDialog();
         }
+
+        private void gridViewPO_MouseMove(object sender, MouseEventArgs e)
+        {
+            GridHitInfo hi = ((GridView)sender).CalcHitInfo(new Point(e.X, e.Y));
+            if(hi.InRowCell && hi.Column.Name == this.col_ViewAttachment.Name)
+            {
+                this.Cursor = Cursors.Hand;
+            }
+            else
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void gridView_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if(e.RowHandle == ((GridView)sender).FocusedRowHandle)
+            {
+                //e.DefaultDraw();
+                using(Pen p = new Pen(Color.Red))
+                {
+                    e.Graphics.DrawLine(p, new Point(e.Bounds.X - 2, e.Bounds.Y - 1), new Point(e.Bounds.X + e.Bounds.Width + 1, e.Bounds.Y - 1));
+
+                    e.Graphics.DrawLine(p, new Point(e.Bounds.X - 2, e.Bounds.Y + e.Bounds.Height), new Point(e.Bounds.X + e.Bounds.Width + 1, e.Bounds.Y + e.Bounds.Height));
+                }
+                //e.Handled = true;
+            }
+        }
+
+        //private void gridViewSO_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        //{
+        //    GridViewInfo info = (GridViewInfo)((GridView)sender).GetViewInfo();
+        //    GridRowInfo row_info = info.GetGridRowInfo(e.FocusedRowHandle);
+        //    int width = row_info.ViewInfo.ViewRects.Rows.Width;
+        //    int height = row_info.ViewInfo.ViewRects.Rows.Height;
+        //    int x = row_info.ViewInfo.ViewRects.Rows.X;
+        //    int y = row_info.ViewInfo.ViewRects.Rows.Y;
+
+        //}
+
+        //private void gridViewSO_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    GridHitInfo hi = ((GridView)sender).CalcHitInfo(new Point(e.X, e.Y));
+        //    if (hi.InRowCell && (hi.Column.Name == this.gc2_Iv.Name || hi.Column.Name == this.gc2_Print.Name))
+        //    {
+        //        this.Cursor = Cursors.Hand;
+        //    }
+        //    else
+        //    {
+        //        this.Cursor = Cursors.Default;
+        //    }
+        //}
     }
 }

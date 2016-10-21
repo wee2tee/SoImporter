@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.progressBar1 = new DevExpress.XtraEditors.ProgressBarControl();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.lblStkCod = new DevExpress.XtraEditors.LabelControl();
             this.lblCounter = new DevExpress.XtraEditors.LabelControl();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.progressBar1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,18 +45,6 @@
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(443, 22);
             this.progressBar1.TabIndex = 0;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.btnCancel.Appearance.Options.UseFont = true;
-            this.btnCancel.Location = new System.Drawing.Point(192, 77);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(101, 32);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "ยกเลิก <Esc>";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // labelControl1
             // 
@@ -80,11 +68,25 @@
             // 
             this.lblCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCounter.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.lblCounter.Location = new System.Drawing.Point(434, 21);
+            this.lblCounter.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lblCounter.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblCounter.Location = new System.Drawing.Point(349, 21);
             this.lblCounter.Name = "lblCounter";
-            this.lblCounter.Size = new System.Drawing.Size(29, 16);
+            this.lblCounter.Size = new System.Drawing.Size(115, 16);
             this.lblCounter.TabIndex = 2;
             this.lblCounter.Text = "[0/0]";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.btnCancel.Appearance.Options.UseFont = true;
+            this.btnCancel.Location = new System.Drawing.Point(192, 77);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(101, 32);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = "หยุด <Esc>";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // StmasImportProgressDialog
             // 
@@ -106,7 +108,7 @@
             this.Name = "StmasImportProgressDialog";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ProgressBarDialog";
+            this.Text = "นำเข้าข้อมูลสินค้า";
             this.Load += new System.EventHandler(this.ProgressBarDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.progressBar1.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -117,9 +119,9 @@
         #endregion
 
         private DevExpress.XtraEditors.ProgressBarControl progressBar1;
-        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl lblStkCod;
         private DevExpress.XtraEditors.LabelControl lblCounter;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
     }
 }

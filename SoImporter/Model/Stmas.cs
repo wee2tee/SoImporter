@@ -49,7 +49,7 @@ namespace SoImporter.Model
         public double lsellpr { get; set; }
         public string lsdisc { get; set; }
         public DateTime? lseldat { get; set; }
-        public int numelem { get; set; }
+        public decimal? numelem { get; set; }
         public double totbal { get; set; }
         public double totval { get; set; }
         public double totreo { get; set; }

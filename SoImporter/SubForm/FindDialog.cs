@@ -27,6 +27,7 @@ namespace SoImporter.SubForm
         private void FindDialog_Load(object sender, EventArgs e)
         {
             this.lblKeyWord.Text = this.keyword_label;
+            this.txtKeyWord.Text = this.default_keyword;
         }
 
         private void txtKeyWord_EditValueChanged(object sender, EventArgs e)

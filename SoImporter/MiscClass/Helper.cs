@@ -161,6 +161,101 @@ namespace SoImporter.MiscClass
             }
         }
 
+        public static List<Stmas> ToList(this DataTable stmas_dbf)
+        {
+            List<Stmas> stmas = new List<Stmas>();
+
+            foreach (DataRow row in stmas_dbf.Rows)
+            {
+                //Console.WriteLine(" .. >> numelem is null : " + row.IsNull("numelem"));
+
+                try
+                {
+                    Stmas s = new Stmas
+                    {
+                        stkcod = row.Field<string>("stkcod"),
+                        stkdes = row.Field<string>("stkdes"),
+                        stkdes2 = row.Field<string>("stkdes2"),
+                        stktyp = row.Field<string>("stktyp"),
+                        stklev = row.Field<string>("stklev"),
+                        stkgrp = row.Field<string>("stkgrp"),
+                        barcod = row.Field<string>("barcod"),
+                        stkcods = row.Field<string>("stkcods"),
+                        acccod = row.Field<string>("acccod"),
+                        isinv = row.Field<string>("isinv"),
+                        stkclass = row.Field<string>("stkclass"),
+                        negallow = row.Field<string>("negallow"),
+                        qucod = row.Field<string>("qucod"),
+                        cqucod = row.Field<string>("cqucod"),
+                        cfactor = row.Field<double>("cfactor"),
+                        stnpr = row.Field<double>("stnpr"),
+                        ispur = row.Field<string>("ispur"),
+                        pqucod = row.Field<string>("pqucod"),
+                        pfactor = row.Field<double>("pfactor"),
+                        lpurqu = row.Field<string>("lpurqu"),
+                        lpurfac = row.Field<double>("lpurfac"),
+                        lpurpr = row.Field<double>("lpurpr"),
+                        lpdisc = row.Field<string>("lpdisc"),
+                        lpurdat = row.Field<DateTime?>("lpurdat"),
+                        supcod = row.Field<string>("supcod"),
+                        issal = row.Field<string>("issal"),
+                        squcod = row.Field<string>("squcod"),
+                        sfactor = row.Field<double>("sfactor"),
+                        sellpr1 = row.Field<double>("sellpr1"),
+                        sellpr2 = row.Field<double>("sellpr2"),
+                        sellpr3 = row.Field<double>("sellpr3"),
+                        sellpr4 = row.Field<double>("sellpr4"),
+                        sellpr5 = row.Field<double>("sellpr5"),
+                        tracksal = row.Field<string>("tracksal"),
+                        vatcod = row.Field<string>("vatcod"),
+                        iscom = row.Field<string>("iscom"),
+                        comrat = row.Field<string>("comrat"),
+                        lsellqu = row.Field<string>("lsellqu"),
+                        lsellfac = row.Field<double>("lsellfac"),
+                        lsellpr = row.Field<double>("lsellpr"),
+                        lsdisc = row.Field<string>("lsdisc"),
+                        lseldat = row.Field<DateTime?>("lseldat"),
+                        numelem = row.Field<decimal?>("numelem") ,
+                        totbal = row.Field<double>("totbal"),
+                        totval = row.Field<double>("totval"),
+                        totreo = row.Field<double>("totreo"),
+                        totres = row.Field<double>("totres"),
+                        opnbal = row.Field<double>("opnbal"),
+                        unitpr = row.Field<double>("unitpr"),
+                        opnval = row.Field<double>("opnval"),
+                        lasupd = row.Field<DateTime?>("lasupd"),
+                        packing = row.Field<string>("packing"),
+                        mlotnum = row.Field<string>("mlotnum"),
+                        mrembal = row.Field<double>("mrembal"),
+                        mremval = row.Field<double>("mremval"),
+                        remark = row.Field<string>("remark"),
+                        dat1 = row.Field<DateTime?>("dat1"),
+                        dat2 = row.Field<DateTime?>("dat2"),
+                        num1 = row.Field<double>("num1"),
+                        str1 = row.Field<string>("str1"),
+                        str2 = row.Field<string>("str2"),
+                        str3 = row.Field<string>("str3"),
+                        str4 = row.Field<string>("str4"),
+                        creby = row.Field<string>("creby"),
+                        credat = row.Field<DateTime?>("credat"),
+                        userid = row.Field<string>("userid"),
+                        chgdat = row.Field<DateTime?>("chgdat"),
+                        status = row.Field<string>("status"),
+                        inactdat = row.Field<DateTime?>("inactdat")
+                    };
+                    stmas.Add(s);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error for stkcod : " + row.Field<string>("stkcod"));
+                    Console.WriteLine(" ... >> " + ex.Message);
+                    continue;
+                }
+            }
+
+            return stmas;
+        }
+
         public static string FillZeroLeft(this string target_string, int result_digit)
         {
             string result = target_string;

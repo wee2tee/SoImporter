@@ -72,6 +72,11 @@
             this.txtSoNum.Name = "txtSoNum";
             this.txtSoNum.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSoNum.Properties.Appearance.Options.UseFont = true;
+            this.txtSoNum.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtSoNum.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            this.txtSoNum.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtSoNum.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtSoNum.Properties.AppearanceDisabled.Options.UseForeColor = true;
             this.txtSoNum.Properties.ReadOnly = true;
             this.txtSoNum.Size = new System.Drawing.Size(132, 22);
             this.txtSoNum.TabIndex = 0;

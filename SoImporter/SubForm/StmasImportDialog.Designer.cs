@@ -41,6 +41,9 @@
             this.colSellpr5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.btnBeginImport = new DevExpress.XtraEditors.SimpleButton();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.lblStmasPath = new DevExpress.XtraEditors.LabelControl();
+            this.lblTotalSelected = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -53,9 +56,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelControl1.Controls.Add(this.gridControl1);
-            this.panelControl1.Location = new System.Drawing.Point(12, 12);
+            this.panelControl1.Location = new System.Drawing.Point(12, 34);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1092, 329);
+            this.panelControl1.Size = new System.Drawing.Size(1092, 307);
             this.panelControl1.TabIndex = 0;
             // 
             // gridControl1
@@ -64,7 +67,7 @@
             this.gridControl1.Location = new System.Drawing.Point(2, 2);
             this.gridControl1.MainView = this.gridViewStmas;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1088, 325);
+            this.gridControl1.Size = new System.Drawing.Size(1088, 303);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewStmas});
@@ -88,6 +91,7 @@
             this.gridViewStmas.OptionsSelection.MultiSelect = true;
             this.gridViewStmas.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewStmas.OptionsView.ShowGroupPanel = false;
+            this.gridViewStmas.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewStmas_SelectionChanged);
             // 
             // colStkCod
             // 
@@ -227,17 +231,51 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // labelControl1
+            // 
+            this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.labelControl1.Location = new System.Drawing.Point(16, 10);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(94, 16);
+            this.labelControl1.TabIndex = 2;
+            this.labelControl1.Text = "นำเข้าข้อมูลจาก :";
+            // 
+            // lblStmasPath
+            // 
+            this.lblStmasPath.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lblStmasPath.Location = new System.Drawing.Point(116, 10);
+            this.lblStmasPath.Name = "lblStmasPath";
+            this.lblStmasPath.Size = new System.Drawing.Size(68, 16);
+            this.lblStmasPath.TabIndex = 2;
+            this.lblStmasPath.Text = "Stmas_Path";
+            // 
+            // lblTotalSelected
+            // 
+            this.lblTotalSelected.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalSelected.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.lblTotalSelected.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.lblTotalSelected.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.lblTotalSelected.Location = new System.Drawing.Point(908, 10);
+            this.lblTotalSelected.Name = "lblTotalSelected";
+            this.lblTotalSelected.Size = new System.Drawing.Size(193, 16);
+            this.lblTotalSelected.TabIndex = 2;
+            this.lblTotalSelected.Text = "[รายการที่เลือก : 0/0]";
+            // 
             // StmasImportDialog
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1116, 394);
+            this.Controls.Add(this.lblTotalSelected);
+            this.Controls.Add(this.lblStmasPath);
+            this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.btnBeginImport);
             this.Controls.Add(this.panelControl1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimumSize = new System.Drawing.Size(570, 230);
             this.Name = "StmasImportDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "นำเข้าข้อมูลจาก Express";
@@ -247,6 +285,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewStmas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -265,5 +304,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colSellpr3;
         private DevExpress.XtraGrid.Columns.GridColumn colSellpr4;
         private DevExpress.XtraGrid.Columns.GridColumn colSellpr5;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.LabelControl lblStmasPath;
+        private DevExpress.XtraEditors.LabelControl lblTotalSelected;
     }
 }

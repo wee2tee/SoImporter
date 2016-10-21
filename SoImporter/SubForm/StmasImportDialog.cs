@@ -10,6 +10,7 @@ using DevExpress.XtraEditors;
 using SoImporter.Model;
 using SoImporter.MiscClass;
 using Newtonsoft.Json;
+using DevExpress.XtraGrid.Views.Grid;
 
 namespace SoImporter.SubForm
 {
@@ -29,10 +30,12 @@ namespace SoImporter.SubForm
         {
             this.splashScreenManager1.ShowWaitForm();
 
+            this.lblStmasPath.Text = this.main_form.config.ExpressDataPath + @"\STMAS.DBF";
             this.stmas_dbf = MainForm.LoadStmasFromDBF(this.main_form.config);
             this.bs = new BindingSource();
             this.bs.DataSource = this.stmas_dbf;
             this.gridControl1.DataSource = this.bs;
+            this.lblTotalSelected.Text = "[รายการที่เลือก : 0/" + this.stmas_dbf.Count + "]";
 
             this.splashScreenManager1.CloseWaitForm();
         }
@@ -53,6 +56,11 @@ namespace SoImporter.SubForm
 
             StmasImportProgressDialog import = new StmasImportProgressDialog(this.main_form, stmas);
             import.ShowDialog();
+        }
+
+        private void gridViewStmas_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
+        {
+            this.lblTotalSelected.Text = "[รายการที่เลือก : " + ((GridView)sender).SelectedRowsCount.ToString() + "/" + this.stmas_dbf.Count + "]";
         }
     }
 }

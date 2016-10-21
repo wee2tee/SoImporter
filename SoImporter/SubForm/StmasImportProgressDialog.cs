@@ -168,8 +168,11 @@ namespace SoImporter.SubForm
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (this.work.WorkerSupportsCancellation)
-                this.work.CancelAsync();
+            if(MessageBox.Show("ท่านต้องการหยุดการนำเข้าข้อมูล ใช่หรือไม่?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                if (this.work.WorkerSupportsCancellation)
+                    this.work.CancelAsync();
+            }
         }
     }
 }

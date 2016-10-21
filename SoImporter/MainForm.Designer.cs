@@ -224,11 +224,14 @@
             this.col_CustAddr,
             this.col_CustTelFax,
             this.colTaxId});
+            this.gridView2.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridView2.GridControl = this.gridControl1;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsBehavior.Editable = false;
             this.gridView2.OptionsBehavior.ReadOnly = true;
             this.gridView2.OptionsDetail.AllowZoomDetail = false;
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridView2.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridView2.OptionsView.ShowGroupPanel = false;
             this.gridView2.ViewCaption = "รายละเอียดลูกค้า";
             // 
@@ -370,16 +373,21 @@
             this.colDealerType,
             this.colDealerCode,
             this.colFlgVat});
+            this.gridViewPO.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gridViewPO.GridControl = this.gridControl1;
             this.gridViewPO.Name = "gridViewPO";
             this.gridViewPO.OptionsBehavior.Editable = false;
             this.gridViewPO.OptionsBehavior.ReadOnly = true;
+            this.gridViewPO.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewPO.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridViewPO.OptionsSelection.MultiSelect = true;
             this.gridViewPO.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CheckBoxRowSelect;
             this.gridViewPO.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.True;
             this.gridViewPO.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
             this.gridViewPO.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewPO_RowCellClick);
+            this.gridViewPO.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView_CustomDrawCell);
             this.gridViewPO.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewPO_SelectionChanged);
+            this.gridViewPO.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gridViewPO_MouseMove);
             // 
             // colId
             // 
@@ -956,10 +964,13 @@
             this.gc2_DlvDat1,
             this.gc2_DlvDat2,
             this.gc2_ViewAttachment});
+            this.gridViewSO_PO.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridViewSO_PO.GridControl = this.gridControl2;
             this.gridViewSO_PO.Name = "gridViewSO_PO";
             this.gridViewSO_PO.OptionsBehavior.Editable = false;
             this.gridViewSO_PO.OptionsBehavior.ReadOnly = true;
+            this.gridViewSO_PO.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewSO_PO.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridViewSO_PO.OptionsView.ShowGroupPanel = false;
             this.gridViewSO_PO.ViewCaption = "รายการสินค้า";
             this.gridViewSO_PO.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewSO_PO_RowCellClick);
@@ -1124,14 +1135,18 @@
             this.gridColumn21,
             this.gc2_Iv,
             this.gc2_Print});
+            this.gridViewSO.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gridViewSO.GridControl = this.gridControl2;
             this.gridViewSO.Name = "gridViewSO";
             this.gridViewSO.OptionsBehavior.Editable = false;
             this.gridViewSO.OptionsBehavior.ReadOnly = true;
+            this.gridViewSO.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewSO.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridViewSO.OptionsSelection.MultiSelect = true;
             this.gridViewSO.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewSO.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
             this.gridViewSO.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewSO_RowCellClick);
+            this.gridViewSO.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView_CustomDrawCell);
             this.gridViewSO.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewSO_SelectionChanged);
             // 
             // gc2_SoNum
@@ -1295,6 +1310,7 @@
             this.gc2_Print.MaxWidth = 50;
             this.gc2_Print.MinWidth = 50;
             this.gc2_Print.Name = "gc2_Print";
+            this.gc2_Print.OptionsColumn.AllowFocus = false;
             this.gc2_Print.Visible = true;
             this.gc2_Print.VisibleIndex = 10;
             this.gc2_Print.Width = 50;
@@ -1321,11 +1337,14 @@
             this.gridColumn10,
             this.gridColumn11,
             this.gridColumn12});
+            this.gridViewSO_PO_CUST.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridViewSO_PO_CUST.GridControl = this.gridControl2;
             this.gridViewSO_PO_CUST.Name = "gridViewSO_PO_CUST";
             this.gridViewSO_PO_CUST.OptionsBehavior.Editable = false;
             this.gridViewSO_PO_CUST.OptionsBehavior.ReadOnly = true;
             this.gridViewSO_PO_CUST.OptionsDetail.AllowZoomDetail = false;
+            this.gridViewSO_PO_CUST.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewSO_PO_CUST.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridViewSO_PO_CUST.OptionsView.ShowGroupPanel = false;
             this.gridViewSO_PO_CUST.ViewCaption = "รายละเอียดลูกค้า";
             // 
@@ -1431,10 +1450,13 @@
             this.gridColumn23,
             this.gridColumn24,
             this.gc3_ViewAttachment});
+            this.gridViewIV_PO.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridViewIV_PO.GridControl = this.gridControl3;
             this.gridViewIV_PO.Name = "gridViewIV_PO";
             this.gridViewIV_PO.OptionsBehavior.Editable = false;
             this.gridViewIV_PO.OptionsBehavior.ReadOnly = true;
+            this.gridViewIV_PO.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewIV_PO.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridViewIV_PO.OptionsView.ShowGroupPanel = false;
             this.gridViewIV_PO.ViewCaption = "รายการสินค้า";
             this.gridViewIV_PO.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewIV_PO_RowCellClick);
@@ -1599,14 +1621,18 @@
             this.gridColumn49,
             this.gc3_EmsTrackingNo,
             this.gc3_EmsTracking});
+            this.gridViewIV.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.None;
             this.gridViewIV.GridControl = this.gridControl3;
             this.gridViewIV.Name = "gridViewIV";
             this.gridViewIV.OptionsBehavior.Editable = false;
             this.gridViewIV.OptionsBehavior.ReadOnly = true;
+            this.gridViewIV.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewIV.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridViewIV.OptionsSelection.MultiSelect = true;
             this.gridViewIV.OptionsSelection.ShowCheckBoxSelectorInColumnHeader = DevExpress.Utils.DefaultBoolean.False;
             this.gridViewIV.OptionsSelection.ShowCheckBoxSelectorInGroupRow = DevExpress.Utils.DefaultBoolean.True;
             this.gridViewIV.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridViewIV_RowCellClick);
+            this.gridViewIV.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView_CustomDrawCell);
             this.gridViewIV.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewIV_SelectionChanged);
             // 
             // gc3_IvNum
@@ -1782,11 +1808,14 @@
             this.gridColumn39,
             this.gridColumn40,
             this.gridColumn41});
+            this.gridViewIV_PO_CUST.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             this.gridViewIV_PO_CUST.GridControl = this.gridControl3;
             this.gridViewIV_PO_CUST.Name = "gridViewIV_PO_CUST";
             this.gridViewIV_PO_CUST.OptionsBehavior.Editable = false;
             this.gridViewIV_PO_CUST.OptionsBehavior.ReadOnly = true;
             this.gridViewIV_PO_CUST.OptionsDetail.AllowZoomDetail = false;
+            this.gridViewIV_PO_CUST.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewIV_PO_CUST.OptionsSelection.EnableAppearanceFocusedRow = false;
             this.gridViewIV_PO_CUST.OptionsView.ShowGroupPanel = false;
             this.gridViewIV_PO_CUST.ViewCaption = "รายละเอียดลูกค้า";
             // 

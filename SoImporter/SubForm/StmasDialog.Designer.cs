@@ -288,28 +288,28 @@
             this.barDockControlTop.CausesValidation = false;
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Size = new System.Drawing.Size(732, 44);
+            this.barDockControlTop.Size = new System.Drawing.Size(803, 44);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 464);
-            this.barDockControlBottom.Size = new System.Drawing.Size(732, 23);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 519);
+            this.barDockControlBottom.Size = new System.Drawing.Size(803, 23);
             // 
             // barDockControlLeft
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 44);
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 420);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 475);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(732, 44);
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 420);
+            this.barDockControlRight.Location = new System.Drawing.Point(803, 44);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 475);
             // 
             // barButtonItem8
             // 
@@ -331,7 +331,7 @@
             // 
             // cbStkGrp
             // 
-            this.cbStkGrp.Location = new System.Drawing.Point(501, 41);
+            this.cbStkGrp.Location = new System.Drawing.Point(573, 27);
             this.cbStkGrp.MenuManager = this.barManager1;
             this.cbStkGrp.Name = "cbStkGrp";
             this.cbStkGrp.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -420,7 +420,7 @@
             // labelControl4
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl4.Location = new System.Drawing.Point(432, 44);
+            this.labelControl4.Location = new System.Drawing.Point(504, 30);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(60, 16);
             this.labelControl4.TabIndex = 4;
@@ -429,7 +429,7 @@
             // labelControl5
             // 
             this.labelControl5.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl5.Location = new System.Drawing.Point(446, 69);
+            this.labelControl5.Location = new System.Drawing.Point(518, 55);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(46, 16);
             this.labelControl5.TabIndex = 4;
@@ -437,7 +437,7 @@
             // 
             // cbQucod
             // 
-            this.cbQucod.Location = new System.Drawing.Point(501, 66);
+            this.cbQucod.Location = new System.Drawing.Point(573, 52);
             this.cbQucod.Name = "cbQucod";
             this.cbQucod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cbQucod.Properties.Appearance.Options.UseFont = true;
@@ -463,7 +463,7 @@
             // labelControl6
             // 
             this.labelControl6.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl6.Location = new System.Drawing.Point(424, 119);
+            this.labelControl6.Location = new System.Drawing.Point(496, 105);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(68, 16);
             this.labelControl6.TabIndex = 4;
@@ -472,7 +472,7 @@
             // labelControl7
             // 
             this.labelControl7.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl7.Location = new System.Drawing.Point(424, 144);
+            this.labelControl7.Location = new System.Drawing.Point(496, 130);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(68, 16);
             this.labelControl7.TabIndex = 4;
@@ -481,7 +481,7 @@
             // labelControl8
             // 
             this.labelControl8.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl8.Location = new System.Drawing.Point(424, 169);
+            this.labelControl8.Location = new System.Drawing.Point(496, 155);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(68, 16);
             this.labelControl8.TabIndex = 4;
@@ -490,7 +490,7 @@
             // labelControl9
             // 
             this.labelControl9.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl9.Location = new System.Drawing.Point(424, 194);
+            this.labelControl9.Location = new System.Drawing.Point(496, 180);
             this.labelControl9.Name = "labelControl9";
             this.labelControl9.Size = new System.Drawing.Size(68, 16);
             this.labelControl9.TabIndex = 4;
@@ -553,7 +553,7 @@
             this.panelControl1.Controls.Add(this.labelControl9);
             this.panelControl1.Location = new System.Drawing.Point(12, 145);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(708, 307);
+            this.panelControl1.Size = new System.Drawing.Size(779, 369);
             this.panelControl1.TabIndex = 3;
             // 
             // btnQucod
@@ -563,7 +563,7 @@
             this.btnQucod.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnQucod.Image = ((System.Drawing.Image)(resources.GetObject("btnQucod.Image")));
             this.btnQucod.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnQucod.Location = new System.Drawing.Point(654, 65);
+            this.btnQucod.Location = new System.Drawing.Point(726, 51);
             this.btnQucod.Name = "btnQucod";
             this.btnQucod.Size = new System.Drawing.Size(27, 23);
             this.btnQucod.TabIndex = 20;
@@ -578,7 +578,7 @@
             this.btnStkGrp.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStkGrp.Image = ((System.Drawing.Image)(resources.GetObject("btnStkGrp.Image")));
             this.btnStkGrp.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnStkGrp.Location = new System.Drawing.Point(654, 40);
+            this.btnStkGrp.Location = new System.Drawing.Point(726, 26);
             this.btnStkGrp.Name = "btnStkGrp";
             this.btnStkGrp.Size = new System.Drawing.Size(27, 23);
             this.btnStkGrp.TabIndex = 19;
@@ -588,7 +588,7 @@
             // 
             // txtSellpr5
             // 
-            this.txtSellpr5.Location = new System.Drawing.Point(501, 191);
+            this.txtSellpr5.Location = new System.Drawing.Point(573, 177);
             this.txtSellpr5.Name = "txtSellpr5";
             this.txtSellpr5.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSellpr5.Properties.Appearance.Options.UseFont = true;
@@ -625,7 +625,7 @@
             // 
             // txtSellpr4
             // 
-            this.txtSellpr4.Location = new System.Drawing.Point(501, 166);
+            this.txtSellpr4.Location = new System.Drawing.Point(573, 152);
             this.txtSellpr4.Name = "txtSellpr4";
             this.txtSellpr4.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSellpr4.Properties.Appearance.Options.UseFont = true;
@@ -662,7 +662,7 @@
             // 
             // txtSellpr3
             // 
-            this.txtSellpr3.Location = new System.Drawing.Point(501, 141);
+            this.txtSellpr3.Location = new System.Drawing.Point(573, 127);
             this.txtSellpr3.Name = "txtSellpr3";
             this.txtSellpr3.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSellpr3.Properties.Appearance.Options.UseFont = true;
@@ -699,7 +699,7 @@
             // 
             // txtSellpr2
             // 
-            this.txtSellpr2.Location = new System.Drawing.Point(501, 116);
+            this.txtSellpr2.Location = new System.Drawing.Point(573, 102);
             this.txtSellpr2.Name = "txtSellpr2";
             this.txtSellpr2.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSellpr2.Properties.Appearance.Options.UseFont = true;
@@ -736,7 +736,7 @@
             // 
             // txtSellpr1
             // 
-            this.txtSellpr1.Location = new System.Drawing.Point(501, 91);
+            this.txtSellpr1.Location = new System.Drawing.Point(573, 77);
             this.txtSellpr1.Name = "txtSellpr1";
             this.txtSellpr1.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtSellpr1.Properties.Appearance.Options.UseFont = true;
@@ -776,7 +776,7 @@
             this.btnCancelChangeImg.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnCancelChangeImg.Appearance.Options.UseFont = true;
             this.btnCancelChangeImg.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelChangeImg.Image")));
-            this.btnCancelChangeImg.Location = new System.Drawing.Point(238, 279);
+            this.btnCancelChangeImg.Location = new System.Drawing.Point(310, 341);
             this.btnCancelChangeImg.Name = "btnCancelChangeImg";
             this.btnCancelChangeImg.Size = new System.Drawing.Size(155, 23);
             this.btnCancelChangeImg.TabIndex = 11;
@@ -788,7 +788,7 @@
             this.btnChangeImg.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnChangeImg.Appearance.Options.UseFont = true;
             this.btnChangeImg.Image = ((System.Drawing.Image)(resources.GetObject("btnChangeImg.Image")));
-            this.btnChangeImg.Location = new System.Drawing.Point(126, 279);
+            this.btnChangeImg.Location = new System.Drawing.Point(198, 341);
             this.btnChangeImg.Name = "btnChangeImg";
             this.btnChangeImg.Size = new System.Drawing.Size(107, 23);
             this.btnChangeImg.TabIndex = 10;
@@ -803,13 +803,13 @@
             this.picProductImg.Properties.ReadOnly = true;
             this.picProductImg.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.picProductImg.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.picProductImg.Size = new System.Drawing.Size(380, 263);
+            this.picProductImg.Size = new System.Drawing.Size(452, 324);
             this.picProductImg.TabIndex = 7;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl1.Location = new System.Drawing.Point(424, 94);
+            this.labelControl1.Location = new System.Drawing.Point(496, 80);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(68, 16);
             this.labelControl1.TabIndex = 4;
@@ -824,7 +824,7 @@
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 487);
+            this.ClientSize = new System.Drawing.Size(803, 542);
             this.Controls.Add(this.panelControl1);
             this.Controls.Add(this.txtStkdesEn);
             this.Controls.Add(this.labelControl3);

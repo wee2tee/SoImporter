@@ -68,6 +68,11 @@
             this.txtIvNum.Name = "txtIvNum";
             this.txtIvNum.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtIvNum.Properties.Appearance.Options.UseFont = true;
+            this.txtIvNum.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtIvNum.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.WhiteSmoke;
+            this.txtIvNum.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtIvNum.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtIvNum.Properties.AppearanceDisabled.Options.UseForeColor = true;
             this.txtIvNum.Properties.ReadOnly = true;
             this.txtIvNum.Size = new System.Drawing.Size(102, 22);
             this.txtIvNum.TabIndex = 0;
@@ -115,7 +120,7 @@
             this.panelControl1.Size = new System.Drawing.Size(381, 46);
             this.panelControl1.TabIndex = 1;
             // 
-            // RecEmsTrackingDialog
+            // EmsTrackingDialog
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -132,7 +137,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "RecEmsTrackingDialog";
+            this.Name = "EmsTrackingDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "บันทึกหมายเลข EMS";
             this.Load += new System.EventHandler(this.RecEmsTrackingDialog_Load);
