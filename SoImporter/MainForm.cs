@@ -1107,7 +1107,6 @@ namespace SoImporter
             if (result.Success && result.ReturnValue != null)
             {
                 this.poprit = JsonConvert.DeserializeObject<List<PopritVM>>(result.ReturnValue);
-                Console.WriteLine("... >> poprit.count = " + this.poprit.Count());
 
                 this.bs_po.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_NEW.ToString()).ToList();
                 this.bs_po.ResetBindings(true);
@@ -1117,7 +1116,7 @@ namespace SoImporter
                 this.bs_so.ResetBindings(true);
                 this.gridControl2.DataSource = this.bs_so;
 
-                this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString()).ToArtrnVM().OrderBy(o => o.IvNum).ToList();
+                this.bs_iv.DataSource = this.poprit.Where(p => p.Status == POPR_STATUS.PO_INVOICED.ToString() || p.Status == POPR_STATUS.PO_DELIVERED.ToString()).ToArtrnVM().OrderBy(o => o.IvNum).ToList();
                 this.bs_iv.ResetBindings(true);
                 this.gridControl3.DataSource = this.bs_iv;
             }
@@ -1127,16 +1126,6 @@ namespace SoImporter
             }
             this.splashScreenManager1.CloseWaitForm();
         }
-
-        //private List<PopritVM> PreparingOesoDataToDisplay(List<PopritVM> poprit)
-        //{
-        //    List<PopritVM> group_by_sonum = new List<PopritVM>();
-        //    foreach (var item in poprit.Where(p => p.SoNum != null).GroupBy(p => p.SoNum.Substring(0, 12).Trim()))
-        //    {
-        //        group_by_sonum.Add(item.First());
-        //    }
-        //    return group_by_sonum;
-        //}
 
         private void gridViewPO_RowCellClick(object sender, RowCellClickEventArgs e)
         {
@@ -1404,29 +1393,5 @@ namespace SoImporter
                 //e.Handled = true;
             }
         }
-
-        //private void gridViewSO_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
-        //{
-        //    GridViewInfo info = (GridViewInfo)((GridView)sender).GetViewInfo();
-        //    GridRowInfo row_info = info.GetGridRowInfo(e.FocusedRowHandle);
-        //    int width = row_info.ViewInfo.ViewRects.Rows.Width;
-        //    int height = row_info.ViewInfo.ViewRects.Rows.Height;
-        //    int x = row_info.ViewInfo.ViewRects.Rows.X;
-        //    int y = row_info.ViewInfo.ViewRects.Rows.Y;
-
-        //}
-
-        //private void gridViewSO_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    GridHitInfo hi = ((GridView)sender).CalcHitInfo(new Point(e.X, e.Y));
-        //    if (hi.InRowCell && (hi.Column.Name == this.gc2_Iv.Name || hi.Column.Name == this.gc2_Print.Name))
-        //    {
-        //        this.Cursor = Cursors.Hand;
-        //    }
-        //    else
-        //    {
-        //        this.Cursor = Cursors.Default;
-        //    }
-        //}
     }
 }
