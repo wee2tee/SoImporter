@@ -61,7 +61,7 @@ namespace SoImporter.Model
         {
             get
             {
-                return this.DealerCode + " / " + this.DealerPrename + " " + this.DealerName;
+                return this.DealerCode.Trim() + " / " + this.DealerPrename.Trim() + " " + this.DealerName.Trim();
             }
         }
 
@@ -77,7 +77,7 @@ namespace SoImporter.Model
         {
             get
             {
-                return this.CustPrename + " " + this.CustName;
+                return this.CustPrename.Trim() + " " + this.CustName.Trim();
             }
         }
 
@@ -85,7 +85,7 @@ namespace SoImporter.Model
         {
             get
             {
-                return this.CustAddr01 + " " + this.CustAddr02 + " " + this.CustAddr03 + " " + this.CustZipCod;
+                return this.CustAddr01.Trim() + " " + this.CustAddr02.Trim() + " " + this.CustAddr03.Trim() + " " + this.CustZipCod.Trim();
             }
         }
 
@@ -105,7 +105,7 @@ namespace SoImporter.Model
         {
             get
             {
-                return this.PoNum + " (" + this.PoDat.ToString("dd/MM/yy", CultureInfo.GetCultureInfo("th-TH")) + ")";
+                return this.PoNum.Trim() + " (" + this.PoDat.ToString("dd/MM/yy", CultureInfo.GetCultureInfo("th-TH")) + ")";
             }
         }
 
@@ -113,7 +113,7 @@ namespace SoImporter.Model
         {
             get
             {
-                return this.StkCod + " / " + this.StkDes;
+                return this.StkCod.Trim() + " / " + this.StkDes.Trim();
             }
         }
 
@@ -148,7 +148,7 @@ namespace SoImporter.Model
                 if (this.RemarkPO == null)
                     return null;
 
-                return "หมายเหตุ : " + this.RemarkPO;
+                return "หมายเหตุ : " + this.RemarkPO.Trim();
             }
         }
     }

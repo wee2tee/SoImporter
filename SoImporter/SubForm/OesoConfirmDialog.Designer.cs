@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.txtRemark = new DevExpress.XtraEditors.TextEdit();
             this.btnOK = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnArmas = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.cbLocCod = new DevExpress.XtraEditors.ComboBoxEdit();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SoImporter.SubForm.WaitForm), true, true);
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).BeginInit();
+            this.cbYouref = new DevExpress.XtraEditors.ComboBoxEdit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocCod.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbYouref.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -50,22 +50,12 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "หมายเหตุเพิ่มเติม";
             // 
-            // txtRemark
-            // 
-            this.txtRemark.Location = new System.Drawing.Point(118, 20);
-            this.txtRemark.Name = "txtRemark";
-            this.txtRemark.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.txtRemark.Properties.Appearance.Options.UseFont = true;
-            this.txtRemark.Size = new System.Drawing.Size(379, 22);
-            this.txtRemark.TabIndex = 0;
-            this.txtRemark.EditValueChanged += new System.EventHandler(this.txtRemark_EditValueChanged);
-            // 
             // btnOK
             // 
             this.btnOK.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnOK.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnOK.Appearance.Options.UseFont = true;
-            this.btnOK.Location = new System.Drawing.Point(164, 129);
+            this.btnOK.Location = new System.Drawing.Point(164, 117);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(91, 28);
             this.btnOK.TabIndex = 3;
@@ -78,7 +68,7 @@
             this.btnCancel.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.btnCancel.Appearance.Options.UseFont = true;
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(261, 129);
+            this.btnCancel.Location = new System.Drawing.Point(261, 117);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 28);
             this.btnCancel.TabIndex = 4;
@@ -99,7 +89,7 @@
             // labelControl2
             // 
             this.labelControl2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
-            this.labelControl2.Location = new System.Drawing.Point(23, 91);
+            this.labelControl2.Location = new System.Drawing.Point(23, 84);
             this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(89, 16);
@@ -108,7 +98,7 @@
             // 
             // cbLocCod
             // 
-            this.cbLocCod.Location = new System.Drawing.Point(118, 88);
+            this.cbLocCod.Location = new System.Drawing.Point(118, 81);
             this.cbLocCod.Name = "cbLocCod";
             this.cbLocCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.cbLocCod.Properties.Appearance.Options.UseFont = true;
@@ -122,17 +112,29 @@
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
+            // cbYouref
+            // 
+            this.cbYouref.Location = new System.Drawing.Point(118, 20);
+            this.cbYouref.Name = "cbYouref";
+            this.cbYouref.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
+            this.cbYouref.Properties.Appearance.Options.UseFont = true;
+            this.cbYouref.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbYouref.Size = new System.Drawing.Size(379, 22);
+            this.cbYouref.TabIndex = 6;
+            this.cbYouref.TextChanged += new System.EventHandler(this.cbYouref_TextChanged);
+            // 
             // OesoConfirmDialog
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 173);
+            this.ClientSize = new System.Drawing.Size(514, 160);
+            this.Controls.Add(this.cbYouref);
             this.Controls.Add(this.cbLocCod);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnArmas);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.txtRemark);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
@@ -145,8 +147,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "แปลงเป็นใบสั่งขาย";
             this.Load += new System.EventHandler(this.OesoConfirmDialog_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.txtRemark.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbLocCod.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cbYouref.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,12 +157,12 @@
         #endregion
 
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraEditors.TextEdit txtRemark;
         private DevExpress.XtraEditors.SimpleButton btnOK;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnArmas;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.ComboBoxEdit cbLocCod;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraEditors.ComboBoxEdit cbYouref;
     }
 }

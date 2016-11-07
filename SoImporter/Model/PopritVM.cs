@@ -53,6 +53,7 @@ namespace SoImporter.Model
         public string DealerCode { get; set; }
         public string DealerPreName { get; set; }
         public string DealerName { get; set; }
+        public string DealerEmail { get; set; }
         public int? DealerType { get; set; }
         public string _DealerType
         {

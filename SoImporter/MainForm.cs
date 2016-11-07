@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using SoImporter.SubForm;
 using System.IO;
 using System.Net;
+using System.Net.Mail;
 using SoImporter.MiscClass;
 using SoImporter.Model;
 using Newtonsoft.Json;
@@ -101,7 +102,7 @@ namespace SoImporter
             try
             {
                 result = APIClient.GET(this.config.ApiUrl + "poprit/GetOrderByStatus", this.config.ApiKey, "&status=" + POPR_STATUS.PO_NEW.ToString());
-
+                
                 List<PopritVM> poprit = JsonConvert.DeserializeObject<List<PopritVM>>(result.ReturnValue);
                 return poprit;
             }
@@ -173,6 +174,8 @@ namespace SoImporter
         {
             this.splashScreenManager1.ShowWaitForm();
 
+            string email_to = (string)this.gridViewPO.GetRowCellValue(this.gridViewPO.GetSelectedRows().First(), "DealerEmail");
+
             Oeso so = new Oeso();
             List<Oesoit> soit = new List<Oesoit>();
             if (this.PrepareInsertItem(so, soit) == false)
@@ -189,6 +192,8 @@ namespace SoImporter
 
             try
             {
+                List<string> completed_ponum = new List<string>();
+
                 if (InsertOeso(this.config, so))
                 {
                     if(UpdateIsrunDocnum(this.config, so.sonum))
@@ -201,15 +206,25 @@ namespace SoImporter
                                 {
                                     if(this.UpdateSoNum2Po(item.poprit_id, item.sonum.PadRight(12) + "-" + item.seqnum.PadLeft(3), item.sodat, this.logedin_user.Id, so.youref) == true)
                                     {
+                                        completed_ponum.Add(item.ponum);
+                                        //string str_command = this.config.ExpressDataPath + @"\ adm32 -a " + this.config.ExpressDataPath;
+                                        //System.Diagnostics.Process.Start("CMD.exe", str_command);
+
                                         continue;
                                     }
                                 }
                             }
                         }
 
+                        string all_ponum = string.Empty;
+                        foreach (string po_num in completed_ponum)
+                        {
+                            all_ponum += po_num == completed_ponum.First() ? po_num : "," + po_num;
+                        }
+                        EMail.Send(email_to, "ยืนยันคำสั่งซื้อหมายเลข " + all_ponum, "เราได้รับคำสั่งซื้อหมายเลข " + all_ponum + " ของคุณแล้ว, คุณจะได้รับอีเมล์อีกครั้งเมื่อสินค้าของคุณได้ถูกจัดส่ง");
+
                         if (MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข " + so.sonum + " เรียบร้อย, ต้องการสั่งพิมพ์ใบสั่งขายนี้เลยหรือไม่?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            //this.PrintSo(so.sonum, so.sodat, this.PreparingSelectedItem());
                             List<PrintSoVM> print_data = this.LoadPrintItemFromServer(so.sonum).ToPrintModel();
                             if(print_data == null)
                             {
@@ -224,7 +239,6 @@ namespace SoImporter
                         if (this.splashScreenManager1.IsSplashFormVisible)
                             this.splashScreenManager1.CloseWaitForm();
                         this.btnRetrieveData.PerformClick();
-                        //MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข \"" + so.sonum + "\" เรียบร้อย");
                     }
                 }
             }
@@ -316,7 +330,7 @@ namespace SoImporter
                 return false;
             }
 
-            string next_sonum = this.config.DocPrefix + isrun.Where(i => i.doctyp == this.config.DocPrefix).FirstOrDefault().docnum.Trim();
+            string next_sonum = this.config.DocPrefix + isrun.Where(i => i.prefix == this.config.DocPrefix).FirstOrDefault().docnum.Trim();
             if (LoadOesoFromDBF(this.config).Where(s => s.sonum.Trim() == next_sonum).Count() > 0)
             {
                 do
@@ -872,6 +886,10 @@ namespace SoImporter
         public static bool InsertArmas(ConfigValue config, Armas armas)
         {
             List<Armas> a = LoadArmasFromDBF(config);
+
+            Armas last_cus = a.Where(ar => ar.cuscod.Trim().Substring(0,3) == "*X-").OrderByDescending(ar => ar.cuscod.Trim()).FirstOrDefault();
+            armas.cuscod = last_cus == null ? "*X-0000001" : "*X-" + (Convert.ToInt32(last_cus.cuscod.Trim().Substring(3, last_cus.cuscod.Trim().Length - 3)) + 1).ToString().FillZeroLeft(7);
+
             if (a.Where(ar => ar.cuscod.Trim() == armas.cuscod.Trim()).FirstOrDefault() != null)
             {
                 MessageBox.Show("รหัส \"" + armas.cuscod + "\" นี้มีอยู่แล้ว", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -1042,9 +1060,12 @@ namespace SoImporter
             }
             else
             {
-                MessageBox.Show(put.ErrorMessage.RemoveBeginAndEndQuote());
+                if(MessageBox.Show(put.ErrorMessage.RemoveBeginAndEndQuote(), "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return this.UpdateEmsTracking(ivnum, ems_tracking_number);
+                }
+                return false;
             }
-            return false;
         }
 
         private void gridViewPO_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
@@ -1320,6 +1341,14 @@ namespace SoImporter
             EmsTrackingDialog rec = new EmsTrackingDialog(this, ivnum, ems);
             if (rec.ShowDialog() == DialogResult.OK)
             {
+                string mail_to = this.poprit.Where(p => p.IvNum == ivnum).First().DealerEmail;
+                string po_num = string.Empty;
+                foreach (PopritVM po in this.poprit.Where(p => p.IvNum == ivnum))
+                {
+                    po_num += po.PoNum == this.poprit.Where(p => p.IvNum == ivnum).First().PoNum ? po.PoNum : ", " + po.PoNum;
+                }
+                EMail.Send(mail_to, "สินค้าตามคำสั่งซื้อหมายเลข " + po_num + " ได้รับการจัดส่งเรียบร้อยแล้ว", "สินค้าตามคำสั่งซื้อหมายเลข " + po_num + " ได้รับการจัดส่งเรียบร้อยแล้ว, หมายเลข EMS Tracking : " + rec.ems);
+
                 this.btnRetrieveData.PerformClick();
             }
         }
@@ -1392,6 +1421,12 @@ namespace SoImporter
                 }
                 //e.Handled = true;
             }
+        }
+
+        private void btnYourefAr_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            IstabDialog dlg = new IstabDialog(this, ISTAB_TABTYP.YOUREF_AR);
+            dlg.ShowDialog();
         }
     }
 }

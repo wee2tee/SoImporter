@@ -130,6 +130,7 @@
     <Compile Include="MiscClass\APIClient.cs" />
     <Compile Include="MiscClass\ConfigValue.cs" />
     <Compile Include="MiscClass\Helper.cs" />
+    <Compile Include="MiscClass\EMail.cs" />
     <Compile Include="Model\ApiAccessibilities.cs" />
     <Compile Include="Model\Armas.cs" />
     <Compile Include="Model\Artrnrm.cs" />

@@ -81,6 +81,27 @@ namespace SoImporter.SubForm
             }
         }
 
+        public static List<IstabVM> GetIstabList(MainForm main_form, ISTAB_TABTYP tabtyp)
+        {
+            APIResult get = APIClient.GET(main_form.config.ApiUrl + "Istab/GetIstab", main_form.config.ApiKey, "&tabtyp=" + ((int)tabtyp).ToString());
+            if (get.Success)
+            {
+                List<IstabVM> istab = JsonConvert.DeserializeObject<List<IstabVM>>(get.ReturnValue);
+                return istab;
+            }
+            else
+            {
+                if (MessageBox.Show("", "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return GetIstabList(main_form, tabtyp);
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         private void gridViewIstab_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             if (((GridView)sender).GetRow(e.FocusedRowHandle) == null)

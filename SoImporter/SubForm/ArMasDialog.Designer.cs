@@ -116,10 +116,17 @@
             // 
             // txtCusCod
             // 
+            this.txtCusCod.EditValue = "*New*";
+            this.txtCusCod.Enabled = false;
             this.txtCusCod.Location = new System.Drawing.Point(82, 14);
             this.txtCusCod.Name = "txtCusCod";
             this.txtCusCod.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(222)));
             this.txtCusCod.Properties.Appearance.Options.UseFont = true;
+            this.txtCusCod.Properties.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCusCod.Properties.AppearanceDisabled.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.txtCusCod.Properties.AppearanceDisabled.ForeColor = System.Drawing.Color.Black;
+            this.txtCusCod.Properties.AppearanceDisabled.Options.UseBackColor = true;
+            this.txtCusCod.Properties.AppearanceDisabled.Options.UseForeColor = true;
             this.txtCusCod.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCusCod.Properties.MaxLength = 10;
             this.txtCusCod.Size = new System.Drawing.Size(105, 22);

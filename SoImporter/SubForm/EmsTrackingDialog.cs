@@ -16,7 +16,7 @@ namespace SoImporter.SubForm
     {
         private MainForm main_form;
         private string ivnum;
-        private string ems;
+        public string ems;
 
         public EmsTrackingDialog(MainForm main_form, string ivnum, string ems_tracking_number = "")
         {

@@ -47,7 +47,8 @@ namespace SoImporter.MiscClass
         LOCCOD = 21,
         STKGRP = 22,
         DLVBY = 41,
-        DEPCOD = 50
+        DEPCOD = 50,
+        YOUREF_AR = 12
     }
 
     public enum STKTYP : int
@@ -375,6 +376,8 @@ namespace SoImporter.MiscClass
                     return "ขนส่งโดย";
                 case ISTAB_TABTYP.DEPCOD:
                     return "แผนก";
+                case ISTAB_TABTYP.YOUREF_AR:
+                    return "อ้างอิง/หมายเหตุ ใบสั่งขาย";
                 default:
                     return "";
             }
@@ -617,6 +620,17 @@ namespace SoImporter.MiscClass
             }
 
             return print_model;
+        }
+
+        public static List<string> ToTypdesStringValue(this List<IstabVM> istab)
+        {
+            List<string> list = new List<string>();
+            foreach (IstabVM item in istab)
+            {
+                list.Add(item.TypDesTh);
+            }
+
+            return list;
         }
     }
 }

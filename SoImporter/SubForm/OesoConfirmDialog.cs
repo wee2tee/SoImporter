@@ -62,12 +62,14 @@ namespace SoImporter.SubForm
                 this.oeso.cuscod = this.poprit.DealerCode;
             }
 
+            this.cbYouref.AddItem<string>(IstabDialog.GetIstabList(this.main_form, ISTAB_TABTYP.YOUREF_AR).ToTypdesStringValue(), true);
+
             this.splashScreenManager1.CloseWaitForm();
         }
 
-        private void txtRemark_EditValueChanged(object sender, EventArgs e)
+        private void cbYouref_TextChanged(object sender, EventArgs e)
         {
-            this.oeso.youref = ((TextEdit)sender).Text;
+            this.oeso.youref = ((ComboBoxEdit)sender).Text;
         }
 
         private void btnArmas_Click(object sender, EventArgs e)

@@ -49,6 +49,7 @@
             this.colTaxId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridViewPO = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colDealerEmail = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoNum = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSoDat = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -184,6 +185,8 @@
             this.tabPagePo = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageSo = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageIv = new DevExpress.XtraTab.XtraTabPage();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.btnYourefAr = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPO)).BeginInit();
@@ -349,6 +352,7 @@
             // gridViewPO
             // 
             this.gridViewPO.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colDealerEmail,
             this.colId,
             this.colSoNum,
             this.colSoDat,
@@ -388,6 +392,12 @@
             this.gridViewPO.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView_CustomDrawCell);
             this.gridViewPO.SelectionChanged += new DevExpress.Data.SelectionChangedEventHandler(this.gridViewPO_SelectionChanged);
             this.gridViewPO.MouseMove += new System.Windows.Forms.MouseEventHandler(this.gridViewPO_MouseMove);
+            // 
+            // colDealerEmail
+            // 
+            this.colDealerEmail.Caption = "gridColumn29";
+            this.colDealerEmail.FieldName = "DealerEmail";
+            this.colDealerEmail.Name = "colDealerEmail";
             // 
             // colId
             // 
@@ -678,9 +688,10 @@
             this.btnDlvProfile,
             this.btnStpri,
             this.btnStkGrp,
-            this.btnStmas});
+            this.btnStmas,
+            this.btnYourefAr});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 28;
+            this.ribbonControl1.MaxItemId = 30;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -887,7 +898,8 @@
             // 
             this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup3,
-            this.ribbonPageGroup4});
+            this.ribbonPageGroup4,
+            this.ribbonPageGroup5});
             this.ribbonPage3.Name = "ribbonPage3";
             this.ribbonPage3.Text = "ข้อมูลบนเซิร์ฟเวอร์";
             // 
@@ -1948,6 +1960,20 @@
             this.tabPageIv.Size = new System.Drawing.Size(1138, 329);
             this.tabPageIv.Text = "3. เปิดอินวอยซ์แล้ว";
             // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.btnYourefAr);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "รายการข้อความ";
+            // 
+            // btnYourefAr
+            // 
+            this.btnYourefAr.Caption = "อ้างอิง / หมายเหตุ ใบสั่งขาย";
+            this.btnYourefAr.Id = 29;
+            this.btnYourefAr.Name = "btnYourefAr";
+            this.btnYourefAr.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.btnYourefAr.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnYourefAr_ItemClick);
+            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -2146,6 +2172,9 @@
         private DevExpress.XtraBars.BarButtonItem btnStmas;
         private DevExpress.XtraGrid.Columns.GridColumn gc2_Print;
         private DevExpress.XtraGrid.Columns.GridColumn gc3_EmsTracking;
+        private DevExpress.XtraGrid.Columns.GridColumn colDealerEmail;
+        private DevExpress.XtraBars.BarButtonItem btnYourefAr;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
     }
 }
 
