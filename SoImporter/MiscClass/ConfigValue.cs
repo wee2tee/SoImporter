@@ -9,6 +9,7 @@ namespace SoImporter.MiscClass
 {
     public class ConfigValue
     {
+        public string ExpressProgramPath { get; set; }
         public string ExpressDataPath { get; set; }
         public string DocPrefix { get; set; }
         public string ApiUrl { get; set; }
@@ -24,6 +25,7 @@ namespace SoImporter.MiscClass
             {
                 return new ConfigValue()
                 {
+                    ExpressProgramPath = string.Empty,
                     ExpressDataPath = string.Empty,
                     DocPrefix = string.Empty,
                     ApiUrl = string.Empty,
@@ -43,6 +45,12 @@ namespace SoImporter.MiscClass
                             string line;
                             while ((line = sr.ReadLine()) != null)
                             {
+                                if (line.Contains("EXPRESS_PROGRAM_PATH:"))
+                                {
+                                    cfg.ExpressProgramPath = line.Replace("EXPRESS_PROGRAM_PATH:", "").Replace("|", "").Trim();
+                                    continue;
+                                }
+
                                 if (line.Contains("EXPRESS_DATA_PATH:"))
                                 {
                                     cfg.ExpressDataPath = line.Replace("EXPRESS_DATA_PATH:", "").Replace("|", "").Trim();
@@ -80,6 +88,7 @@ namespace SoImporter.MiscClass
                     MessageBox.Show(ex.Message);
                     return new ConfigValue()
                     {
+                        ExpressProgramPath = string.Empty,
                         ExpressDataPath = string.Empty,
                         DocPrefix = string.Empty,
                         ApiUrl = string.Empty,
@@ -102,6 +111,7 @@ namespace SoImporter.MiscClass
 
                     using (StreamWriter sw = new StreamWriter(cfg_file, false, Encoding.GetEncoding("utf-8")))
                     {
+                        sw.WriteLine("EXPRESS_PROGRAM_PATH: | " + this.ExpressProgramPath);
                         sw.WriteLine("EXPRESS_DATA_PATH: | " + this.ExpressDataPath);
                         sw.WriteLine("DOC_PREFIX: | " + this.DocPrefix);
                         sw.WriteLine("API_URL: | " + this.ApiUrl);

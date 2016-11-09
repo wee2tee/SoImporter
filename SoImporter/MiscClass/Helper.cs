@@ -11,6 +11,65 @@ using DevExpress.XtraEditors;
 
 namespace SoImporter.MiscClass
 {
+    public enum EXPRESS_TABLE_NAME : int
+    {
+        APBAL = 1,
+        APBIL = 2,
+        APMAS = 3,
+        APRCPCQ = 4,
+        APRCPIT = 5,
+        APTRN = 6,
+        ARBAL = 7,
+        ARBIL = 8,
+        ARMAS = 9,
+        ARRCPCQ = 10,
+        ARRCPIT = 11,
+        ARSHIP = 12,
+        ARTRN = 13,
+        ARTRNRM = 14,
+        BKMAS = 15,
+        BKTRN = 16,
+        BKTRNIT = 17,
+        FAMAS = 18,
+        GLACC = 19,
+        GLBAL = 20,
+        GLBUD = 21,
+        GLINV = 22,
+        GLJNL = 23,
+        GLJNLIT = 24,
+        GLPTT = 25,
+        GLPTTIT = 26,
+        GLREP = 27,
+        GLREPIT = 28,
+        GLTPL = 29,
+        GLTPLIT = 30,
+        ISACC = 31,
+        ISFIXCOD = 32,
+        ISREP = 33,
+        ISRUN = 34,
+        ISSN = 35,
+        ISSNIT = 36,
+        ISTAB = 37,
+        ISTAX = 38,
+        ISVAT = 39,
+        JBLIST = 40,
+        JBMAS = 41,
+        OESLM = 42,
+        OESO = 43,
+        OESOIT = 44,
+        POPR = 45,
+        POPRIT = 46,
+        STBOM = 47,
+        STCOD = 48,
+        STCRD = 49,
+        STLOC = 50,
+        STMAS = 51,
+        STMIN = 52,
+        STPRI = 53,
+        STTAK = 54,
+        STTRN = 55,
+    }
+
     public enum DEALER_TYPE : int
     {
         ไม่ระบุ = 0,
@@ -110,6 +169,17 @@ namespace SoImporter.MiscClass
         public override string ToString()
         {
             return this.Value + " : " + this.Desc;
+        }
+    }
+
+    public class ExpressTableName
+    {
+        public string seq { get; set; }
+        public string name { get; set; }
+
+        public override string ToString()
+        {
+            return this.name;
         }
     }
 
@@ -437,6 +507,20 @@ namespace SoImporter.MiscClass
                 });
             }
             return d;
+        }
+
+        public static List<ExpressTableName> GetExpressTableName(this Object obj)
+        {
+            List<ExpressTableName> l = new List<ExpressTableName>();
+            foreach (var item in Enum.GetValues(typeof(EXPRESS_TABLE_NAME)))
+            {
+                l.Add(new ExpressTableName
+                {
+                    seq = ((int)item).ToString(),
+                    name = item.ToString() + ".DBF"
+                });
+            }
+            return l;
         }
 
         public static void AddItem<T>(this ComboBoxEdit combobox, List<T> list_object, bool clear_exist_before = false)

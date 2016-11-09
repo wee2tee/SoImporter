@@ -172,7 +172,7 @@
             this.MinimizeBox = false;
             this.Name = "RecIvNoDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "บันทึกหมายเลขอินวอยซ์";
+            this.Text = "ทำเครื่องหมายว่า \"เปิดอินวอยซ์แล้ว\"";
             this.Load += new System.EventHandler(this.RecIvNoDialog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.txtSoNum.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtIvNum.Properties)).EndInit();

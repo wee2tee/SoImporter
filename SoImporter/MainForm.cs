@@ -23,6 +23,7 @@ using SoImporter.Report;
 using DevExpress.XtraReports.UI;
 using DBFHelper;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
+using System.Diagnostics;
 
 namespace SoImporter
 {
@@ -118,10 +119,11 @@ namespace SoImporter
 
         private void btnDataPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DataPathDialog dlg = new DataPathDialog(this, this.config.ExpressDataPath, this.config.DocPrefix);
+            DataPathDialog dlg = new DataPathDialog(this, this.config.ExpressProgramPath, this.config.ExpressDataPath, this.config.DocPrefix);
             if(dlg.ShowDialog() == DialogResult.OK)
             {
-                this.config.ExpressDataPath = dlg.selected_path;
+                this.config.ExpressProgramPath = dlg.selected_program_path;
+                this.config.ExpressDataPath = dlg.selected_data_path;
                 this.config.DocPrefix = dlg.selected_doc;
                 this.config.Save();
                 this.lblDataPath.Caption = (this.config.ExpressDataPath.Trim().Length == 0 ? "[...]" : "[ " + this.config.ExpressDataPath + " ]");
@@ -207,13 +209,37 @@ namespace SoImporter
                                     if(this.UpdateSoNum2Po(item.poprit_id, item.sonum.PadRight(12) + "-" + item.seqnum.PadLeft(3), item.sodat, this.logedin_user.Id, so.youref) == true)
                                     {
                                         completed_ponum.Add(item.ponum);
-                                        //string str_command = this.config.ExpressDataPath + @"\ adm32 -a " + this.config.ExpressDataPath;
-                                        //System.Diagnostics.Process.Start("CMD.exe", str_command);
-
                                         continue;
                                     }
                                 }
                             }
+                        }
+
+                        //this.ReIndex("OESO.DBF");
+                        //this.ReIndex("OESOIT.DBF");
+                        //this.ReIndex("ARMAS.DBF");
+                        ProcessResult p_result = this.ReIndex("OESO.DBF");
+                        if (p_result.Success)
+                        {
+                            MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            p_result = this.ReIndex("OESOIT.DBF");
+                            if (p_result.Success)
+                            {
+                                MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                p_result = this.ReIndex("ARMAS.DBF");
+                                if (!p_result.Success)
+                                {
+                                    MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                         string all_ponum = string.Empty;
@@ -238,6 +264,7 @@ namespace SoImporter
 
                         if (this.splashScreenManager1.IsSplashFormVisible)
                             this.splashScreenManager1.CloseWaitForm();
+
                         this.btnRetrieveData.PerformClick();
                     }
                 }
@@ -265,6 +292,49 @@ namespace SoImporter
             };
 
             return poprit;
+        }
+
+        private ProcessResult ReIndex(string table_name)
+        {
+            Process p = new Process();
+            ProcessStartInfo info = new ProcessStartInfo();
+            info.FileName = "cmd.exe";
+            info.RedirectStandardInput = true;
+            info.UseShellExecute = false;
+            info.RedirectStandardOutput = true;
+            info.CreateNoWindow = true;
+            //info.WorkingDirectory = this.config.ExpressProgramPath;
+
+            p.StartInfo = info;
+            p.Start();
+
+            try
+            {
+                ExpressTableName express_tb = this.GetExpressTableName().Where(ex => ex.name.ToLower() == table_name.ToLower()).FirstOrDefault();
+
+                if (express_tb == null) // unknown table
+                    return new ProcessResult() { Success = false, Output = "Table name is unknown." };
+
+                using (StreamWriter sw = p.StandardInput)
+                {
+                    if (sw.BaseStream.CanWrite)
+                    {
+                        sw.WriteLine(this.config.ExpressProgramPath + @"\adm32 " + this.config.ExpressDataPath);
+                        sw.WriteLine(express_tb.seq);
+                    }
+                }
+                string output = p.StandardOutput.ReadToEnd();
+                p.WaitForExit();
+                return new ProcessResult() { Success = true, Output = output };
+            }
+            catch (Exception ex)
+            {
+                if(MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                {
+                    return this.ReIndex(table_name);
+                }
+                return new ProcessResult() { Success = false, Output = ex.Message };
+            }
         }
 
         private List<PopritVM> LoadPrintItemFromServer(string sonum)
@@ -1081,6 +1151,7 @@ namespace SoImporter
         private void gridViewIV_SelectionChanged(object sender, DevExpress.Data.SelectionChangedEventArgs e)
         {
             this.btnEmsTracking.Enabled = (((GridView)sender).SelectedRowsCount > 0 ? true : false);
+            //int row_handle = ((GridView)sender).selecte
         }
 
         private void btnApiUrl_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -1316,11 +1387,17 @@ namespace SoImporter
 
         private void btnRecIvNum_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int[] row_handle = this.gridViewSO.GetSelectedRows();
-            if (row_handle.Count() == 0 || this.gridViewSO.GetRow(row_handle[0]) == null)
+            //int[] row_handle = this.gridViewSO.GetSelectedRows();
+            //if (row_handle.Count() == 0 || this.gridViewSO.GetRow(row_handle[0]) == null)
+            //    return;
+
+            //string sonum = (string)this.gridViewSO.GetRowCellValue(row_handle[0], gc2_SoNum);
+
+            int row_h = this.gridViewSO.FocusedRowHandle;
+            if (this.gridViewSO.GetRow(row_h) == null)
                 return;
 
-            string sonum = (string)this.gridViewSO.GetRowCellValue(row_handle[0], gc2_SoNum);
+            string sonum = (string)this.gridViewSO.GetRowCellValue(row_h, gc2_SoNum);
 
             RecIvNoDialog rec = new RecIvNoDialog(this, sonum);
             if(rec.ShowDialog() == DialogResult.OK)
@@ -1331,12 +1408,12 @@ namespace SoImporter
 
         private void btnEmsTracking_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            int[] row_handle = this.gridViewIV.GetSelectedRows();
-            if (row_handle.Count() == 0 || this.gridViewIV.GetRow(row_handle[0]) == null)
+            int row_h = this.gridViewIV.FocusedRowHandle;
+            if (this.gridViewIV.GetRow(row_h) == null)
                 return;
 
-            string ivnum = (string)this.gridViewIV.GetRowCellValue(row_handle[0], gc3_IvNum);
-            string ems = (string)this.gridViewIV.GetRowCellValue(row_handle[0], gc3_EmsTracking);
+            string ivnum = (string)this.gridViewIV.GetRowCellValue(row_h, gc3_IvNum);
+            string ems = (string)this.gridViewIV.GetRowCellValue(row_h, gc3_EmsTracking);
 
             EmsTrackingDialog rec = new EmsTrackingDialog(this, ivnum, ems);
             if (rec.ShowDialog() == DialogResult.OK)
@@ -1428,5 +1505,192 @@ namespace SoImporter
             IstabDialog dlg = new IstabDialog(this, ISTAB_TABTYP.YOUREF_AR);
             dlg.ShowDialog();
         }
+
+        private void btnFind_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FindDocDialog find = new FindDocDialog(this);
+            if(find.ShowDialog() == DialogResult.OK)
+            {
+                switch (find.selected_field)
+                {
+                    case FindField.FIELD.PO:
+                        this.FindPO(find.docnum);
+                        break;
+                    case FindField.FIELD.SO:
+                        this.FindSO(find.docnum);
+                        break;
+                    case FindField.FIELD.IV:
+                        this.FindIV(find.docnum);
+                        break;
+                    case FindField.FIELD.EMS:
+                        this.FindEMS(find.docnum);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        private void FindPO(string ponum)
+        {
+            PopritVM poprit = this.poprit.Where(p => p.PoNum.Trim() == ponum.Trim()).FirstOrDefault();
+            if (poprit != null)
+            {
+                if (poprit.Status == POPR_STATUS.PO_NEW.ToString())
+                {
+                    this.xtraTabControl1.SelectedTabPage = this.tabPagePo;
+
+                    for (int i = 0; i < this.gridViewPO.RowCount; i++)
+                    {
+                        int row_handle = this.gridViewPO.GetVisibleRowHandle(i);
+                        if(((string)this.gridViewPO.GetRowCellValue(row_handle, this.colPoNum)).Trim() == ponum.Trim())
+                        {
+                            this.gridViewPO.FocusedRowHandle = row_handle;
+                            break;
+                        }
+                    }
+                    return;
+                }
+                else if(poprit.Status == POPR_STATUS.PO_CONVERTED.ToString())
+                {
+                    this.xtraTabControl1.SelectedTabPage = this.tabPageSo;
+                    string sonum = poprit.SoNum.Substring(0, 12).Trim();
+
+                    for (int i = 0; i < this.gridViewSO.RowCount; i++)
+                    {
+                        int row_handle = this.gridViewSO.GetVisibleRowHandle(i);
+                        if(((string)this.gridViewSO.GetRowCellValue(row_handle, this.gc2_SoNum)).Trim() == sonum)
+                        {
+                            this.gridViewSO.SelectRow(row_handle);
+                            this.gridViewSO.FocusedRowHandle = row_handle;
+                            this.gridViewSO.ExpandMasterRow(row_handle);
+                            break;
+                        }
+                    }
+                    return;
+                }
+                else if (poprit.Status == POPR_STATUS.PO_INVOICED.ToString())
+                {
+                    this.xtraTabControl1.SelectedTabPage = this.tabPageIv;
+                    string ivnum = poprit.IvNum.Trim();
+
+                    for (int i = 0; i < this.gridViewIV.RowCount; i++)
+                    {
+                        int row_handle = this.gridViewIV.GetVisibleRowHandle(i);
+                        if (((string)this.gridViewIV.GetRowCellValue(row_handle, this.gc3_IvNum)).Trim() == ivnum)
+                        {
+                            this.gridViewIV.SelectRow(row_handle);
+                            this.gridViewIV.FocusedRowHandle = row_handle;
+                            this.gridViewIV.ExpandMasterRow(row_handle);
+                            break;
+                        }
+                    }
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("ค้นหา " + ponum + " ไม่พบ", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private void FindSO(string sonum)
+        {
+            PopritVM poprit = this.poprit.Where(p => p.SoNum != null && p.SoNum.Substring(0, 12).Trim() == sonum.Trim()).FirstOrDefault();
+            if(poprit != null)
+            {
+                if (poprit.Status == POPR_STATUS.PO_CONVERTED.ToString())
+                {
+                    this.xtraTabControl1.SelectedTabPage = this.tabPageSo;
+
+                    for (int i = 0; i < this.gridViewSO.RowCount; i++)
+                    {
+                        int row_handle = this.gridViewSO.GetVisibleRowHandle(i);
+                        if (((string)this.gridViewSO.GetRowCellValue(row_handle, this.gc2_SoNum)).Trim() == sonum)
+                        {
+                            this.gridViewSO.SelectRow(row_handle);
+                            this.gridViewSO.FocusedRowHandle = row_handle;
+                            break;
+                        }
+                    }
+                    return;
+                }
+                else if (poprit.Status == POPR_STATUS.PO_INVOICED.ToString())
+                {
+                    this.xtraTabControl1.SelectedTabPage = this.tabPageIv;
+                    string ivnum = poprit.IvNum.Trim();
+
+                    for (int i = 0; i < this.gridViewIV.RowCount; i++)
+                    {
+                        int row_handle = this.gridViewIV.GetVisibleRowHandle(i);
+                        if (((string)this.gridViewIV.GetRowCellValue(row_handle, this.gc3_IvNum)).Trim() == ivnum)
+                        {
+                            this.gridViewIV.SelectRow(row_handle);
+                            this.gridViewIV.FocusedRowHandle = row_handle;
+                            break;
+                        }
+                    }
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("ค้นหา " + sonum + " ไม่พบ", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private void FindIV(string ivnum)
+        {
+            PopritVM poprit = this.poprit.Where(p => p.IvNum != null && p.IvNum.Trim() == ivnum.Trim()).FirstOrDefault();
+            if(poprit != null)
+            {
+                this.xtraTabControl1.SelectedTabPage = this.tabPageIv;
+
+                for (int i = 0; i < this.gridViewIV.RowCount; i++)
+                {
+                    int row_handle = this.gridViewIV.GetVisibleRowHandle(i);
+                    if(((string)this.gridViewIV.GetRowCellValue(row_handle, this.gc3_IvNum)).Trim() == ivnum)
+                    {
+                        this.gridViewIV.SelectRow(row_handle);
+                        this.gridViewIV.FocusedRowHandle = row_handle;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("ค้นหา " + ivnum + " ไม่พบ", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private void FindEMS(string ems_tracking_no)
+        {
+            PopritVM poprit = this.poprit.Where(p => p.EmsTracking != null && p.EmsTracking.Trim() == ems_tracking_no.Trim()).FirstOrDefault();
+            if (poprit != null)
+            {
+                this.xtraTabControl1.SelectedTabPage = this.tabPageIv;
+
+                for (int i = 0; i < this.gridViewIV.RowCount; i++)
+                {
+                    int row_handle = this.gridViewIV.GetVisibleRowHandle(i);
+                    if (((string)this.gridViewIV.GetRowCellValue(row_handle, this.gc3_EmsTrackingNo)).Trim() == ems_tracking_no)
+                    {
+                        this.gridViewIV.SelectRow(row_handle);
+                        this.gridViewIV.FocusedRowHandle = row_handle;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("ค้นหา " + ems_tracking_no + " ไม่พบ", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+    }
+
+    public class ProcessResult
+    {
+        public bool Success { get; set; }
+        public string Output { get; set; }
     }
 }

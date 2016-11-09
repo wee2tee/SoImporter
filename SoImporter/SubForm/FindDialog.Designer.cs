@@ -95,6 +95,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FindDialog";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ค้นหา";
             this.Load += new System.EventHandler(this.FindDialog_Load);

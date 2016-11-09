@@ -19,7 +19,8 @@ namespace SoImporter.SubForm
         private MainForm main_form;
         private List<Isrun> isrun;
 
-        public string selected_path = string.Empty;
+        public string selected_program_path = string.Empty;
+        public string selected_data_path = string.Empty;
         public string selected_doc = string.Empty;
 
         public DataPathDialog()
@@ -27,35 +28,50 @@ namespace SoImporter.SubForm
             InitializeComponent();
         }
 
-        public DataPathDialog(MainForm main_form, string default_path, string doc_prefix) : this()
+        public DataPathDialog(MainForm main_form, string default_program_path, string default_data_path, string doc_prefix) : this()
         {
             this.main_form = main_form;
-            this.selected_path = default_path;
+
+            if (default_program_path != null)
+                this.selected_program_path = default_program_path;
+            if (default_data_path != null)
+                this.selected_data_path = default_data_path;
+
             this.selected_doc = doc_prefix;
         }
 
         private void DataPathDialog_Load(object sender, EventArgs e)
         {
-            this.isrun = MainForm.LoadIsrunFromDBF(this.main_form.config).Where(i => i.doctyp == "SO").OrderBy(i => i.prefix).ToList();
-            foreach (var item in this.isrun)
+            this.SetCbSonumSelection(this.main_form.config);
+            this.txtProgramPath.Text = this.selected_program_path;
+            this.txtDataPath.Text = this.selected_data_path;
+        }
+
+        private void SetCbSonumSelection(ConfigValue config)
+        {
+            if (File.Exists(config.ExpressDataPath + @"\isrun.dbf"))
             {
-                this.cbSoNum.Properties.Items.Add(item);
+                this.isrun = MainForm.LoadIsrunFromDBF(config).Where(i => i.doctyp == "SO").OrderBy(i => i.prefix).ToList();
+                
+                this.cbSoNum.AddItem(this.isrun, true);
+                var doc = this.isrun.Where(i => i.prefix == this.selected_doc).FirstOrDefault();
+                this.cbSoNum.Text = (doc != null ? "[" + doc.prefix + "] " + doc.posdes : "");
             }
-
-            this.txtPath.Text = this.selected_path;
-
-            var doc = this.isrun.Where(i => i.prefix == this.selected_doc).FirstOrDefault();
-            this.cbSoNum.Text = (doc != null ? "[" + doc.prefix + "] " + doc.posdes : "");
         }
 
         private void DataPathDialog_Shown(object sender, EventArgs e)
         {
-            this.txtPath.SelectionStart = this.txtPath.Text.Length;
+            this.txtProgramPath.SelectionStart = this.txtProgramPath.Text.Length;
         }
 
-        private void txtPath_TextChanged(object sender, EventArgs e)
+        private void txtProgramPath_TextChanged(object sender, EventArgs e)
         {
-            this.selected_path = ((TextEdit)sender).Text;
+            this.selected_program_path = ((TextEdit)sender).Text;
+        }
+
+        private void txtDataPath_TextChanged(object sender, EventArgs e)
+        {
+            this.selected_data_path = ((TextEdit)sender).Text;
         }
 
         private void cbSoNum_SelectedIndexChanged(object sender, EventArgs e)
@@ -63,27 +79,45 @@ namespace SoImporter.SubForm
             this.selected_doc = ((Isrun)((ComboBoxEdit)sender).SelectedItem).prefix;
         }
 
-        private void btnBrowse_Click(object sender, EventArgs e)
+        private void btnBrowse1_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fol = new FolderBrowserDialog()
             {
                 ShowNewFolderButton = false,
-                Description = "เลือกโฟลเดอร์ที่เก็บข้อมูล(โปรแกรม Express)",
+                Description = "เลือกโฟลเดอร์ที่เก็บโปรแกรม Express",
                 RootFolder = Environment.SpecialFolder.MyComputer,
-                SelectedPath = (Directory.Exists(this.selected_path) ? this.selected_path : string.Empty)
+                SelectedPath = (Directory.Exists(this.selected_program_path) ? this.selected_program_path : string.Empty)
+            };
+
+            if (fol.ShowDialog() == DialogResult.OK)
+            {
+                this.txtProgramPath.Text = fol.SelectedPath;
+            }
+        }
+
+        private void btnBrowse2_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fol = new FolderBrowserDialog()
+            {
+                ShowNewFolderButton = false,
+                Description = "เลือกโฟลเดอร์ที่เก็บข้อมูล(Express)",
+                RootFolder = Environment.SpecialFolder.MyComputer,
+                SelectedPath = (Directory.Exists(this.selected_data_path) ? this.selected_data_path : string.Empty)
             };
 
             if(fol.ShowDialog() == DialogResult.OK)
             {
-                this.txtPath.Text = fol.SelectedPath;
+                this.txtDataPath.Text = fol.SelectedPath;
+                this.SetCbSonumSelection(new ConfigValue { ExpressDataPath = this.selected_data_path });
+
             }
         }
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            if (this.txtPath.Text.Trim().Length > 0)
+            if (this.txtDataPath.Text.Trim().Length > 0)
             {
-                if (Directory.Exists(this.txtPath.Text))
+                if (Directory.Exists(this.txtDataPath.Text))
                 {
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -114,9 +148,9 @@ namespace SoImporter.SubForm
                 return true;
             }
 
-            if(keyData == Keys.F6 && this.txtPath.Focused)
+            if(keyData == Keys.F6 && this.txtDataPath.Focused)
             {
-                this.btnBrowse.PerformClick();
+                this.btnBrowse2.PerformClick();
                 return true;
             }
 

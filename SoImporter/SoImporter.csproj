@@ -188,6 +188,12 @@
     <Compile Include="SubForm\FindDialog.Designer.cs">
       <DependentUpon>FindDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="SubForm\FindDocDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\FindDocDialog.Designer.cs">
+      <DependentUpon>FindDocDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="SubForm\IstabAddEditDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -354,6 +360,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\FindDialog.resx">
       <DependentUpon>FindDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\FindDocDialog.resx">
+      <DependentUpon>FindDocDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\IstabAddEditDialog.resx">
       <DependentUpon>IstabAddEditDialog.cs</DependentUpon>

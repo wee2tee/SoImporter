@@ -43,31 +43,28 @@ namespace SoImporter.SubForm
 
         private void ViewAttachFileDialog_Load(object sender, EventArgs e)
         {
-            foreach (string item in this.poprit.SlipFileName.Split(','))
+            if(this.poprit.TaxFileName != null && this.poprit.TaxFileName.Trim().Length > 0)
             {
-                this.slip_file_name.Add(new { FileName = item });
-            }
-            foreach (string item in this.poprit.TaxFileName.Split(','))
-            {
-                this.tax_file_name.Add(new { FileName = item });
+                foreach (string item in this.poprit.TaxFileName.Split(','))
+                {
+                    this.tax_file_name.Add(new { FileName = item });
+                }
+                this.gridControl2.DataSource = this.tax_file_name;
             }
 
-            this.gridControl2.DataSource = this.tax_file_name;
-            this.gridControl1.DataSource = this.slip_file_name;
+            if (this.poprit.SlipFileName != null && this.poprit.SlipFileName.Trim().Length > 0)
+            {
+                foreach (string item in this.poprit.SlipFileName.Split(','))
+                {
+                    this.slip_file_name.Add(new { FileName = item });
+                }
+                this.gridControl1.DataSource = this.slip_file_name;
+            }
         }
 
         private void gridView_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             //this.splashScreenManager1.ShowWaitForm();
-
-            if (((GridView)sender) == this.gridViewSlip)
-            {
-                var row = ((GridView)sender).GetRow(e.FocusedRowHandle);
-                if (row == null)
-                    return;
-
-                this.selected_slip = (string)((GridView)sender).GetRowCellValue(e.FocusedRowHandle, ((GridView)sender).Columns[0]);
-            }
 
             if (((GridView)sender) == this.gridViewTax)
             {
@@ -77,23 +74,15 @@ namespace SoImporter.SubForm
 
                 this.selected_tax = (string)((GridView)sender).GetRowCellValue(e.FocusedRowHandle, ((GridView)sender).Columns[0]);
             }
+            if (((GridView)sender) == this.gridViewSlip)
+            {
+                var row = ((GridView)sender).GetRow(e.FocusedRowHandle);
+                if (row == null)
+                    return;
 
+                this.selected_slip = (string)((GridView)sender).GetRowCellValue(e.FocusedRowHandle, ((GridView)sender).Columns[0]);
+            }
             this.LoadAttachFile((GridView)sender);
-
-            //string file_folder = (string)((GridView)sender).Tag;
-            //string file_name = ((GridView)sender) == this.gridViewSlip ? this.selected_slip : this.selected_tax;
-
-            //string img_url = this.main_form.config.ApiUrl.Replace("/Api/", "") + "/Images/" + file_folder + file_name;
-            //if (APIClient.CheckUrlFileExist(img_url))
-            //{
-            //    this.pictureEdit1.LoadAsync(img_url);
-            //    this.pictureEdit1.Tag = file_name;
-            //}
-            //else
-            //{
-            //    this.pictureEdit1.Image = SoImporter.Properties.Resources.NO_PICTURE;
-            //    this.pictureEdit1.Tag = "";
-            //}
 
             //this.splashScreenManager1.CloseWaitForm();
         }
@@ -119,12 +108,12 @@ namespace SoImporter.SubForm
             string file_folder = gridview == this.gridViewSlip ? "Slip/" : "Tax/";
             string file_url = this.main_form.config.ApiUrl.Replace("/Api/", "") + "/Images/" + file_folder + file_name;
             this.current_file_type = Path.GetExtension(file_name) == ".pdf" ? FILE_TYPE.PDF : FILE_TYPE.IMAGE;
+
+            this.pictureEdit1.Image = null;
             if (APIClient.CheckUrlFileExist(file_url))
             {
-                Console.WriteLine(" .. >> file ext. : " + Path.GetExtension(file_name));
-                if(Path.GetExtension(file_name) == ".pdf")
+                if (Path.GetExtension(file_name) == ".pdf")
                 {
-                    this.pictureEdit1.Image = null;
                     using (WebClient client = new WebClient())
                     {
                         using (MemoryStream ms = new MemoryStream(client.DownloadData(file_url)))
@@ -148,7 +137,8 @@ namespace SoImporter.SubForm
             {
                 this.pdfViewer1.SendToBack();
                 this.pictureEdit1.BringToFront();
-                this.pictureEdit1.Image = SoImporter.Properties.Resources.NO_PICTURE;
+                //this.pictureEdit1.Image = SoImporter.Properties.Resources.NO_PICTURE;
+                //this.pictureEdit1.Image = null;
                 this.pictureEdit1.Tag = "";
             }
 

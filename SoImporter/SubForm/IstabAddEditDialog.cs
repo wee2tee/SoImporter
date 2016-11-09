@@ -39,6 +39,31 @@ namespace SoImporter.SubForm
 
         private void IstabAddEditDialog_Load(object sender, EventArgs e)
         {
+            switch (this.tabtyp)
+            {
+                case ISTAB_TABTYP.QUCOD:
+                    this.txtTypCod.Properties.MaxLength = 2;
+                    break;
+                case ISTAB_TABTYP.LOCCOD:
+                    this.txtTypCod.Properties.MaxLength = 4;
+                    break;
+                case ISTAB_TABTYP.STKGRP:
+                    this.txtTypCod.Properties.MaxLength = 4;
+                    break;
+                case ISTAB_TABTYP.DLVBY:
+                    this.txtTypCod.Properties.MaxLength = 2;
+                    break;
+                case ISTAB_TABTYP.DEPCOD:
+                    this.txtTypCod.Properties.MaxLength = 4;
+                    break;
+                case ISTAB_TABTYP.YOUREF_AR:
+                    this.txtTypCod.Properties.MaxLength = 8;
+                    break;
+                default:
+                    this.txtTypCod.Properties.MaxLength = 2;
+                    break;
+            }
+
             if (this.form_mode == FORM_MODE.ADD)
             {
                 this.Text = "เพิ่ม" + this.tabtyp.GetDescription();

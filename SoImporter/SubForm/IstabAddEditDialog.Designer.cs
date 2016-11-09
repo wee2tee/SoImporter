@@ -65,7 +65,7 @@
             this.txtTypCod.Properties.Appearance.Options.UseFont = true;
             this.txtTypCod.Properties.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtTypCod.Properties.MaxLength = 8;
-            this.txtTypCod.Size = new System.Drawing.Size(80, 22);
+            this.txtTypCod.Size = new System.Drawing.Size(82, 22);
             this.txtTypCod.TabIndex = 0;
             this.txtTypCod.EditValueChanged += new System.EventHandler(this.txtTypCod_EditValueChanged);
             // 
