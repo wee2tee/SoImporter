@@ -192,6 +192,11 @@ namespace SoImporter
                 return;
             }
 
+            if (this.splashScreenManager1.IsSplashFormVisible)
+                this.splashScreenManager1.CloseWaitForm();
+
+            this.splashScreenManager1.ShowWaitForm();
+
             try
             {
                 List<string> completed_ponum = new List<string>();
@@ -215,32 +220,8 @@ namespace SoImporter
                             }
                         }
 
-                        //this.ReIndex("OESO.DBF");
-                        //this.ReIndex("OESOIT.DBF");
-                        //this.ReIndex("ARMAS.DBF");
-                        ProcessResult p_result = this.ReIndex("OESO.DBF");
-                        if (p_result.Success)
-                        {
-                            MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            p_result = this.ReIndex("OESOIT.DBF");
-                            if (p_result.Success)
-                            {
-                                MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                p_result = this.ReIndex("ARMAS.DBF");
-                                if (!p_result.Success)
-                                {
-                                    MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                }
-                            }
-                            else
-                            {
-                                MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show(p_result.Output, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        Reindex reindex = new Reindex(this, new List<EXPRESS_TABLE_NAME> { EXPRESS_TABLE_NAME.OESO, EXPRESS_TABLE_NAME.OESOIT, EXPRESS_TABLE_NAME.ARMAS });
+                        reindex.CreateIndex();
 
                         string all_ponum = string.Empty;
                         foreach (string po_num in completed_ponum)
@@ -248,6 +229,9 @@ namespace SoImporter
                             all_ponum += po_num == completed_ponum.First() ? po_num : "," + po_num;
                         }
                         EMail.Send(email_to, "ยืนยันคำสั่งซื้อหมายเลข " + all_ponum, "เราได้รับคำสั่งซื้อหมายเลข " + all_ponum + " ของคุณแล้ว, คุณจะได้รับอีเมล์อีกครั้งเมื่อสินค้าของคุณได้ถูกจัดส่ง");
+
+                        if (this.splashScreenManager1.IsSplashFormVisible)
+                            this.splashScreenManager1.CloseWaitForm();
 
                         if (MessageBox.Show("บันทึกเป็นใบสั่งขายหมายเลข " + so.sonum + " เรียบร้อย, ต้องการสั่งพิมพ์ใบสั่งขายนี้เลยหรือไม่?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
@@ -261,10 +245,6 @@ namespace SoImporter
                                 this.PrintSo(print_data);
                             }
                         }
-
-                        if (this.splashScreenManager1.IsSplashFormVisible)
-                            this.splashScreenManager1.CloseWaitForm();
-
                         this.btnRetrieveData.PerformClick();
                     }
                 }
@@ -294,48 +274,51 @@ namespace SoImporter
             return poprit;
         }
 
-        private ProcessResult ReIndex(string table_name)
-        {
-            Process p = new Process();
-            ProcessStartInfo info = new ProcessStartInfo();
-            info.FileName = "cmd.exe";
-            info.RedirectStandardInput = true;
-            info.UseShellExecute = false;
-            info.RedirectStandardOutput = true;
-            info.CreateNoWindow = true;
-            //info.WorkingDirectory = this.config.ExpressProgramPath;
+        //private ProcessResult ReIndex(string table_name)
+        //{
+        //    try
+        //    {
 
-            p.StartInfo = info;
-            p.Start();
 
-            try
-            {
-                ExpressTableName express_tb = this.GetExpressTableName().Where(ex => ex.name.ToLower() == table_name.ToLower()).FirstOrDefault();
+        //        Process p = new Process();
+        //        ProcessStartInfo info = new ProcessStartInfo();
+        //        info.FileName = "cmd.exe";
+        //        info.RedirectStandardInput = true;
+        //        info.UseShellExecute = false;
+        //        info.RedirectStandardOutput = true;
+        //        info.CreateNoWindow = true;
+        //        //info.WorkingDirectory = this.config.ExpressProgramPath;
 
-                if (express_tb == null) // unknown table
-                    return new ProcessResult() { Success = false, Output = "Table name is unknown." };
+        //        p.StartInfo = info;
+        //        p.Start();
 
-                using (StreamWriter sw = p.StandardInput)
-                {
-                    if (sw.BaseStream.CanWrite)
-                    {
-                        sw.WriteLine(this.config.ExpressProgramPath + @"\adm32 " + this.config.ExpressDataPath);
-                        sw.WriteLine(express_tb.seq);
-                    }
-                }
-                string output = p.StandardOutput.ReadToEnd();
-                p.WaitForExit();
-                return new ProcessResult() { Success = true, Output = output };
-            }
-            catch (Exception ex)
-            {
-                if(MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
-                {
-                    return this.ReIndex(table_name);
-                }
-                return new ProcessResult() { Success = false, Output = ex.Message };
-            }
-        }
+        //        ExpressTableName express_tb = this.GetExpressTableName().Where(ex => ex.name.ToLower() == table_name.ToLower()).FirstOrDefault();
+
+        //        if (express_tb == null) // unknown table
+        //            return new ProcessResult() { Success = false, Output = "Table name is unknown." };
+
+        //        using (StreamWriter sw = p.StandardInput)
+        //        {
+        //            if (sw.BaseStream.CanWrite)
+        //            {
+        //                sw.WriteLine(this.config.ExpressProgramPath + @"\adm32 " + this.config.ExpressDataPath);
+        //                sw.WriteLine(express_tb.seq);
+        //                sw.WriteLine("");
+        //            }
+        //        }
+        //        string output = p.StandardOutput.ReadToEnd();
+        //        p.WaitForExit();
+        //        return new ProcessResult() { Success = true, Output = output };
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if(MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+        //        {
+        //            return this.ReIndex(table_name);
+        //        }
+        //        return new ProcessResult() { Success = false, Output = ex.Message };
+        //    }
+        //}
 
         private List<PopritVM> LoadPrintItemFromServer(string sonum)
         {
@@ -1686,11 +1669,15 @@ namespace SoImporter
                 MessageBox.Show("ค้นหา " + ems_tracking_no + " ไม่พบ", "", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
-    }
 
-    public class ProcessResult
-    {
-        public bool Success { get; set; }
-        public string Output { get; set; }
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Reindex reindex = new Reindex(this);
+            reindex.CreateIndex();
+            if (reindex.Result == true)
+            {
+                MessageBox.Show("Reindex completed.");
+            }
+        }
     }
 }

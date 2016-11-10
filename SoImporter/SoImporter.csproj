@@ -131,6 +131,7 @@
     <Compile Include="MiscClass\ConfigValue.cs" />
     <Compile Include="MiscClass\Helper.cs" />
     <Compile Include="MiscClass\EMail.cs" />
+    <Compile Include="MiscClass\Reindex.cs" />
     <Compile Include="Model\ApiAccessibilities.cs" />
     <Compile Include="Model\Armas.cs" />
     <Compile Include="Model\Artrnrm.cs" />
@@ -205,6 +206,12 @@
     </Compile>
     <Compile Include="SubForm\IstabDialog.Designer.cs">
       <DependentUpon>IstabDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SubForm\ReindexProgressDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubForm\ReindexProgressDialog.Designer.cs">
+      <DependentUpon>ReindexProgressDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SubForm\StmasImportDuplicateAlertDialog.cs">
       <SubType>Form</SubType>
@@ -369,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\IstabDialog.resx">
       <DependentUpon>IstabDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubForm\ReindexProgressDialog.resx">
+      <DependentUpon>ReindexProgressDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SubForm\StmasImportDuplicateAlertDialog.resx">
       <DependentUpon>StmasImportDuplicateAlertDialog.cs</DependentUpon>

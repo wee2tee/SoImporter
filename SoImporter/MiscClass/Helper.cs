@@ -523,6 +523,24 @@ namespace SoImporter.MiscClass
             return l;
         }
 
+        public static ExpressTableName ToExpressTableName(this EXPRESS_TABLE_NAME table)
+        {
+            foreach (var item in Enum.GetValues(typeof(EXPRESS_TABLE_NAME)))
+            {
+                if(item.ToString().ToLower() == table.ToString().ToLower())
+                {
+                    ExpressTableName tb = new ExpressTableName
+                    {
+                        seq = ((int)item).ToString(),
+                        name = item.ToString() + ".DBF"
+                    };
+                    return tb;
+                }
+            }
+
+            return null;
+        }
+
         public static void AddItem<T>(this ComboBoxEdit combobox, List<T> list_object, bool clear_exist_before = false)
         {
             if (clear_exist_before)
