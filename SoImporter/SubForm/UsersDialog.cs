@@ -32,6 +32,10 @@ namespace SoImporter.SubForm
 
         private void UsersDialog_Load(object sender, EventArgs e)
         {
+            this.btnAdd.Visible = this.main_form.logedin_user.Department == InternalUsers.DEPARTMENT.Administrative.ToString() ? true : false;
+            this.btnEdit.Visible = this.main_form.logedin_user.Department == InternalUsers.DEPARTMENT.Administrative.ToString() ? true : false;
+            this.btnDelete.Visible = this.main_form.logedin_user.Department == InternalUsers.DEPARTMENT.Administrative.ToString() ? true : false;
+
             this.users = new List<InternalUsers>();
             this.bs = new BindingSource();
             this.bs.DataSource = this.users;

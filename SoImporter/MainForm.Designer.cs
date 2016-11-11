@@ -96,6 +96,7 @@
             this.btnStmas = new DevExpress.XtraBars.BarButtonItem();
             this.btnYourefAr = new DevExpress.XtraBars.BarButtonItem();
             this.btnFind = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup7 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -106,6 +107,7 @@
             this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.repositoryItemTextEdit3 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
@@ -194,7 +196,6 @@
             this.tabPagePo = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageSo = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageIv = new DevExpress.XtraTab.XtraTabPage();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewPO)).BeginInit();
@@ -705,7 +706,7 @@
             this.btnFind,
             this.barButtonItem2});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 36;
+            this.ribbonControl1.MaxItemId = 37;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
@@ -777,7 +778,7 @@
             // 
             // btnUsers
             // 
-            this.btnUsers.Caption = "กำหนดรหัสผู้ใช้";
+            this.btnUsers.Caption = "แฟ้มผู้ใช้งานระบบ";
             this.btnUsers.Glyph = ((System.Drawing.Image)(resources.GetObject("btnUsers.Glyph")));
             this.btnUsers.Id = 10;
             this.btnUsers.Name = "btnUsers";
@@ -787,7 +788,6 @@
             // btnApiUrl
             // 
             this.btnApiUrl.Caption = "ตั้งค่า Web API";
-            this.btnApiUrl.Enabled = false;
             this.btnApiUrl.Glyph = ((System.Drawing.Image)(resources.GetObject("btnApiUrl.Glyph")));
             this.btnApiUrl.Id = 11;
             this.btnApiUrl.Name = "btnApiUrl";
@@ -898,8 +898,10 @@
             // 
             // btnYourefAr
             // 
-            this.btnYourefAr.Caption = "อ้างอิง / หมายเหตุ ใบสั่งขาย";
+            this.btnYourefAr.Caption = "12. อ้างอิง / หมายเหตุ ใบสั่งขาย";
+            this.btnYourefAr.Glyph = ((System.Drawing.Image)(resources.GetObject("btnYourefAr.Glyph")));
             this.btnYourefAr.Id = 29;
+            this.btnYourefAr.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnYourefAr.LargeGlyph")));
             this.btnYourefAr.Name = "btnYourefAr";
             this.btnYourefAr.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             this.btnYourefAr.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnYourefAr_ItemClick);
@@ -912,6 +914,15 @@
             this.btnFind.Name = "btnFind";
             this.btnFind.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
             this.btnFind.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnFind_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "จัดเรียงข้อมูล Express";
+            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
+            this.barButtonItem2.Id = 35;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -927,6 +938,7 @@
             this.ribbonPageGroup7.ItemLinks.Add(this.btnRetrieveData);
             this.ribbonPageGroup7.ItemLinks.Add(this.btnImport);
             this.ribbonPageGroup7.Name = "ribbonPageGroup7";
+            this.ribbonPageGroup7.ShowCaptionButton = false;
             this.ribbonPageGroup7.Text = "โหลดข้อมูล";
             // 
             // ribbonPageGroup2
@@ -935,13 +947,14 @@
             this.ribbonPageGroup2.ItemLinks.Add(this.btnRecIvNum);
             this.ribbonPageGroup2.ItemLinks.Add(this.btnEmsTracking);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.ShowCaptionButton = false;
             this.ribbonPageGroup2.Text = "จัดการข้อมูล";
             // 
             // ribbonPageGroup6
             // 
             this.ribbonPageGroup6.ItemLinks.Add(this.btnFind);
-            this.ribbonPageGroup6.ItemLinks.Add(this.barButtonItem2);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
+            this.ribbonPageGroup6.ShowCaptionButton = false;
             this.ribbonPageGroup6.Text = "ค้นหา";
             // 
             // ribbonPage3
@@ -958,6 +971,7 @@
             this.ribbonPageGroup3.ItemLinks.Add(this.btnDealer);
             this.ribbonPageGroup3.ItemLinks.Add(this.btnStmas);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.ShowCaptionButton = false;
             this.ribbonPageGroup3.Text = "ข้อมูลหลัก";
             // 
             // ribbonPageGroup4
@@ -968,20 +982,23 @@
             this.ribbonPageGroup4.ItemLinks.Add(this.btnDlvProfile);
             this.ribbonPageGroup4.ItemLinks.Add(this.btnStpri);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            this.ribbonPageGroup4.ShowCaptionButton = false;
             this.ribbonPageGroup4.Text = "ตารางข้อมูลอื่น ๆ";
             // 
             // ribbonPageGroup5
             // 
             this.ribbonPageGroup5.ItemLinks.Add(this.btnYourefAr);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.ShowCaptionButton = false;
             this.ribbonPageGroup5.Text = "รายการข้อความ";
             // 
             // ribbonPage2
             // 
             this.ribbonPage2.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup8});
             this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "ตั้งค่า";
+            this.ribbonPage2.Text = "อื่น ๆ";
             // 
             // ribbonPageGroup1
             // 
@@ -989,7 +1006,15 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnDataPath);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnUsers);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.ShowCaptionButton = false;
             this.ribbonPageGroup1.Text = "ตั้งค่า";
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.ShowCaptionButton = false;
+            this.ribbonPageGroup8.Text = "จัดการข้อมูล Express";
             // 
             // repositoryItemTextEdit1
             // 
@@ -2043,13 +2068,6 @@
             this.tabPageIv.Size = new System.Drawing.Size(1138, 329);
             this.tabPageIv.Text = "3. เปิดอินวอยซ์แล้ว";
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Reindex";
-            this.barButtonItem2.Id = 35;
-            this.barButtonItem2.Name = "barButtonItem2";
-            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
-            // 
             // MainForm
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.False;
@@ -2263,6 +2281,7 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup7;
         private DevExpress.XtraEditors.Repository.RepositoryItemComboBox repositoryItemComboBox2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
     }
 }
 

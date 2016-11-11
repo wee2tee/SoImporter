@@ -64,6 +64,9 @@ namespace SoImporter
             };
             this.timer.Tick += delegate
             {
+                if (this.logedin_user == null) // if not login yet
+                    return;
+
                 var new_order = this.GetNewOrderFromServer();
 
                 if (new_order == null)
@@ -88,6 +91,30 @@ namespace SoImporter
             this.bs_iv = new BindingSource();
             this.gridControl3.DataSource = this.bs_iv;
 
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            if (this.logedin_user == null)
+            {
+                LoginDialog login = new LoginDialog(this);
+                if (login.ShowDialog() == DialogResult.OK)
+                {
+                    this.logedin_user = login.user;
+                    this.btnRetrieveData.PerformClick();
+                    this.SetRibbonButtonState();
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+        }
+
+        private void SetRibbonButtonState()
+        {
+            this.btnApiUrl.Enabled = this.logedin_user != null && this.logedin_user.Department == InternalUsers.DEPARTMENT.Administrative.ToString() ? true : false;
+            this.btnDataPath.Enabled = this.logedin_user != null && this.logedin_user.Department == InternalUsers.DEPARTMENT.Administrative.ToString() ? true : false;
         }
 
         private void Alert_AlertClick(object sender, AlertClickEventArgs e)
@@ -1154,23 +1181,6 @@ namespace SoImporter
             users.ShowDialog();
         }
 
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            if(this.logedin_user == null)
-            {
-                LoginDialog login = new LoginDialog(this);
-                if(login.ShowDialog() == DialogResult.OK)
-                {
-                    this.logedin_user = login.user;
-                    this.btnRetrieveData.PerformClick();
-                }
-                else
-                {
-                    this.Close();
-                }
-            }
-        }
-
         private void btnRetrieveData_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.btnRecSO.Enabled = false;
@@ -1672,11 +1682,16 @@ namespace SoImporter
 
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Reindex reindex = new Reindex(this);
-            reindex.CreateIndex();
-            if (reindex.Result == true)
+            if(MessageBox.Show("จัดเรียงข้อมูลทุกระบบในโปรแกรม Express, ทำต่อหรือไม่?", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                MessageBox.Show("Reindex completed.");
+                //Reindex reindex = new Reindex(this);
+                //reindex.CreateIndex();
+                //if (reindex.Result == true)
+                //{
+                //    MessageBox.Show("Reindex completed.");
+                //}
+                ReindexProgressDialog rpd = new ReindexProgressDialog(this, true);
+                rpd.ShowDialog();
             }
         }
     }

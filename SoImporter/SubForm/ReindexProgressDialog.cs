@@ -18,11 +18,23 @@ namespace SoImporter.SubForm
     public partial class ReindexProgressDialog : DevExpress.XtraEditors.XtraForm
     {
         private MainForm main_form;
-        private List<EXPRESS_TABLE_NAME> table_names;
+        private List<ExpressTableName> table_names;
 
-        public ReindexProgressDialog(MainForm main_form, List<EXPRESS_TABLE_NAME> table_names)
+        public ReindexProgressDialog()
         {
             InitializeComponent();
+        }
+
+        public ReindexProgressDialog(MainForm main_form, bool all_tables)
+            : this()
+        {
+            this.main_form = main_form;
+            this.table_names = this.GetExpressTableName();
+        }
+
+        public ReindexProgressDialog(MainForm main_form, List<ExpressTableName> table_names)
+            : this()
+        {
             this.main_form = main_form;
             this.table_names = table_names;
         }
@@ -34,86 +46,70 @@ namespace SoImporter.SubForm
 
         private void ReindexProgressDialog_Shown(object sender, EventArgs e)
         {
-            this.ReIndex(0, 1);
+            this.PerformReindex(this.table_names, 0);
+            //foreach (ExpressTableName tb in this.table_names)
+            //{
+            //    using (BackgroundWorker worker = new BackgroundWorker())
+            //    {
+            //        this.lblFileName.Text = tb.name;
+            //        worker.DoWork += delegate
+            //        {
+            //            Reindex reindex = new Reindex(this.main_form);
+            //            reindex.CreateIndex();
+            //        };
+            //        worker.RunWorkerCompleted += delegate
+            //        {
+
+            //        };
+            //        worker.RunWorkerAsync();
+            //    }
+            //}
         }
 
-        private void ReIndex(int list_index, int try_count)
+        private void PerformReindex(List<ExpressTableName> tables_list, int index/*, int try_count = 1*/)
         {
-            if (list_index >= this.table_names.Count)
+            if(index >= tables_list.Count)
             {
-                //this.btnCancel.Enabled = false;
-                //this.btnCancel.SendToBack();
-                //this.btnOK.Enabled = true;
-                //this.btnOK.BringToFront();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                this.btnOK.Text = "เรียบร้อย";
+                this.btnOK.Enabled = true;
                 return;
             }
 
-            ExpressTableName table = this.table_names[list_index].ToExpressTableName();
-            if (table == null) // unknown table
+            this.lblFileName.Text = tables_list[index].name;
+            //this.lblTryCount.Text = try_count.ToString();
+
+            using(BackgroundWorker worker = new BackgroundWorker())
             {
-                MessageBox.Show("Unknown table", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.ReIndex(++list_index, 1);
-            }
+                bool result = false;
 
-            this.lblFileName.Text = table.name;
-            this.lblTryCount.Text = try_count.ToString();
-
-            try
-            {
-                //FileStream fs = File.Open(this.main_form.config.ExpressDataPath + @"\" + table.name, FileMode.Append, FileAccess.Write, FileShare.Write);
-                FileStream fs = File.Open(this.main_form.config.ExpressDataPath + @"\" + table.name, FileMode.Open, FileAccess.Read, FileShare.Read);
-
-                if (fs.CanRead)
+                worker.DoWork += delegate
                 {
-                    Process p = new Process();
-                    ProcessStartInfo info = new ProcessStartInfo();
-                    info.FileName = "cmd.exe";
-                    info.RedirectStandardInput = true;
-                    info.UseShellExecute = false;
-                    info.RedirectStandardOutput = true;
-                    info.CreateNoWindow = true;
-
-                    p.StartInfo = info;
-                    fs.Close();
-                    p.Start();
-
-                    using (StreamWriter sw = p.StandardInput)
+                    Reindex r = new Reindex(this.main_form, tables_list[index]);
+                    r.CreateIndex();
+                    result = r.Result;
+                };
+                worker.RunWorkerCompleted += delegate
+                {
+                    //Console.WriteLine(" .. >> Reindex for " + this.main_form.config.ExpressDataPath + @"\" + table_names[index].name + " result is " + result);
+                    if(result == true)
                     {
-                        if (sw.BaseStream.CanWrite)
-                        {
-                            sw.WriteLine(this.main_form.config.ExpressProgramPath + @"\adm32 " + this.main_form.config.ExpressDataPath);
-                            sw.WriteLine(table.seq);
-                            //sw.WriteLine("");
-                        }
+                        this.PerformReindex(tables_list, ++index);
                     }
-                    //string output = p.StandardOutput.ReadToEnd();
-                    p.WaitForExit();
-                    this.ReIndex(++list_index, 1);
-                }
-                else
-                {
-                    Thread.Sleep(1000);
-                    this.ReIndex(list_index, ++try_count);
-                }
-
-                return;
-            }
-            catch (Exception ex)
-            {
-                if (MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
-                {
-                    this.ReIndex(list_index, ++try_count);
-                }
+                    else
+                    {
+                        Thread.Sleep(2000);
+                        this.PerformReindex(tables_list, index/*, ++try_count*/);
+                    }
+                };
+                worker.RunWorkerAsync();
             }
         }
     }
 
-    public class ProcessResult
-    {
-        public bool Success { get; set; }
-        public string Output { get; set; }
-    }
+    //public class ProcessResult
+    //{
+    //    public bool Success { get; set; }
+    //    public string Output { get; set; }
+    //}
 
 }

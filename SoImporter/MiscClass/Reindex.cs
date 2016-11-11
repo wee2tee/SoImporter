@@ -8,6 +8,7 @@ using SoImporter.Model;
 using SoImporter.MiscClass;
 using System.IO;
 using System.Threading;
+using DevExpress.XtraEditors;
 
 namespace SoImporter.MiscClass
 {
@@ -24,7 +25,7 @@ namespace SoImporter.MiscClass
             this.table_names = this.GetExpressTableName();
         }
 
-        // Reindex for specified express table
+        // Reindex for specified express table by passing enum list
         public Reindex(MainForm main_form, List<EXPRESS_TABLE_NAME> tables)
         {
             this.main_form = main_form;
@@ -33,6 +34,14 @@ namespace SoImporter.MiscClass
             {
                 this.table_names.Add(t.ToExpressTableName());
             }
+        }
+
+        // Reindex for one table by passing ExpressTAbleName object
+        public Reindex(MainForm main_form, ExpressTableName table_obj)
+        {
+            this.main_form = main_form;
+            this.table_names = new List<ExpressTableName>();
+            this.table_names.Add(table_obj);
         }
 
         public void CreateIndex()
@@ -103,8 +112,12 @@ namespace SoImporter.MiscClass
             catch (Exception ex)
             {
                 this.Result = false;
+                //if (MessageBox.Show(ex.Message, "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                //{
+                //    this.Indexing(list_index, ++try_count);
+                //}
 
-                if (MessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
+                if(XtraMessageBox.Show(ex.Message, "Error", MessageBoxButtons.RetryCancel, MessageBoxIcon.Error) == DialogResult.Retry)
                 {
                     this.Indexing(list_index, ++try_count);
                 }

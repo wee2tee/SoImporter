@@ -141,6 +141,7 @@
             this.cbDepartment.Properties.Appearance.Options.UseFont = true;
             this.cbDepartment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbDepartment.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbDepartment.Size = new System.Drawing.Size(169, 22);
             this.cbDepartment.TabIndex = 2;
             this.cbDepartment.SelectedIndexChanged += new System.EventHandler(this.cbDepartment_SelectedIndexChanged);
@@ -153,11 +154,12 @@
             this.cbStatus.Properties.Appearance.Options.UseFont = true;
             this.cbStatus.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbStatus.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cbStatus.Size = new System.Drawing.Size(68, 22);
             this.cbStatus.TabIndex = 3;
             this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.cbStatus_SelectedIndexChanged);
             // 
-            // AddEditUserDialog
+            // UserAddEditDialog
             // 
             this.Appearance.Options.UseFont = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -180,7 +182,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddEditUserDialog";
+            this.Name = "UserAddEditDialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add / Edit User";
             this.Load += new System.EventHandler(this.AddUserDialog_Load);
